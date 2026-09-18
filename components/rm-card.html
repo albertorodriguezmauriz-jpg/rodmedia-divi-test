@@ -1,0 +1,149 @@
+<!-- ============================================================
+     RM CARD — Componente para Divi 5 (Code Module)
+     Marca: Rodmedia
+     Incluye variante .rm-card--dark (manual) y modo oscuro
+     automático vía prefers-color-scheme.
+     ============================================================ -->
+
+<div class="rm-cards-demo">
+
+  <!-- Card estándar: sigue el tema del sistema operativo del visitante -->
+  <div class="rm-card">
+    <span class="rm-card__icon" aria-hidden="true">✦</span>
+    <h3 class="rm-card__title">Diseño web a medida</h3>
+    <p class="rm-card__text">Webs con alma pensadas para pequeños negocios que quieren crecer, sin complicaciones ni letra pequeña.</p>
+    <a href="#" class="rm-card__link">Ver planes y precios →</a>
+  </div>
+
+  <!-- Card forzada a modo oscuro, independientemente del sistema -->
+  <div class="rm-card rm-card--dark">
+    <span class="rm-card__icon" aria-hidden="true">✦</span>
+    <h3 class="rm-card__title">Marketing digital</h3>
+    <p class="rm-card__text">Estrategia, contenido y resultados medibles. Hablamos de tú a tú, sin sorpresas en la factura.</p>
+    <a href="#" class="rm-card__link">Hablamos sin compromiso →</a>
+  </div>
+
+  <!-- Card forzada a modo claro, aunque el sistema esté en oscuro -->
+  <div class="rm-card rm-card--light">
+    <span class="rm-card__icon" aria-hidden="true">✦</span>
+    <h3 class="rm-card__title">SEO local</h3>
+    <p class="rm-card__text">Posicionamiento pensado para que te encuentren en tu ciudad, no solo en internet.</p>
+    <a href="#" class="rm-card__link">Empieza hoy →</a>
+  </div>
+
+</div>
+
+<style>
+  /* ---------- Paleta base (heredada de la marca Rodmedia) ---------- */
+  .rm-cards-demo {
+    --rm-primary: #1a1a2e;
+    --rm-accent: #e8934a;
+    --rm-radius: 8px;
+    --rm-transition: 0.3s ease;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 100px 20px;
+  }
+
+  /* ---------- Card base: tokens en modo claro por defecto ---------- */
+  .rm-card {
+    --rm-card-bg: #ffffff;
+    --rm-card-text: #2d2d2d;
+    --rm-card-text-muted: #6b7280;
+    --rm-card-border: rgba(0, 0, 0, 0.08);
+    --rm-card-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+
+    background: var(--rm-card-bg);
+    color: var(--rm-card-text);
+    border: 1px solid var(--rm-card-border);
+    border-radius: var(--rm-radius);
+    box-shadow: var(--rm-card-shadow);
+    padding: 32px;
+    transition: background var(--rm-transition), color var(--rm-transition),
+      border-color var(--rm-transition), box-shadow var(--rm-transition);
+  }
+
+  .rm-card__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    margin-bottom: 16px;
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--rm-accent) 15%, transparent);
+    color: var(--rm-accent);
+    font-size: 18px;
+  }
+
+  .rm-card__title {
+    margin: 0 0 8px;
+    font-size: 20px;
+    line-height: 1.3;
+    color: var(--rm-card-text);
+  }
+
+  .rm-card__text {
+    margin: 0 0 16px;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--rm-card-text-muted);
+  }
+
+  .rm-card__link {
+    display: inline-block;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--rm-accent);
+    text-decoration: none;
+    transition: opacity var(--rm-transition);
+  }
+
+  .rm-card__link:hover {
+    opacity: 0.75;
+  }
+
+  /* ---------- Variante manual: .rm-card--dark ---------- */
+  /* Fuerza el modo oscuro sin importar la preferencia del sistema */
+  .rm-card--dark {
+    --rm-card-bg: #1a1a2e;
+    --rm-card-text: #f8f6f2;
+    --rm-card-text-muted: #a9adc1;
+    --rm-card-border: rgba(255, 255, 255, 0.08);
+    --rm-card-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+  }
+
+  /* ---------- Modo oscuro automático (prefers-color-scheme) ---------- */
+  /* La card estándar hereda el tema del sistema del visitante.
+     .rm-card--light permite anclar una card en modo claro aunque
+     el sistema esté en oscuro (ej. sobre fondos claros fijos). */
+  @media (prefers-color-scheme: dark) {
+    .rm-card:not(.rm-card--light) {
+      --rm-card-bg: #1a1a2e;
+      --rm-card-text: #f8f6f2;
+      --rm-card-text-muted: #a9adc1;
+      --rm-card-border: rgba(255, 255, 255, 0.08);
+      --rm-card-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+    }
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 980px) {
+    .rm-cards-demo {
+      grid-template-columns: repeat(2, 1fr);
+      padding: 60px 20px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .rm-cards-demo {
+      grid-template-columns: 1fr;
+      padding: 40px 16px;
+      gap: 16px;
+    }
+  }
+</style>
