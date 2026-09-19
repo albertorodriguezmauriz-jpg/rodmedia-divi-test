@@ -77,6 +77,7 @@
           <line class="rm-hero-home__hub-line" data-i="4" x1="50" y1="50" x2="18.8" y2="68"/>
           <line class="rm-hero-home__hub-line" data-i="5" x1="50" y1="50" x2="18.8" y2="32"/>
           <circle cx="50" cy="50" r="7" class="rm-hero-home__hub-core"/>
+          <circle class="rm-hero-home__hub-pulse" r="2.2" style="--px:50;--py:14;"/>
         </svg>
 
         <div class="rm-hero-home__hub-center">rodmedia<span>.es</span></div>
@@ -394,13 +395,30 @@
 
   .rm-hero-home__hub-line.is-active {
     stroke: url(#rmHomeHubActive);
-    stroke-width: 0.7;
+    stroke-width: 0.9;
   }
 
   .rm-hero-home__hub-core {
     fill: #12121f;
     stroke: rgba(255, 255, 255, 0.18);
     stroke-width: 0.4;
+  }
+
+  /* Pulso viajero: pequeño punto de energía que recorre la línea activa
+     desde el centro hasta el nodo resaltado, en bucle continuo. */
+  .rm-hero-home__hub-pulse {
+    fill: #ffffff;
+    opacity: 0;
+    cx: 50;
+    cy: 50;
+    animation: rm-hero-home-pulse-travel 1.5s ease-in-out infinite;
+  }
+
+  @keyframes rm-hero-home-pulse-travel {
+    0%   { cx: 50; cy: 50; opacity: 0; r: 1.4; }
+    12%  { opacity: 1; }
+    85%  { opacity: 1; }
+    100% { cx: var(--px); cy: var(--py); opacity: 0; r: 2.2; }
   }
 
   .rm-hero-home__hub-center {
@@ -426,8 +444,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 6px;
-    width: 78px;
+    gap: 8px;
+    width: 88px;
     padding: 10px 4px;
     background: transparent;
     border: none;
@@ -436,29 +454,52 @@
   }
 
   .rm-hero-home__hub-icon {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
+    width: 52px;
+    height: 52px;
     border-radius: 50%;
     background: rgba(15, 15, 30, 0.6);
     border: 1px solid rgba(255, 255, 255, 0.12);
     color: #a9b4d0;
-    transition: color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease;
+    transition: color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
 
   .rm-hero-home__hub-icon svg {
-    width: 18px;
-    height: 18px;
+    width: 22px;
+    height: 22px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Anillo de radar: se expande y se desvanece mientras el nodo está activo */
+  .rm-hero-home__hub-icon::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 1.5px solid var(--rm-blue);
+    opacity: 0;
+    transform: scale(1);
+  }
+
+  .rm-hero-home__hub-node.is-active .rm-hero-home__hub-icon::after {
+    animation: rm-hero-home-ping 1.6s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+
+  @keyframes rm-hero-home-ping {
+    0%   { opacity: 0.7; transform: scale(1); }
+    100% { opacity: 0; transform: scale(1.9); }
   }
 
   .rm-hero-home__hub-label {
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 500;
     color: #7d84a0;
     text-align: center;
-    line-height: 1.2;
+    line-height: 1.25;
     transition: color 0.4s ease;
   }
 
@@ -467,11 +508,12 @@
     border-color: transparent;
     background: linear-gradient(135deg, var(--rm-blue), var(--rm-orange));
     box-shadow: 0 0 0 4px rgba(58, 123, 213, 0.18), 0 8px 24px rgba(232, 83, 26, 0.3);
-    transform: scale(1.08);
+    transform: scale(1.18);
   }
 
   .rm-hero-home__hub-node.is-active .rm-hero-home__hub-label {
     color: #f4f4fa;
+    font-weight: 600;
   }
 
   .rm-hero-home__hub-caption {
@@ -539,25 +581,25 @@
     }
 
     .rm-hero-home__panel {
-      max-width: 340px;
+      max-width: 360px;
     }
 
     .rm-hero-home__hub-node {
-      width: 64px;
+      width: 72px;
     }
 
     .rm-hero-home__hub-icon {
-      width: 34px;
-      height: 34px;
+      width: 44px;
+      height: 44px;
     }
 
     .rm-hero-home__hub-icon svg {
-      width: 15px;
-      height: 15px;
+      width: 19px;
+      height: 19px;
     }
 
     .rm-hero-home__hub-label {
-      font-size: 10px;
+      font-size: 11px;
     }
   }
 
@@ -665,13 +707,23 @@
         ['Marketing', 'Visibilidad y campañas que dan resultado.'],
         ['Correo', 'Tu propio @tuempresa.es, sin marcas ajenas.']
       ];
+      var pulse = panel.querySelector('.rm-hero-home__hub-pulse');
       var active = 0;
       var timer = null;
 
       function setActive(i) {
         active = i;
         nodes.forEach(function (n) { n.classList.toggle('is-active', Number(n.dataset.i) === i); });
-        lines.forEach(function (l) { l.classList.toggle('is-active', Number(l.dataset.i) === i); });
+        var activeLine = null;
+        lines.forEach(function (l) {
+          var isActive = Number(l.dataset.i) === i;
+          l.classList.toggle('is-active', isActive);
+          if (isActive) activeLine = l;
+        });
+        if (pulse && activeLine) {
+          pulse.style.setProperty('--px', activeLine.getAttribute('x2'));
+          pulse.style.setProperty('--py', activeLine.getAttribute('y2'));
+        }
         if (captionTitle) captionTitle.textContent = data[i][0];
         if (captionText) captionText.textContent = data[i][1];
       }
