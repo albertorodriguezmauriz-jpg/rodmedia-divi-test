@@ -464,7 +464,28 @@
     background: rgba(15, 15, 30, 0.6);
     border: 1px solid rgba(255, 255, 255, 0.12);
     color: #a9b4d0;
-    transition: color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transition: color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  /* Feedback inmediato al pasar el ratón, independiente del estado "activo" */
+  .rm-hero-home__hub-node:hover {
+    cursor: pointer;
+  }
+
+  .rm-hero-home__hub-node:hover .rm-hero-home__hub-icon {
+    border-color: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.08);
+    color: #f4f4fa;
+    transform: scale(1.08);
+  }
+
+  .rm-hero-home__hub-node:hover .rm-hero-home__hub-label {
+    color: #f4f4fa;
+  }
+
+  .rm-hero-home__hub-node:focus-visible .rm-hero-home__hub-icon {
+    border-color: var(--rm-blue);
+    box-shadow: 0 0 0 3px rgba(58, 123, 213, 0.35);
   }
 
   .rm-hero-home__hub-icon svg {
@@ -622,7 +643,7 @@
 
 <script>
   (function () {
-    var section = document.currentScript.closest('.rm-hero-home');
+    var section = document.querySelector('.rm-hero-home');
     if (!section) return;
 
     /* Particle canvas */
@@ -735,17 +756,39 @@
       setActive(0);
 
       var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if (!reduceMotion) {
-        timer = setInterval(rotate, 2600);
+      var userLocked = false;
+
+      function startTimer() {
+        if (!reduceMotion && !userLocked && !timer) {
+          timer = setInterval(rotate, 2600);
+        }
       }
+
+      function stopTimer() {
+        if (timer) { clearInterval(timer); timer = null; }
+      }
+
+      startTimer();
 
       nodes.forEach(function (n) {
         n.addEventListener('click', function () {
-          if (timer) { clearInterval(timer); timer = null; }
+          userLocked = true;
+          stopTimer();
           setActive(Number(n.dataset.i));
         });
         n.addEventListener('mouseenter', function () {
+          stopTimer();
           setActive(Number(n.dataset.i));
+        });
+        n.addEventListener('focus', function () {
+          stopTimer();
+          setActive(Number(n.dataset.i));
+        });
+        n.addEventListener('mouseleave', function () {
+          startTimer();
+        });
+        n.addEventListener('blur', function () {
+          startTimer();
         });
       });
     }
