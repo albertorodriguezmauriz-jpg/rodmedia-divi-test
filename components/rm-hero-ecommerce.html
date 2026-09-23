@@ -1,31 +1,36 @@
 <!-- ============================================================
      RM E-COMMERCE HERO — Sección hero para la página de Tienda Online
      (Divi 5, Code Module)
-     Marca: Rodmedia (premium)
-     Mismo sistema visual que rm-hero.html / rm-hero-seo.html:
-     - Tokens --rm-primary / --rm-accent / --rm-radius / --rm-transition
-     - Tipografía Fraunces (display) + Plus Jakarta Sans (body)
-     - Fondo con grid + glow + grano, scroll-reveal por IntersectionObserver
-     - Tarjeta visual + badge flotante en glassmorphism
-     - CTA primario con spotlight que sigue el cursor
-     Contenido propio: chip con pulso, insight de credibilidad, mockup
-     animado de tienda (grid de productos) con notificación de "nuevo
-     pedido" flotante, y franja de 4 stats.
+     Marca: Rodmedia (hub de servicios gestionados — ver BRAND.md)
+
+     Sistema de marca cerrado (no reinterpretar), igual que rm-hero-home.html:
+     - Fondo navy #0f0f1e
+     - Partículas en canvas con líneas de conexión azules
+     - Gradientes de luz animados azul #3a7bd5 + naranja #e8531a
+     - Tipografía Playfair Display (titulares) + Inter (cuerpo)
+     - Línea superior de firma con gradiente animado
+     - Entradas secuenciadas con fade + slide-up
+     - Badge con parpadeo sutil
+     Visual propio de esta página: showcase de producto en 3D real (CSS
+     3D transforms + perspective) — 3 tarjetas apiladas en profundidad,
+     la frontal se inclina siguiendo el cursor (tilt) con vaivén suave
+     cuando no hay interacción, más una insignia flotante de "nuevo
+     pedido". Sustituye al mockup plano de la versión anterior.
 
      ANTES DE PUBLICAR:
      1) Sustituye las cifras de "rm-ec-hero__stats" por datos reales.
      2) Revisa el enlace de WhatsApp (wa.me) y el ancla #rmec-planes.
-     3) Si ya cargas Fraunces / Plus Jakarta Sans en otra sección de la
+     3) Si ya cargas Playfair Display / Inter en otra sección de la
         misma página, borra el @import de aquí.
      ============================================================ -->
 
 <section class="rm-ec-hero" aria-label="Tienda online — Rodmedia">
 
   <div class="rm-ec-hero__bg" aria-hidden="true">
-    <div class="rm-ec-hero__glow rm-ec-hero__glow--a"></div>
-    <div class="rm-ec-hero__glow rm-ec-hero__glow--b"></div>
-    <div class="rm-ec-hero__grid"></div>
-    <div class="rm-ec-hero__grain"></div>
+    <div class="rm-ec-hero__topline"></div>
+    <canvas class="rm-ec-hero__particles"></canvas>
+    <div class="rm-ec-hero__glow rm-ec-hero__glow--blue"></div>
+    <div class="rm-ec-hero__glow rm-ec-hero__glow--orange"></div>
   </div>
 
   <div class="rm-ec-hero__container">
@@ -48,9 +53,9 @@
 
       <div class="rm-ec-hero__insight">
         <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-          <path d="M2.5 4.5h2l1.6 8.2a1.4 1.4 0 0 0 1.4 1.1h6a1.4 1.4 0 0 0 1.4-1.1l1.1-5.7H5.3" stroke="var(--rm-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          <circle cx="8" cy="16" r="1" fill="var(--rm-accent)"/>
-          <circle cx="13.5" cy="16" r="1" fill="var(--rm-accent)"/>
+          <path d="M2.5 4.5h2l1.6 8.2a1.4 1.4 0 0 0 1.4 1.1h6a1.4 1.4 0 0 0 1.4-1.1l1.1-5.7H5.3" stroke="var(--rm-blue)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="8" cy="16" r="1" fill="var(--rm-blue)"/>
+          <circle cx="13.5" cy="16" r="1" fill="var(--rm-blue)"/>
         </svg>
         <p>
           El <strong>76% de los españoles compra online</strong>. Si no
@@ -94,32 +99,21 @@
     </div>
 
     <div class="rm-ec-hero__visual" data-animate>
-      <div class="rm-ec-hero__shop">
-        <div class="rm-ec-hero__shop-bar">
-          <span></span><span></span><span></span>
-        </div>
-        <div class="rm-ec-hero__shop-body">
-          <div class="rm-ec-hero__shop-grid">
-            <div class="rm-ec-hero__shop-card">
-              <span class="rm-ec-hero__shop-img"></span>
-              <span class="rm-ec-hero__shop-price"></span>
+      <div class="rm-ec-hero__stage">
+        <div class="rm-ec-hero__card rm-ec-hero__card--back"></div>
+        <div class="rm-ec-hero__card rm-ec-hero__card--mid"></div>
+        <div class="rm-ec-hero__card rm-ec-hero__card--front">
+          <span class="rm-ec-hero__card-sheen" aria-hidden="true"></span>
+          <span class="rm-ec-hero__card-badge">Más vendido</span>
+          <span class="rm-ec-hero__card-img" aria-hidden="true"></span>
+          <div class="rm-ec-hero__card-info">
+            <span class="rm-ec-hero__card-name">Edición limitada</span>
+            <div class="rm-ec-hero__card-row">
+              <strong class="rm-ec-hero__card-price">43,90€</strong>
+              <span class="rm-ec-hero__card-add" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2.5v9M2.5 7h9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+              </span>
             </div>
-            <div class="rm-ec-hero__shop-card">
-              <span class="rm-ec-hero__shop-img"></span>
-              <span class="rm-ec-hero__shop-price"></span>
-            </div>
-            <div class="rm-ec-hero__shop-card">
-              <span class="rm-ec-hero__shop-img"></span>
-              <span class="rm-ec-hero__shop-price"></span>
-            </div>
-            <div class="rm-ec-hero__shop-card">
-              <span class="rm-ec-hero__shop-img"></span>
-              <span class="rm-ec-hero__shop-price"></span>
-            </div>
-          </div>
-          <div class="rm-ec-hero__shop-checkout">
-            <span>Finalizar compra</span>
-            <strong>43,90€</strong>
           </div>
         </div>
       </div>
@@ -127,9 +121,9 @@
       <div class="rm-ec-hero__order-badge">
         <span class="rm-ec-hero__order-dot" aria-hidden="true"></span>
         <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-          <path d="M2.5 4.5h2l1.6 8.2a1.4 1.4 0 0 0 1.4 1.1h6a1.4 1.4 0 0 0 1.4-1.1l1.1-5.7H5.3" stroke="var(--rm-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          <circle cx="8" cy="16" r="1" fill="var(--rm-accent)"/>
-          <circle cx="13.5" cy="16" r="1" fill="var(--rm-accent)"/>
+          <path d="M2.5 4.5h2l1.6 8.2a1.4 1.4 0 0 0 1.4 1.1h6a1.4 1.4 0 0 0 1.4-1.1l1.1-5.7H5.3" stroke="var(--rm-blue)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="8" cy="16" r="1" fill="var(--rm-blue)"/>
+          <circle cx="13.5" cy="16" r="1" fill="var(--rm-blue)"/>
         </svg>
         <div>
           <strong>Nuevo pedido</strong>
@@ -142,25 +136,26 @@
 </section>
 
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap');
 
   .rm-ec-hero {
-    --rm-primary: #1a1a2e;
-    --rm-primary-deep: #0d0d1a;
-    --rm-accent: #e8934a;
-    --rm-light: #f8f6f2;
+    --rm-primary: #0f0f1e;
+    --rm-blue: #3a7bd5;
+    --rm-orange: #e8531a;
+    --rm-light: #f8f8fb;
     --rm-text: var(--rm-light);
-    --rm-text-muted: #a9adc1;
+    --rm-text-muted: #9aa3bd;
+    --rm-text-muted-2: #7d84a0;
     --rm-radius: 8px;
     --rm-radius-lg: 20px;
-    --rm-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+    --rm-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
     --rm-transition: 0.3s ease;
-    --rm-font-display: "Fraunces", Georgia, "Times New Roman", serif;
-    --rm-font-body: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+    --rm-font-display: "Playfair Display", Georgia, "Times New Roman", serif;
+    --rm-font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
 
     position: relative;
     overflow: hidden;
-    background: radial-gradient(120% 120% at 15% 10%, var(--rm-primary) 0%, var(--rm-primary-deep) 65%);
+    background: var(--rm-primary);
     color: var(--rm-text);
     font-family: var(--rm-font-body);
     padding: 120px 20px 100px;
@@ -177,55 +172,63 @@
   .rm-ec-hero__bg {
     position: absolute;
     inset: 0;
-    pointer-events: none;
     z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .rm-ec-hero__topline {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--rm-blue), var(--rm-orange), var(--rm-blue));
+    background-size: 200% 100%;
+    animation: rm-ec-hero-shimmer 6s linear infinite;
+  }
+
+  @keyframes rm-ec-hero-shimmer {
+    0% { background-position: 0% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  .rm-ec-hero__particles {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
   }
 
   .rm-ec-hero__glow {
     position: absolute;
     border-radius: 50%;
-    filter: blur(90px);
-    opacity: 0.3;
-    animation: rm-ec-hero-float 13s ease-in-out infinite;
+    filter: blur(100px);
+    opacity: 0.28;
+    animation: rm-ec-hero-float 15s ease-in-out infinite;
   }
 
-  .rm-ec-hero__glow--a {
-    width: 460px;
-    height: 460px;
-    top: -140px;
+  .rm-ec-hero__glow--blue {
+    width: 480px;
+    height: 480px;
+    top: -150px;
     right: -110px;
-    background: var(--rm-accent);
+    background: var(--rm-blue);
   }
 
-  .rm-ec-hero__glow--b {
-    width: 380px;
-    height: 380px;
-    bottom: -160px;
-    left: -100px;
-    background: #3d3d6b;
-    animation-delay: -6.5s;
-  }
-
-  .rm-ec-hero__grid {
-    position: absolute;
-    inset: 0;
-    background-image: linear-gradient(rgba(232, 147, 74, 0.05) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(232, 147, 74, 0.05) 1px, transparent 1px);
-    background-size: 48px 48px;
-    mask-image: radial-gradient(80% 60% at 50% 25%, #000 40%, transparent 100%);
-  }
-
-  .rm-ec-hero__grain {
-    position: absolute;
-    inset: 0;
-    opacity: 0.05;
-    mix-blend-mode: overlay;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  .rm-ec-hero__glow--orange {
+    width: 420px;
+    height: 420px;
+    bottom: -170px;
+    left: -110px;
+    background: var(--rm-orange);
+    animation-delay: -7s;
   }
 
   @keyframes rm-ec-hero-float {
-    0%, 100% { transform: translateY(0) scale(1); }
-    50% { transform: translateY(22px) scale(1.05); }
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(26px, 22px) scale(1.07); }
   }
 
   /* ---------- Contenedor ---------- */
@@ -264,13 +267,13 @@
     gap: 8px;
     padding: 8px 16px;
     border-radius: 999px;
-    background: rgba(232, 147, 74, 0.1);
-    border: 1px solid rgba(232, 147, 74, 0.3);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
     font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.05em;
+    font-weight: 600;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: #f5c493;
+    color: #cbd5e1;
     margin-bottom: 24px;
   }
 
@@ -278,21 +281,21 @@
     width: 7px;
     height: 7px;
     border-radius: 50%;
-    background: var(--rm-accent);
-    animation: rm-ec-hero-pulse 2.2s ease-in-out infinite;
+    background: linear-gradient(135deg, var(--rm-blue), var(--rm-orange));
+    animation: rm-ec-hero-blink 2.2s ease-in-out infinite;
   }
 
-  @keyframes rm-ec-hero-pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.4; transform: scale(0.65); }
+  @keyframes rm-ec-hero-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.25; }
   }
 
   /* ---------- Titular ---------- */
   .rm-ec-hero__title {
     font-family: var(--rm-font-display);
-    font-weight: 600;
+    font-weight: 700;
     font-size: clamp(2.25rem, 1.4rem + 3.4vw, 3.75rem);
-    line-height: 1.12;
+    line-height: 1.14;
     letter-spacing: -0.01em;
     margin: 0 0 20px;
     color: var(--rm-light);
@@ -300,7 +303,10 @@
 
   .rm-ec-hero__title em {
     font-style: italic;
-    color: var(--rm-accent);
+    background: linear-gradient(135deg, var(--rm-blue), var(--rm-orange));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 
   .rm-ec-hero__subtitle {
@@ -322,6 +328,7 @@
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: var(--rm-radius-lg);
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     max-width: 48ch;
   }
 
@@ -368,23 +375,23 @@
 
   .rm-ec-hero__cta--primary {
     padding: 16px 28px;
-    background: var(--rm-accent);
-    color: var(--rm-primary);
-    box-shadow: 0 12px 28px rgba(232, 147, 74, 0.28);
+    background: linear-gradient(135deg, var(--rm-blue), var(--rm-orange));
+    color: #ffffff;
+    box-shadow: 0 12px 28px rgba(58, 123, 213, 0.28);
   }
 
   .rm-ec-hero__cta--primary::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: radial-gradient(160px circle at var(--rm-mx, 50%) var(--rm-my, 50%), rgba(255, 255, 255, 0.35), transparent 70%);
+    background: radial-gradient(160px circle at var(--rm-mx, 50%) var(--rm-my, 50%), rgba(255, 255, 255, 0.32), transparent 70%);
     opacity: 0;
     transition: opacity var(--rm-transition);
   }
 
   .rm-ec-hero__cta--primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 16px 32px rgba(232, 147, 74, 0.38);
+    box-shadow: 0 16px 34px rgba(232, 83, 26, 0.35);
   }
 
   .rm-ec-hero__cta--primary:hover::before {
@@ -404,8 +411,8 @@
   }
 
   .rm-ec-hero__cta--secondary:hover {
-    border-color: var(--rm-accent);
-    color: var(--rm-accent);
+    border-color: var(--rm-blue);
+    color: var(--rm-light);
   }
 
   /* ---------- Franja de stats ---------- */
@@ -413,7 +420,7 @@
     display: flex;
     flex-wrap: wrap;
     margin: 0;
-    border: 1px solid rgba(232, 147, 74, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: var(--rm-radius-lg);
     background: rgba(255, 255, 255, 0.025);
     overflow: hidden;
@@ -425,7 +432,7 @@
     min-width: 120px;
     padding: 18px 16px;
     text-align: center;
-    border-right: 1px solid rgba(232, 147, 74, 0.14);
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
   }
 
   .rm-ec-hero__stat:last-child {
@@ -436,7 +443,10 @@
     font-family: var(--rm-font-display);
     font-size: 22px;
     font-weight: 600;
-    color: var(--rm-accent);
+    background: linear-gradient(135deg, var(--rm-blue), var(--rm-orange));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
     margin: 0 0 4px;
   }
 
@@ -445,112 +455,159 @@
     font-size: 11px;
     letter-spacing: 0.03em;
     text-transform: uppercase;
+    color: var(--rm-text-muted-2);
+  }
+
+  /* ---------- Visual: showcase 3D ---------- */
+  .rm-ec-hero__visual {
+    position: relative;
+    width: 100%;
+  }
+
+  .rm-ec-hero__stage {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    aspect-ratio: 1 / 1;
+    margin: 0 auto;
+    perspective: 1400px;
+  }
+
+  .rm-ec-hero__card {
+    position: absolute;
+    inset: 8%;
+    border-radius: var(--rm-radius-lg);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+
+  .rm-ec-hero__card--back {
+    transform: translate(46px, 40px) translateZ(-120px) rotate(9deg) scale(0.88);
+    opacity: 0.4;
+  }
+
+  .rm-ec-hero__card--mid {
+    transform: translate(23px, 20px) translateZ(-60px) rotate(4.5deg) scale(0.94);
+    opacity: 0.7;
+  }
+
+  .rm-ec-hero__card--front {
+    box-shadow: var(--rm-shadow);
+    overflow: hidden;
+    animation: rm-ec-hero-idle-sway 7s ease-in-out infinite;
+    transition: transform 0.15s ease-out;
+    will-change: transform;
+  }
+
+  .rm-ec-hero__stage.is-interactive .rm-ec-hero__card--front {
+    animation: none;
+  }
+
+  @keyframes rm-ec-hero-idle-sway {
+    0%, 100% { transform: rotateY(-5deg) rotateX(2.5deg); }
+    50% { transform: rotateY(5deg) rotateX(-2.5deg); }
+  }
+
+  .rm-ec-hero__card-sheen {
+    position: absolute;
+    inset: -40%;
+    background: linear-gradient(115deg, transparent 40%, rgba(255, 255, 255, 0.16) 50%, transparent 60%);
+    opacity: 0.5;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .rm-ec-hero__stage.is-interactive .rm-ec-hero__card-sheen {
+    opacity: 0.9;
+  }
+
+  .rm-ec-hero__card-badge {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    padding: 5px 12px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, var(--rm-blue), var(--rm-orange));
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    z-index: 1;
+  }
+
+  .rm-ec-hero__card-img {
+    position: absolute;
+    inset: 0 0 34% 0;
+    background:
+      radial-gradient(120% 90% at 20% 15%, rgba(255, 255, 255, 0.16), transparent 55%),
+      linear-gradient(135deg, var(--rm-blue), var(--rm-orange));
+  }
+
+  .rm-ec-hero__card-info {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 34%;
+    padding: 14px 18px 16px;
+    background: rgba(12, 12, 24, 0.55);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .rm-ec-hero__card-name {
+    font-size: 13px;
+    font-weight: 500;
     color: var(--rm-text-muted);
   }
 
-  /* ---------- Visual: mockup de tienda ---------- */
-  .rm-ec-hero__visual {
-    position: relative;
-  }
-
-  .rm-ec-hero__shop {
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: var(--rm-radius-lg);
-    box-shadow: var(--rm-shadow);
-    backdrop-filter: blur(12px);
-    overflow: hidden;
-  }
-
-  .rm-ec-hero__shop-bar {
-    display: flex;
-    gap: 6px;
-    padding: 16px 20px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  }
-
-  .rm-ec-hero__shop-bar span {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.15);
-  }
-
-  .rm-ec-hero__shop-bar span:first-child {
-    background: var(--rm-accent);
-  }
-
-  .rm-ec-hero__shop-body {
-    padding: 24px 24px 28px;
-  }
-
-  .rm-ec-hero__shop-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 14px;
-    margin-bottom: 20px;
-  }
-
-  .rm-ec-hero__shop-card {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 12px;
-    border-radius: var(--rm-radius);
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-  }
-
-  .rm-ec-hero__shop-img {
-    display: block;
-    height: 54px;
-    border-radius: calc(var(--rm-radius) - 2px);
-    background: linear-gradient(135deg, rgba(232, 147, 74, 0.35), rgba(232, 147, 74, 0.08));
-  }
-
-  .rm-ec-hero__shop-price {
-    display: block;
-    width: 60%;
-    height: 8px;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.12);
-  }
-
-  .rm-ec-hero__shop-checkout {
+  .rm-ec-hero__card-row {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 12px;
-    padding: 14px 18px;
-    border-radius: var(--rm-radius);
-    background: var(--rm-accent);
-    color: var(--rm-primary);
   }
 
-  .rm-ec-hero__shop-checkout span {
-    font-size: 13px;
-    font-weight: 600;
-  }
-
-  .rm-ec-hero__shop-checkout strong {
+  .rm-ec-hero__card-price {
     font-family: var(--rm-font-display);
-    font-size: 16px;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--rm-light);
+  }
+
+  .rm-ec-hero__card-add {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--rm-blue), var(--rm-orange));
+    color: #fff;
   }
 
   /* ---------- Tarjeta flotante: nuevo pedido ---------- */
   .rm-ec-hero__order-badge {
     position: absolute;
-    left: -24px;
-    bottom: -28px;
+    left: -8px;
+    bottom: -18px;
+    z-index: 2;
     display: flex;
     align-items: center;
     gap: 12px;
     padding: 14px 20px;
-    background: rgba(26, 26, 46, 0.85);
+    background: rgba(15, 15, 30, 0.85);
     border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: var(--rm-radius-lg);
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
     backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
     animation: rm-ec-hero-bob 5s ease-in-out infinite;
   }
 
@@ -561,8 +618,8 @@
     width: 7px;
     height: 7px;
     border-radius: 50%;
-    background: var(--rm-accent);
-    animation: rm-ec-hero-pulse 2.2s ease-in-out infinite;
+    background: linear-gradient(135deg, var(--rm-blue), var(--rm-orange));
+    animation: rm-ec-hero-blink 2.2s ease-in-out infinite;
   }
 
   .rm-ec-hero__order-badge strong {
@@ -582,10 +639,12 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
+    .rm-ec-hero__topline,
     .rm-ec-hero__glow,
     .rm-ec-hero__chip-dot,
     .rm-ec-hero__order-dot,
-    .rm-ec-hero__order-badge {
+    .rm-ec-hero__order-badge,
+    .rm-ec-hero__card--front {
       animation: none;
     }
 
@@ -610,7 +669,7 @@
 
     .rm-ec-hero__visual {
       order: -1;
-      max-width: 440px;
+      max-width: 420px;
       margin: 0 auto;
     }
 
@@ -648,11 +707,15 @@
     .rm-ec-hero__stat {
       min-width: 46%;
       border-right: none;
-      border-bottom: 1px solid rgba(232, 147, 74, 0.14);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
 
     .rm-ec-hero__stat:nth-child(2n) {
-      border-right: 1px solid rgba(232, 147, 74, 0.14);
+      border-right: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .rm-ec-hero__stage {
+      max-width: 300px;
     }
 
     .rm-ec-hero__order-badge {
@@ -664,32 +727,125 @@
     }
 
     .rm-ec-hero__order-dot {
-      animation: rm-ec-hero-pulse 2.2s ease-in-out infinite;
+      animation: rm-ec-hero-blink 2.2s ease-in-out infinite;
     }
   }
 </style>
 
 <script>
   (function () {
-    var elements = document.querySelectorAll(".rm-ec-hero [data-animate]");
+    var section = document.querySelector(".rm-ec-hero");
+    if (!section) return;
+
+    var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    /* Entradas secuenciadas al hacer scroll */
+    var elements = section.querySelectorAll("[data-animate]");
     if (!("IntersectionObserver" in window) || !elements.length) {
       elements.forEach(function (el) { el.classList.add("is-visible"); });
-      return;
+    } else {
+      var observer = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.15 }
+      );
+      elements.forEach(function (el) { observer.observe(el); });
     }
-    var observer = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.15 }
-    );
-    elements.forEach(function (el) { observer.observe(el); });
 
-    var primaryCta = document.querySelector(".rm-ec-hero__cta--primary");
+    /* Partículas de fondo */
+    var canvas = section.querySelector(".rm-ec-hero__particles");
+    if (canvas && !reduceMotion) {
+      var ctx = canvas.getContext("2d");
+      var particles = [];
+      var count = 42;
+      var w, h;
+
+      function resize() {
+        w = canvas.width = canvas.offsetWidth;
+        h = canvas.height = canvas.offsetHeight;
+      }
+
+      function init() {
+        particles = [];
+        for (var i = 0; i < count; i++) {
+          particles.push({
+            x: Math.random() * w,
+            y: Math.random() * h,
+            vx: (Math.random() - 0.5) * 0.25,
+            vy: (Math.random() - 0.5) * 0.25
+          });
+        }
+      }
+
+      function step() {
+        ctx.clearRect(0, 0, w, h);
+        for (var i = 0; i < particles.length; i++) {
+          var p = particles[i];
+          p.x += p.vx;
+          p.y += p.vy;
+          if (p.x < 0 || p.x > w) p.vx *= -1;
+          if (p.y < 0 || p.y > h) p.vy *= -1;
+        }
+        for (var i = 0; i < particles.length; i++) {
+          for (var j = i + 1; j < particles.length; j++) {
+            var a = particles[i], b = particles[j];
+            var dx = a.x - b.x, dy = a.y - b.y;
+            var dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < 140) {
+              ctx.strokeStyle = "rgba(58,123,213," + (0.16 * (1 - dist / 140)) + ")";
+              ctx.lineWidth = 1;
+              ctx.beginPath();
+              ctx.moveTo(a.x, a.y);
+              ctx.lineTo(b.x, b.y);
+              ctx.stroke();
+            }
+          }
+        }
+        for (var i = 0; i < particles.length; i++) {
+          ctx.fillStyle = "rgba(125,211,252,0.55)";
+          ctx.beginPath();
+          ctx.arc(particles[i].x, particles[i].y, 1.4, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        requestAnimationFrame(step);
+      }
+
+      resize();
+      init();
+      step();
+      window.addEventListener("resize", function () {
+        resize();
+        init();
+      });
+    }
+
+    /* Showcase 3D: inclinación de la tarjeta frontal con el cursor */
+    var stage = section.querySelector(".rm-ec-hero__stage");
+    var front = section.querySelector(".rm-ec-hero__card--front");
+    if (stage && front && !reduceMotion && window.matchMedia("(hover: hover)").matches) {
+      stage.addEventListener("mousemove", function (e) {
+        var rect = stage.getBoundingClientRect();
+        var px = (e.clientX - rect.left) / rect.width - 0.5;
+        var py = (e.clientY - rect.top) / rect.height - 0.5;
+        var rotateY = px * 24;
+        var rotateX = py * -24;
+        stage.classList.add("is-interactive");
+        front.style.transform = "rotateY(" + rotateY + "deg) rotateX(" + rotateX + "deg) translateZ(24px)";
+      });
+      stage.addEventListener("mouseleave", function () {
+        stage.classList.remove("is-interactive");
+        front.style.transform = "";
+      });
+    }
+
+    /* CTA spotlight */
+    var primaryCta = section.querySelector(".rm-ec-hero__cta--primary");
     if (primaryCta && window.matchMedia("(hover: hover)").matches) {
       primaryCta.addEventListener("mousemove", function (e) {
         var rect = primaryCta.getBoundingClientRect();
