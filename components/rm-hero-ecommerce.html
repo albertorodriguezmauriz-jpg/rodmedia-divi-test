@@ -146,6 +146,12 @@
   @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap');
 
   .rm-ec-hero {
+    /* Pega aquí la URL de una imagen real de tu Biblioteca de medios de
+       WordPress para sustituir el degradado de la tarjeta de producto,
+       ej: --rm-product-image: url("https://rodmedia.es/wp-content/uploads/2026/03/producto.jpg");
+       Déjalo en "none" para mantener el degradado azul→naranja. */
+    --rm-product-image: none;
+
     --rm-primary: #0f0f1e;
     --rm-blue: #3a7bd5;
     --rm-orange: #e8531a;
@@ -474,7 +480,7 @@
   .rm-ec-hero__stage {
     position: relative;
     width: 100%;
-    max-width: 400px;
+    max-width: 480px;
     aspect-ratio: 1 / 1;
     margin: 0 auto;
     perspective: 1400px;
@@ -548,9 +554,13 @@
   .rm-ec-hero__card-img {
     position: absolute;
     inset: 0 0 34% 0;
-    background:
+    background-image:
+      var(--rm-product-image, none),
       radial-gradient(120% 90% at 20% 15%, rgba(255, 255, 255, 0.16), transparent 55%),
       linear-gradient(135deg, var(--rm-blue), var(--rm-orange));
+    background-size: cover, auto, auto;
+    background-position: center, center, center;
+    background-repeat: no-repeat, no-repeat, no-repeat;
   }
 
   .rm-ec-hero__card-info {
@@ -784,7 +794,7 @@
 
     .rm-ec-hero__visual {
       order: -1;
-      max-width: 420px;
+      max-width: 480px;
       margin: 0 auto;
     }
 
@@ -830,7 +840,7 @@
     }
 
     .rm-ec-hero__stage {
-      max-width: 300px;
+      max-width: 340px;
     }
 
     .rm-ec-hero__order-badge {
