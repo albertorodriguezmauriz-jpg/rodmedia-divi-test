@@ -115,6 +115,13 @@
               </span>
             </div>
           </div>
+
+          <span class="rm-ec-hero__add-feedback" aria-hidden="true">Añadido ✓</span>
+
+          <span class="rm-ec-hero__cursor" aria-hidden="true">
+            <span class="rm-ec-hero__cursor-ring"></span>
+            <svg viewBox="0 0 24 24" fill="none"><path d="M5 3.2 19 10l-6.2 2-2 6.2L5 3.2Z" fill="#ffffff" stroke="#0f0f1e" stroke-width="1.1" stroke-linejoin="round"/></svg>
+          </span>
         </div>
       </div>
 
@@ -590,6 +597,89 @@
     border-radius: 50%;
     background: linear-gradient(135deg, var(--rm-blue), var(--rm-orange));
     color: #fff;
+    animation: rm-ec-hero-add-press 6s ease-in-out infinite;
+  }
+
+  @keyframes rm-ec-hero-add-press {
+    0%, 44% { transform: scale(1); }
+    48% { transform: scale(0.8); }
+    54% { transform: scale(1.14); }
+    60%, 100% { transform: scale(1); }
+  }
+
+  /* ---------- Demo animada: "alguien está comprando ahora" ---------- */
+  .rm-ec-hero__add-feedback {
+    position: absolute;
+    right: 18px;
+    bottom: 58px;
+    z-index: 2;
+    padding: 5px 10px;
+    border-radius: 999px;
+    background: rgba(15, 15, 30, 0.85);
+    border: 1px solid rgba(58, 123, 213, 0.4);
+    color: var(--rm-light);
+    font-size: 11px;
+    font-weight: 600;
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateY(6px) scale(0.92);
+    animation: rm-ec-hero-feedback-pop 6s ease-in-out infinite;
+  }
+
+  @keyframes rm-ec-hero-feedback-pop {
+    0%, 50% { opacity: 0; transform: translateY(6px) scale(0.92); }
+    56% { opacity: 1; transform: translateY(0) scale(1); }
+    74% { opacity: 1; transform: translateY(0) scale(1); }
+    84%, 100% { opacity: 0; transform: translateY(-6px) scale(0.95); }
+  }
+
+  .rm-ec-hero__cursor {
+    position: absolute;
+    left: 32%;
+    top: 58%;
+    width: 20px;
+    height: 20px;
+    z-index: 3;
+    pointer-events: none;
+    opacity: 0;
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.45));
+    animation: rm-ec-hero-cursor-move 6s ease-in-out infinite;
+  }
+
+  .rm-ec-hero__cursor svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .rm-ec-hero__cursor-ring {
+    position: absolute;
+    top: 2px;
+    left: 1px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    border: 2px solid var(--rm-blue);
+    opacity: 0;
+    animation: rm-ec-hero-cursor-ring 6s ease-in-out infinite;
+  }
+
+  @keyframes rm-ec-hero-cursor-move {
+    0%   { left: 32%; top: 58%; opacity: 0; transform: scale(1); }
+    8%   { opacity: 1; }
+    40%  { left: 84%; top: 84%; opacity: 1; transform: scale(1); }
+    48%  { left: 84%; top: 84%; opacity: 1; transform: scale(0.82); }
+    54%  { left: 84%; top: 84%; opacity: 1; transform: scale(1); }
+    82%  { left: 84%; top: 84%; opacity: 1; transform: scale(1); }
+    92%  { opacity: 0; }
+    100% { left: 32%; top: 58%; opacity: 0; transform: scale(1); }
+  }
+
+  @keyframes rm-ec-hero-cursor-ring {
+    0%, 46% { opacity: 0; transform: scale(0.4); }
+    49% { opacity: 0.9; transform: scale(0.4); }
+    60% { opacity: 0; transform: scale(2.4); }
+    100% { opacity: 0; transform: scale(0.4); }
   }
 
   /* ---------- Tarjeta flotante: nuevo pedido ---------- */
@@ -608,7 +698,23 @@
     box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
-    animation: rm-ec-hero-bob 5s ease-in-out infinite;
+    animation: rm-ec-hero-bob 5s ease-in-out infinite,
+      rm-ec-hero-badge-highlight 6s ease-in-out infinite;
+  }
+
+  @keyframes rm-ec-hero-badge-highlight {
+    0%, 58%, 100% {
+      border-color: rgba(255, 255, 255, 0.12);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+    }
+    66% {
+      border-color: rgba(58, 123, 213, 0.55);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45), 0 0 0 3px rgba(58, 123, 213, 0.28);
+    }
+    80% {
+      border-color: rgba(255, 255, 255, 0.12);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+    }
   }
 
   .rm-ec-hero__order-dot {
@@ -644,8 +750,17 @@
     .rm-ec-hero__chip-dot,
     .rm-ec-hero__order-dot,
     .rm-ec-hero__order-badge,
-    .rm-ec-hero__card--front {
+    .rm-ec-hero__card--front,
+    .rm-ec-hero__card-add,
+    .rm-ec-hero__add-feedback,
+    .rm-ec-hero__cursor,
+    .rm-ec-hero__cursor-ring {
       animation: none;
+    }
+
+    .rm-ec-hero__cursor,
+    .rm-ec-hero__add-feedback {
+      display: none;
     }
 
     .rm-ec-hero__content[data-animate],
