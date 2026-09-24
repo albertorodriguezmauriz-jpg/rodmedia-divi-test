@@ -8,34 +8,29 @@
      cursiva que ya apareció en los otros dos heros), badge con punto
      parpadeante, degradado de marca a 135deg, entrada en scroll.
 
-     Aquí el protagonista no son los botones sino el buscador de
-     dominios: sustituye al CTA principal. El botón "Comprobar" hace
-     una comprobación REAL de disponibilidad sin mandar al visitante
-     fuera de la web: llama a /wp-admin/admin-ajax.php?action=
-     rm_domain_check, resuelto en el servidor por rm-domain-check.php
-     (companion de este archivo, no va dentro del Módulo de Código —
-     se instala aparte en functions.php). Consulta RDAP para gTLD
-     (.com, .net, .org...) y WHOIS para .es, que no tiene RDAP público.
-     Resolverlo en el servidor evita el bloqueo por CORS que da
-     consultar RDAP directamente desde el navegador. Los 3 estados
-     (disponible / ocupado / error) están completos.
+     El buscador de dominios en vivo (RDAP/WHOIS) se probó y no se pudo
+     verificar desde este entorno — sandbox sin salida real a internet,
+     ver el hilo de la conversación — así que se ha quitado por ahora.
+     rm-domain-check.php ya no se usa aquí; queda fuera del repo.
+     En su lugar hay dos CTA normales, mismo patrón que el resto de
+     heros. El texto del principal ("Ver precios de dominios") es el
+     que ya traía el enlace secundario original — decide tú si encaja
+     o prefieres otro. El del secundario ("Reservar una llamada") es
+     copy nuevo, tomado del mismo texto que usan los heros de inicio y
+     web — cámbialo si no es el que quieres aquí.
 
      Historia del mockup (misma estructura que en tienda y web, con
      otro final): se escribe un dominio, se confirma que está libre y
-     se conecta con el resto de servicios (web, correo).
+     se conecta con el resto de servicios (web, correo). Sigue siendo
+     solo una animación de bucle, nunca dependió del buscador real, así
+     que se queda igual.
 
      ANTES DE PUBLICAR:
-     1) Instala rm-domain-check.php en functions.php del child theme
-        (o como plugin de un archivo) — sin él, el buscador siempre
-        cae en el estado de error.
-     2) Verifica con un dominio .es real que conoces libre y otro
-        ocupado que rm_domain_check_whois_es() detecta bien el caso
-        "libre" — no se ha podido probar en vivo contra whois.nic.es.
-     3) Cambia "X €/año" por el precio real de registro.
-     4) Cambia el href de "Ver precios de dominios" y el botón
-        "Registrarlo con Rodmedia" (dentro del resultado "disponible")
-        por tus anclas o páginas reales.
-     5) Si ya cargas Playfair Display / Inter desde el Theme Builder de
+     1) Cambia "X €/año" por el precio real de registro.
+     2) Cambia el href de "Ver precios de dominios", "Reservar una
+        llamada" y el botón "Registrarlo con Rodmedia" del mockup por
+        tus anclas o páginas reales.
+     3) Si ya cargas Playfair Display / Inter desde el Theme Builder de
         Divi, borra el @import de aquí para evitar cargarlas dos veces.
      ============================================================ -->
 
@@ -65,31 +60,7 @@
         Comprobamos, registramos y renovamos tu dominio. Sin caducidades olvidadas ni configuraciones técnicas: de eso nos ocupamos nosotros.
       </p>
 
-      <!-- Buscador — protagonista del hero, sustituye al CTA principal -->
-      <form class="rm-hero-domain__search" data-domain-search novalidate>
-        <div class="rm-hero-domain__search-field">
-          <svg class="rm-hero-domain__search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/>
-            <path d="M3 12h18M12 3c2.5 2.6 3.8 5.7 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.7-3.8-9S9.5 5.6 12 3Z" stroke="currentColor" stroke-width="1.6"/>
-          </svg>
-          <input
-            type="text"
-            class="rm-hero-domain__search-input"
-            placeholder="nombredetunegocio.es"
-            aria-label="Escribe el nombre de tu dominio"
-            inputmode="url"
-            autocomplete="off"
-            autocapitalize="off"
-            spellcheck="false"
-          >
-          <button type="submit" class="rm-hero-domain__search-btn">
-            <span>Comprobar</span>
-          </button>
-        </div>
-        <p class="rm-hero-domain__search-hint">Registro desde X &#8364;/año &#183; Renovación y configuración incluidas</p>
-
-        <div class="rm-hero-domain__result" data-domain-result hidden aria-live="polite"></div>
-      </form>
+      <p class="rm-hero-domain__hint">Registro desde X &#8364;/año &#183; Renovación y configuración incluidas</p>
 
       <div class="rm-hero-domain__note">
         <svg class="rm-hero-domain__note-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -102,12 +73,17 @@
         </p>
       </div>
 
-      <a href="#precios-dominios" class="rm-hero-domain__link">
-        Ver precios de dominios
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-          <path d="M3 5.5 7 9.5l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </a>
+      <div class="rm-hero-domain__actions">
+        <a href="#precios-dominios" class="rm-hero-domain__cta rm-hero-domain__cta--primary">
+          <span>Ver precios de dominios</span>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3.5 8h9M8.5 3.5 13 8l-4.5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a href="#contacto" class="rm-hero-domain__cta rm-hero-domain__cta--secondary">
+          Reservar una llamada
+        </a>
+      </div>
     </div>
 
     <!-- ---------- Mockup: dominio comprobado y conectado ---------- -->
@@ -351,186 +327,11 @@
     margin: 0 0 32px;
   }
 
-  /* ---------- Buscador ---------- */
-  .rm-hero-domain__search {
-    max-width: 480px;
-    margin-bottom: 28px;
-  }
-
-  .rm-hero-domain__search-field {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 8px 8px 8px 18px;
-    border-radius: var(--rm-radius);
-    background: rgba(255, 255, 255, 0.05);
-    border: 1.5px solid rgba(255, 255, 255, 0.16);
-    transition: border-color var(--rm-transition), box-shadow var(--rm-transition);
-  }
-
-  .rm-hero-domain__search-field:focus-within {
-    border-color: var(--rm-blue);
-    box-shadow: 0 0 0 3px rgba(58, 123, 213, 0.2);
-  }
-
-  .rm-hero-domain__search-icon {
-    flex: none;
-    color: var(--rm-text-muted);
-  }
-
-  .rm-hero-domain__search-input {
-    flex: 1;
-    min-width: 0;
-    padding: 10px 0;
-    border: none;
-    background: transparent;
-    color: var(--rm-light);
-    font-family: var(--rm-font-body);
-    font-size: 16px;
-  }
-
-  .rm-hero-domain__search-input::placeholder {
-    color: #6b7290;
-  }
-
-  .rm-hero-domain__search-input:focus {
-    outline: none;
-  }
-
-  .rm-hero-domain__search-btn {
-    flex: none;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 13px 22px;
-    border: none;
-    border-radius: calc(var(--rm-radius) - 2px);
-    background: linear-gradient(135deg, var(--rm-blue), var(--rm-orange));
-    color: #ffffff;
-    font-family: var(--rm-font-body);
-    font-size: 15px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: transform var(--rm-transition), box-shadow var(--rm-transition);
-  }
-
-  .rm-hero-domain__search-btn:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 8px 20px rgba(232, 83, 26, 0.3);
-  }
-
-  .rm-hero-domain__search-btn:focus-visible,
-  .rm-hero-domain__search-input:focus-visible {
-    outline: 2px solid var(--rm-blue);
-    outline-offset: 2px;
-  }
-
-  .rm-hero-domain__search-btn[disabled] {
-    opacity: 0.7;
-    cursor: default;
-    transform: none;
-  }
-
-  .rm-hero-domain__search-hint {
-    margin: 10px 0 0;
-    padding: 0 2px;
-    font-size: 13px;
-    color: var(--rm-text-muted);
-  }
-
-  /* ---------- Resultado del buscador ---------- */
-  .rm-hero-domain__result {
-    margin-top: 14px;
-    padding: 16px 18px;
-    border-radius: var(--rm-radius);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    background: rgba(255, 255, 255, 0.03);
+  /* ---------- Pista de precio ---------- */
+  .rm-hero-domain__hint {
+    margin: 0 0 20px;
     font-size: 14px;
-    line-height: 1.6;
-    animation: rm-hero-domain-result-in 0.35s ease;
-  }
-
-  @keyframes rm-hero-domain-result-in {
-    from { opacity: 0; transform: translateY(-6px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .rm-hero-domain__result[data-state="checking"] {
     color: var(--rm-text-muted);
-  }
-
-  .rm-hero-domain__result[data-state="available"] {
-    border-color: rgba(58, 123, 213, 0.35);
-  }
-
-  .rm-hero-domain__result[data-state="taken"] {
-    border-color: rgba(255, 255, 255, 0.14);
-  }
-
-  .rm-hero-domain__result[data-state="error"] {
-    border-color: rgba(232, 83, 26, 0.4);
-  }
-
-  .rm-hero-domain__result p {
-    margin: 0;
-    color: var(--rm-light);
-  }
-
-  .rm-hero-domain__result strong {
-    font-weight: 600;
-  }
-
-  .rm-hero-domain__result-domain {
-    color: var(--rm-light);
-    font-weight: 600;
-  }
-
-  .rm-hero-domain__result-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    margin-top: 12px;
-    padding: 10px 18px;
-    border-radius: calc(var(--rm-radius) - 2px);
-    background: linear-gradient(135deg, var(--rm-blue), var(--rm-orange));
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 600;
-    transition: transform var(--rm-transition), box-shadow var(--rm-transition);
-  }
-
-  .rm-hero-domain__result-cta:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 8px 20px rgba(232, 83, 26, 0.3);
-  }
-
-  .rm-hero-domain__result-suggestions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin: 12px 0 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  .rm-hero-domain__result-suggestions button {
-    padding: 7px 14px;
-    border-radius: 999px;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    background: rgba(255, 255, 255, 0.04);
-    color: var(--rm-light);
-    font-family: var(--rm-font-body);
-    font-size: 13px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: border-color var(--rm-transition), background var(--rm-transition);
-  }
-
-  .rm-hero-domain__result-suggestions button:hover,
-  .rm-hero-domain__result-suggestions button:focus-visible {
-    border-color: var(--rm-blue);
-    background: rgba(58, 123, 213, 0.12);
   }
 
   /* ---------- Recuadro de garantía (ya tienes dominio) ---------- */
@@ -566,28 +367,72 @@
     font-weight: 600;
   }
 
-  /* ---------- Enlace secundario ---------- */
-  .rm-hero-domain__link {
+  /* ---------- CTAs ---------- */
+  .rm-hero-domain__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+  }
+
+  .rm-hero-domain__cta {
+    position: relative;
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    color: var(--rm-text-muted);
+    font-family: var(--rm-font-body);
+    font-size: 15px;
+    font-weight: 600;
     text-decoration: none;
-    font-size: 14px;
-    font-weight: 500;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    padding-bottom: 2px;
-    transition: color var(--rm-transition), border-color var(--rm-transition);
+    border-radius: var(--rm-radius);
+    padding: 15px 26px;
+    transition: transform var(--rm-transition), box-shadow var(--rm-transition), border-color var(--rm-transition), color var(--rm-transition);
+    overflow: hidden;
   }
 
-  .rm-hero-domain__link:hover,
-  .rm-hero-domain__link:focus-visible {
-    color: var(--rm-light);
+  .rm-hero-domain__cta--primary {
+    background: linear-gradient(135deg, var(--rm-blue), var(--rm-orange));
+    color: #ffffff;
+    box-shadow: 0 12px 28px rgba(58, 123, 213, 0.28);
+  }
+
+  .rm-hero-domain__cta--primary::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(160px circle at var(--rm-mx, 50%) var(--rm-my, 50%), rgba(255, 255, 255, 0.32), transparent 70%);
+    opacity: 0;
+    transition: opacity var(--rm-transition);
+  }
+
+  .rm-hero-domain__cta--primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 34px rgba(232, 83, 26, 0.35);
+  }
+
+  .rm-hero-domain__cta--primary:hover::before {
+    opacity: 1;
+  }
+
+  .rm-hero-domain__cta--primary span,
+  .rm-hero-domain__cta--primary svg {
+    position: relative;
+    z-index: 1;
+  }
+
+  .rm-hero-domain__cta--secondary {
+    color: #e5e7eb;
+    border: 1.5px solid rgba(255, 255, 255, 0.28);
+    background: transparent;
+  }
+
+  .rm-hero-domain__cta--secondary:hover {
     border-color: var(--rm-blue);
+    color: #ffffff;
   }
 
-  .rm-hero-domain__link svg {
-    transform: rotate(-90deg);
+  .rm-hero-domain__cta:focus-visible {
+    outline: 2px solid var(--rm-blue);
+    outline-offset: 3px;
   }
 
   /* ---------- Tarjeta mockup (3D: inclinación con el cursor) ---------- */
@@ -895,20 +740,14 @@
       padding: 64px 16px 40px;
     }
 
-    .rm-hero-domain__search-field {
-      flex-wrap: wrap;
-      padding: 10px 12px;
+    .rm-hero-domain__actions {
+      flex-direction: column;
+      align-items: stretch;
     }
 
-    .rm-hero-domain__search-input {
-      order: 2;
-      flex-basis: 100%;
-    }
-
-    .rm-hero-domain__search-btn {
-      order: 3;
-      width: 100%;
-      margin-top: 6px;
+    .rm-hero-domain__cta {
+      justify-content: center;
+      text-align: center;
     }
 
     .rm-hero-domain__card-back { right: -6px; left: 6px; }
@@ -1026,122 +865,14 @@
       });
     }
 
-    /* ----------------------------------------------------------------
-       Buscador de dominios — comprobación real vía RDAP/WHOIS, sin
-       mandar al visitante fuera de la web.
-
-       Llama a /wp-admin/admin-ajax.php?action=rm_domain_check, que
-       resuelve en el servidor (evita el bloqueo por CORS que da un
-       fetch directo del navegador a la mayoría de servidores RDAP).
-       El endpoint lo da rm-domain-check.php — añádelo a functions.php
-       del child theme antes de publicar esta página. Consulta RDAP
-       para los gTLD (.com, .net, .org...) y WHOIS para .es, que no
-       tiene RDAP público. Si el endpoint aún no está instalado, la
-       petición falla igual y el buscador cae al estado de error, no
-       se rompe.
-       ---------------------------------------------------------------- */
-    var form = section.querySelector('[data-domain-search]');
-    if (!form) return;
-
-    var input = form.querySelector('.rm-hero-domain__search-input');
-    var btn = form.querySelector('.rm-hero-domain__search-btn');
-    var resultBox = form.querySelector('[data-domain-result]');
-    var AJAX_URL = (window.ajaxurl || '/wp-admin/admin-ajax.php') + '?action=rm_domain_check&domain=';
-
-    function normalizeDomain(raw) {
-      var v = raw.trim().toLowerCase();
-      v = v.replace(/^https?:\/\//, '').replace(/^www\./, '').replace(/\/.*$/, '');
-      if (!v) return '';
-      if (v.indexOf('.') === -1) v += '.es';
-      return v;
-    }
-
-    function splitDomain(domain) {
-      var i = domain.indexOf('.');
-      return { name: domain.slice(0, i), tld: domain.slice(i + 1) };
-    }
-
-    function checkDomain(domain) {
-      return fetch(AJAX_URL + encodeURIComponent(domain), { credentials: 'same-origin' })
-        .then(function (res) {
-          if (!res.ok) throw new Error('bad status');
-          return res.json();
-        })
-        .then(function (data) {
-          return (data && data.state) ? data.state : 'error';
-        })
-        .catch(function () {
-          return 'error';
-        });
-    }
-
-    function suggestionsFor(domain) {
-      var parts = splitDomain(domain);
-      var out = [];
-      ['com', 'eu'].forEach(function (tld) {
-        if (tld !== parts.tld) out.push(parts.name + '.' + tld);
-      });
-      out.push(parts.name + '-online.' + parts.tld);
-      return out.slice(0, 3);
-    }
-
-    function renderChecking() {
-      resultBox.hidden = false;
-      resultBox.setAttribute('data-state', 'checking');
-      resultBox.innerHTML = '<p>Comprobando disponibilidad&hellip;</p>';
-    }
-
-    function renderAvailable(domain) {
-      resultBox.setAttribute('data-state', 'available');
-      resultBox.innerHTML =
-        '<p><span class="rm-hero-domain__result-domain"></span> está disponible.</p>' +
-        '<a href="#contacto-dominio" class="rm-hero-domain__result-cta">Registrarlo con Rodmedia</a>';
-      resultBox.querySelector('.rm-hero-domain__result-domain').textContent = domain;
-    }
-
-    function renderTaken(domain) {
-      resultBox.setAttribute('data-state', 'taken');
-      resultBox.innerHTML =
-        '<p><span class="rm-hero-domain__result-domain"></span> ya está registrado. Prueba con otra extensión o una variante del nombre.</p>' +
-        '<ul class="rm-hero-domain__result-suggestions"></ul>';
-      resultBox.querySelector('.rm-hero-domain__result-domain').textContent = domain;
-      var list = resultBox.querySelector('.rm-hero-domain__result-suggestions');
-      suggestionsFor(domain).forEach(function (sug) {
-        var li = document.createElement('li');
-        var suggestBtn = document.createElement('button');
-        suggestBtn.type = 'button';
-        suggestBtn.textContent = sug;
-        suggestBtn.addEventListener('click', function () {
-          input.value = sug;
-          form.dispatchEvent(new Event('submit', { cancelable: true }));
-        });
-        li.appendChild(suggestBtn);
-        list.appendChild(li);
+    /* Halo del CTA principal siguiendo al cursor */
+    var primaryCta = section.querySelector('.rm-hero-domain__cta--primary');
+    if (primaryCta && window.matchMedia('(hover: hover)').matches) {
+      primaryCta.addEventListener('mousemove', function (e) {
+        var rect = primaryCta.getBoundingClientRect();
+        primaryCta.style.setProperty('--rm-mx', (e.clientX - rect.left) + 'px');
+        primaryCta.style.setProperty('--rm-my', (e.clientY - rect.top) + 'px');
       });
     }
-
-    function renderError() {
-      resultBox.setAttribute('data-state', 'error');
-      resultBox.innerHTML = '<p>No hemos podido comprobarlo ahora. <a href="#contacto-dominio" style="color:inherit;">Escríbenos</a> y lo miramos por ti.</p>';
-    }
-
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var domain = normalizeDomain(input.value);
-      if (!domain) {
-        input.focus();
-        return;
-      }
-
-      btn.disabled = true;
-      renderChecking();
-
-      checkDomain(domain).then(function (state) {
-        btn.disabled = false;
-        if (state === 'available') renderAvailable(domain);
-        else if (state === 'taken') renderTaken(domain);
-        else renderError();
-      });
-    });
   })();
 </script>
