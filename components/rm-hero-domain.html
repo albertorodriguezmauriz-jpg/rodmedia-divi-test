@@ -9,25 +9,33 @@
      parpadeante, degradado de marca a 135deg, entrada en scroll.
 
      Aquí el protagonista no son los botones sino el buscador de
-     dominios: sustituye al CTA principal. El botón "Comprobar" ejecuta
-     una comprobación SIMULADA (mockCheckDomain, más abajo) — no hay
-     API real de disponibilidad conectada todavía. Los 3 estados
-     (disponible / ocupado / error) están completos y listos para
-     enchufar la comprobación real cuando se decida cómo (WHOIS propio,
-     RDAP, o el proveedor de dominios), tal y como se habló.
+     dominios: sustituye al CTA principal. El botón "Comprobar" hace
+     una comprobación REAL de disponibilidad sin mandar al visitante
+     fuera de la web: llama a /wp-admin/admin-ajax.php?action=
+     rm_domain_check, resuelto en el servidor por rm-domain-check.php
+     (companion de este archivo, no va dentro del Módulo de Código —
+     se instala aparte en functions.php). Consulta RDAP para gTLD
+     (.com, .net, .org...) y WHOIS para .es, que no tiene RDAP público.
+     Resolverlo en el servidor evita el bloqueo por CORS que da
+     consultar RDAP directamente desde el navegador. Los 3 estados
+     (disponible / ocupado / error) están completos.
 
      Historia del mockup (misma estructura que en tienda y web, con
      otro final): se escribe un dominio, se confirma que está libre y
      se conecta con el resto de servicios (web, correo).
 
      ANTES DE PUBLICAR:
-     1) Cambia "X €/año" por el precio real de registro.
-     2) Cambia el href de "Ver precios de dominios" y el botón
+     1) Instala rm-domain-check.php en functions.php del child theme
+        (o como plugin de un archivo) — sin él, el buscador siempre
+        cae en el estado de error.
+     2) Verifica con un dominio .es real que conoces libre y otro
+        ocupado que rm_domain_check_whois_es() detecta bien el caso
+        "libre" — no se ha podido probar en vivo contra whois.nic.es.
+     3) Cambia "X €/año" por el precio real de registro.
+     4) Cambia el href de "Ver precios de dominios" y el botón
         "Registrarlo con Rodmedia" (dentro del resultado "disponible")
         por tus anclas o páginas reales.
-     3) Sustituye mockCheckDomain() por la comprobación real de
-        disponibilidad cuando esté decidida.
-     4) Si ya cargas Playfair Display / Inter desde el Theme Builder de
+     5) Si ya cargas Playfair Display / Inter desde el Theme Builder de
         Divi, borra el @import de aquí para evitar cargarlas dos veces.
      ============================================================ -->
 
@@ -1019,15 +1027,18 @@
     }
 
     /* ----------------------------------------------------------------
-       Buscador de dominios — comprobación SIMULADA.
-       No hay ninguna API de disponibilidad real conectada todavía
-       (se decidirá el proveedor — WHOIS propio, RDAP, o el del
-       registrador — más adelante). mockCheckDomain() solo sirve para
-       que el buscador se sienta vivo en la demo: usa un hash simple
-       del texto escrito para repartir "disponible" / "ocupado" de
-       forma consistente para un mismo nombre, y responde "error" de
-       verdad si el navegador está offline. Sustituir por la
-       comprobación real cuando esté decidida.
+       Buscador de dominios — comprobación real vía RDAP/WHOIS, sin
+       mandar al visitante fuera de la web.
+
+       Llama a /wp-admin/admin-ajax.php?action=rm_domain_check, que
+       resuelve en el servidor (evita el bloqueo por CORS que da un
+       fetch directo del navegador a la mayoría de servidores RDAP).
+       El endpoint lo da rm-domain-check.php — añádelo a functions.php
+       del child theme antes de publicar esta página. Consulta RDAP
+       para los gTLD (.com, .net, .org...) y WHOIS para .es, que no
+       tiene RDAP público. Si el endpoint aún no está instalado, la
+       petición falla igual y el buscador cae al estado de error, no
+       se rompe.
        ---------------------------------------------------------------- */
     var form = section.querySelector('[data-domain-search]');
     if (!form) return;
@@ -1035,6 +1046,7 @@
     var input = form.querySelector('.rm-hero-domain__search-input');
     var btn = form.querySelector('.rm-hero-domain__search-btn');
     var resultBox = form.querySelector('[data-domain-result]');
+    var AJAX_URL = (window.ajaxurl || '/wp-admin/admin-ajax.php') + '?action=rm_domain_check&domain=';
 
     function normalizeDomain(raw) {
       var v = raw.trim().toLowerCase();
@@ -1049,13 +1061,18 @@
       return { name: domain.slice(0, i), tld: domain.slice(i + 1) };
     }
 
-    function mockCheckDomain(domain) {
-      if (!navigator.onLine) return 'error';
-      var hash = 0;
-      for (var i = 0; i < domain.length; i++) {
-        hash = (hash * 31 + domain.charCodeAt(i)) >>> 0;
-      }
-      return (hash % 3 === 0) ? 'taken' : 'available';
+    function checkDomain(domain) {
+      return fetch(AJAX_URL + encodeURIComponent(domain), { credentials: 'same-origin' })
+        .then(function (res) {
+          if (!res.ok) throw new Error('bad status');
+          return res.json();
+        })
+        .then(function (data) {
+          return (data && data.state) ? data.state : 'error';
+        })
+        .catch(function () {
+          return 'error';
+        });
     }
 
     function suggestionsFor(domain) {
@@ -1119,13 +1136,12 @@
       btn.disabled = true;
       renderChecking();
 
-      window.setTimeout(function () {
+      checkDomain(domain).then(function (state) {
         btn.disabled = false;
-        var state = mockCheckDomain(domain);
         if (state === 'available') renderAvailable(domain);
         else if (state === 'taken') renderTaken(domain);
         else renderError();
-      }, reduceMotion ? 0 : 550);
+      });
     });
   })();
 </script>
