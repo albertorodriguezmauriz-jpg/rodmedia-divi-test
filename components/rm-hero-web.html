@@ -430,13 +430,14 @@
     outline-offset: 3px;
   }
 
-  /* ---------- Tarjeta mockup ---------- */
+  /* ---------- Tarjeta mockup (3D: inclinación con el cursor) ---------- */
   .rm-hero-web__visual {
     position: relative;
     max-width: 420px;
     width: 100%;
     margin: 0 auto;
     padding-bottom: 40px;
+    perspective: 1400px;
   }
 
   .rm-hero-web__card-back {
@@ -448,7 +449,8 @@
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: var(--rm-radius-lg);
     background: rgba(255, 255, 255, 0.03);
-    transform: rotate(3deg);
+    transform: translateZ(-70px) rotate(4deg) scale(0.96);
+    opacity: 0.55;
   }
 
   .rm-hero-web__card {
@@ -458,6 +460,18 @@
     border-radius: var(--rm-radius-lg);
     background: #14151f;
     box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+    animation: rm-hero-web-idle-sway 7s ease-in-out infinite;
+    transition: transform 0.15s ease-out;
+    will-change: transform;
+  }
+
+  .rm-hero-web__visual.is-interactive .rm-hero-web__card {
+    animation: none;
+  }
+
+  @keyframes rm-hero-web-idle-sway {
+    0%, 100% { transform: rotateY(-5deg) rotateX(2.5deg); }
+    50% { transform: rotateY(5deg) rotateX(-2.5deg); }
   }
 
   /* Imagen superior: foto de estudio clara, igual tratamiento que la
@@ -783,13 +797,17 @@
     .rm-hero-web__send,
     .rm-hero-web__cursor,
     .rm-hero-web__sent,
-    .rm-hero-web__notif {
+    .rm-hero-web__notif,
+    .rm-hero-web__card {
       animation: none;
     }
     .rm-hero-web__cursor { display: none; }
     .rm-hero-web__typing { max-width: 100%; }
     .rm-hero-web__sent,
     .rm-hero-web__notif { opacity: 1; transform: none; }
+    .rm-hero-web__visual { perspective: none; }
+    .rm-hero-web__card,
+    .rm-hero-web__card-back { transform: none; }
     .rm-hero-web__content[data-animate],
     .rm-hero-web__visual[data-animate] {
       opacity: 1;
@@ -937,6 +955,25 @@
       window.addEventListener('resize', function () {
         resize();
         init();
+      });
+    }
+
+    /* Tarjeta 3D: inclinación con el cursor, igual que en el hero de tienda */
+    var visual = section.querySelector('.rm-hero-web__visual');
+    var card = section.querySelector('.rm-hero-web__card');
+    if (visual && card && !reduceMotion && window.matchMedia('(hover: hover)').matches) {
+      visual.addEventListener('mousemove', function (e) {
+        var rect = visual.getBoundingClientRect();
+        var px = (e.clientX - rect.left) / rect.width - 0.5;
+        var py = (e.clientY - rect.top) / rect.height - 0.5;
+        var rotateY = px * 24;
+        var rotateX = py * -24;
+        visual.classList.add('is-interactive');
+        card.style.transform = 'rotateY(' + rotateY + 'deg) rotateX(' + rotateX + 'deg) translateZ(24px)';
+      });
+      visual.addEventListener('mouseleave', function () {
+        visual.classList.remove('is-interactive');
+        card.style.transform = '';
       });
     }
 
