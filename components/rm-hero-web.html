@@ -150,7 +150,7 @@
 </section>
 
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Inter:wght@400;500;600;700&display=swap');
 
   .rm-hero-web {
     --rm-primary: #0f0f1e;
@@ -315,12 +315,6 @@
 
   .rm-hero-web__title em {
     font-style: italic;
-    /* Relleno vertical para que la caja donde se recorta el degradado
-       cubra también el asta de letras altas como la "l" en cursiva —
-       en un elemento inline el padding no mueve el interlineado de
-       alrededor, así que no desplaza el resto del titular */
-    padding: 0.12em 0.02em;
-    margin: 0 -0.02em;
     background: linear-gradient(135deg, var(--rm-blue), var(--rm-orange));
     -webkit-background-clip: text;
     background-clip: text;
