@@ -136,3 +136,40 @@ en vez del script clásico:
 (Verificar el número de versión más reciente en https://www.jsdelivr.com/package/npm/three
 antes de cada módulo nuevo — la API de `threejs-*` está escrita contra
 Three.js moderno, no r128.)
+
+## JSON de importación Divi 5 (bloques nativos `wp:divi/*`)
+
+Cuando el sitio del cliente usa el formato de bloques nativo de Divi 5
+(`<!-- wp:divi/section -->` / `wp:divi/row` / `wp:divi/code`, no los
+shortcodes clásicos `[et_pb_section]`) para entregar una sección de
+Módulo de Código como import independiente:
+
+- **La sección va SIEMPRE envuelta en `<!-- wp:divi/placeholder -->`**,
+  incluso si es una única sección suelta (no toda la página). No es un
+  marcador de "página completa" — es la región de constructor que Divi 5
+  necesita para reconocer el bloque. Quitarlo rompe el import.
+- **El JSON de portabilidad lleva el esquema completo**: `context`,
+  `data` (con el ID real de la página como clave, no uno inventado),
+  `presets`, `global_colors`, `global_variables`, `page_settings_meta`,
+  `canvases`, `images`, `thumbnails`. Faltar `page_settings_meta` o
+  `canvases` puede impedir que importe bien.
+- **El ancho completo (edge-to-edge) se consigue en la FILA
+  (`wp:divi/row`), no en la sección**: `"decoration":{"sizing":{"desktop":
+  {"value":{"width":"100%","maxWidth":"100%"}}}}` + `"advanced":{"gutter":
+  {"desktop":{"value":{"enable":"on","width":"1"}}}}`. La sección en sí no
+  necesita ningún tratamiento especial (nada de `background`, basta con
+  `spacing.padding` a 0 y `layout.display:"block"`).
+  **Nunca uses el truco de margen negativo en la sección**
+  (`spacing.margin.left/right: "-25px"`) para forzar el sangrado a
+  pantalla completa — es un ajuste calculado para el contexto exacto
+  (gutters/columnas) de la página de la que se extrajo, y al pegarlo
+  suelto en una página nueva no se traduce igual: la fila cae al ancho
+  contenido normal de Divi y la sección se ve encajonada en vez de a
+  pantalla completa. Verificado con el hero de hosting de Rodmedia
+  (2026-09-24): se corrigió replicando la estructura fila-al-100% del
+  hero de dominio, que sí funciona.
+- Antes de dar por buena la estructura de un JSON de sección nueva,
+  compararla campo a campo contra un JSON de referencia que el cliente
+  ya haya confirmado que importa y se ve bien en su sitio — no asumir
+  que el formato usado en una entrega anterior propia es correcto solo
+  porque "se parece".
