@@ -1,0 +1,953 @@
+<!-- ============================================================
+     RM HERO WEB — Hero de la página "Diseño web" (Divi 5, Code Module)
+     Marca: Rodmedia · Reestructuración web
+
+     Mismo sistema que los heros ya aprobados de inicio (rm-hero-home.html)
+     y tienda (rm-hero-ecommerce.html), tomado directamente de su código
+     fuente (no reinterpretado): fondo #0f0f1e, línea superior con brillo
+     animado, partículas conectadas en canvas, dos glows difuminados
+     (azul #3a7bd5 / naranja #e8531a), Playfair Display en titulares +
+     Inter en cuerpo, badge con punto parpadeante, degradado de marca a
+     135deg en CTA/título/iconos, y entrada en scroll con fade + slide-up.
+
+     Historia del mockup (misma estructura que en tienda, con otro final):
+     alguien visita la web, escribe en el formulario y a ti te llega el
+     contacto — en tienda es un pedido, aquí es un cliente que escribe.
+
+     ANTES DE PUBLICAR:
+     1) Cambia los href de los CTA ("#planes", "#llamada") por tus
+        anclas o páginas reales.
+     2) Si ya cargas Playfair Display / Inter desde el Theme Builder de
+        Divi, borra el @import de aquí para evitar cargarlas dos veces.
+     ============================================================ -->
+
+<section class="rm-hero-web" aria-labelledby="rm-hero-web-title">
+
+  <div class="rm-hero-web__bg" aria-hidden="true">
+    <div class="rm-hero-web__topline"></div>
+    <canvas class="rm-hero-web__particles"></canvas>
+    <div class="rm-hero-web__glow rm-hero-web__glow--blue"></div>
+    <div class="rm-hero-web__glow rm-hero-web__glow--orange"></div>
+  </div>
+
+  <div class="rm-hero-web__container">
+
+    <!-- ---------- Columna de texto ---------- -->
+    <div class="rm-hero-web__content" data-animate>
+      <span class="rm-hero-web__badge">
+        <span class="rm-hero-web__badge-dot" aria-hidden="true"></span>
+        Diseño web &#183; WordPress
+      </span>
+
+      <h1 id="rm-hero-web-title" class="rm-hero-web__title">
+        Una web <em>profesional</em> que explica bien lo que haces
+      </h1>
+
+      <p class="rm-hero-web__subtitle">
+        Diseñamos tu web en WordPress, adaptada al móvil y preparada para aparecer en Google. Con mantenimiento incluido para que siga funcionando año tras año.
+      </p>
+
+      <div class="rm-hero-web__note">
+        <svg class="rm-hero-web__note-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/>
+          <path d="M3 12h18M12 3c2.5 2.6 3.8 5.7 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.7-3.8-9S9.5 5.6 12 3Z" stroke="currentColor" stroke-width="1.6"/>
+        </svg>
+        <p>
+          <strong>¿También necesitas dominio, hosting o correo?</strong>
+          Lo tienes todo con nosotros, con un solo interlocutor.
+        </p>
+      </div>
+
+      <div class="rm-hero-web__actions">
+        <a href="#planes" class="rm-hero-web__cta rm-hero-web__cta--primary">
+          <span>Ver planes de web</span>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3.5 8h9M8.5 3.5 13 8l-4.5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a href="#llamada" class="rm-hero-web__cta rm-hero-web__cta--secondary">
+          Reservar una llamada
+        </a>
+      </div>
+    </div>
+
+    <!-- ---------- Mockup: portátil + móvil con formulario de contacto ---------- -->
+    <div class="rm-hero-web__visual" data-animate>
+      <div class="rm-hero-web__card-back" aria-hidden="true"></div>
+
+      <div class="rm-hero-web__card" role="img"
+           aria-label="Web de ejemplo de una clínica dental ficticia en Benicarló, en portátil y móvil. Un visitante escribe en el formulario y llega el aviso: nueva solicitud de contacto.">
+
+        <div class="rm-hero-web__shot">
+          <span class="rm-hero-web__tag">Adaptada al móvil</span>
+
+          <div class="rm-hero-web__laptop">
+            <div class="rm-hero-web__screen">
+              <div class="rm-hero-web__site-nav">
+                <span class="rm-hero-web__logo">Dental <em>Mar</em></span>
+                <span class="rm-hero-web__links"><i></i><i></i><i></i><i></i></span>
+              </div>
+              <div class="rm-hero-web__site-hero">
+                <div>
+                  <span class="rm-hero-web__ln rm-hero-web__ln--h"></span>
+                  <span class="rm-hero-web__ln rm-hero-web__ln--h rm-hero-web__ln--s"></span>
+                  <span class="rm-hero-web__ln"></span>
+                  <span class="rm-hero-web__ln rm-hero-web__ln--s"></span>
+                  <span class="rm-hero-web__pill"></span>
+                </div>
+                <span class="rm-hero-web__img"></span>
+              </div>
+              <div class="rm-hero-web__site-cols"><i></i><i></i><i></i></div>
+            </div>
+            <div class="rm-hero-web__base"></div>
+          </div>
+
+          <div class="rm-hero-web__phone">
+            <div class="rm-hero-web__phone-screen">
+              <span class="rm-hero-web__logo rm-hero-web__logo--sm">Dental <em>Mar</em></span>
+              <span class="rm-hero-web__img rm-hero-web__img--m"></span>
+              <span class="rm-hero-web__ln rm-hero-web__ln--h"></span>
+              <span class="rm-hero-web__ln"></span>
+              <span class="rm-hero-web__ln rm-hero-web__ln--s"></span>
+              <span class="rm-hero-web__pill rm-hero-web__pill--m"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="rm-hero-web__panel">
+          <span class="rm-hero-web__panel-label">Clínica dental &#183; Benicarló</span>
+          <span class="rm-hero-web__panel-title">Pide tu cita</span>
+
+          <div class="rm-hero-web__form">
+            <span class="rm-hero-web__input"><span class="rm-hero-web__typing">Hola, quería pedir cita para…</span></span>
+            <span class="rm-hero-web__send">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M22 2 11 13M22 2l-7 20-4-9-9-4z" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span class="rm-hero-web__cursor" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M4 2l16 9-7 2-3 7z" fill="#ffffff" stroke="#0f0f1e" stroke-width="1.1" stroke-linejoin="round"/></svg>
+            </span>
+            <span class="rm-hero-web__sent">Mensaje enviado ✓</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="rm-hero-web__notif">
+        <span class="rm-hero-web__notif-dot" aria-hidden="true"></span>
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M4 4h16v12H8l-4 4z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M8 9h8M8 12h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+        <div>
+          <strong>Nueva solicitud de contacto</strong>
+          <span>Desde tu web &#183; ahora mismo</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+  .rm-hero-web {
+    --rm-primary: #0f0f1e;
+    --rm-blue: #3a7bd5;
+    --rm-orange: #e8531a;
+    --rm-light: #f8f8fb;
+    --rm-text-muted: #9aa3bd;
+    --rm-radius: 8px;
+    --rm-radius-lg: 20px;
+    --rm-transition: 0.3s ease;
+    --rm-font-display: "Playfair Display", Georgia, "Times New Roman", serif;
+    --rm-font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+
+    position: relative;
+    overflow: hidden;
+    background: var(--rm-primary);
+    color: var(--rm-light);
+    font-family: var(--rm-font-body);
+    padding: 120px 20px 100px;
+    box-sizing: border-box;
+  }
+
+  .rm-hero-web *,
+  .rm-hero-web *::before,
+  .rm-hero-web *::after {
+    box-sizing: inherit;
+  }
+
+  /* ---------- Fondo: línea de firma + partículas + glows ---------- */
+  .rm-hero-web__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .rm-hero-web__topline {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--rm-blue), var(--rm-orange), var(--rm-blue));
+    background-size: 200% 100%;
+    animation: rm-hero-web-shimmer 6s linear infinite;
+  }
+
+  @keyframes rm-hero-web-shimmer {
+    0% { background-position: 0% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  .rm-hero-web__particles {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .rm-hero-web__glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.28;
+    animation: rm-hero-web-float 15s ease-in-out infinite;
+  }
+
+  .rm-hero-web__glow--blue {
+    width: 480px;
+    height: 480px;
+    top: -150px;
+    left: -110px;
+    background: var(--rm-blue);
+  }
+
+  .rm-hero-web__glow--orange {
+    width: 420px;
+    height: 420px;
+    bottom: -170px;
+    right: -110px;
+    background: var(--rm-orange);
+    animation-delay: -7s;
+  }
+
+  @keyframes rm-hero-web-float {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(26px, 22px) scale(1.07); }
+  }
+
+  /* ---------- Contenedor ---------- */
+  .rm-hero-web__container {
+    position: relative;
+    z-index: 1;
+    max-width: 1140px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: center;
+    gap: 64px;
+  }
+
+  .rm-hero-web__content[data-animate],
+  .rm-hero-web__visual[data-animate] {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .rm-hero-web__content.is-visible,
+  .rm-hero-web__visual.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .rm-hero-web__visual[data-animate] {
+    transition-delay: 0.15s;
+  }
+
+  /* ---------- Badge ---------- */
+  .rm-hero-web__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 16px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #cbd5e1;
+    margin-bottom: 28px;
+  }
+
+  .rm-hero-web__badge-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--rm-blue), var(--rm-orange));
+    animation: rm-hero-web-blink 2.2s ease-in-out infinite;
+  }
+
+  @keyframes rm-hero-web-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.25; }
+  }
+
+  /* ---------- Titular ---------- */
+  .rm-hero-web__title {
+    font-family: var(--rm-font-display);
+    font-weight: 700;
+    font-size: clamp(2.25rem, 1.4rem + 3.4vw, 3.75rem);
+    line-height: 1.14;
+    letter-spacing: -0.01em;
+    color: var(--rm-light);
+    max-width: 16ch;
+    margin: 0 0 22px;
+  }
+
+  .rm-hero-web__title em {
+    font-style: italic;
+    background: linear-gradient(135deg, var(--rm-blue), var(--rm-orange));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .rm-hero-web__subtitle {
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--rm-text-muted);
+    max-width: 48ch;
+    margin: 0 0 28px;
+  }
+
+  /* ---------- Recuadro de garantía (dominio, hosting, correo) ---------- */
+  .rm-hero-web__note {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px 20px;
+    margin-bottom: 36px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--rm-radius-lg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    max-width: 48ch;
+  }
+
+  .rm-hero-web__note-icon {
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: var(--rm-blue);
+  }
+
+  .rm-hero-web__note p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--rm-text-muted);
+  }
+
+  .rm-hero-web__note strong {
+    color: var(--rm-light);
+    font-weight: 600;
+  }
+
+  /* ---------- CTAs ---------- */
+  .rm-hero-web__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+  }
+
+  .rm-hero-web__cta {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--rm-font-body);
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: var(--rm-radius);
+    padding: 15px 26px;
+    transition: transform var(--rm-transition), box-shadow var(--rm-transition), border-color var(--rm-transition), color var(--rm-transition);
+    overflow: hidden;
+  }
+
+  .rm-hero-web__cta--primary {
+    background: linear-gradient(135deg, var(--rm-blue), var(--rm-orange));
+    color: #ffffff;
+    box-shadow: 0 12px 28px rgba(58, 123, 213, 0.28);
+  }
+
+  .rm-hero-web__cta--primary::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(160px circle at var(--rm-mx, 50%) var(--rm-my, 50%), rgba(255, 255, 255, 0.32), transparent 70%);
+    opacity: 0;
+    transition: opacity var(--rm-transition);
+  }
+
+  .rm-hero-web__cta--primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 34px rgba(232, 83, 26, 0.35);
+  }
+
+  .rm-hero-web__cta--primary:hover::before {
+    opacity: 1;
+  }
+
+  .rm-hero-web__cta--primary span,
+  .rm-hero-web__cta--primary svg {
+    position: relative;
+    z-index: 1;
+  }
+
+  .rm-hero-web__cta--secondary {
+    color: #e5e7eb;
+    border: 1.5px solid rgba(255, 255, 255, 0.28);
+    background: transparent;
+  }
+
+  .rm-hero-web__cta--secondary:hover {
+    border-color: var(--rm-blue);
+    color: #ffffff;
+  }
+
+  .rm-hero-web__cta:focus-visible {
+    outline: 2px solid var(--rm-blue);
+    outline-offset: 3px;
+  }
+
+  /* ---------- Tarjeta mockup ---------- */
+  .rm-hero-web__visual {
+    position: relative;
+    max-width: 420px;
+    width: 100%;
+    margin: 0 auto;
+    padding-bottom: 40px;
+  }
+
+  .rm-hero-web__card-back {
+    position: absolute;
+    top: 16px;
+    right: -14px;
+    bottom: 26px;
+    left: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--rm-radius-lg);
+    background: rgba(255, 255, 255, 0.03);
+    transform: rotate(3deg);
+  }
+
+  .rm-hero-web__card {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--rm-radius-lg);
+    background: #14151f;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+  }
+
+  /* Imagen superior: foto de estudio clara, igual tratamiento que la
+     tarjeta de producto del hero de tienda */
+  .rm-hero-web__shot {
+    position: relative;
+    height: 285px;
+    padding: 58px 22px 0;
+    background: radial-gradient(ellipse at 50% 30%, #fbfbfb, #dedee2 80%);
+  }
+
+  .rm-hero-web__tag {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    z-index: 3;
+    padding: 7px 13px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, var(--rm-blue), var(--rm-orange));
+    color: #ffffff;
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  .rm-hero-web__laptop { width: 86%; }
+
+  .rm-hero-web__screen {
+    height: 176px;
+    padding: 9px 11px;
+    border: 7px solid #22232f;
+    border-bottom-width: 10px;
+    border-radius: 9px 9px 0 0;
+    background: #ffffff;
+    overflow: hidden;
+  }
+
+  .rm-hero-web__base {
+    height: 9px;
+    margin: 0 -7%;
+    border-radius: 0 0 10px 10px;
+    background: linear-gradient(#e2e1de, #b9b7b2);
+    box-shadow: 0 10px 18px rgba(0, 0, 0, 0.18);
+  }
+
+  .rm-hero-web__site-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+
+  .rm-hero-web__logo {
+    font-family: var(--rm-font-display);
+    font-size: 10px;
+    font-weight: 700;
+    color: #1f4e5f;
+  }
+
+  .rm-hero-web__logo em { font-style: normal; color: #3aa3b5; }
+
+  .rm-hero-web__links { display: flex; gap: 5px; }
+
+  .rm-hero-web__links i {
+    display: block;
+    width: 16px;
+    height: 3px;
+    border-radius: 2px;
+    background: #dfe4e7;
+  }
+
+  .rm-hero-web__site-hero {
+    display: grid;
+    grid-template-columns: 1fr 0.9fr;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+
+  .rm-hero-web__ln {
+    display: block;
+    height: 4px;
+    margin-bottom: 5px;
+    border-radius: 2px;
+    background: #e5e9eb;
+  }
+
+  .rm-hero-web__ln--h { height: 7px; background: #1f4e5f; }
+  .rm-hero-web__ln--s { width: 65%; }
+
+  .rm-hero-web__pill {
+    display: block;
+    width: 55%;
+    height: 10px;
+    margin-top: 8px;
+    border-radius: 999px;
+    background: #3aa3b5;
+  }
+
+  .rm-hero-web__img {
+    display: block;
+    height: 62px;
+    border-radius: 6px;
+    background: linear-gradient(135deg, #d4edf1, #95cfd9);
+  }
+
+  .rm-hero-web__site-cols {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 7px;
+  }
+
+  .rm-hero-web__site-cols i {
+    display: block;
+    height: 30px;
+    border-radius: 4px;
+    background: #f1f4f5;
+  }
+
+  .rm-hero-web__phone {
+    position: absolute;
+    right: 20px;
+    bottom: 14px;
+    z-index: 2;
+    width: 88px;
+    height: 176px;
+    padding: 5px;
+    border-radius: 16px;
+    background: #22232f;
+    box-shadow: 0 14px 26px rgba(0, 0, 0, 0.3);
+  }
+
+  .rm-hero-web__phone-screen {
+    height: 100%;
+    padding: 12px 7px 7px;
+    border-radius: 12px;
+    background: #ffffff;
+    overflow: hidden;
+  }
+
+  .rm-hero-web__logo--sm { display: block; margin-bottom: 6px; font-size: 8px; }
+  .rm-hero-web__img--m { height: 52px; margin-bottom: 7px; }
+  .rm-hero-web__pill--m { width: 100%; }
+
+  /* Panel inferior: formulario de contacto */
+  .rm-hero-web__panel {
+    position: relative;
+    padding: 22px 20px 24px;
+  }
+
+  .rm-hero-web__panel-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--rm-text-muted);
+  }
+
+  .rm-hero-web__panel-title {
+    display: block;
+    margin: 4px 0 14px;
+    font-family: var(--rm-font-display);
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--rm-light);
+  }
+
+  .rm-hero-web__form {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .rm-hero-web__input {
+    flex: 1;
+    min-width: 0;
+    padding: 10px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--rm-radius);
+    background: rgba(255, 255, 255, 0.04);
+    font-size: 13px;
+    line-height: 1.2;
+    color: #d7d9e4;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .rm-hero-web__typing {
+    display: inline-block;
+    max-width: 0;
+    overflow: hidden;
+    vertical-align: bottom;
+    animation: rm-hero-web-type var(--rm-loop, 9s) steps(28, end) infinite;
+  }
+
+  .rm-hero-web__send {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--rm-blue), var(--rm-orange));
+    color: #ffffff;
+    animation: rm-hero-web-press var(--rm-loop, 9s) infinite;
+  }
+
+  .rm-hero-web__cursor {
+    position: absolute;
+    right: -6px;
+    bottom: -14px;
+    width: 16px;
+    height: 16px;
+    opacity: 0;
+    animation: rm-hero-web-cursor var(--rm-loop, 9s) infinite;
+  }
+
+  .rm-hero-web__cursor svg { width: 100%; height: 100%; display: block; }
+
+  .rm-hero-web__sent {
+    position: absolute;
+    right: -4px;
+    bottom: calc(100% + 10px);
+    padding: 7px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 999px;
+    background: #12131f;
+    color: var(--rm-light);
+    font-size: 12.5px;
+    font-weight: 700;
+    white-space: nowrap;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    animation: rm-hero-web-sent var(--rm-loop, 9s) infinite;
+  }
+
+  /* ---------- Tarjeta flotante: nueva solicitud de contacto ---------- */
+  .rm-hero-web__notif {
+    position: absolute;
+    left: -8px;
+    bottom: -18px;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 20px;
+    background: rgba(15, 15, 30, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--rm-radius-lg);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    color: var(--rm-blue);
+    opacity: 0;
+    transform: translateY(12px);
+    animation: rm-hero-web-notif var(--rm-loop, 9s) infinite;
+  }
+
+  .rm-hero-web__notif-dot {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--rm-blue), var(--rm-orange));
+  }
+
+  .rm-hero-web__notif div { display: flex; flex-direction: column; gap: 1px; }
+
+  .rm-hero-web__notif strong {
+    font-size: 13px;
+    color: var(--rm-light);
+  }
+
+  .rm-hero-web__notif span {
+    font-size: 12px;
+    color: var(--rm-text-muted);
+  }
+
+  /* ---------- Animación en bucle del formulario ----------
+     5–28%  el visitante escribe su mensaje
+     30–36% el cursor pulsa enviar → "Mensaje enviado ✓"
+     40–88% el aviso "nueva solicitud de contacto" queda visible
+     90%    todo vuelve al inicio */
+  @keyframes rm-hero-web-type {
+    0%, 5%    { max-width: 0; }
+    28%, 90%  { max-width: 100%; }
+    95%, 100% { max-width: 0; }
+  }
+  @keyframes rm-hero-web-cursor {
+    0%, 24%   { opacity: 0; transform: translate(16px, 14px); }
+    30%       { opacity: 1; transform: translate(0, 0); }
+    33%       { opacity: 1; transform: translate(0, 0) scale(0.85); }
+    36%, 60%  { opacity: 1; transform: translate(0, 0); }
+    66%, 100% { opacity: 0; transform: translate(0, 0); }
+  }
+  @keyframes rm-hero-web-press {
+    0%, 31%   { transform: scale(1); }
+    33%       { transform: scale(0.88); }
+    36%, 100% { transform: scale(1); }
+  }
+  @keyframes rm-hero-web-sent {
+    0%, 33%   { opacity: 0; transform: translateY(6px); }
+    37%, 88%  { opacity: 1; transform: translateY(0); }
+    93%, 100% { opacity: 0; transform: translateY(6px); }
+  }
+  @keyframes rm-hero-web-notif {
+    0%, 40%   { opacity: 0; transform: translateY(12px); }
+    45%, 88%  { opacity: 1; transform: translateY(0); }
+    93%, 100% { opacity: 0; transform: translateY(12px); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .rm-hero-web__topline,
+    .rm-hero-web__glow,
+    .rm-hero-web__badge-dot,
+    .rm-hero-web__typing,
+    .rm-hero-web__send,
+    .rm-hero-web__cursor,
+    .rm-hero-web__sent,
+    .rm-hero-web__notif {
+      animation: none;
+    }
+    .rm-hero-web__cursor { display: none; }
+    .rm-hero-web__typing { max-width: 100%; }
+    .rm-hero-web__sent,
+    .rm-hero-web__notif { opacity: 1; transform: none; }
+    .rm-hero-web__content[data-animate],
+    .rm-hero-web__visual[data-animate] {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 980px) {
+    .rm-hero-web {
+      padding: 90px 20px 60px;
+    }
+
+    .rm-hero-web__container {
+      grid-template-columns: 1fr;
+      gap: 56px;
+    }
+
+    .rm-hero-web__visual {
+      order: -1;
+      max-width: 420px;
+      margin: 0 auto;
+    }
+
+    .rm-hero-web__title {
+      max-width: 100%;
+    }
+
+    .rm-hero-web__subtitle,
+    .rm-hero-web__note {
+      max-width: 60ch;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .rm-hero-web {
+      padding: 64px 16px 40px;
+    }
+
+    .rm-hero-web__actions {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .rm-hero-web__cta {
+      justify-content: center;
+      text-align: center;
+    }
+
+    .rm-hero-web__card-back { right: -6px; left: 6px; }
+    .rm-hero-web__shot { height: 250px; padding: 54px 14px 0; }
+    .rm-hero-web__screen { height: 150px; }
+    .rm-hero-web__phone { width: 76px; height: 152px; right: 12px; }
+
+    .rm-hero-web__visual { padding-bottom: 64px; }
+    .rm-hero-web__notif { left: 8px; right: 8px; }
+  }
+</style>
+
+<script>
+  (function () {
+    var section = document.querySelector('.rm-hero-web');
+    if (!section) return;
+
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    /* Entradas secuenciadas al hacer scroll */
+    var elements = section.querySelectorAll('[data-animate]');
+    if (!('IntersectionObserver' in window) || !elements.length) {
+      elements.forEach(function (el) { el.classList.add('is-visible'); });
+    } else {
+      var entryObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            entryObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+      elements.forEach(function (el) { entryObserver.observe(el); });
+    }
+
+    /* Partículas de fondo */
+    var canvas = section.querySelector('.rm-hero-web__particles');
+    if (canvas && !reduceMotion) {
+      var ctx = canvas.getContext('2d');
+      var particles = [];
+      var count = 44;
+      var w, h;
+
+      function resize() {
+        w = canvas.width = canvas.offsetWidth;
+        h = canvas.height = canvas.offsetHeight;
+      }
+
+      function init() {
+        particles = [];
+        for (var i = 0; i < count; i++) {
+          particles.push({
+            x: Math.random() * w,
+            y: Math.random() * h,
+            vx: (Math.random() - 0.5) * 0.25,
+            vy: (Math.random() - 0.5) * 0.25
+          });
+        }
+      }
+
+      function step() {
+        ctx.clearRect(0, 0, w, h);
+        for (var i = 0; i < particles.length; i++) {
+          var p = particles[i];
+          p.x += p.vx;
+          p.y += p.vy;
+          if (p.x < 0 || p.x > w) p.vx *= -1;
+          if (p.y < 0 || p.y > h) p.vy *= -1;
+        }
+        for (var i = 0; i < particles.length; i++) {
+          for (var j = i + 1; j < particles.length; j++) {
+            var a = particles[i], b = particles[j];
+            var dx = a.x - b.x, dy = a.y - b.y;
+            var dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < 140) {
+              ctx.strokeStyle = 'rgba(58,123,213,' + (0.16 * (1 - dist / 140)) + ')';
+              ctx.lineWidth = 1;
+              ctx.beginPath();
+              ctx.moveTo(a.x, a.y);
+              ctx.lineTo(b.x, b.y);
+              ctx.stroke();
+            }
+          }
+        }
+        for (var i = 0; i < particles.length; i++) {
+          ctx.fillStyle = 'rgba(125,211,252,0.55)';
+          ctx.beginPath();
+          ctx.arc(particles[i].x, particles[i].y, 1.4, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        requestAnimationFrame(step);
+      }
+
+      resize();
+      init();
+      step();
+      window.addEventListener('resize', function () {
+        resize();
+        init();
+      });
+    }
+
+    /* Halo del CTA principal siguiendo al cursor */
+    var primaryCta = section.querySelector('.rm-hero-web__cta--primary');
+    if (primaryCta && window.matchMedia('(hover: hover)').matches) {
+      primaryCta.addEventListener('mousemove', function (e) {
+        var rect = primaryCta.getBoundingClientRect();
+        primaryCta.style.setProperty('--rm-mx', (e.clientX - rect.left) + 'px');
+        primaryCta.style.setProperty('--rm-my', (e.clientY - rect.top) + 'px');
+      });
+    }
+  })();
+</script>
