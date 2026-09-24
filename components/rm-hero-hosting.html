@@ -9,31 +9,26 @@
      marca a 135deg, entrada en scroll, tarjeta 3D con inclinación al
      cursor.
 
-     Copy y enlaces de afiliado tomados tal cual del hero anterior (el
-     que traía tu layout, en morado/DM Sans) — solo se ha rediseñado
-     visualmente, ningún texto ni URL ha cambiado de sentido:
-     - Badge, H1, subtítulo: iguales.
-     - CTA principal → Webempresa (afiliado), CTA secundario →
-       SiteGround (afiliado). El enlace de SiteGround no llevaba
-       target="_blank" en el original — se lo he añadido para que
-       abra en pestaña nueva igual que el de Webempresa, ya que un
-       enlace de afiliado que saca de la web debería comportarse
-       igual en los dos casos.
-     - Barra de 4 estadísticas: mismo patrón que la de tienda
-       (890€/20/24-7/100%), con los mismos 4 datos del original.
+     Segunda vuelta: se abandonan los enlaces de afiliado (Webempresa/
+     SiteGround) a favor de la oferta de hosting gestionado propia de
+     Rodmedia. Copy nuevo de principio a fin salvo el H1, que se
+     mantiene; el degradado pasa de "vive" a "tu negocio". Los
+     proveedores se nombran solo en la línea de confianza bajo la
+     franja de datos, sin enlazar a ningún sitio externo — dan
+     solidez ("llevamos años trabajando con ellos") sin mandar a
+     nadie fuera.
 
-     Mockup nuevo (no venía en el layout original, lo añado siguiendo
-     la misma historia visual que los otros heros): un panel de estado
-     con el sitio "en línea", el uptime y la velocidad de carga, y un
-     aviso flotante de copia de seguridad completada — cuenta la
-     fiabilidad del hosting igual que tienda cuenta una venta o web
-     cuenta un contacto.
+     Mockup: mismo panel de estado que en la primera vuelta, con la
+     misma historia (fiabilidad del hosting), pero con el copy que
+     pediste — etiqueta "Todo funcionando ✓", el dominio de ejemplo
+     con una marca "Actualizado ✓" en vez de los medidores de uptime/
+     carga, y el aviso "Copia de seguridad completada · Hoy · 03:00".
 
      ANTES DE PUBLICAR:
      1) Si ya cargas Playfair Display / Inter desde el Theme Builder de
         Divi, borra el @import de aquí para evitar cargarlas dos veces.
-     2) Revisa que los códigos de afiliado (aff=7661 en Webempresa,
-        afcode=... en SiteGround) siguen siendo los tuyos.
+     2) Cambia los href de "Ver planes de hosting" y "Reservar una
+        llamada" por tus anclas o páginas reales.
      ============================================================ -->
 
 <section class="rm-hero-hosting" aria-labelledby="rm-hero-hosting-title">
@@ -51,47 +46,62 @@
     <div class="rm-hero-hosting__content" data-animate>
       <span class="rm-hero-hosting__badge">
         <span class="rm-hero-hosting__badge-dot" aria-hidden="true"></span>
-        Hosting recomendado por Rodmedia
+        Hosting gestionado
       </span>
 
       <h1 id="rm-hero-hosting-title" class="rm-hero-hosting__title">
-        La casa donde <em>vive</em> tu negocio en internet
+        La casa donde vive <em>tu negocio</em> en internet
       </h1>
 
       <p class="rm-hero-hosting__subtitle">
-        Un mal hosting tumba tu web, frena a Google y espanta a tus clientes. Te contamos con quién trabajamos nosotros y por qué llevan años sin darnos problemas.
+        Contratamos, configuramos y vigilamos tu hosting por ti, con copias de seguridad, certificado SSL y actualizaciones incluidas. Si algo falla, lo resolvemos nosotros.
       </p>
 
+      <div class="rm-hero-hosting__note">
+        <svg class="rm-hero-hosting__note-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/>
+          <path d="M3 12h18M12 3c2.5 2.6 3.8 5.7 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.7-3.8-9S9.5 5.6 12 3Z" stroke="currentColor" stroke-width="1.6"/>
+        </svg>
+        <p>
+          <strong>¿Tu web está en otro proveedor?</strong>
+          La traemos a Rodmedia sin que deje de funcionar.
+        </p>
+      </div>
+
       <div class="rm-hero-hosting__actions">
-        <a href="https://clientes.webempresa.com/europa/gestion/aff.php?aff=7661" target="_blank" rel="noopener sponsored" class="rm-hero-hosting__cta rm-hero-hosting__cta--primary">
-          <span>Ver Webempresa</span>
+        <a href="#planes-hosting" class="rm-hero-hosting__cta rm-hero-hosting__cta--primary">
+          <span>Ver planes de hosting</span>
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
             <path d="M3.5 8h9M8.5 3.5 13 8l-4.5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </a>
-        <a href="https://www.siteground.com/index.htm?afcode=b304d4aa2ac78a5e5a67dcd7ab9cc7f2" target="_blank" rel="noopener sponsored" class="rm-hero-hosting__cta rm-hero-hosting__cta--secondary">
-          Ver SiteGround
+        <a href="#contacto" class="rm-hero-hosting__cta rm-hero-hosting__cta--secondary">
+          Reservar una llamada
         </a>
       </div>
 
       <dl class="rm-hero-hosting__stats">
         <div class="rm-hero-hosting__stat">
-          <dt>99,98%</dt>
+          <dt>99,9%</dt>
           <dd>Uptime garantizado</dd>
         </div>
         <div class="rm-hero-hosting__stat">
-          <dt>&lt;1s</dt>
-          <dd>Carga media</dd>
+          <dt>SSL</dt>
+          <dd>Incluido</dd>
         </div>
         <div class="rm-hero-hosting__stat">
-          <dt>45 días</dt>
-          <dd>Garantía devolución</dd>
+          <dt>Copias</dt>
+          <dd>Diarias</dd>
         </div>
         <div class="rm-hero-hosting__stat">
-          <dt>24/7</dt>
-          <dd>Soporte en español</dd>
+          <dt>Migración</dt>
+          <dd>Incluida</dd>
         </div>
       </dl>
+
+      <p class="rm-hero-hosting__trust">
+        Sobre servidores de SiteGround y Webempresa, con los que llevamos años trabajando.
+      </p>
     </div>
 
     <!-- ---------- Mockup: estado del hosting en vivo ---------- -->
@@ -99,23 +109,24 @@
       <div class="rm-hero-hosting__card-back" aria-hidden="true"></div>
 
       <div class="rm-hero-hosting__card" role="img"
-           aria-label="Panel de estado del hosting: sitio en línea, 99,98% de uptime, 0,8 segundos de carga, copia de seguridad completada automáticamente.">
+           aria-label="Panel de estado del hosting de clinicadentalmar.es: todo funcionando, sitio actualizado, copia de seguridad completada hoy a las 03:00.">
 
         <div class="rm-hero-hosting__shot">
           <span class="rm-hero-hosting__tag">
             <span class="rm-hero-hosting__tag-dot" aria-hidden="true"></span>
-            En línea
+            Todo funcionando
           </span>
 
-          <div class="rm-hero-hosting__gauges">
-            <div class="rm-hero-hosting__gauge">
-              <span class="rm-hero-hosting__gauge-num">99,98<small>%</small></span>
-              <span class="rm-hero-hosting__gauge-label">Uptime</span>
-            </div>
-            <div class="rm-hero-hosting__gauge">
-              <span class="rm-hero-hosting__gauge-num">0,8<small>s</small></span>
-              <span class="rm-hero-hosting__gauge-label">Carga</span>
-            </div>
+          <div class="rm-hero-hosting__status">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/>
+              <path d="M3 12h18M12 3c2.5 2.6 3.8 5.7 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.7-3.8-9S9.5 5.6 12 3Z" stroke="currentColor" stroke-width="1.6"/>
+            </svg>
+            <span class="rm-hero-hosting__status-domain">clinicadentalmar.es</span>
+            <span class="rm-hero-hosting__status-badge">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M4 12.5 9.5 18 20 6" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Actualizado
+            </span>
           </div>
 
           <ul class="rm-hero-hosting__features">
@@ -126,7 +137,7 @@
 
         <div class="rm-hero-hosting__panel">
           <span class="rm-hero-hosting__panel-label">Monitorización en tiempo real</span>
-          <span class="rm-hero-hosting__panel-title">tuweb.es</span>
+          <span class="rm-hero-hosting__panel-title">clinicadentalmar.es</span>
 
           <span class="rm-hero-hosting__panel-btn">
             <span class="rm-hero-hosting__panel-btn-texto">Ver planes de hosting</span>
@@ -142,7 +153,7 @@
         </svg>
         <div>
           <strong>Copia de seguridad completada</strong>
-          <span>Automática · cada noche</span>
+          <span>Hoy &#183; 03:00</span>
         </div>
       </div>
     </div>
@@ -339,6 +350,39 @@
     margin: 0 0 32px;
   }
 
+  /* ---------- Recuadro de garantía (ya tienes hosting) ---------- */
+  .rm-hero-hosting__note {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px 20px;
+    margin-bottom: 28px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--rm-radius-lg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    max-width: 48ch;
+  }
+
+  .rm-hero-hosting__note-icon {
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: var(--rm-blue);
+  }
+
+  .rm-hero-hosting__note p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--rm-text-muted);
+  }
+
+  .rm-hero-hosting__note strong {
+    color: var(--rm-light);
+    font-weight: 600;
+  }
+
   /* ---------- CTAs ---------- */
   .rm-hero-hosting__actions {
     display: flex;
@@ -451,6 +495,14 @@
     color: var(--rm-text-muted-2);
   }
 
+  /* ---------- Línea de confianza ---------- */
+  .rm-hero-hosting__trust {
+    margin: 14px 0 0;
+    padding: 0 2px;
+    font-size: 12.5px;
+    color: var(--rm-text-muted-2);
+  }
+
   /* ---------- Tarjeta mockup (3D: inclinación con el cursor) ---------- */
   .rm-hero-hosting__visual {
     position: relative;
@@ -530,42 +582,42 @@
     animation: rm-hero-hosting-blink 2.2s ease-in-out infinite;
   }
 
-  .rm-hero-hosting__gauges {
+  .rm-hero-hosting__status {
     display: flex;
-    gap: 12px;
-  }
-
-  .rm-hero-hosting__gauge {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
+    align-items: center;
+    gap: 10px;
     padding: 14px 16px;
-    border-radius: var(--rm-radius);
+    border-radius: 999px;
     background: #ffffff;
     border: 1px solid #e2e5ea;
     box-shadow: 0 10px 24px rgba(15, 15, 30, 0.08);
-  }
-
-  .rm-hero-hosting__gauge-num {
-    font-family: var(--rm-font-display);
-    font-size: 22px;
-    font-weight: 700;
-    color: #1f2430;
-    line-height: 1;
-  }
-
-  .rm-hero-hosting__gauge-num small {
-    font-size: 13px;
-    font-weight: 600;
     color: #6b7290;
   }
 
-  .rm-hero-hosting__gauge-label {
+  .rm-hero-hosting__status-domain {
+    flex: 1;
+    min-width: 0;
+    font-family: var(--rm-font-body);
+    font-size: 14px;
+    color: #1f2430;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .rm-hero-hosting__status-badge {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 5px 10px;
+    border-radius: 999px;
+    background: rgba(58, 123, 213, 0.1);
+    color: var(--rm-blue);
     font-size: 11px;
-    color: #8a8fa5;
+    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.03em;
   }
 
   .rm-hero-hosting__features {
@@ -733,7 +785,8 @@
       max-width: 100%;
     }
 
-    .rm-hero-hosting__subtitle {
+    .rm-hero-hosting__subtitle,
+    .rm-hero-hosting__note {
       max-width: 60ch;
     }
 
