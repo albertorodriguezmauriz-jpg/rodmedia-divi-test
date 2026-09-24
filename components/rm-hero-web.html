@@ -1,25 +1,29 @@
 <!-- ============================================================
      RM HERO WEB — Hero página "Diseño web" para Divi 5 (Code Module)
      Marca: Rodmedia · Reestructuración web
-     Historia del mockup: alguien visita la web de un negocio,
-     escribe por el formulario y al dueño le llega el contacto.
-     (Paralelo al hero de tienda: allí un pedido, aquí un cliente.)
-     Animación 100% CSS, sin JS. Respeta prefers-reduced-motion.
+     Sigue el sistema de los heros ya aprobados (inicio y tienda):
+     fondo oscuro con constelación, titular Playfair con palabra
+     en cursiva degradada, badge con punto, recuadro con icono,
+     CTA degradado azul→coral y tarjeta-mockup con aviso flotante.
+     Historia del mockup: alguien visita la web, escribe y a ti te
+     llega el contacto (en tienda: un pedido; aquí: un cliente).
      ============================================================ -->
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
 
 <section class="rm-hw" aria-labelledby="rm-hw-title">
+  <canvas class="rm-hw__stars" aria-hidden="true"></canvas>
+
   <div class="rm-hw__inner">
 
     <!-- ---------- Columna de texto ---------- -->
     <div class="rm-hw__content">
-      <span class="rm-hw__badge">Diseño web · WordPress</span>
+      <span class="rm-hw__badge"><i aria-hidden="true"></i>Diseño web · WordPress</span>
 
       <h1 id="rm-hw-title" class="rm-hw__title">
-        Una web <span class="rm-hw__grad">profesional</span> que explica bien lo que haces
+        Una web <em class="rm-hw__grad">profesional</em> que explica bien lo que haces
       </h1>
 
       <p class="rm-hw__subtitle">
@@ -27,10 +31,8 @@
         Con mantenimiento incluido para que siga funcionando año tras año.
       </p>
 
-      <div class="rm-hw__guarantee">
-        <span class="rm-hw__guarantee-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
-        </span>
+      <div class="rm-hw__note">
+        <svg class="rm-hw__note-icon" aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
         <p>
           <strong>¿También necesitas dominio, hosting o correo?</strong>
           Lo tienes todo con nosotros, con un solo interlocutor.
@@ -38,82 +40,84 @@
       </div>
 
       <div class="rm-hw__ctas">
-        <a href="#planes" class="rm-hw__btn rm-hw__btn--primary">Ver planes de web</a>
+        <a href="#planes" class="rm-hw__btn rm-hw__btn--primary">
+          Ver planes de web
+          <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
         <a href="#llamada" class="rm-hw__btn rm-hw__btn--secondary">Reservar una llamada</a>
       </div>
     </div>
 
-    <!-- ---------- Mockup: portátil + móvil ---------- -->
+    <!-- ---------- Mockup: tarjeta con portátil + móvil ---------- -->
     <div class="rm-hw__visual" role="img"
-         aria-label="Ejemplo de web para una clínica dental ficticia en Benicarló, vista en portátil y móvil. Un visitante envía el formulario de contacto y aparece la notificación: nueva solicitud de contacto.">
+         aria-label="Web de ejemplo de una clínica dental ficticia en Benicarló, en portátil y móvil. Un visitante envía el formulario y llega el aviso: nueva solicitud de contacto.">
 
-      <!-- Portátil -->
-      <div class="rm-hw__laptop" aria-hidden="true">
-        <div class="rm-hw__screen">
-          <div class="rm-hw__browser">
-            <span></span><span></span><span></span>
-            <div class="rm-hw__url">clinicadentalmar.es</div>
-          </div>
+      <div class="rm-hw__card-back" aria-hidden="true"></div>
 
-          <div class="rm-hw__site">
-            <div class="rm-hw__site-nav">
-              <span class="rm-hw__site-logo">Dental <em>Mar</em></span>
-              <span class="rm-hw__site-links"><i></i><i></i><i></i></span>
-            </div>
+      <div class="rm-hw__card" aria-hidden="true">
+        <!-- Imagen: portátil + móvil -->
+        <div class="rm-hw__shot">
+          <span class="rm-hw__tag">Adaptada al móvil</span>
 
-            <div class="rm-hw__site-body">
+          <div class="rm-hw__laptop">
+            <div class="rm-hw__screen">
+              <div class="rm-hw__site-nav">
+                <span class="rm-hw__logo">Dental <em>Mar</em></span>
+                <span class="rm-hw__links"><i></i><i></i><i></i><i></i></span>
+              </div>
               <div class="rm-hw__site-hero">
-                <span class="rm-hw__line rm-hw__line--h"></span>
-                <span class="rm-hw__line rm-hw__line--h rm-hw__line--short"></span>
-                <span class="rm-hw__line"></span>
-                <span class="rm-hw__line"></span>
-                <span class="rm-hw__line rm-hw__line--short"></span>
-                <span class="rm-hw__pill"></span>
-              </div>
-
-              <!-- Tarjeta con formulario -->
-              <div class="rm-hw__card">
-                <p class="rm-hw__card-title">Clínica dental · Benicarló</p>
-                <p class="rm-hw__card-sub">Pide cita o escríbenos</p>
-                <div class="rm-hw__field"><span class="rm-hw__typing rm-hw__typing--1"></span></div>
-                <div class="rm-hw__field"><span class="rm-hw__typing rm-hw__typing--2"></span></div>
-                <div class="rm-hw__field rm-hw__field--area"><span class="rm-hw__typing rm-hw__typing--3"></span></div>
-                <div class="rm-hw__form-btn">
-                  <span class="rm-hw__form-btn-idle">Pedir cita</span>
-                  <span class="rm-hw__form-btn-done">Mensaje enviado ✓</span>
+                <div>
+                  <span class="rm-hw__ln rm-hw__ln--h"></span>
+                  <span class="rm-hw__ln rm-hw__ln--h rm-hw__ln--s"></span>
+                  <span class="rm-hw__ln"></span>
+                  <span class="rm-hw__ln rm-hw__ln--s"></span>
+                  <span class="rm-hw__pill"></span>
                 </div>
+                <span class="rm-hw__img"></span>
               </div>
+              <div class="rm-hw__site-cols"><i></i><i></i><i></i></div>
+            </div>
+            <div class="rm-hw__base"></div>
+          </div>
+
+          <div class="rm-hw__phone">
+            <div class="rm-hw__phone-screen">
+              <span class="rm-hw__logo rm-hw__logo--sm">Dental <em>Mar</em></span>
+              <span class="rm-hw__img rm-hw__img--m"></span>
+              <span class="rm-hw__ln rm-hw__ln--h"></span>
+              <span class="rm-hw__ln"></span>
+              <span class="rm-hw__ln rm-hw__ln--s"></span>
+              <span class="rm-hw__pill rm-hw__pill--m"></span>
             </div>
           </div>
         </div>
-        <div class="rm-hw__base"></div>
-      </div>
 
-      <!-- Móvil -->
-      <div class="rm-hw__phone-wrap" aria-hidden="true">
-        <span class="rm-hw__tag">Adaptada al móvil</span>
-        <div class="rm-hw__phone">
-          <div class="rm-hw__phone-notch"></div>
-          <div class="rm-hw__phone-screen">
-            <span class="rm-hw__site-logo rm-hw__site-logo--sm">Dental <em>Mar</em></span>
-            <span class="rm-hw__m-img"></span>
-            <span class="rm-hw__line rm-hw__line--h"></span>
-            <span class="rm-hw__line"></span>
-            <span class="rm-hw__line rm-hw__line--short"></span>
-            <span class="rm-hw__m-btn"></span>
+        <!-- Panel inferior: formulario -->
+        <div class="rm-hw__panel">
+          <span class="rm-hw__panel-label">Clínica dental · Benicarló</span>
+          <span class="rm-hw__panel-title">Pide tu cita</span>
+
+          <div class="rm-hw__form">
+            <span class="rm-hw__input"><span class="rm-hw__typing">Hola, quería pedir cita para…</span></span>
+            <span class="rm-hw__send">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg>
+            </span>
+            <svg class="rm-hw__cursor" viewBox="0 0 24 24" width="16" height="16"><path d="M4 2l16 9-7 2-3 7z" fill="#fff" stroke="#0f1020" stroke-width="1.5" stroke-linejoin="round"/></svg>
+            <span class="rm-hw__sent">Mensaje enviado ✓</span>
           </div>
         </div>
       </div>
 
-      <!-- Notificación flotante -->
+      <!-- Aviso flotante -->
       <div class="rm-hw__notif" aria-hidden="true">
         <span class="rm-hw__notif-icon">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v12H5.2L4 17.2z"/><path d="M8 9h8M8 12h5"/></svg>
+          <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v12H8l-4 4z"/><path d="M8 9h8M8 12h5"/></svg>
         </span>
         <span class="rm-hw__notif-text">
           <strong>Nueva solicitud de contacto</strong>
           <small>Desde tu web · ahora mismo</small>
         </span>
+        <i class="rm-hw__notif-dot"></i>
       </div>
     </div>
 
@@ -121,34 +125,32 @@
 </section>
 
 <style>
-  /* ---------- Tokens ---------- */
+  /* ---------- Tokens (mismos que los heros de inicio y tienda) ---------- */
   .rm-hw {
-    --rm-primary: #1a1a2e;
-    --rm-accent: #e8934a;
-    --rm-accent-2: #e0615d;
-    --rm-grad: linear-gradient(95deg, var(--rm-accent) 0%, var(--rm-accent-2) 100%);
-    --rm-light: #f8f6f2;
-    --rm-text: #2d2d2d;
-    --rm-text-muted: #6b7280;
-    --rm-surface: #ffffff;
-    --rm-border: rgba(26, 26, 46, 0.1);
-    --rm-success: #2f9e6e;
+    --rm-bg: #10111d;
+    --rm-blue: #4a6fd6;
+    --rm-coral: #e8663f;
+    --rm-dot: #e07a6a;
+    --rm-grad: linear-gradient(100deg, var(--rm-blue) 0%, #9a6b9a 50%, var(--rm-coral) 100%);
+    --rm-white: #ffffff;
+    --rm-text-muted: #a9adc1;
+    --rm-line: rgba(255, 255, 255, 0.12);
+    --rm-glass: rgba(255, 255, 255, 0.035);
+    --rm-card: #1b1c2a;
+    --rm-success: #3fb67f;
     --rm-radius: 8px;
-    --rm-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
-    --rm-shadow-lg: 0 24px 60px rgba(26, 26, 46, 0.18);
     --rm-transition: 0.3s ease;
-    --rm-font-display: "Fraunces", Georgia, serif;
-    --rm-font-body: "Plus Jakarta Sans", system-ui, sans-serif;
+    --rm-font-display: "Playfair Display", Georgia, serif;
     --rm-loop: 9s;
 
     position: relative;
     overflow: hidden;
-    padding: 100px 20px;
+    padding: 120px 20px;
     background:
-      radial-gradient(circle at 85% 20%, color-mix(in srgb, var(--rm-accent) 14%, transparent), transparent 45%),
-      var(--rm-light);
-    color: var(--rm-text);
-    font-family: var(--rm-font-body);
+      radial-gradient(ellipse 55% 60% at 10% 10%, rgba(52, 78, 160, 0.28), transparent 70%),
+      radial-gradient(ellipse 45% 55% at 100% 100%, rgba(170, 80, 50, 0.22), transparent 70%),
+      var(--rm-bg);
+    color: var(--rm-white);
     font-size: 16px;
     line-height: 1.65;
   }
@@ -157,435 +159,445 @@
   .rm-hw *::before,
   .rm-hw *::after { box-sizing: border-box; }
 
+  .rm-hw__stars {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
   .rm-hw__inner {
+    position: relative;
+    z-index: 1;
     max-width: 1140px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1.05fr 1fr;
-    gap: 56px;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 64px;
     align-items: center;
   }
 
   /* ---------- Texto ---------- */
   .rm-hw__badge {
-    display: inline-block;
-    margin-bottom: 20px;
-    padding: 6px 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 32px;
+    padding: 10px 18px;
+    border: 1px solid var(--rm-line);
     border-radius: 999px;
-    background: color-mix(in srgb, var(--rm-accent) 14%, transparent);
-    color: #b3602a;
-    font-size: 12px;
+    background: var(--rm-glass);
+    font-size: 13px;
     font-weight: 700;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
+    color: var(--rm-white);
+  }
+
+  .rm-hw__badge i {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--rm-dot);
   }
 
   .rm-hw__title {
-    margin: 0 0 20px;
+    margin: 0 0 28px;
     padding: 0;
     font-family: var(--rm-font-display);
-    font-size: clamp(34px, 4.4vw, 54px);
+    font-size: clamp(38px, 4.9vw, 66px);
     font-weight: 700;
     line-height: 1.1;
     letter-spacing: -0.01em;
-    color: var(--rm-primary);
+    color: var(--rm-white);
   }
 
   .rm-hw__grad {
+    font-style: italic;
+    padding-right: 0.08em;
     background: var(--rm-grad);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    color: var(--rm-accent);
+    color: var(--rm-blue);
   }
 
   .rm-hw__subtitle {
-    max-width: 520px;
-    margin: 0 0 28px;
+    max-width: 560px;
+    margin: 0 0 32px;
     padding: 0;
     font-size: 18px;
+    line-height: 1.7;
     color: var(--rm-text-muted);
   }
 
-  .rm-hw__guarantee {
+  .rm-hw__note {
     display: flex;
     gap: 14px;
     align-items: flex-start;
-    max-width: 520px;
-    margin-bottom: 32px;
-    padding: 16px 18px;
-    background: var(--rm-surface);
-    border: 1px solid var(--rm-border);
-    border-left: 3px solid var(--rm-accent);
-    border-radius: var(--rm-radius);
-    box-shadow: var(--rm-shadow);
+    max-width: 470px;
+    margin-bottom: 40px;
+    padding: 22px 24px;
+    border: 1px solid var(--rm-line);
+    border-radius: 14px;
+    background: var(--rm-glass);
   }
 
-  .rm-hw__guarantee p {
+  .rm-hw__note-icon {
+    flex: none;
+    margin-top: 3px;
+    color: var(--rm-blue);
+  }
+
+  .rm-hw__note p {
     margin: 0;
     padding: 0;
     font-size: 15px;
-    line-height: 1.55;
+    line-height: 1.6;
     color: var(--rm-text-muted);
   }
 
-  .rm-hw__guarantee strong {
-    display: block;
-    color: var(--rm-primary);
-    font-weight: 600;
-  }
-
-  .rm-hw__guarantee-icon {
-    flex: none;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background: color-mix(in srgb, var(--rm-accent) 15%, transparent);
-    color: var(--rm-accent);
+  .rm-hw__note strong {
+    color: var(--rm-white);
+    font-weight: 700;
   }
 
   .rm-hw__ctas {
     display: flex;
     flex-wrap: wrap;
-    gap: 14px;
+    gap: 18px;
   }
 
   .rm-hw__btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 15px 28px;
+    gap: 10px;
+    padding: 17px 28px;
     border-radius: var(--rm-radius);
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 700;
     line-height: 1.2;
     text-decoration: none;
     transition: transform var(--rm-transition), box-shadow var(--rm-transition),
-      background var(--rm-transition), color var(--rm-transition);
+      background var(--rm-transition), border-color var(--rm-transition);
   }
 
   .rm-hw__btn--primary {
-    background: var(--rm-grad);
-    color: #fff;
-    box-shadow: 0 8px 22px color-mix(in srgb, var(--rm-accent-2) 35%, transparent);
+    background: linear-gradient(110deg, var(--rm-blue) 0%, var(--rm-coral) 100%);
+    color: var(--rm-white);
+    box-shadow: 0 10px 30px rgba(232, 102, 63, 0.25);
   }
+
+  .rm-hw__btn--primary svg { transition: transform var(--rm-transition); }
 
   .rm-hw__btn--primary:hover,
   .rm-hw__btn--primary:focus-visible {
-    color: #fff;
+    color: var(--rm-white);
     transform: translateY(-2px);
-    box-shadow: 0 12px 28px color-mix(in srgb, var(--rm-accent-2) 45%, transparent);
+    box-shadow: 0 14px 36px rgba(232, 102, 63, 0.35);
   }
 
+  .rm-hw__btn--primary:hover svg { transform: translateX(3px); }
+
   .rm-hw__btn--secondary {
+    border: 1px solid rgba(255, 255, 255, 0.35);
     background: transparent;
-    color: var(--rm-primary);
-    border: 1.5px solid color-mix(in srgb, var(--rm-primary) 25%, transparent);
+    color: var(--rm-white);
   }
 
   .rm-hw__btn--secondary:hover,
   .rm-hw__btn--secondary:focus-visible {
-    color: var(--rm-primary);
-    border-color: var(--rm-primary);
-    background: var(--rm-surface);
+    color: var(--rm-white);
+    border-color: var(--rm-white);
+    background: rgba(255, 255, 255, 0.06);
   }
 
   .rm-hw__btn:focus-visible {
-    outline: 2px solid var(--rm-accent);
+    outline: 2px solid var(--rm-coral);
     outline-offset: 3px;
   }
 
-  /* ---------- Mockup ---------- */
+  /* ---------- Tarjeta mockup ---------- */
   .rm-hw__visual {
     position: relative;
-    padding: 40px 40px 30px 0;
+    max-width: 430px;
+    width: 100%;
+    margin-left: auto;
+    padding-bottom: 40px;
   }
 
-  .rm-hw__laptop { position: relative; }
+  .rm-hw__card-back {
+    position: absolute;
+    top: 16px;
+    right: -14px;
+    bottom: 26px;
+    left: 14px;
+    border: 1px solid var(--rm-line);
+    border-radius: 18px;
+    background: #171826;
+    transform: rotate(3deg);
+  }
+
+  .rm-hw__card {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--rm-line);
+    border-radius: 18px;
+    background: var(--rm-card);
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Imagen superior (estilo foto de estudio clara, como en tienda) */
+  .rm-hw__shot {
+    position: relative;
+    height: 285px;
+    padding: 58px 22px 0;
+    background: radial-gradient(ellipse at 50% 30%, #fbfbfb, #dedee2 80%);
+  }
+
+  .rm-hw__tag {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    z-index: 3;
+    padding: 7px 13px;
+    border-radius: 999px;
+    background: linear-gradient(110deg, var(--rm-blue), var(--rm-coral));
+    color: var(--rm-white);
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  .rm-hw__laptop { width: 86%; }
 
   .rm-hw__screen {
-    border: 10px solid var(--rm-primary);
-    border-bottom-width: 14px;
-    border-radius: 14px 14px 0 0;
-    background: var(--rm-surface);
+    height: 176px;
+    padding: 9px 11px;
+    border: 7px solid #22232f;
+    border-bottom-width: 10px;
+    border-radius: 9px 9px 0 0;
+    background: #ffffff;
     overflow: hidden;
-    box-shadow: var(--rm-shadow-lg);
   }
 
   .rm-hw__base {
-    height: 14px;
-    margin: 0 -6%;
-    border-radius: 0 0 14px 14px;
-    background: linear-gradient(#d9d6d0, #bdb9b2);
-    box-shadow: 0 14px 24px rgba(26, 26, 46, 0.15);
+    height: 9px;
+    margin: 0 -7%;
+    border-radius: 0 0 10px 10px;
+    background: linear-gradient(#e2e1de, #b9b7b2);
+    box-shadow: 0 10px 18px rgba(0, 0, 0, 0.18);
   }
-
-  .rm-hw__browser {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    padding: 8px 10px;
-    background: #f1efeb;
-    border-bottom: 1px solid var(--rm-border);
-  }
-
-  .rm-hw__browser > span {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: #d4d0c9;
-  }
-
-  .rm-hw__url {
-    flex: 1;
-    margin-left: 8px;
-    padding: 2px 10px;
-    border-radius: 999px;
-    background: var(--rm-surface);
-    font-size: 10px;
-    color: var(--rm-text-muted);
-  }
-
-  .rm-hw__site { padding: 12px 16px 18px; }
 
   .rm-hw__site-nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 14px;
+    margin-bottom: 12px;
   }
 
-  .rm-hw__site-logo {
+  .rm-hw__logo {
     font-family: var(--rm-font-display);
-    font-size: 13px;
+    font-size: 10px;
     font-weight: 700;
     color: #1f4e5f;
   }
 
-  .rm-hw__site-logo em {
-    font-style: normal;
-    color: #3aa3b5;
-  }
+  .rm-hw__logo em { font-style: normal; color: #3aa3b5; }
 
-  .rm-hw__site-links { display: flex; gap: 8px; }
+  .rm-hw__links { display: flex; gap: 5px; }
 
-  .rm-hw__site-links i {
+  .rm-hw__links i {
     display: block;
-    width: 26px;
-    height: 5px;
-    border-radius: 3px;
-    background: #e3e7ea;
+    width: 16px;
+    height: 3px;
+    border-radius: 2px;
+    background: #dfe4e7;
   }
 
-  .rm-hw__site-body {
+  .rm-hw__site-hero {
     display: grid;
-    grid-template-columns: 1.1fr 1fr;
-    gap: 16px;
-    align-items: start;
+    grid-template-columns: 1fr 0.9fr;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 12px;
   }
 
-  /* La tarjeta va a la izquierda para que el móvil no la tape */
-  .rm-hw__site-hero { order: 2; padding-top: 6px; }
-
-  .rm-hw__line {
+  .rm-hw__ln {
     display: block;
-    height: 6px;
-    margin-bottom: 7px;
-    border-radius: 3px;
-    background: #e7eaec;
+    height: 4px;
+    margin-bottom: 5px;
+    border-radius: 2px;
+    background: #e5e9eb;
   }
 
-  .rm-hw__line--h {
-    height: 10px;
-    background: #1f4e5f;
-    opacity: 0.85;
-  }
-
-  .rm-hw__line--short { width: 65%; }
+  .rm-hw__ln--h { height: 7px; background: #1f4e5f; }
+  .rm-hw__ln--s { width: 65%; }
 
   .rm-hw__pill {
     display: block;
-    width: 60%;
-    height: 16px;
-    margin-top: 12px;
+    width: 55%;
+    height: 10px;
+    margin-top: 8px;
     border-radius: 999px;
     background: #3aa3b5;
   }
 
-  .rm-hw__card {
-    padding: 12px;
-    border: 1px solid var(--rm-border);
-    border-radius: 8px;
-    background: #fbfcfc;
-    box-shadow: 0 6px 18px rgba(31, 78, 95, 0.1);
-  }
-
-  .rm-hw__card-title {
-    margin: 0;
-    padding: 0;
-    font-size: 11px;
-    font-weight: 700;
-    line-height: 1.3;
-    color: #1f4e5f;
-  }
-
-  .rm-hw__card-sub {
-    margin: 0 0 8px;
-    padding: 0;
-    font-size: 9.5px;
-    line-height: 1.4;
-    color: var(--rm-text-muted);
-  }
-
-  .rm-hw__field {
-    height: 18px;
-    margin-bottom: 6px;
-    padding: 6px 7px;
-    border: 1px solid #dfe4e7;
-    border-radius: 4px;
-    background: #fff;
-  }
-
-  .rm-hw__field--area { height: 32px; }
-
-  .rm-hw__typing {
+  .rm-hw__img {
     display: block;
-    width: 0;
-    height: 5px;
-    border-radius: 3px;
-    background: #9fb4bc;
-    animation: rm-hw-type var(--rm-loop) infinite;
+    height: 62px;
+    border-radius: 6px;
+    background: linear-gradient(135deg, #d4edf1, #95cfd9);
   }
 
-  .rm-hw__typing--1 { --w: 55%; animation-name: rm-hw-type-1; }
-  .rm-hw__typing--2 { --w: 75%; animation-name: rm-hw-type-2; }
-  .rm-hw__typing--3 { --w: 85%; animation-name: rm-hw-type-3; }
-
-  .rm-hw__form-btn {
-    position: relative;
-    height: 24px;
-    margin-top: 4px;
-    border-radius: 5px;
-    background: #3aa3b5;
-    color: #fff;
-    font-size: 10px;
-    font-weight: 700;
-    overflow: hidden;
-    animation: rm-hw-btn var(--rm-loop) infinite;
+  .rm-hw__site-cols {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 7px;
   }
 
-  .rm-hw__form-btn > span {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    white-space: nowrap;
-  }
-
-  .rm-hw__form-btn-idle { animation: rm-hw-idle var(--rm-loop) infinite; }
-  .rm-hw__form-btn-done { opacity: 0; animation: rm-hw-done var(--rm-loop) infinite; }
-
-  /* Móvil */
-  .rm-hw__phone-wrap {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    width: 28%;
-    min-width: 118px;
-    z-index: 2;
-  }
-
-  .rm-hw__tag {
-    position: absolute;
-    top: -30px;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 5px 10px;
-    border-radius: 999px;
-    background: var(--rm-primary);
-    color: #fff;
-    font-size: 9.5px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    white-space: nowrap;
-    box-shadow: var(--rm-shadow);
+  .rm-hw__site-cols i {
+    display: block;
+    height: 30px;
+    border-radius: 4px;
+    background: #f1f4f5;
   }
 
   .rm-hw__phone {
-    position: relative;
-    aspect-ratio: 9 / 18.5;
-    padding: 7px;
-    border-radius: 22px;
-    background: var(--rm-primary);
-    box-shadow: var(--rm-shadow-lg);
-  }
-
-  .rm-hw__phone-notch {
     position: absolute;
-    top: 7px;
-    left: 50%;
-    width: 38%;
-    height: 10px;
-    transform: translateX(-50%);
-    border-radius: 0 0 8px 8px;
-    background: var(--rm-primary);
-    z-index: 1;
+    right: 20px;
+    bottom: 14px;
+    z-index: 2;
+    width: 88px;
+    height: 176px;
+    padding: 5px;
+    border-radius: 16px;
+    background: #22232f;
+    box-shadow: 0 14px 26px rgba(0, 0, 0, 0.3);
   }
 
   .rm-hw__phone-screen {
     height: 100%;
-    padding: 18px 10px 10px;
-    border-radius: 16px;
-    background: var(--rm-surface);
+    padding: 12px 7px 7px;
+    border-radius: 12px;
+    background: #ffffff;
     overflow: hidden;
   }
 
-  .rm-hw__site-logo--sm {
-    display: block;
-    margin-bottom: 8px;
-    font-size: 10px;
+  .rm-hw__logo--sm { display: block; margin-bottom: 6px; font-size: 8px; }
+  .rm-hw__img--m { height: 52px; margin-bottom: 7px; }
+  .rm-hw__pill--m { width: 100%; }
+
+  /* Panel inferior */
+  .rm-hw__panel {
+    position: relative;
+    padding: 22px 20px 24px;
   }
 
-  .rm-hw__m-img {
+  .rm-hw__panel-label {
     display: block;
-    height: 32%;
-    margin-bottom: 10px;
-    border-radius: 8px;
-    background: linear-gradient(135deg, #cfe9ee, #9fd3dc);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--rm-text-muted);
   }
 
-  .rm-hw__phone-screen .rm-hw__line { height: 5px; margin-bottom: 6px; }
-  .rm-hw__phone-screen .rm-hw__line--h { height: 8px; }
-
-  .rm-hw__m-btn {
+  .rm-hw__panel-title {
     display: block;
-    height: 16px;
-    margin-top: 10px;
-    border-radius: 999px;
-    background: #3aa3b5;
+    margin: 4px 0 14px;
+    font-family: var(--rm-font-display);
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--rm-white);
   }
 
-  /* Notificación */
-  .rm-hw__notif {
-    position: absolute;
-    top: 0;
-    right: 30%;
-    z-index: 3;
+  .rm-hw__form {
+    position: relative;
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 10px 14px 10px 10px;
-    border-radius: 12px;
-    background: var(--rm-surface);
-    border: 1px solid var(--rm-border);
-    box-shadow: var(--rm-shadow-lg);
+  }
+
+  .rm-hw__input {
+    flex: 1;
+    min-width: 0;
+    padding: 10px 12px;
+    border: 1px solid var(--rm-line);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.04);
+    font-size: 13px;
+    line-height: 1.2;
+    color: #d7d9e4;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .rm-hw__typing {
+    display: inline-block;
+    max-width: 0;
+    overflow: hidden;
+    vertical-align: bottom;
+    animation: rm-hw-type var(--rm-loop) steps(28, end) infinite;
+  }
+
+  .rm-hw__send {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--rm-blue), var(--rm-coral));
+    color: var(--rm-white);
+    animation: rm-hw-press var(--rm-loop) infinite;
+  }
+
+  .rm-hw__cursor {
+    position: absolute;
+    right: -6px;
+    bottom: -14px;
     opacity: 0;
-    transform: translateY(-12px) scale(0.96);
+    animation: rm-hw-cursor var(--rm-loop) infinite;
+  }
+
+  .rm-hw__sent {
+    position: absolute;
+    right: -4px;
+    bottom: calc(100% + 10px);
+    padding: 7px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 999px;
+    background: #12131f;
+    color: var(--rm-white);
+    font-size: 12.5px;
+    font-weight: 700;
+    white-space: nowrap;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    animation: rm-hw-sent var(--rm-loop) infinite;
+  }
+
+  /* Aviso flotante */
+  .rm-hw__notif {
+    position: absolute;
+    left: -64px;
+    bottom: 0;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 34px 12px 12px;
+    border: 1px solid var(--rm-line);
+    border-radius: 14px;
+    background: #14151f;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transform: translateY(12px);
     animation: rm-hw-notif var(--rm-loop) infinite;
   }
 
@@ -594,115 +606,187 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 34px;
-    height: 34px;
-    border-radius: 9px;
-    background: var(--rm-grad);
-    color: #fff;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--rm-blue), var(--rm-coral));
+    color: var(--rm-white);
   }
 
   .rm-hw__notif-text strong {
     display: block;
-    font-size: 13px;
+    font-size: 14px;
     line-height: 1.3;
-    color: var(--rm-primary);
+    color: var(--rm-white);
   }
 
   .rm-hw__notif-text small {
     display: block;
-    font-size: 11px;
+    font-size: 12px;
     line-height: 1.3;
     color: var(--rm-text-muted);
   }
 
-  /* ---------- Animación en bucle ----------
-     0–30%  el visitante rellena el formulario
-     36%    pulsa el botón → "Mensaje enviado ✓"
-     44%    te llega la notificación
-     88%    todo vuelve al inicio */
-  @keyframes rm-hw-type-1 {
-    0%, 4%   { width: 0; }
-    12%, 90% { width: var(--w); }
-    96%, 100% { width: 0; }
-  }
-  @keyframes rm-hw-type-2 {
-    0%, 12%  { width: 0; }
-    20%, 90% { width: var(--w); }
-    96%, 100% { width: 0; }
-  }
-  @keyframes rm-hw-type-3 {
-    0%, 20%  { width: 0; }
-    30%, 90% { width: var(--w); }
-    96%, 100% { width: 0; }
-  }
-  @keyframes rm-hw-btn {
-    0%, 33%  { transform: scale(1); background: #3aa3b5; }
-    35%      { transform: scale(0.94); background: #3aa3b5; }
-    38%, 90% { transform: scale(1); background: var(--rm-success); }
-    96%, 100% { background: #3aa3b5; }
-  }
-  @keyframes rm-hw-idle {
-    0%, 35%  { opacity: 1; transform: translateY(0); }
-    38%, 90% { opacity: 0; transform: translateY(-100%); }
-    96%, 100% { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes rm-hw-done {
-    0%, 35%  { opacity: 0; transform: translateY(100%); }
-    38%, 90% { opacity: 1; transform: translateY(0); }
-    96%, 100% { opacity: 0; transform: translateY(100%); }
-  }
-  @keyframes rm-hw-notif {
-    0%, 42%  { opacity: 0; transform: translateY(-12px) scale(0.96); }
-    46%, 86% { opacity: 1; transform: translateY(0) scale(1); }
-    91%, 100% { opacity: 0; transform: translateY(-12px) scale(0.96); }
+  .rm-hw__notif-dot {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--rm-dot);
   }
 
-  /* Sin animaciones: se muestra el estado final (mensaje enviado + aviso) */
+  /* ---------- Animación en bucle ----------
+     5–28%  el visitante escribe su mensaje
+     30–36% el cursor pulsa enviar → "Mensaje enviado ✓"
+     42%    te llega el aviso
+     90%    todo vuelve al inicio */
+  @keyframes rm-hw-type {
+    0%, 5%    { max-width: 0; }
+    28%, 90%  { max-width: 100%; }
+    95%, 100% { max-width: 0; }
+  }
+  @keyframes rm-hw-cursor {
+    0%, 24%   { opacity: 0; transform: translate(16px, 14px); }
+    30%       { opacity: 1; transform: translate(0, 0); }
+    33%       { opacity: 1; transform: translate(0, 0) scale(0.85); }
+    36%, 60%  { opacity: 1; transform: translate(0, 0); }
+    66%, 100% { opacity: 0; transform: translate(0, 0); }
+  }
+  @keyframes rm-hw-press {
+    0%, 31%   { transform: scale(1); }
+    33%       { transform: scale(0.88); }
+    36%, 100% { transform: scale(1); }
+  }
+  @keyframes rm-hw-sent {
+    0%, 33%   { opacity: 0; transform: translateY(6px); }
+    37%, 88%  { opacity: 1; transform: translateY(0); }
+    93%, 100% { opacity: 0; transform: translateY(6px); }
+  }
+  @keyframes rm-hw-notif {
+    0%, 40%   { opacity: 0; transform: translateY(12px); }
+    45%, 88%  { opacity: 1; transform: translateY(0); }
+    93%, 100% { opacity: 0; transform: translateY(12px); }
+  }
+
+  /* Sin animaciones: estado final (mensaje enviado + aviso) */
   @media (prefers-reduced-motion: reduce) {
     .rm-hw *,
     .rm-hw *::before,
     .rm-hw *::after { animation: none !important; }
-    .rm-hw__typing { width: var(--w); }
-    .rm-hw__form-btn { background: var(--rm-success); }
-    .rm-hw__form-btn-idle { opacity: 0; }
-    .rm-hw__form-btn-done { opacity: 1; }
+    .rm-hw__typing { max-width: 100%; }
+    .rm-hw__sent,
     .rm-hw__notif { opacity: 1; transform: none; }
   }
 
   /* ---------- Responsive ---------- */
   @media (max-width: 980px) {
-    .rm-hw { padding: 60px 20px; }
+    .rm-hw { padding: 80px 20px; }
 
     .rm-hw__inner {
       grid-template-columns: 1fr;
-      gap: 48px;
+      gap: 56px;
     }
 
-    .rm-hw__visual {
-      max-width: 580px;
-      width: 100%;
-      margin: 0 auto;
-    }
+    .rm-hw__visual { margin: 0 auto; }
+    .rm-hw__notif { left: -32px; }
   }
 
   @media (max-width: 767px) {
-    .rm-hw { padding: 40px 16px; }
+    .rm-hw { padding: 48px 16px; }
 
+    .rm-hw__badge { margin-bottom: 24px; font-size: 11.5px; }
     .rm-hw__subtitle { font-size: 16px; }
+    .rm-hw__note { padding: 18px; margin-bottom: 32px; }
 
-    .rm-hw__ctas { flex-direction: column; }
+    .rm-hw__ctas { flex-direction: column; gap: 12px; }
     .rm-hw__btn { width: 100%; }
 
-    .rm-hw__visual { padding: 44px 24px 20px 0; }
+    .rm-hw__card-back { right: -6px; left: 6px; }
+    .rm-hw__shot { height: 250px; padding: 54px 14px 0; }
+    .rm-hw__screen { height: 150px; }
+    .rm-hw__phone { width: 76px; height: 152px; right: 12px; }
 
-    .rm-hw__site { padding: 10px 10px 12px; }
-    .rm-hw__site-body { grid-template-columns: 1fr; }
-    .rm-hw__site-hero { display: none; }
-
-    .rm-hw__phone-wrap { width: 34%; min-width: 96px; }
-    .rm-hw__tag { font-size: 8.5px; top: -26px; }
-
-    .rm-hw__notif { right: 0; padding: 8px 12px 8px 8px; }
-    .rm-hw__notif-text strong { font-size: 12px; }
+    .rm-hw__visual { padding-bottom: 64px; }
+    .rm-hw__notif { left: 8px; right: 8px; }
   }
 </style>
+
+<script>
+  /* Fondo de constelación: puntos que derivan despacio y se unen
+     con líneas finas cuando están cerca. Se pausa fuera de pantalla. */
+  (function () {
+    var canvas = document.querySelector('.rm-hw__stars');
+    if (!canvas || !canvas.getContext) return;
+    var ctx = canvas.getContext('2d');
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var pts = [], w = 0, h = 0, running = false, raf = 0;
+    var LINK = 140;
+
+    function resize() {
+      w = canvas.offsetWidth;
+      h = canvas.offsetHeight;
+      canvas.width = w * dpr;
+      canvas.height = h * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      var n = Math.round(Math.min(70, (w * h) / 16000));
+      pts = [];
+      for (var i = 0; i < n; i++) {
+        pts.push({
+          x: Math.random() * w,
+          y: Math.random() * h,
+          vx: (Math.random() - 0.5) * 0.18,
+          vy: (Math.random() - 0.5) * 0.18
+        });
+      }
+      draw();
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, w, h);
+      for (var i = 0; i < pts.length; i++) {
+        var p = pts[i];
+        for (var j = i + 1; j < pts.length; j++) {
+          var q = pts[j], dx = p.x - q.x, dy = p.y - q.y;
+          var d = Math.sqrt(dx * dx + dy * dy);
+          if (d < LINK) {
+            ctx.strokeStyle = 'rgba(110, 135, 210,' + (0.22 * (1 - d / LINK)) + ')';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(q.x, q.y);
+            ctx.stroke();
+          }
+        }
+        ctx.fillStyle = 'rgba(140, 160, 225, 0.55)';
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, 1.3, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    function tick() {
+      for (var i = 0; i < pts.length; i++) {
+        var p = pts[i];
+        p.x += p.vx;
+        p.y += p.vy;
+        if (p.x < 0 || p.x > w) p.vx *= -1;
+        if (p.y < 0 || p.y > h) p.vy *= -1;
+      }
+      draw();
+      if (running) raf = requestAnimationFrame(tick);
+    }
+
+    resize();
+    window.addEventListener('resize', resize);
+    if (reduce || !('IntersectionObserver' in window)) return;
+
+    new IntersectionObserver(function (entries) {
+      running = entries[0].isIntersecting;
+      cancelAnimationFrame(raf);
+      if (running) raf = requestAnimationFrame(tick);
+    }).observe(canvas);
+  })();
+</script>
