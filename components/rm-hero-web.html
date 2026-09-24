@@ -1,0 +1,708 @@
+<!-- ============================================================
+     RM HERO WEB — Hero página "Diseño web" para Divi 5 (Code Module)
+     Marca: Rodmedia · Reestructuración web
+     Historia del mockup: alguien visita la web de un negocio,
+     escribe por el formulario y al dueño le llega el contacto.
+     (Paralelo al hero de tienda: allí un pedido, aquí un cliente.)
+     Animación 100% CSS, sin JS. Respeta prefers-reduced-motion.
+     ============================================================ -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<section class="rm-hw" aria-labelledby="rm-hw-title">
+  <div class="rm-hw__inner">
+
+    <!-- ---------- Columna de texto ---------- -->
+    <div class="rm-hw__content">
+      <span class="rm-hw__badge">Diseño web · WordPress</span>
+
+      <h1 id="rm-hw-title" class="rm-hw__title">
+        Una web <span class="rm-hw__grad">profesional</span> que explica bien lo que haces
+      </h1>
+
+      <p class="rm-hw__subtitle">
+        Diseñamos tu web en WordPress, adaptada al móvil y preparada para aparecer en Google.
+        Con mantenimiento incluido para que siga funcionando año tras año.
+      </p>
+
+      <div class="rm-hw__guarantee">
+        <span class="rm-hw__guarantee-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+        </span>
+        <p>
+          <strong>¿También necesitas dominio, hosting o correo?</strong>
+          Lo tienes todo con nosotros, con un solo interlocutor.
+        </p>
+      </div>
+
+      <div class="rm-hw__ctas">
+        <a href="#planes" class="rm-hw__btn rm-hw__btn--primary">Ver planes de web</a>
+        <a href="#llamada" class="rm-hw__btn rm-hw__btn--secondary">Reservar una llamada</a>
+      </div>
+    </div>
+
+    <!-- ---------- Mockup: portátil + móvil ---------- -->
+    <div class="rm-hw__visual" role="img"
+         aria-label="Ejemplo de web para una clínica dental ficticia en Benicarló, vista en portátil y móvil. Un visitante envía el formulario de contacto y aparece la notificación: nueva solicitud de contacto.">
+
+      <!-- Portátil -->
+      <div class="rm-hw__laptop" aria-hidden="true">
+        <div class="rm-hw__screen">
+          <div class="rm-hw__browser">
+            <span></span><span></span><span></span>
+            <div class="rm-hw__url">clinicadentalmar.es</div>
+          </div>
+
+          <div class="rm-hw__site">
+            <div class="rm-hw__site-nav">
+              <span class="rm-hw__site-logo">Dental <em>Mar</em></span>
+              <span class="rm-hw__site-links"><i></i><i></i><i></i></span>
+            </div>
+
+            <div class="rm-hw__site-body">
+              <div class="rm-hw__site-hero">
+                <span class="rm-hw__line rm-hw__line--h"></span>
+                <span class="rm-hw__line rm-hw__line--h rm-hw__line--short"></span>
+                <span class="rm-hw__line"></span>
+                <span class="rm-hw__line"></span>
+                <span class="rm-hw__line rm-hw__line--short"></span>
+                <span class="rm-hw__pill"></span>
+              </div>
+
+              <!-- Tarjeta con formulario -->
+              <div class="rm-hw__card">
+                <p class="rm-hw__card-title">Clínica dental · Benicarló</p>
+                <p class="rm-hw__card-sub">Pide cita o escríbenos</p>
+                <div class="rm-hw__field"><span class="rm-hw__typing rm-hw__typing--1"></span></div>
+                <div class="rm-hw__field"><span class="rm-hw__typing rm-hw__typing--2"></span></div>
+                <div class="rm-hw__field rm-hw__field--area"><span class="rm-hw__typing rm-hw__typing--3"></span></div>
+                <div class="rm-hw__form-btn">
+                  <span class="rm-hw__form-btn-idle">Pedir cita</span>
+                  <span class="rm-hw__form-btn-done">Mensaje enviado ✓</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="rm-hw__base"></div>
+      </div>
+
+      <!-- Móvil -->
+      <div class="rm-hw__phone-wrap" aria-hidden="true">
+        <span class="rm-hw__tag">Adaptada al móvil</span>
+        <div class="rm-hw__phone">
+          <div class="rm-hw__phone-notch"></div>
+          <div class="rm-hw__phone-screen">
+            <span class="rm-hw__site-logo rm-hw__site-logo--sm">Dental <em>Mar</em></span>
+            <span class="rm-hw__m-img"></span>
+            <span class="rm-hw__line rm-hw__line--h"></span>
+            <span class="rm-hw__line"></span>
+            <span class="rm-hw__line rm-hw__line--short"></span>
+            <span class="rm-hw__m-btn"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Notificación flotante -->
+      <div class="rm-hw__notif" aria-hidden="true">
+        <span class="rm-hw__notif-icon">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v12H5.2L4 17.2z"/><path d="M8 9h8M8 12h5"/></svg>
+        </span>
+        <span class="rm-hw__notif-text">
+          <strong>Nueva solicitud de contacto</strong>
+          <small>Desde tu web · ahora mismo</small>
+        </span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  /* ---------- Tokens ---------- */
+  .rm-hw {
+    --rm-primary: #1a1a2e;
+    --rm-accent: #e8934a;
+    --rm-accent-2: #e0615d;
+    --rm-grad: linear-gradient(95deg, var(--rm-accent) 0%, var(--rm-accent-2) 100%);
+    --rm-light: #f8f6f2;
+    --rm-text: #2d2d2d;
+    --rm-text-muted: #6b7280;
+    --rm-surface: #ffffff;
+    --rm-border: rgba(26, 26, 46, 0.1);
+    --rm-success: #2f9e6e;
+    --rm-radius: 8px;
+    --rm-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+    --rm-shadow-lg: 0 24px 60px rgba(26, 26, 46, 0.18);
+    --rm-transition: 0.3s ease;
+    --rm-font-display: "Fraunces", Georgia, serif;
+    --rm-font-body: "Plus Jakarta Sans", system-ui, sans-serif;
+    --rm-loop: 9s;
+
+    position: relative;
+    overflow: hidden;
+    padding: 100px 20px;
+    background:
+      radial-gradient(circle at 85% 20%, color-mix(in srgb, var(--rm-accent) 14%, transparent), transparent 45%),
+      var(--rm-light);
+    color: var(--rm-text);
+    font-family: var(--rm-font-body);
+    font-size: 16px;
+    line-height: 1.65;
+  }
+
+  .rm-hw *,
+  .rm-hw *::before,
+  .rm-hw *::after { box-sizing: border-box; }
+
+  .rm-hw__inner {
+    max-width: 1140px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: 56px;
+    align-items: center;
+  }
+
+  /* ---------- Texto ---------- */
+  .rm-hw__badge {
+    display: inline-block;
+    margin-bottom: 20px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--rm-accent) 14%, transparent);
+    color: #b3602a;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .rm-hw__title {
+    margin: 0 0 20px;
+    padding: 0;
+    font-family: var(--rm-font-display);
+    font-size: clamp(34px, 4.4vw, 54px);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: var(--rm-primary);
+  }
+
+  .rm-hw__grad {
+    background: var(--rm-grad);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: var(--rm-accent);
+  }
+
+  .rm-hw__subtitle {
+    max-width: 520px;
+    margin: 0 0 28px;
+    padding: 0;
+    font-size: 18px;
+    color: var(--rm-text-muted);
+  }
+
+  .rm-hw__guarantee {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    max-width: 520px;
+    margin-bottom: 32px;
+    padding: 16px 18px;
+    background: var(--rm-surface);
+    border: 1px solid var(--rm-border);
+    border-left: 3px solid var(--rm-accent);
+    border-radius: var(--rm-radius);
+    box-shadow: var(--rm-shadow);
+  }
+
+  .rm-hw__guarantee p {
+    margin: 0;
+    padding: 0;
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--rm-text-muted);
+  }
+
+  .rm-hw__guarantee strong {
+    display: block;
+    color: var(--rm-primary);
+    font-weight: 600;
+  }
+
+  .rm-hw__guarantee-icon {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--rm-accent) 15%, transparent);
+    color: var(--rm-accent);
+  }
+
+  .rm-hw__ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  .rm-hw__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 28px;
+    border-radius: var(--rm-radius);
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.2;
+    text-decoration: none;
+    transition: transform var(--rm-transition), box-shadow var(--rm-transition),
+      background var(--rm-transition), color var(--rm-transition);
+  }
+
+  .rm-hw__btn--primary {
+    background: var(--rm-grad);
+    color: #fff;
+    box-shadow: 0 8px 22px color-mix(in srgb, var(--rm-accent-2) 35%, transparent);
+  }
+
+  .rm-hw__btn--primary:hover,
+  .rm-hw__btn--primary:focus-visible {
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px color-mix(in srgb, var(--rm-accent-2) 45%, transparent);
+  }
+
+  .rm-hw__btn--secondary {
+    background: transparent;
+    color: var(--rm-primary);
+    border: 1.5px solid color-mix(in srgb, var(--rm-primary) 25%, transparent);
+  }
+
+  .rm-hw__btn--secondary:hover,
+  .rm-hw__btn--secondary:focus-visible {
+    color: var(--rm-primary);
+    border-color: var(--rm-primary);
+    background: var(--rm-surface);
+  }
+
+  .rm-hw__btn:focus-visible {
+    outline: 2px solid var(--rm-accent);
+    outline-offset: 3px;
+  }
+
+  /* ---------- Mockup ---------- */
+  .rm-hw__visual {
+    position: relative;
+    padding: 40px 40px 30px 0;
+  }
+
+  .rm-hw__laptop { position: relative; }
+
+  .rm-hw__screen {
+    border: 10px solid var(--rm-primary);
+    border-bottom-width: 14px;
+    border-radius: 14px 14px 0 0;
+    background: var(--rm-surface);
+    overflow: hidden;
+    box-shadow: var(--rm-shadow-lg);
+  }
+
+  .rm-hw__base {
+    height: 14px;
+    margin: 0 -6%;
+    border-radius: 0 0 14px 14px;
+    background: linear-gradient(#d9d6d0, #bdb9b2);
+    box-shadow: 0 14px 24px rgba(26, 26, 46, 0.15);
+  }
+
+  .rm-hw__browser {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 8px 10px;
+    background: #f1efeb;
+    border-bottom: 1px solid var(--rm-border);
+  }
+
+  .rm-hw__browser > span {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #d4d0c9;
+  }
+
+  .rm-hw__url {
+    flex: 1;
+    margin-left: 8px;
+    padding: 2px 10px;
+    border-radius: 999px;
+    background: var(--rm-surface);
+    font-size: 10px;
+    color: var(--rm-text-muted);
+  }
+
+  .rm-hw__site { padding: 12px 16px 18px; }
+
+  .rm-hw__site-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+  }
+
+  .rm-hw__site-logo {
+    font-family: var(--rm-font-display);
+    font-size: 13px;
+    font-weight: 700;
+    color: #1f4e5f;
+  }
+
+  .rm-hw__site-logo em {
+    font-style: normal;
+    color: #3aa3b5;
+  }
+
+  .rm-hw__site-links { display: flex; gap: 8px; }
+
+  .rm-hw__site-links i {
+    display: block;
+    width: 26px;
+    height: 5px;
+    border-radius: 3px;
+    background: #e3e7ea;
+  }
+
+  .rm-hw__site-body {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 16px;
+    align-items: start;
+  }
+
+  /* La tarjeta va a la izquierda para que el móvil no la tape */
+  .rm-hw__site-hero { order: 2; padding-top: 6px; }
+
+  .rm-hw__line {
+    display: block;
+    height: 6px;
+    margin-bottom: 7px;
+    border-radius: 3px;
+    background: #e7eaec;
+  }
+
+  .rm-hw__line--h {
+    height: 10px;
+    background: #1f4e5f;
+    opacity: 0.85;
+  }
+
+  .rm-hw__line--short { width: 65%; }
+
+  .rm-hw__pill {
+    display: block;
+    width: 60%;
+    height: 16px;
+    margin-top: 12px;
+    border-radius: 999px;
+    background: #3aa3b5;
+  }
+
+  .rm-hw__card {
+    padding: 12px;
+    border: 1px solid var(--rm-border);
+    border-radius: 8px;
+    background: #fbfcfc;
+    box-shadow: 0 6px 18px rgba(31, 78, 95, 0.1);
+  }
+
+  .rm-hw__card-title {
+    margin: 0;
+    padding: 0;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: #1f4e5f;
+  }
+
+  .rm-hw__card-sub {
+    margin: 0 0 8px;
+    padding: 0;
+    font-size: 9.5px;
+    line-height: 1.4;
+    color: var(--rm-text-muted);
+  }
+
+  .rm-hw__field {
+    height: 18px;
+    margin-bottom: 6px;
+    padding: 6px 7px;
+    border: 1px solid #dfe4e7;
+    border-radius: 4px;
+    background: #fff;
+  }
+
+  .rm-hw__field--area { height: 32px; }
+
+  .rm-hw__typing {
+    display: block;
+    width: 0;
+    height: 5px;
+    border-radius: 3px;
+    background: #9fb4bc;
+    animation: rm-hw-type var(--rm-loop) infinite;
+  }
+
+  .rm-hw__typing--1 { --w: 55%; animation-name: rm-hw-type-1; }
+  .rm-hw__typing--2 { --w: 75%; animation-name: rm-hw-type-2; }
+  .rm-hw__typing--3 { --w: 85%; animation-name: rm-hw-type-3; }
+
+  .rm-hw__form-btn {
+    position: relative;
+    height: 24px;
+    margin-top: 4px;
+    border-radius: 5px;
+    background: #3aa3b5;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    overflow: hidden;
+    animation: rm-hw-btn var(--rm-loop) infinite;
+  }
+
+  .rm-hw__form-btn > span {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+  }
+
+  .rm-hw__form-btn-idle { animation: rm-hw-idle var(--rm-loop) infinite; }
+  .rm-hw__form-btn-done { opacity: 0; animation: rm-hw-done var(--rm-loop) infinite; }
+
+  /* Móvil */
+  .rm-hw__phone-wrap {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 28%;
+    min-width: 118px;
+    z-index: 2;
+  }
+
+  .rm-hw__tag {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 5px 10px;
+    border-radius: 999px;
+    background: var(--rm-primary);
+    color: #fff;
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    box-shadow: var(--rm-shadow);
+  }
+
+  .rm-hw__phone {
+    position: relative;
+    aspect-ratio: 9 / 18.5;
+    padding: 7px;
+    border-radius: 22px;
+    background: var(--rm-primary);
+    box-shadow: var(--rm-shadow-lg);
+  }
+
+  .rm-hw__phone-notch {
+    position: absolute;
+    top: 7px;
+    left: 50%;
+    width: 38%;
+    height: 10px;
+    transform: translateX(-50%);
+    border-radius: 0 0 8px 8px;
+    background: var(--rm-primary);
+    z-index: 1;
+  }
+
+  .rm-hw__phone-screen {
+    height: 100%;
+    padding: 18px 10px 10px;
+    border-radius: 16px;
+    background: var(--rm-surface);
+    overflow: hidden;
+  }
+
+  .rm-hw__site-logo--sm {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 10px;
+  }
+
+  .rm-hw__m-img {
+    display: block;
+    height: 32%;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #cfe9ee, #9fd3dc);
+  }
+
+  .rm-hw__phone-screen .rm-hw__line { height: 5px; margin-bottom: 6px; }
+  .rm-hw__phone-screen .rm-hw__line--h { height: 8px; }
+
+  .rm-hw__m-btn {
+    display: block;
+    height: 16px;
+    margin-top: 10px;
+    border-radius: 999px;
+    background: #3aa3b5;
+  }
+
+  /* Notificación */
+  .rm-hw__notif {
+    position: absolute;
+    top: 0;
+    right: 30%;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px 10px 10px;
+    border-radius: 12px;
+    background: var(--rm-surface);
+    border: 1px solid var(--rm-border);
+    box-shadow: var(--rm-shadow-lg);
+    opacity: 0;
+    transform: translateY(-12px) scale(0.96);
+    animation: rm-hw-notif var(--rm-loop) infinite;
+  }
+
+  .rm-hw__notif-icon {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 9px;
+    background: var(--rm-grad);
+    color: #fff;
+  }
+
+  .rm-hw__notif-text strong {
+    display: block;
+    font-size: 13px;
+    line-height: 1.3;
+    color: var(--rm-primary);
+  }
+
+  .rm-hw__notif-text small {
+    display: block;
+    font-size: 11px;
+    line-height: 1.3;
+    color: var(--rm-text-muted);
+  }
+
+  /* ---------- Animación en bucle ----------
+     0–30%  el visitante rellena el formulario
+     36%    pulsa el botón → "Mensaje enviado ✓"
+     44%    te llega la notificación
+     88%    todo vuelve al inicio */
+  @keyframes rm-hw-type-1 {
+    0%, 4%   { width: 0; }
+    12%, 90% { width: var(--w); }
+    96%, 100% { width: 0; }
+  }
+  @keyframes rm-hw-type-2 {
+    0%, 12%  { width: 0; }
+    20%, 90% { width: var(--w); }
+    96%, 100% { width: 0; }
+  }
+  @keyframes rm-hw-type-3 {
+    0%, 20%  { width: 0; }
+    30%, 90% { width: var(--w); }
+    96%, 100% { width: 0; }
+  }
+  @keyframes rm-hw-btn {
+    0%, 33%  { transform: scale(1); background: #3aa3b5; }
+    35%      { transform: scale(0.94); background: #3aa3b5; }
+    38%, 90% { transform: scale(1); background: var(--rm-success); }
+    96%, 100% { background: #3aa3b5; }
+  }
+  @keyframes rm-hw-idle {
+    0%, 35%  { opacity: 1; transform: translateY(0); }
+    38%, 90% { opacity: 0; transform: translateY(-100%); }
+    96%, 100% { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes rm-hw-done {
+    0%, 35%  { opacity: 0; transform: translateY(100%); }
+    38%, 90% { opacity: 1; transform: translateY(0); }
+    96%, 100% { opacity: 0; transform: translateY(100%); }
+  }
+  @keyframes rm-hw-notif {
+    0%, 42%  { opacity: 0; transform: translateY(-12px) scale(0.96); }
+    46%, 86% { opacity: 1; transform: translateY(0) scale(1); }
+    91%, 100% { opacity: 0; transform: translateY(-12px) scale(0.96); }
+  }
+
+  /* Sin animaciones: se muestra el estado final (mensaje enviado + aviso) */
+  @media (prefers-reduced-motion: reduce) {
+    .rm-hw *,
+    .rm-hw *::before,
+    .rm-hw *::after { animation: none !important; }
+    .rm-hw__typing { width: var(--w); }
+    .rm-hw__form-btn { background: var(--rm-success); }
+    .rm-hw__form-btn-idle { opacity: 0; }
+    .rm-hw__form-btn-done { opacity: 1; }
+    .rm-hw__notif { opacity: 1; transform: none; }
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 980px) {
+    .rm-hw { padding: 60px 20px; }
+
+    .rm-hw__inner {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+
+    .rm-hw__visual {
+      max-width: 580px;
+      width: 100%;
+      margin: 0 auto;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .rm-hw { padding: 40px 16px; }
+
+    .rm-hw__subtitle { font-size: 16px; }
+
+    .rm-hw__ctas { flex-direction: column; }
+    .rm-hw__btn { width: 100%; }
+
+    .rm-hw__visual { padding: 44px 24px 20px 0; }
+
+    .rm-hw__site { padding: 10px 10px 12px; }
+    .rm-hw__site-body { grid-template-columns: 1fr; }
+    .rm-hw__site-hero { display: none; }
+
+    .rm-hw__phone-wrap { width: 34%; min-width: 96px; }
+    .rm-hw__tag { font-size: 8.5px; top: -26px; }
+
+    .rm-hw__notif { right: 0; padding: 8px 12px 8px 8px; }
+    .rm-hw__notif-text strong { font-size: 12px; }
+  }
+</style>
