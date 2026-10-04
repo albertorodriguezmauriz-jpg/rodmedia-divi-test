@@ -1,0 +1,426 @@
+<!-- ============================================================
+     RM PROCESS WEB — Bloque 3 "Cómo trabajamos" para la página de
+     Diseño Web (Divi 5, Code Module)
+     Marca: Rodmedia · Reestructuración web
+     Va justo debajo del Bloque 2 (precio). Vuelve a fondo oscuro
+     (navy, igual que el hero) para que la página respire en
+     oscuro→claro→oscuro en vez de repetir el mismo tono tres veces
+     seguidas — mismos tokens de marca que toda la familia (degradado
+     azul→naranja, Playfair Display + Inter).
+
+     Estructura: línea vertical central con 4 pasos alternando imagen/
+     texto a cada lado (foto a la izquierda en impares, a la derecha
+     en pares), numeral grande en degradado sobre la línea. En móvil
+     la línea desaparece y cada paso pasa a imagen arriba + texto
+     abajo, en una sola columna.
+
+     Copy: recorté alguna repetición del texto que me diste (p. ej.
+     "conocer tu negocio y lo que necesitas" → "conocer tu negocio",
+     quité el "tu web" redundante del paso 2 ya que el título ya lo
+     dice). Revísalo — son recortes pequeños, fáciles de deshacer si
+     prefieres el texto literal.
+
+     Imágenes: no tengo banco de imágenes ni genero fotografía realista
+     aquí, así que cada paso tiene un hueco de imagen (rm-process-
+     web__step-media) con un icono de marca sobre un fondo en
+     degradado — se ve acabado tal cual, sin "imagen rota". Para poner
+     una foto real, sustituye el div por un <img> apuntando a la URL
+     de la Biblioteca de medios de WordPress (o añade background-image
+     con esa URL al div). Marcado con comentarios "FOTO AQUÍ" en cada
+     paso.
+
+     ANTES DE PUBLICAR:
+     1) Si ya cargas Playfair Display / Inter desde el Theme Builder de
+        Divi, borra el @import de aquí para evitar cargarlas dos veces.
+     2) Sustituye los 4 huecos de imagen por fotos reales (ver arriba).
+     ============================================================ -->
+
+<section id="como-trabajamos" class="rm-process-web" aria-labelledby="rm-process-web-title">
+
+  <div class="rm-process-web__bg" aria-hidden="true">
+    <div class="rm-process-web__glow rm-process-web__glow--blue"></div>
+    <div class="rm-process-web__glow rm-process-web__glow--orange"></div>
+  </div>
+
+  <div class="rm-process-web__container">
+
+    <div class="rm-process-web__head" data-animate>
+      <h2 id="rm-process-web-title" class="rm-process-web__title">Cómo trabajamos</h2>
+      <p class="rm-process-web__subtitle">De la primera llamada a tu web publicada, en unas 3 semanas.</p>
+    </div>
+
+    <ol class="rm-process-web__timeline">
+
+      <li class="rm-process-web__step" data-animate>
+        <!-- FOTO AQUÍ: llamada / primer contacto -->
+        <div class="rm-process-web__step-media">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M6.5 3.5c1 0 1.9.6 2.3 1.6l.7 1.8c.4.9.1 1.9-.6 2.5l-1 .9c.8 2 2.4 3.6 4.4 4.4l.9-1c.6-.7 1.6-1 2.5-.6l1.8.7c1 .4 1.6 1.3 1.6 2.3v1.6c0 1.4-1.3 2.5-2.7 2.2-7-1.4-12.4-6.8-13.8-13.8C1.9 5 3 3.7 4.4 3.7h2.1Z" stroke="#ffffff" stroke-width="1.5" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="rm-process-web__step-body">
+          <span class="rm-process-web__step-num">01</span>
+          <h3 class="rm-process-web__step-title">Hablamos</h3>
+          <p class="rm-process-web__step-text">Una llamada de 20 minutos para conocer tu negocio. Sin compromiso.</p>
+        </div>
+      </li>
+
+      <li class="rm-process-web__step rm-process-web__step--reverse" data-animate>
+        <!-- FOTO AQUÍ: propuesta / documento -->
+        <div class="rm-process-web__step-media">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M7 3.5h10a1 1 0 0 1 1 1V19l-3-2-3 2-3-2-3 2V4.5a1 1 0 0 1 1-1Z" stroke="#ffffff" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M9 8h6M9 11.5h6" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="rm-process-web__step-body">
+          <span class="rm-process-web__step-num">02</span>
+          <h3 class="rm-process-web__step-title">Te enviamos una propuesta cerrada</h3>
+          <p class="rm-process-web__step-text">En 48 horas, por escrito: qué incluye y cuánto cuesta. Si te encaja, arrancamos con el 50&nbsp;%.</p>
+        </div>
+      </li>
+
+      <li class="rm-process-web__step" data-animate>
+        <!-- FOTO AQUÍ: diseño / escritura -->
+        <div class="rm-process-web__step-media">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M15.5 4.5 19 8l-9.5 9.5L5 19l1.5-4.5Z" stroke="#ffffff" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M13.5 6.5 17 10" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="rm-process-web__step-body">
+          <span class="rm-process-web__step-num">03</span>
+          <h3 class="rm-process-web__step-title">Escribimos y diseñamos tu web</h3>
+          <p class="rm-process-web__step-text">Redactamos los textos y diseñamos cada página a partir de tus ideas. Revisas y ajustamos lo que haga falta.</p>
+        </div>
+      </li>
+
+      <li class="rm-process-web__step rm-process-web__step--reverse" data-animate>
+        <!-- FOTO AQUÍ: web publicada / lanzamiento -->
+        <div class="rm-process-web__step-media">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="12" cy="12" r="9" stroke="#ffffff" stroke-width="1.5"/>
+            <path d="M8.5 12.5 11 15l4.5-5.5" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="rm-process-web__step-body">
+          <span class="rm-process-web__step-num">04</span>
+          <h3 class="rm-process-web__step-title">La publicamos y la cuidamos</h3>
+          <p class="rm-process-web__step-text">Publicamos tu web, la preparamos para Google y arranca tu primer año de mantenimiento. El 50&nbsp;% restante se paga en la entrega.</p>
+        </div>
+      </li>
+
+    </ol>
+
+    <p class="rm-process-web__closing" data-animate>Un solo interlocutor de principio a fin, sin intermediarios.</p>
+
+  </div>
+</section>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Inter:wght@400;500;600;700&display=swap');
+
+  .rm-process-web {
+    --rm-primary: #0f0f1e;
+    --rm-blue: #3a7bd5;
+    --rm-orange: #e8531a;
+    --rm-light: #f8f8fb;
+    --rm-text-muted: #9aa3bd;
+    --rm-text-muted-2: #7d84a0;
+    --rm-radius: 8px;
+    --rm-radius-lg: 20px;
+    --rm-transition: 0.3s ease;
+    --rm-font-display: "Playfair Display", Georgia, "Times New Roman", serif;
+    --rm-font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+
+    position: relative;
+    overflow: hidden;
+    background: var(--rm-primary);
+    color: var(--rm-light);
+    font-family: var(--rm-font-body);
+    padding: 110px 20px 120px;
+    box-sizing: border-box;
+  }
+
+  .rm-process-web *,
+  .rm-process-web *::before,
+  .rm-process-web *::after {
+    box-sizing: inherit;
+  }
+
+  /* ---------- Fondo: dos glows sutiles, sin partículas (ritmo distinto al hero) ---------- */
+  .rm-process-web__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .rm-process-web__glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(110px);
+    opacity: 0.22;
+  }
+
+  .rm-process-web__glow--blue {
+    width: 500px;
+    height: 500px;
+    top: -180px;
+    right: -140px;
+    background: var(--rm-blue);
+  }
+
+  .rm-process-web__glow--orange {
+    width: 440px;
+    height: 440px;
+    bottom: -180px;
+    left: -140px;
+    background: var(--rm-orange);
+  }
+
+  /* ---------- Contenedor ---------- */
+  .rm-process-web__container {
+    position: relative;
+    z-index: 1;
+    max-width: 980px;
+    margin: 0 auto;
+  }
+
+  .rm-process-web__head,
+  .rm-process-web__step,
+  .rm-process-web__closing {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .rm-process-web__head.is-visible,
+  .rm-process-web__step.is-visible,
+  .rm-process-web__closing.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ---------- Cabecera ---------- */
+  .rm-process-web__head {
+    text-align: center;
+    margin-bottom: 72px;
+  }
+
+  .rm-process-web__title {
+    font-family: var(--rm-font-display);
+    font-weight: 700;
+    font-size: clamp(1.875rem, 1.45rem + 2vw, 2.75rem);
+    line-height: 1.18;
+    letter-spacing: -0.01em;
+    color: var(--rm-light);
+    margin: 0 0 12px;
+  }
+
+  .rm-process-web__subtitle {
+    font-size: 16.5px;
+    line-height: 1.6;
+    color: var(--rm-text-muted);
+    margin: 0;
+  }
+
+  /* ---------- Línea central (solo escritorio) ---------- */
+  .rm-process-web__timeline {
+    position: relative;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+  }
+
+  .rm-process-web__timeline::before {
+    content: "";
+    position: absolute;
+    top: 6px;
+    bottom: 6px;
+    left: 50%;
+    width: 2px;
+    transform: translateX(-50%);
+    background: linear-gradient(180deg, var(--rm-blue), var(--rm-orange), var(--rm-blue));
+    opacity: 0.4;
+  }
+
+  /* ---------- Paso: grid de 3 columnas [contenido | eje | contenido] ---------- */
+  .rm-process-web__step {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 64px 1fr;
+    align-items: center;
+    gap: 0 28px;
+  }
+
+  .rm-process-web__step-media {
+    grid-column: 1;
+    grid-row: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 4 / 3;
+    border-radius: var(--rm-radius-lg);
+    background: linear-gradient(135deg, var(--rm-blue), var(--rm-orange));
+    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.3);
+  }
+
+  .rm-process-web__step-body {
+    grid-column: 3;
+    grid-row: 1;
+  }
+
+  .rm-process-web__step--reverse .rm-process-web__step-media {
+    grid-column: 3;
+  }
+
+  .rm-process-web__step--reverse .rm-process-web__step-body {
+    grid-column: 1;
+    text-align: right;
+  }
+
+  .rm-process-web__step-num {
+    position: relative;
+    z-index: 2;
+    display: inline-block;
+    font-family: var(--rm-font-display);
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 0.04em;
+    background: linear-gradient(135deg, var(--rm-blue), var(--rm-orange));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 10px;
+  }
+
+  .rm-process-web__step-title {
+    font-family: var(--rm-font-display);
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 1.25;
+    color: var(--rm-light);
+    margin: 0 0 10px;
+  }
+
+  .rm-process-web__step-text {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--rm-text-muted);
+    margin: 0;
+    max-width: 38ch;
+  }
+
+  .rm-process-web__step--reverse .rm-process-web__step-text {
+    margin-left: auto;
+  }
+
+  /* ---------- Cierre ---------- */
+  .rm-process-web__closing {
+    text-align: center;
+    max-width: 44ch;
+    margin: 72px auto 0;
+    padding-top: 36px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-family: var(--rm-font-display);
+    font-style: italic;
+    font-size: 19px;
+    line-height: 1.5;
+    color: #e5e7eb;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .rm-process-web__head,
+    .rm-process-web__step,
+    .rm-process-web__closing {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 860px) {
+    .rm-process-web {
+      padding: 80px 20px 90px;
+    }
+
+    .rm-process-web__head {
+      margin-bottom: 52px;
+    }
+
+    .rm-process-web__timeline {
+      gap: 48px;
+    }
+
+    .rm-process-web__timeline::before {
+      display: none;
+    }
+
+    .rm-process-web__step,
+    .rm-process-web__step--reverse {
+      grid-template-columns: 1fr;
+      gap: 20px;
+      text-align: left;
+    }
+
+    .rm-process-web__step-media,
+    .rm-process-web__step--reverse .rm-process-web__step-media {
+      grid-column: 1;
+      grid-row: 1;
+      aspect-ratio: 16 / 10;
+    }
+
+    .rm-process-web__step-body,
+    .rm-process-web__step--reverse .rm-process-web__step-body {
+      grid-column: 1;
+      grid-row: 2;
+      text-align: left;
+    }
+
+    .rm-process-web__step-text,
+    .rm-process-web__step--reverse .rm-process-web__step-text {
+      margin-left: 0;
+      max-width: none;
+    }
+
+    .rm-process-web__closing {
+      margin-top: 52px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .rm-process-web {
+      padding: 64px 16px 72px;
+    }
+  }
+</style>
+
+<script>
+  (function () {
+    var section = document.querySelector('.rm-process-web');
+    if (!section) return;
+
+    var elements = section.querySelectorAll('[data-animate]');
+    if (!('IntersectionObserver' in window) || !elements.length) {
+      elements.forEach(function (el) { el.classList.add('is-visible'); });
+      return;
+    }
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    elements.forEach(function (el) { observer.observe(el); });
+  })();
+</script>
