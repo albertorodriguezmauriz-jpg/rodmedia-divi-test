@@ -1,0 +1,552 @@
+<!-- ============================================================
+     RM PRICING WEB — Bloque 2 "Qué incluye y precio" para la página
+     de Diseño Web (Divi 5, Code Module)
+     Marca: Rodmedia · Reestructuración web
+     Va justo debajo del hero de diseño web. Usa los mismos tokens de
+     marca que toda la familia de heros (navy #0f0f1e, degradado azul→
+     naranja a 135deg, Playfair Display + Inter, radios y sombras),
+     pero invierte el fondo a claro: con una sola tarjeta de precio y
+     una checklist larga (11 líneas en dos niveles), un fondo oscuro
+     continuo pesaría demasiado y perdería legibilidad. El contraste
+     claro→tarjeta oscura hace de spotlight sobre el precio — la
+     tarjeta "trae" el lenguaje visual del hero (mismo oscuro, mismo
+     degradado) para que no se sienta como una sección aparte.
+
+     Decisión de UX: la lista de "primer año de mantenimiento
+     incluido" va en su propio recuadro anidado (mismo lenguaje que
+     el "rm-hero-*__note" de guarantía en los heros) para separar
+     visualmente "lo que es la web" de "el extra del primer año" sin
+     que los 11 puntos se lean como una sola lista plana.
+
+     Sobre Divi Pixel / Divi Motion: no tengo la sintaxis/esquema de
+     atributos de esos plugins verificada en este proyecto (no hay
+     documentación suya en el repo ni en las skills instaladas), así
+     que inventar su JSON de import sería arriesgado — podría no
+     importar bien. Sigo con Módulo de Código, que es el sistema que
+     ya funciona y está probado en toda la familia de heros.
+
+     ANTES DE PUBLICAR:
+     1) Si ya cargas Playfair Display / Inter desde el Theme Builder de
+        Divi, borra el @import de aquí para evitar cargarlas dos veces.
+     2) Cambia el href de "Reservar una llamada" y el de "Tienda
+        online" por tus anclas o páginas reales.
+     ============================================================ -->
+
+<section class="rm-pricing-web" aria-labelledby="rm-pricing-web-title">
+
+  <div class="rm-pricing-web__bg" aria-hidden="true">
+    <div class="rm-pricing-web__glow rm-pricing-web__glow--blue"></div>
+    <div class="rm-pricing-web__glow rm-pricing-web__glow--orange"></div>
+  </div>
+
+  <div class="rm-pricing-web__container">
+
+    <div class="rm-pricing-web__head" data-animate>
+      <h2 id="rm-pricing-web-title" class="rm-pricing-web__title">Todo lo que incluye tu web</h2>
+      <p class="rm-pricing-web__subtitle">Un precio cerrado y sin sorpresas. Esto es lo que recibes.</p>
+    </div>
+
+    <div class="rm-pricing-web__card" data-animate>
+
+      <div class="rm-pricing-web__card-head">
+        <span class="rm-pricing-web__plan">Web profesional</span>
+
+        <div class="rm-pricing-web__price-row">
+          <span class="rm-pricing-web__price">Desde 1.290 €</span>
+          <span class="rm-pricing-web__price-detail">+ IVA, pago único</span>
+        </div>
+
+        <p class="rm-pricing-web__delivery">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/>
+            <path d="M12 7v5l3.5 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Lista en 3 semanas desde que tenemos tus ideas y materiales
+        </p>
+      </div>
+
+      <ul class="rm-pricing-web__list">
+        <li><span class="rm-pricing-web__check" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M4 12.5 9.5 18 20 6" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Diseño a medida de tu marca, hasta 5 páginas</li>
+        <li><span class="rm-pricing-web__check" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M4 12.5 9.5 18 20 6" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Textos redactados por nosotros a partir de tus ideas</li>
+        <li><span class="rm-pricing-web__check" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M4 12.5 9.5 18 20 6" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Adaptada a móvil, tablet y ordenador</li>
+        <li><span class="rm-pricing-web__check" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M4 12.5 9.5 18 20 6" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Formulario de contacto y botón de WhatsApp</li>
+        <li><span class="rm-pricing-web__check" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M4 12.5 9.5 18 20 6" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Preparada para Google: velocidad, títulos y conexión con Google Search Console</li>
+        <li><span class="rm-pricing-web__check" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M4 12.5 9.5 18 20 6" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Mapa de ubicación y enlace con tu ficha de Google</li>
+        <li><span class="rm-pricing-web__check" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M4 12.5 9.5 18 20 6" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Páginas legales y aviso de cookies</li>
+      </ul>
+
+      <div class="rm-pricing-web__bonus">
+        <span class="rm-pricing-web__bonus-label">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 3 14.5 9.2 21 10l-5 4.5L17.5 21 12 17.3 6.5 21 8 14.5 3 10l6.5-.8Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+          </svg>
+          Primer año de mantenimiento incluido
+        </span>
+        <ul class="rm-pricing-web__bonus-list">
+          <li><span class="rm-pricing-web__check rm-pricing-web__check--ghost" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"><path d="M4 12.5 9.5 18 20 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Hosting, dominio y correo profesional</li>
+          <li><span class="rm-pricing-web__check rm-pricing-web__check--ghost" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"><path d="M4 12.5 9.5 18 20 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Certificado SSL y copias de seguridad</li>
+          <li><span class="rm-pricing-web__check rm-pricing-web__check--ghost" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"><path d="M4 12.5 9.5 18 20 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Actualizaciones y seguridad</li>
+          <li><span class="rm-pricing-web__check rm-pricing-web__check--ghost" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"><path d="M4 12.5 9.5 18 20 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Informe mensual</li>
+        </ul>
+      </div>
+
+      <a href="#contacto" class="rm-pricing-web__cta">
+        <span>Reservar una llamada</span>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M3.5 8h9M8.5 3.5 13 8l-4.5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+
+    <p class="rm-pricing-web__renewal" data-animate>
+      A partir del segundo año: <strong>29 €/mes</strong>, o <strong>290 €/año</strong> (2 meses gratis). Todo incluido, sin permanencia.
+    </p>
+
+    <p class="rm-pricing-web__footnote" data-animate>
+      ¿Necesitas más páginas o funciones especiales? Te lo presupuestamos sin compromiso.
+      <span class="rm-pricing-web__footnote-sep" aria-hidden="true">·</span>
+      ¿Quieres vender online? <a href="#tienda-online">Tienda online →</a>
+    </p>
+
+  </div>
+</section>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Inter:wght@400;500;600;700&display=swap');
+
+  .rm-pricing-web {
+    --rm-primary: #0f0f1e;
+    --rm-blue: #3a7bd5;
+    --rm-orange: #e8531a;
+    --rm-light: #f8f8fb;
+    --rm-ink: #15161f;
+    --rm-ink-muted: #5c6178;
+    --rm-ink-muted-2: #8b91a8;
+    --rm-radius: 8px;
+    --rm-radius-lg: 20px;
+    --rm-transition: 0.3s ease;
+    --rm-font-display: "Playfair Display", Georgia, "Times New Roman", serif;
+    --rm-font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+
+    position: relative;
+    overflow: hidden;
+    background: var(--rm-light);
+    color: var(--rm-ink);
+    font-family: var(--rm-font-body);
+    padding: 100px 20px 110px;
+    box-sizing: border-box;
+  }
+
+  .rm-pricing-web *,
+  .rm-pricing-web *::before,
+  .rm-pricing-web *::after {
+    box-sizing: inherit;
+  }
+
+  /* ---------- Fondo: dos glows muy sutiles, sin partículas ----------
+     Sección distinta al hero a propósito (ritmo), pero con los
+     mismos dos colores de marca para que no rompa el sistema. */
+  .rm-pricing-web__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .rm-pricing-web__glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(110px);
+    opacity: 0.16;
+  }
+
+  .rm-pricing-web__glow--blue {
+    width: 520px;
+    height: 520px;
+    top: -220px;
+    left: -160px;
+    background: var(--rm-blue);
+  }
+
+  .rm-pricing-web__glow--orange {
+    width: 460px;
+    height: 460px;
+    bottom: -220px;
+    right: -160px;
+    background: var(--rm-orange);
+  }
+
+  /* ---------- Contenedor ---------- */
+  .rm-pricing-web__container {
+    position: relative;
+    z-index: 1;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .rm-pricing-web__head,
+  .rm-pricing-web__card,
+  .rm-pricing-web__renewal,
+  .rm-pricing-web__footnote {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .rm-pricing-web__head.is-visible,
+  .rm-pricing-web__card.is-visible,
+  .rm-pricing-web__renewal.is-visible,
+  .rm-pricing-web__footnote.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .rm-pricing-web__card.is-visible { transition-delay: 0.1s; }
+  .rm-pricing-web__renewal.is-visible { transition-delay: 0.16s; }
+  .rm-pricing-web__footnote.is-visible { transition-delay: 0.2s; }
+
+  /* ---------- Cabecera ---------- */
+  .rm-pricing-web__head {
+    text-align: center;
+    margin-bottom: 44px;
+  }
+
+  .rm-pricing-web__title {
+    font-family: var(--rm-font-display);
+    font-weight: 700;
+    font-size: clamp(1.875rem, 1.45rem + 2vw, 2.75rem);
+    line-height: 1.18;
+    letter-spacing: -0.01em;
+    color: var(--rm-ink);
+    margin: 0 0 12px;
+  }
+
+  .rm-pricing-web__subtitle {
+    font-size: 16.5px;
+    line-height: 1.6;
+    color: var(--rm-ink-muted);
+    margin: 0;
+  }
+
+  /* ---------- Tarjeta de precio: trae el oscuro del hero ---------- */
+  .rm-pricing-web__card {
+    position: relative;
+    background: var(--rm-primary);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--rm-radius-lg);
+    box-shadow: 0 30px 70px rgba(15, 15, 30, 0.22), 0 4px 16px rgba(15, 15, 30, 0.08);
+    padding: 40px 36px 36px;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+  }
+
+  .rm-pricing-web__card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 40px 90px rgba(15, 15, 30, 0.28), 0 4px 16px rgba(15, 15, 30, 0.1);
+  }
+
+  .rm-pricing-web__card-head {
+    text-align: center;
+    padding-bottom: 28px;
+    margin-bottom: 28px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .rm-pricing-web__plan {
+    display: inline-flex;
+    padding: 6px 15px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: #cbd5e1;
+    margin-bottom: 18px;
+  }
+
+  .rm-pricing-web__price-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .rm-pricing-web__price {
+    font-family: var(--rm-font-display);
+    font-weight: 700;
+    font-size: clamp(2.25rem, 1.8rem + 1.6vw, 3rem);
+    line-height: 1;
+    background: linear-gradient(135deg, var(--rm-blue), var(--rm-orange));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .rm-pricing-web__price-detail {
+    font-size: 14px;
+    color: #9aa3bd;
+  }
+
+  .rm-pricing-web__delivery {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin: 0;
+    font-size: 13.5px;
+    color: #9aa3bd;
+  }
+
+  .rm-pricing-web__delivery svg {
+    flex-shrink: 0;
+    color: var(--rm-blue);
+  }
+
+  /* ---------- Checklist principal ---------- */
+  .rm-pricing-web__list {
+    list-style: none;
+    margin: 0 0 28px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .rm-pricing-web__list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 15px;
+    line-height: 1.5;
+    color: #e5e7eb;
+  }
+
+  .rm-pricing-web__check {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    margin-top: 1px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--rm-blue), var(--rm-orange));
+  }
+
+  /* ---------- Recuadro anidado: primer año de mantenimiento ----------
+     Mismo lenguaje visual que el rm-hero-*__note de los heros: panel
+     traslúcido con blur, para que se lea como "garantía/extra" y no
+     como una octava línea más de la misma lista. */
+  .rm-pricing-web__bonus {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--rm-radius-lg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 20px 22px 22px;
+    margin-bottom: 28px;
+  }
+
+  .rm-pricing-web__bonus-label {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 13.5px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: #f8f8fb;
+    margin-bottom: 14px;
+  }
+
+  .rm-pricing-web__bonus-label svg {
+    flex-shrink: 0;
+    color: var(--rm-orange);
+  }
+
+  .rm-pricing-web__bonus-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 11px 16px;
+  }
+
+  .rm-pricing-web__bonus-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+    font-size: 13.5px;
+    line-height: 1.45;
+    color: #a9b0c6;
+  }
+
+  .rm-pricing-web__check--ghost {
+    width: 16px;
+    height: 16px;
+    background: transparent;
+    border: 1.3px solid rgba(58, 123, 213, 0.55);
+    color: var(--rm-blue);
+  }
+
+  /* ---------- CTA ---------- */
+  .rm-pricing-web__cta {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    font-family: var(--rm-font-body);
+    font-size: 15.5px;
+    font-weight: 600;
+    text-decoration: none;
+    color: #ffffff;
+    background: linear-gradient(135deg, var(--rm-blue), var(--rm-orange));
+    border-radius: var(--rm-radius);
+    padding: 16px 26px;
+    box-shadow: 0 12px 28px rgba(58, 123, 213, 0.28);
+    overflow: hidden;
+    transition: transform var(--rm-transition), box-shadow var(--rm-transition);
+  }
+
+  .rm-pricing-web__cta::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(160px circle at var(--rm-mx, 50%) var(--rm-my, 50%), rgba(255, 255, 255, 0.32), transparent 70%);
+    opacity: 0;
+    transition: opacity var(--rm-transition);
+  }
+
+  .rm-pricing-web__cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 34px rgba(232, 83, 26, 0.35);
+  }
+
+  .rm-pricing-web__cta:hover::before {
+    opacity: 1;
+  }
+
+  .rm-pricing-web__cta span,
+  .rm-pricing-web__cta svg {
+    position: relative;
+    z-index: 1;
+  }
+
+  .rm-pricing-web__cta:focus-visible {
+    outline: 2px solid var(--rm-blue);
+    outline-offset: 3px;
+  }
+
+  /* ---------- Continuación de precio (segundo año) ---------- */
+  .rm-pricing-web__renewal {
+    text-align: center;
+    max-width: 52ch;
+    margin: 26px auto 0;
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--rm-ink-muted);
+  }
+
+  .rm-pricing-web__renewal strong {
+    color: var(--rm-ink);
+    font-weight: 600;
+  }
+
+  /* ---------- Nota pequeña ---------- */
+  .rm-pricing-web__footnote {
+    text-align: center;
+    max-width: 58ch;
+    margin: 18px auto 0;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--rm-ink-muted-2);
+  }
+
+  .rm-pricing-web__footnote-sep {
+    display: inline-block;
+    margin: 0 8px;
+    opacity: 0.6;
+  }
+
+  .rm-pricing-web__footnote a {
+    color: var(--rm-blue);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .rm-pricing-web__footnote a:hover {
+    text-decoration: underline;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .rm-pricing-web__head,
+    .rm-pricing-web__card,
+    .rm-pricing-web__renewal,
+    .rm-pricing-web__footnote {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+    .rm-pricing-web__card:hover {
+      transform: none;
+    }
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 640px) {
+    .rm-pricing-web {
+      padding: 64px 16px 70px;
+    }
+
+    .rm-pricing-web__card {
+      padding: 32px 22px 28px;
+    }
+
+    .rm-pricing-web__bonus-list {
+      grid-template-columns: 1fr;
+    }
+
+    .rm-pricing-web__footnote-sep {
+      display: block;
+      margin: 6px 0;
+      opacity: 0;
+      height: 0;
+    }
+  }
+</style>
+
+<script>
+  (function () {
+    var section = document.querySelector('.rm-pricing-web');
+    if (!section) return;
+
+    var elements = section.querySelectorAll('[data-animate]');
+    if (!('IntersectionObserver' in window) || !elements.length) {
+      elements.forEach(function (el) { el.classList.add('is-visible'); });
+    } else {
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      elements.forEach(function (el) { observer.observe(el); });
+    }
+
+    var cta = section.querySelector('.rm-pricing-web__cta');
+    if (cta && window.matchMedia('(hover: hover)').matches) {
+      cta.addEventListener('mousemove', function (e) {
+        var rect = cta.getBoundingClientRect();
+        cta.style.setProperty('--rm-mx', (e.clientX - rect.left) + 'px');
+        cta.style.setProperty('--rm-my', (e.clientY - rect.top) + 'px');
+      });
+    }
+  })();
+</script>
