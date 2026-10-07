@@ -1,0 +1,509 @@
+<!-- ============================================================
+     RM PRICING PLAN EDITORIAL — Bloque 2 "Qué incluye" del Plan
+     Editorial Anual (Divi 5, Code Module)
+     Marca: Rodmedia · Reestructuración web
+     Fondo claro, igual que los bloques de precio de Diseño Web y
+     Tienda Online, para seguir el oscuro→claro→oscuro→... de la
+     familia.
+
+     A diferencia de los otros dos "qué incluye" (una sola tarjeta de
+     precio), aquí son 3 niveles a comparar (Plan / Plan + SEO /
+     Gestionado) con 8 características — así que es una tabla
+     comparativa real (<table>, con scope="col"/"row" para lectores
+     de pantalla), no una tarjeta. En móvil la tabla desplaza en
+     horizontal dentro de su propio contenedor (en vez de reordenar a
+     3 tarjetas apiladas) para no duplicar marcado ni romper la
+     alineación fila a fila entre columnas — la primera columna
+     (característica) queda fija (sticky) mientras se desliza el resto,
+     así nunca se pierde el contexto de qué fila se está mirando.
+
+     PRECIOS SIN DECIDIR (pendiente de ti): de momento las 3 columnas
+     muestran "Solicita presupuesto" en vez de una cifra — me dijiste
+     que para calcularlos con base real prefieres apuntar las horas
+     del próximo plan que hagas con la skill antes de publicar un
+     precio fijo. Cuando tengas cifras, sustituye el texto de
+     ".rm-pricing-pe__price-value" en las 3 columnas.
+
+     Movimiento (GSAP + ScrollTrigger por CDN, cdnjs): entrada en
+     scroll de la cabecera y de la tabla. Respeta
+     prefers-reduced-motion. El contenido ya es visible por CSS si el
+     CDN no carga.
+
+     ANTES DE PUBLICAR:
+     1) Si ya cargas Playfair Display / Inter desde el Theme Builder de
+        Divi, borra el @import de aquí para evitar cargarlas dos veces.
+     2) Sustituye "Solicita presupuesto" por precios reales cuando los
+        tengas.
+     ============================================================ -->
+
+<section id="planes" class="rm-pricing-pe" aria-labelledby="rm-pricing-pe-title">
+
+  <div class="rm-pricing-pe__bg" aria-hidden="true">
+    <div class="rm-pricing-pe__glow rm-pricing-pe__glow--blue"></div>
+    <div class="rm-pricing-pe__glow rm-pricing-pe__glow--orange"></div>
+  </div>
+
+  <div class="rm-pricing-pe__container">
+
+    <div class="rm-pricing-pe__head" data-animate>
+      <h2 id="rm-pricing-pe-title" class="rm-pricing-pe__title">Qué incluye</h2>
+    </div>
+
+    <div class="rm-pricing-pe__table-wrap" data-animate>
+      <table class="rm-pricing-pe__table">
+        <thead>
+          <tr>
+            <th scope="col" class="rm-pricing-pe__feature-head">
+              <span class="rm-pricing-pe__sr-only">Característica</span>
+            </th>
+            <th scope="col">Plan</th>
+            <th scope="col" class="rm-pricing-pe__col--highlight"><span class="rm-pricing-pe__badge-rec">Recomendado</span>Plan + SEO</th>
+            <th scope="col">Gestionado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Sesión inicial y orden de tus ideas</th>
+            <td><span class="rm-pricing-pe__yes" aria-hidden="true">✓</span><span class="rm-pricing-pe__sr-only">Incluido</span></td>
+            <td class="rm-pricing-pe__col--highlight"><span class="rm-pricing-pe__yes" aria-hidden="true">✓</span><span class="rm-pricing-pe__sr-only">Incluido</span></td>
+            <td><span class="rm-pricing-pe__yes" aria-hidden="true">✓</span><span class="rm-pricing-pe__sr-only">Incluido</span></td>
+          </tr>
+          <tr>
+            <th scope="row">Documento de mensaje: qué contar y cómo</th>
+            <td><span class="rm-pricing-pe__yes" aria-hidden="true">✓</span><span class="rm-pricing-pe__sr-only">Incluido</span></td>
+            <td class="rm-pricing-pe__col--highlight"><span class="rm-pricing-pe__yes" aria-hidden="true">✓</span><span class="rm-pricing-pe__sr-only">Incluido</span></td>
+            <td><span class="rm-pricing-pe__yes" aria-hidden="true">✓</span><span class="rm-pricing-pe__sr-only">Incluido</span></td>
+          </tr>
+          <tr>
+            <th scope="row">Títulos SEO de todo el año (blog y redes)</th>
+            <td><span class="rm-pricing-pe__yes" aria-hidden="true">✓</span><span class="rm-pricing-pe__sr-only">Incluido</span></td>
+            <td class="rm-pricing-pe__col--highlight"><span class="rm-pricing-pe__yes" aria-hidden="true">✓</span><span class="rm-pricing-pe__sr-only">Incluido</span></td>
+            <td><span class="rm-pricing-pe__yes" aria-hidden="true">✓</span><span class="rm-pricing-pe__sr-only">Incluido</span></td>
+          </tr>
+          <tr>
+            <th scope="row">Calendario mensual con fechas clave del sector</th>
+            <td><span class="rm-pricing-pe__yes" aria-hidden="true">✓</span><span class="rm-pricing-pe__sr-only">Incluido</span></td>
+            <td class="rm-pricing-pe__col--highlight"><span class="rm-pricing-pe__yes" aria-hidden="true">✓</span><span class="rm-pricing-pe__sr-only">Incluido</span></td>
+            <td><span class="rm-pricing-pe__yes" aria-hidden="true">✓</span><span class="rm-pricing-pe__sr-only">Incluido</span></td>
+          </tr>
+          <tr>
+            <th scope="row">Panel de trabajo con estados, fechas y responsables</th>
+            <td><span class="rm-pricing-pe__yes" aria-hidden="true">✓</span><span class="rm-pricing-pe__sr-only">Incluido</span></td>
+            <td class="rm-pricing-pe__col--highlight"><span class="rm-pricing-pe__yes" aria-hidden="true">✓</span><span class="rm-pricing-pe__sr-only">Incluido</span></td>
+            <td><span class="rm-pricing-pe__yes" aria-hidden="true">✓</span><span class="rm-pricing-pe__sr-only">Incluido</span></td>
+          </tr>
+          <tr>
+            <th scope="row">Ficha SEO por artículo (búsquedas, estructura, metadatos)</th>
+            <td><span class="rm-pricing-pe__no" aria-hidden="true">—</span><span class="rm-pricing-pe__sr-only">No incluido</span></td>
+            <td class="rm-pricing-pe__col--highlight"><span class="rm-pricing-pe__yes" aria-hidden="true">✓</span><span class="rm-pricing-pe__sr-only">Incluido</span></td>
+            <td><span class="rm-pricing-pe__yes" aria-hidden="true">✓</span><span class="rm-pricing-pe__sr-only">Incluido</span></td>
+          </tr>
+          <tr>
+            <th scope="row">Redacción de artículos de blog</th>
+            <td><span class="rm-pricing-pe__no" aria-hidden="true">—</span><span class="rm-pricing-pe__sr-only">No incluido</span></td>
+            <td class="rm-pricing-pe__col--highlight"><span class="rm-pricing-pe__no" aria-hidden="true">—</span><span class="rm-pricing-pe__sr-only">No incluido</span></td>
+            <td><span class="rm-pricing-pe__yes" aria-hidden="true">✓</span><span class="rm-pricing-pe__sr-only">Incluido</span></td>
+          </tr>
+          <tr>
+            <th scope="row">Revisión mensual del calendario</th>
+            <td><span class="rm-pricing-pe__no" aria-hidden="true">—</span><span class="rm-pricing-pe__sr-only">No incluido</span></td>
+            <td class="rm-pricing-pe__col--highlight"><span class="rm-pricing-pe__no" aria-hidden="true">—</span><span class="rm-pricing-pe__sr-only">No incluido</span></td>
+            <td><span class="rm-pricing-pe__yes" aria-hidden="true">✓</span><span class="rm-pricing-pe__sr-only">Incluido</span></td>
+          </tr>
+          <tr class="rm-pricing-pe__price-row">
+            <th scope="row">Precio</th>
+            <td>
+              <span class="rm-pricing-pe__price-type">Pago único</span>
+              <span class="rm-pricing-pe__price-value">Solicita presupuesto</span>
+            </td>
+            <td class="rm-pricing-pe__col--highlight">
+              <span class="rm-pricing-pe__price-type">Pago único</span>
+              <span class="rm-pricing-pe__price-value">Solicita presupuesto</span>
+            </td>
+            <td>
+              <span class="rm-pricing-pe__price-type">Cuota mensual</span>
+              <span class="rm-pricing-pe__price-value">Solicita presupuesto</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="rm-pricing-pe__note" data-animate>Precio a medida según tu volumen de contenidos. <a href="#contacto" class="rm-pricing-pe__note-link">Cuéntame tu caso <span aria-hidden="true">→</span></a></p>
+
+  </div>
+</section>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Inter:wght@400;500;600;700&display=swap');
+
+  .rm-pricing-pe {
+    --rm-primary: #0f0f1e;
+    --rm-blue: #3a7bd5;
+    --rm-orange: #e8531a;
+    --rm-light: #f8f8fb;
+    --rm-ink: #15161f;
+    --rm-ink-muted: #5c6178;
+    --rm-ink-muted-2: #8b91a8;
+    --rm-radius: 8px;
+    --rm-radius-lg: 20px;
+    --rm-transition: 0.3s ease;
+    --rm-font-display: "Playfair Display", Georgia, "Times New Roman", serif;
+    --rm-font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+
+    position: relative;
+    overflow: hidden;
+    background: var(--rm-light);
+    color: var(--rm-ink);
+    font-family: var(--rm-font-body);
+    padding: 100px 20px 90px;
+    box-sizing: border-box;
+  }
+
+  .rm-pricing-pe *,
+  .rm-pricing-pe *::before,
+  .rm-pricing-pe *::after {
+    box-sizing: inherit;
+  }
+
+  .rm-pricing-pe__sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  /* ---------- Fondo: dos glows muy sutiles ---------- */
+  .rm-pricing-pe__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .rm-pricing-pe__glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(110px);
+    opacity: 0.14;
+  }
+
+  .rm-pricing-pe__glow--blue {
+    width: 480px;
+    height: 480px;
+    top: -200px;
+    right: -150px;
+    background: var(--rm-blue);
+  }
+
+  .rm-pricing-pe__glow--orange {
+    width: 420px;
+    height: 420px;
+    bottom: -200px;
+    left: -150px;
+    background: var(--rm-orange);
+  }
+
+  /* ---------- Contenedor ---------- */
+  .rm-pricing-pe__container {
+    position: relative;
+    z-index: 1;
+    max-width: 980px;
+    margin: 0 auto;
+  }
+
+  /* El contenido se renderiza visible por defecto: si GSAP/ScrollTrigger
+     no cargan desde el CDN, nada depende de JS para mostrarse. Cuando
+     sí cargan, gsap.from() anima desde un estado inicial oculto hasta
+     este estado natural al entrar en scroll — ver el <script> final. */
+
+  /* ---------- Cabecera ---------- */
+  .rm-pricing-pe__head {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .rm-pricing-pe__title {
+    font-family: var(--rm-font-display);
+    font-weight: 700;
+    font-size: clamp(1.875rem, 1.45rem + 2vw, 2.75rem);
+    line-height: 1.18;
+    letter-spacing: -0.01em;
+    color: var(--rm-ink);
+    margin: 0;
+  }
+
+  /* ---------- Tabla comparativa ---------- */
+  .rm-pricing-pe__table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: var(--rm-radius-lg);
+    border: 1px solid rgba(21, 22, 31, 0.08);
+    background: #ffffff;
+    box-shadow: 0 20px 48px rgba(15, 15, 30, 0.06);
+  }
+
+  .rm-pricing-pe__table {
+    width: 100%;
+    min-width: 640px;
+    border-collapse: collapse;
+    font-size: 14.5px;
+  }
+
+  .rm-pricing-pe__table thead th {
+    font-family: var(--rm-font-display);
+    font-weight: 700;
+    font-size: 17px;
+    color: var(--rm-ink);
+    text-align: center;
+    padding: 24px 16px 18px;
+    border-bottom: 1px solid rgba(21, 22, 31, 0.08);
+  }
+
+  .rm-pricing-pe__table tbody th {
+    text-align: left;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.4;
+    color: var(--rm-ink);
+    padding: 15px 16px 15px 20px;
+    max-width: 280px;
+  }
+
+  .rm-pricing-pe__table tbody td {
+    text-align: center;
+    padding: 15px 16px;
+    vertical-align: middle;
+  }
+
+  .rm-pricing-pe__table tbody tr {
+    border-bottom: 1px solid rgba(21, 22, 31, 0.07);
+  }
+
+  .rm-pricing-pe__table tbody tr:last-of-type {
+    border-bottom: none;
+  }
+
+  /* Primera columna (característica) fija al desplazar en horizontal */
+  .rm-pricing-pe__feature-head,
+  .rm-pricing-pe__table tbody th {
+    position: sticky;
+    left: 0;
+    z-index: 2;
+    background: #ffffff;
+  }
+
+  .rm-pricing-pe__feature-head {
+    z-index: 3;
+  }
+
+  /* Columna central ("Plan + SEO"): resaltada como recomendada */
+  .rm-pricing-pe__col--highlight {
+    background: rgba(58, 123, 213, 0.05);
+  }
+
+  .rm-pricing-pe__table thead .rm-pricing-pe__col--highlight {
+    background: rgba(58, 123, 213, 0.08);
+  }
+
+  .rm-pricing-pe__badge-rec {
+    display: block;
+    margin: 0 auto 8px;
+    padding: 4px 11px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, var(--rm-blue), var(--rm-orange));
+    color: #ffffff;
+    font-family: var(--rm-font-body);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    width: fit-content;
+  }
+
+  .rm-pricing-pe__yes {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--rm-blue), var(--rm-orange));
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .rm-pricing-pe__no {
+    display: inline-block;
+    color: var(--rm-ink-muted-2);
+    font-size: 15px;
+  }
+
+  /* ---------- Fila de precio ---------- */
+  .rm-pricing-pe__price-row th,
+  .rm-pricing-pe__price-row td {
+    padding-top: 22px;
+    padding-bottom: 24px;
+    background: rgba(15, 15, 30, 0.02);
+  }
+
+  .rm-pricing-pe__price-row .rm-pricing-pe__col--highlight {
+    background: rgba(58, 123, 213, 0.07);
+  }
+
+  .rm-pricing-pe__price-row th {
+    font-weight: 700;
+    font-family: var(--rm-font-display);
+    font-size: 15px;
+  }
+
+  .rm-pricing-pe__price-type {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--rm-ink-muted-2);
+    margin-bottom: 4px;
+  }
+
+  .rm-pricing-pe__price-value {
+    display: block;
+    font-family: var(--rm-font-display);
+    font-weight: 700;
+    font-size: 16px;
+    background: linear-gradient(135deg, var(--rm-blue), var(--rm-orange));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* ---------- Nota de precio ---------- */
+  .rm-pricing-pe__note {
+    text-align: center;
+    margin: 24px 0 0;
+    font-size: 14.5px;
+    color: var(--rm-ink-muted);
+  }
+
+  .rm-pricing-pe__note-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-left: 4px;
+    color: var(--rm-blue);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .rm-pricing-pe__note-link span {
+    transition: transform var(--rm-transition);
+    display: inline-block;
+  }
+
+  .rm-pricing-pe__note-link:hover {
+    text-decoration: underline;
+  }
+
+  .rm-pricing-pe__note-link:hover span {
+    transform: translateX(4px);
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 640px) {
+    .rm-pricing-pe {
+      padding: 64px 16px 64px;
+    }
+
+    .rm-pricing-pe__head {
+      margin-bottom: 24px;
+    }
+
+    .rm-pricing-pe__table {
+      min-width: 560px;
+      font-size: 13.5px;
+    }
+
+    .rm-pricing-pe__table tbody th {
+      font-size: 13px;
+      padding: 13px 14px 13px 16px;
+    }
+
+    .rm-pricing-pe__table thead th {
+      padding: 20px 12px 14px;
+      font-size: 15px;
+    }
+  }
+</style>
+
+<script>
+  (function () {
+    var section = document.querySelector('.rm-pricing-pe');
+    if (!section) return;
+
+    /* Carga GSAP + ScrollTrigger por CDN una sola vez por página, aunque
+       haya varios bloques de este tipo (reutiliza la instancia si otro
+       bloque de esta misma página ya la cargó). */
+    function loadScript(src) {
+      return new Promise(function (resolve, reject) {
+        var existing = document.querySelector('script[data-gsap-src="' + src + '"]');
+        if (existing) {
+          if (existing.dataset.loaded === 'true') { resolve(); return; }
+          existing.addEventListener('load', resolve);
+          existing.addEventListener('error', reject);
+          return;
+        }
+        var s = document.createElement('script');
+        s.src = src;
+        s.dataset.gsapSrc = src;
+        s.onload = function () { s.dataset.loaded = 'true'; resolve(); };
+        s.onerror = reject;
+        document.head.appendChild(s);
+      });
+    }
+
+    function withGSAP(callback) {
+      if (window.gsap && window.ScrollTrigger) { callback(); return; }
+      Promise.all([
+        loadScript('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js'),
+        loadScript('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js')
+      ]).then(function () {
+        if (window.gsap && window.ScrollTrigger) callback();
+      }).catch(function () {
+        /* Sin GSAP el contenido ya es visible por CSS: no hace falta nada más. */
+      });
+    }
+
+    withGSAP(function () {
+      gsap.registerPlugin(ScrollTrigger);
+      var mm = gsap.matchMedia();
+
+      mm.add('(prefers-reduced-motion: no-preference)', function () {
+        var order = ['.rm-pricing-pe__head', '.rm-pricing-pe__table-wrap', '.rm-pricing-pe__note'];
+        var tl = gsap.timeline({
+          scrollTrigger: { trigger: section, start: 'top 75%', toggleActions: 'play none none reverse' }
+        });
+        order.forEach(function (sel, i) {
+          var el = section.querySelector(sel);
+          if (!el) return;
+          tl.from(el, {
+            y: 20,
+            autoAlpha: 0,
+            duration: 0.6,
+            ease: 'power2.out',
+            clearProps: 'transform,opacity,visibility'
+          }, i === 0 ? 0 : '-=0.3');
+        });
+      });
+    });
+  })();
+</script>

@@ -1,0 +1,489 @@
+<!-- ============================================================
+     RM FAQ PLAN EDITORIAL — Bloque 5 "Preguntas frecuentes" del Plan
+     Editorial Anual (Divi 5, Code Module)
+     Marca: Rodmedia · Reestructuración web
+     Va justo debajo del Bloque 4 (cómo trabajamos). Vuelve a fondo
+     claro para seguir alternando oscuro→claro→oscuro→... — mismos
+     tokens de marca que toda la familia (degradado azul→naranja,
+     Playfair Display + Inter). Solo 5 preguntas (no 8) — las que me
+     diste para este servicio.
+
+     Acordeón de una sola pregunta abierta a la vez. El despliegue usa
+     la técnica CSS grid-template-rows 0fr→1fr (no height ni JS que
+     mida alto): es la forma moderna de animar un "alto automático" sin
+     tocar layout con JavaScript. El JS solo lleva la cuenta de qué
+     panel está abierto y el estado aria-expanded — no anima nada él
+     mismo, lo hace la transición CSS.
+
+     Movimiento (GSAP + ScrollTrigger por CDN, cdnjs): entrada en
+     scroll con stagger por pregunta — mismo patrón que los Bloques 2
+     y 3, reutilizando la misma instancia de GSAP si ya la cargó otro
+     bloque de la página. Respeta prefers-reduced-motion. El acordeón
+     en sí (abrir/cerrar) es 100% CSS y funciona igual con o sin GSAP.
+
+     ANTES DE PUBLICAR:
+     1) Si ya cargas Playfair Display / Inter desde el Theme Builder de
+        Divi, borra el @import de aquí para evitar cargarlas dos veces.
+     2) Cambia el href de "Reservar una llamada" por tu ancla o página
+        real.
+     ============================================================ -->
+
+<section id="faq" class="rm-faq-pe" aria-labelledby="rm-faq-pe-title">
+
+  <div class="rm-faq-pe__bg" aria-hidden="true">
+    <div class="rm-faq-pe__glow rm-faq-pe__glow--blue"></div>
+    <div class="rm-faq-pe__glow rm-faq-pe__glow--orange"></div>
+  </div>
+
+  <div class="rm-faq-pe__container">
+
+    <div class="rm-faq-pe__head" data-animate>
+      <h2 id="rm-faq-pe-title" class="rm-faq-pe__title">Preguntas frecuentes</h2>
+    </div>
+
+    <div class="rm-faq-pe__list">
+
+      <div class="rm-faq-pe__item" data-animate>
+        <h3 class="rm-faq-pe__q">
+          <button type="button" class="rm-faq-pe__trigger" aria-expanded="false" aria-controls="rm-faq-pe-a1" id="rm-faq-pe-q1">
+            <span class="rm-faq-pe__num">01</span>
+            <span class="rm-faq-pe__q-text">¿Cuántas publicaciones incluye?</span>
+            <svg class="rm-faq-pe__chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6 9.5 12 15l6-5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </h3>
+        <div class="rm-faq-pe__panel" id="rm-faq-pe-a1" role="region" aria-labelledby="rm-faq-pe-q1">
+          <div class="rm-faq-pe__panel-inner">
+            <p class="rm-faq-pe__answer">Las que acordemos según tu capacidad real. Una referencia habitual es 1 artículo de blog, 8 publicaciones en Facebook o Instagram y 4 en LinkedIn al mes.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="rm-faq-pe__item" data-animate>
+        <h3 class="rm-faq-pe__q">
+          <button type="button" class="rm-faq-pe__trigger" aria-expanded="false" aria-controls="rm-faq-pe-a2" id="rm-faq-pe-q2">
+            <span class="rm-faq-pe__num">02</span>
+            <span class="rm-faq-pe__q-text">¿Tengo que escribir yo los contenidos?</span>
+            <svg class="rm-faq-pe__chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6 9.5 12 15l6-5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </h3>
+        <div class="rm-faq-pe__panel" id="rm-faq-pe-a2" role="region" aria-labelledby="rm-faq-pe-q2">
+          <div class="rm-faq-pe__panel-inner">
+            <p class="rm-faq-pe__answer">En Plan y en Plan + SEO, sí, o tu equipo. Tienes títulos, fechas y fichas para hacerlo sin bloquearte. En Gestionado los preparo yo y tú los revisas.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="rm-faq-pe__item" data-animate>
+        <h3 class="rm-faq-pe__q">
+          <button type="button" class="rm-faq-pe__trigger" aria-expanded="false" aria-controls="rm-faq-pe-a3" id="rm-faq-pe-q3">
+            <span class="rm-faq-pe__num">03</span>
+            <span class="rm-faq-pe__q-text">¿Cómo accedo al panel?</span>
+            <svg class="rm-faq-pe__chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6 9.5 12 15l6-5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </h3>
+        <div class="rm-faq-pe__panel" id="rm-faq-pe-a3" role="region" aria-labelledby="rm-faq-pe-q3">
+          <div class="rm-faq-pe__panel-inner">
+            <p class="rm-faq-pe__answer">Por un enlace privado, con una cuenta gratuita de Claude. Si prefieres no crearla, te lo entrego en una hoja de cálculo.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="rm-faq-pe__item" data-animate>
+        <h3 class="rm-faq-pe__q">
+          <button type="button" class="rm-faq-pe__trigger" aria-expanded="false" aria-controls="rm-faq-pe-a4" id="rm-faq-pe-q4">
+            <span class="rm-faq-pe__num">04</span>
+            <span class="rm-faq-pe__q-text">¿Y si a mitad de año cambia algo en mi negocio?</span>
+            <svg class="rm-faq-pe__chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6 9.5 12 15l6-5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </h3>
+        <div class="rm-faq-pe__panel" id="rm-faq-pe-a4" role="region" aria-labelledby="rm-faq-pe-q4">
+          <div class="rm-faq-pe__panel-inner">
+            <p class="rm-faq-pe__answer">El calendario se puede ajustar. En Gestionado lo revisamos cada mes. En los otros dos niveles, cualquier ajuste se presupuesta aparte.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="rm-faq-pe__item" data-animate>
+        <h3 class="rm-faq-pe__q">
+          <button type="button" class="rm-faq-pe__trigger" aria-expanded="false" aria-controls="rm-faq-pe-a5" id="rm-faq-pe-q5">
+            <span class="rm-faq-pe__num">05</span>
+            <span class="rm-faq-pe__q-text">¿Publicáis vosotros en mis redes?</span>
+            <svg class="rm-faq-pe__chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6 9.5 12 15l6-5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </h3>
+        <div class="rm-faq-pe__panel" id="rm-faq-pe-a5" role="region" aria-labelledby="rm-faq-pe-q5">
+          <div class="rm-faq-pe__panel-inner">
+            <p class="rm-faq-pe__answer">Este servicio cubre la planificación y, en Gestionado, la redacción. La publicación y la gestión diaria de redes forman parte del servicio de Redes Sociales.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="rm-faq-pe__closing" data-animate>
+      ¿Tienes otra duda? <a href="#contacto" class="rm-faq-pe__closing-link">Reservar una llamada <span aria-hidden="true">→</span></a>
+    </p>
+
+  </div>
+</section>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Inter:wght@400;500;600;700&display=swap');
+
+  .rm-faq-pe {
+    --rm-primary: #0f0f1e;
+    --rm-blue: #3a7bd5;
+    --rm-orange: #e8531a;
+    --rm-light: #f8f8fb;
+    --rm-ink: #15161f;
+    --rm-ink-muted: #5c6178;
+    --rm-ink-muted-2: #8b91a8;
+    --rm-radius: 8px;
+    --rm-radius-lg: 20px;
+    --rm-transition: 0.3s ease;
+    --rm-font-display: "Playfair Display", Georgia, "Times New Roman", serif;
+    --rm-font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+
+    position: relative;
+    overflow: hidden;
+    background: var(--rm-light);
+    color: var(--rm-ink);
+    font-family: var(--rm-font-body);
+    padding: 100px 20px 110px;
+    box-sizing: border-box;
+  }
+
+  .rm-faq-pe *,
+  .rm-faq-pe *::before,
+  .rm-faq-pe *::after {
+    box-sizing: inherit;
+  }
+
+  /* ---------- Fondo: dos glows muy sutiles, igual que el Bloque 2 ---------- */
+  .rm-faq-pe__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .rm-faq-pe__glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(110px);
+    opacity: 0.14;
+  }
+
+  .rm-faq-pe__glow--blue {
+    width: 480px;
+    height: 480px;
+    top: -200px;
+    right: -150px;
+    background: var(--rm-blue);
+  }
+
+  .rm-faq-pe__glow--orange {
+    width: 420px;
+    height: 420px;
+    bottom: -200px;
+    left: -150px;
+    background: var(--rm-orange);
+  }
+
+  /* ---------- Contenedor ---------- */
+  .rm-faq-pe__container {
+    position: relative;
+    z-index: 1;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  /* El contenido se renderiza visible por defecto: si GSAP/ScrollTrigger
+     no cargan desde el CDN, nada depende de JS para mostrarse. Cuando
+     sí cargan, gsap.from() anima desde un estado inicial oculto hasta
+     este estado natural al entrar en scroll — ver el <script> final. */
+
+  /* ---------- Cabecera ---------- */
+  .rm-faq-pe__head {
+    text-align: center;
+    margin-bottom: 36px;
+  }
+
+  .rm-faq-pe__title {
+    font-family: var(--rm-font-display);
+    font-weight: 700;
+    font-size: clamp(1.875rem, 1.45rem + 2vw, 2.75rem);
+    line-height: 1.18;
+    letter-spacing: -0.01em;
+    color: var(--rm-ink);
+    margin: 0;
+  }
+
+  /* ---------- Acordeón ---------- */
+  .rm-faq-pe__list {
+    border-top: 1px solid rgba(21, 22, 31, 0.1);
+  }
+
+  .rm-faq-pe__item {
+    border-bottom: 1px solid rgba(21, 22, 31, 0.1);
+  }
+
+  .rm-faq-pe__q {
+    margin: 0;
+    font-size: inherit;
+    font-weight: inherit;
+  }
+
+  .rm-faq-pe__trigger {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 21px 4px;
+    background: none;
+    border: none;
+    margin: 0;
+    cursor: pointer;
+    text-align: left;
+    font-family: var(--rm-font-body);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .rm-faq-pe__trigger:hover .rm-faq-pe__q-text {
+    color: var(--rm-blue);
+  }
+
+  .rm-faq-pe__trigger:focus-visible {
+    outline: 2px solid var(--rm-blue);
+    outline-offset: 4px;
+    border-radius: 4px;
+  }
+
+  .rm-faq-pe__num {
+    flex: none;
+    font-family: var(--rm-font-display);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.03em;
+    background: linear-gradient(135deg, var(--rm-blue), var(--rm-orange));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    opacity: 0.85;
+  }
+
+  .rm-faq-pe__q-text {
+    flex: 1;
+    font-family: var(--rm-font-display);
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 1.4;
+    color: var(--rm-ink);
+    transition: color var(--rm-transition);
+  }
+
+  .rm-faq-pe__chevron {
+    flex: none;
+    color: var(--rm-ink-muted);
+    transition: transform 0.35s ease, color var(--rm-transition);
+  }
+
+  .rm-faq-pe__item.is-open .rm-faq-pe__chevron {
+    transform: rotate(180deg);
+    color: var(--rm-blue);
+  }
+
+  .rm-faq-pe__item.is-open .rm-faq-pe__q-text {
+    color: var(--rm-ink);
+  }
+
+  /* Despliegue sin JS de alto: grid-template-rows 0fr -> 1fr */
+  .rm-faq-pe__panel {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.4s ease;
+  }
+
+  .rm-faq-pe__item.is-open .rm-faq-pe__panel {
+    grid-template-rows: 1fr;
+  }
+
+  .rm-faq-pe__panel-inner {
+    overflow: hidden;
+    min-height: 0;
+  }
+
+  .rm-faq-pe__answer {
+    margin: 0;
+    padding: 0 30px 22px 4px;
+    max-width: 62ch;
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--rm-ink-muted);
+  }
+
+  /* ---------- Cierre ---------- */
+  .rm-faq-pe__closing {
+    text-align: center;
+    margin: 44px 0 0;
+    font-size: 15.5px;
+    color: var(--rm-ink-muted);
+  }
+
+  .rm-faq-pe__closing-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-left: 4px;
+    color: var(--rm-blue);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .rm-faq-pe__closing-link span {
+    transition: transform var(--rm-transition);
+    display: inline-block;
+  }
+
+  .rm-faq-pe__closing-link:hover {
+    text-decoration: underline;
+  }
+
+  .rm-faq-pe__closing-link:hover span {
+    transform: translateX(4px);
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 640px) {
+    .rm-faq-pe {
+      padding: 64px 16px 70px;
+    }
+
+    .rm-faq-pe__head {
+      margin-bottom: 24px;
+    }
+
+    .rm-faq-pe__trigger {
+      gap: 12px;
+      padding: 18px 2px;
+    }
+
+    .rm-faq-pe__num {
+      display: none;
+    }
+
+    .rm-faq-pe__q-text {
+      font-size: 15.5px;
+    }
+
+    .rm-faq-pe__answer {
+      padding-right: 20px;
+      font-size: 14.5px;
+    }
+  }
+</style>
+
+<script>
+  (function () {
+    var section = document.querySelector('.rm-faq-pe');
+    if (!section) return;
+
+    /* Acordeón: una pregunta abierta a la vez. El despliegue en sí lo
+       hace la transición CSS de grid-template-rows — esto solo lleva
+       la cuenta de qué item está abierto. */
+    var items = Array.prototype.slice.call(section.querySelectorAll('.rm-faq-pe__item'));
+    items.forEach(function (item) {
+      var trigger = item.querySelector('.rm-faq-pe__trigger');
+      trigger.addEventListener('click', function () {
+        var wasOpen = item.classList.contains('is-open');
+        items.forEach(function (other) {
+          other.classList.remove('is-open');
+          other.querySelector('.rm-faq-pe__trigger').setAttribute('aria-expanded', 'false');
+        });
+        if (!wasOpen) {
+          item.classList.add('is-open');
+          trigger.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    /* Carga GSAP + ScrollTrigger por CDN una sola vez por página, aunque
+       haya varios bloques de este tipo (reutiliza la instancia si otro
+       bloque, como el de precio o el de proceso, ya la cargó). */
+    function loadScript(src) {
+      return new Promise(function (resolve, reject) {
+        var existing = document.querySelector('script[data-gsap-src="' + src + '"]');
+        if (existing) {
+          if (existing.dataset.loaded === 'true') { resolve(); return; }
+          existing.addEventListener('load', resolve);
+          existing.addEventListener('error', reject);
+          return;
+        }
+        var s = document.createElement('script');
+        s.src = src;
+        s.dataset.gsapSrc = src;
+        s.onload = function () { s.dataset.loaded = 'true'; resolve(); };
+        s.onerror = reject;
+        document.head.appendChild(s);
+      });
+    }
+
+    function withGSAP(callback) {
+      if (window.gsap && window.ScrollTrigger) { callback(); return; }
+      Promise.all([
+        loadScript('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js'),
+        loadScript('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js')
+      ]).then(function () {
+        if (window.gsap && window.ScrollTrigger) callback();
+      }).catch(function () {
+        /* Sin GSAP el contenido ya es visible por CSS: no hace falta nada más. */
+      });
+    }
+
+    withGSAP(function () {
+      gsap.registerPlugin(ScrollTrigger);
+      var mm = gsap.matchMedia();
+
+      mm.add('(prefers-reduced-motion: no-preference)', function () {
+        gsap.from(section.querySelector('.rm-faq-pe__head'), {
+          y: 22,
+          autoAlpha: 0,
+          duration: 0.7,
+          ease: 'power2.out',
+          clearProps: 'transform,opacity,visibility',
+          scrollTrigger: { trigger: section.querySelector('.rm-faq-pe__head'), start: 'top 85%', toggleActions: 'play none none reverse' }
+        });
+
+        gsap.from(section.querySelectorAll('.rm-faq-pe__item'), {
+          y: 18,
+          autoAlpha: 0,
+          duration: 0.5,
+          ease: 'power2.out',
+          stagger: 0.07,
+          clearProps: 'transform,opacity,visibility',
+          scrollTrigger: { trigger: '.rm-faq-pe__list', start: 'top 85%', toggleActions: 'play none none reverse' }
+        });
+
+        gsap.from(section.querySelector('.rm-faq-pe__closing'), {
+          y: 14,
+          autoAlpha: 0,
+          duration: 0.6,
+          ease: 'power2.out',
+          clearProps: 'transform,opacity,visibility',
+          scrollTrigger: { trigger: '.rm-faq-pe__closing', start: 'top 90%', toggleActions: 'play none none reverse' }
+        });
+      });
+    });
+  })();
+</script>

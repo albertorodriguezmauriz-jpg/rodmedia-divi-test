@@ -1,0 +1,312 @@
+<!-- ============================================================
+     RM BENEFITS PLAN EDITORIAL — Bloque 3 "Por qué te interesa" del
+     Plan Editorial Anual (Divi 5, Code Module)
+     Marca: Rodmedia · Reestructuración web
+     Fondo oscuro, después del Bloque 2 en claro, para seguir el
+     oscuro→claro→oscuro→... de la familia. Grid de 4 tarjetas de
+     beneficio (frase en negrita + matiz), icono circular por tarjeta
+     — mismo tratamiento visual que las tarjetas de "también te puede
+     interesar" de los CTA finales (fondo translúcido muy sutil,
+     borde de 1px, icono en círculo).
+
+     Movimiento (GSAP + ScrollTrigger por CDN, cdnjs): entrada en
+     scroll con stagger por tarjeta. Respeta prefers-reduced-motion.
+
+     ANTES DE PUBLICAR:
+     1) Si ya cargas Playfair Display / Inter desde el Theme Builder de
+        Divi, borra el @import de aquí para evitar cargarlas dos veces.
+     ============================================================ -->
+
+<section class="rm-benefits-pe" aria-labelledby="rm-benefits-pe-title">
+
+  <div class="rm-benefits-pe__bg" aria-hidden="true">
+    <div class="rm-benefits-pe__glow rm-benefits-pe__glow--blue"></div>
+    <div class="rm-benefits-pe__glow rm-benefits-pe__glow--orange"></div>
+  </div>
+
+  <div class="rm-benefits-pe__container">
+
+    <div class="rm-benefits-pe__head" data-animate>
+      <h2 id="rm-benefits-pe-title" class="rm-benefits-pe__title">Por qué te interesa</h2>
+    </div>
+
+    <div class="rm-benefits-pe__grid">
+
+      <div class="rm-benefits-pe__card" data-animate>
+        <span class="rm-benefits-pe__icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <rect x="3.5" y="4.5" width="17" height="16" rx="2.5" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M3.5 9.5h17M8 3v3M16 3v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M8 14.3 10.3 16.5 15.5 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <p class="rm-benefits-pe__text"><strong>Dejas de improvisar.</strong> Sabes qué publicar cada semana sin sentarte cada lunes a pensar qué contar.</p>
+      </div>
+
+      <div class="rm-benefits-pe__card" data-animate>
+        <span class="rm-benefits-pe__icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <circle cx="10.5" cy="10.5" r="6.5" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M15.3 15.3 20 20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <p class="rm-benefits-pe__text"><strong>Cada artículo responde a lo que la gente busca en Google.</strong> No a lo que suponemos que busca.</p>
+      </div>
+
+      <div class="rm-benefits-pe__card" data-animate>
+        <span class="rm-benefits-pe__icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <circle cx="6" cy="12" r="2.3" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="18" cy="6" r="2.3" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="18" cy="18" r="2.3" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M8 11 16 7M8 13l8 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <p class="rm-benefits-pe__text"><strong>Tus redes y tu blog cuentan lo mismo.</strong> Un único mensaje repartido en todo el año, no publicaciones sueltas.</p>
+      </div>
+
+      <div class="rm-benefits-pe__card" data-animate>
+        <span class="rm-benefits-pe__icon" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M3.5 20.5v-6M10 20.5v-10M16.5 20.5V8M20.5 20.5V4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <p class="rm-benefits-pe__text"><strong>Ves tu avance de un vistazo.</strong> Qué está pendiente, qué está listo y qué ya se ha publicado.</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Inter:wght@400;500;600;700&display=swap');
+
+  .rm-benefits-pe {
+    --rm-primary: #0f0f1e;
+    --rm-blue: #3a7bd5;
+    --rm-orange: #e8531a;
+    --rm-light: #f8f8fb;
+    --rm-text-muted: #9aa3bd;
+    --rm-text-muted-2: #7d84a0;
+    --rm-radius: 8px;
+    --rm-radius-lg: 20px;
+    --rm-transition: 0.3s ease;
+    --rm-font-display: "Playfair Display", Georgia, "Times New Roman", serif;
+    --rm-font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+
+    position: relative;
+    overflow: hidden;
+    background: var(--rm-primary);
+    color: var(--rm-light);
+    font-family: var(--rm-font-body);
+    padding: 100px 20px 110px;
+    box-sizing: border-box;
+  }
+
+  .rm-benefits-pe *,
+  .rm-benefits-pe *::before,
+  .rm-benefits-pe *::after {
+    box-sizing: inherit;
+  }
+
+  /* ---------- Fondo: dos glows sutiles ---------- */
+  .rm-benefits-pe__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .rm-benefits-pe__glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(110px);
+    opacity: 0.22;
+  }
+
+  .rm-benefits-pe__glow--blue {
+    width: 500px;
+    height: 500px;
+    top: -180px;
+    left: -140px;
+    background: var(--rm-blue);
+  }
+
+  .rm-benefits-pe__glow--orange {
+    width: 440px;
+    height: 440px;
+    bottom: -180px;
+    right: -140px;
+    background: var(--rm-orange);
+  }
+
+  /* ---------- Contenedor ---------- */
+  .rm-benefits-pe__container {
+    position: relative;
+    z-index: 1;
+    max-width: 920px;
+    margin: 0 auto;
+  }
+
+  /* El contenido se renderiza visible por defecto: si GSAP/ScrollTrigger
+     no cargan desde el CDN, nada depende de JS para mostrarse. Cuando
+     sí cargan, gsap.from() anima desde un estado inicial oculto hasta
+     este estado natural al entrar en scroll — ver el <script> final. */
+
+  /* ---------- Cabecera ---------- */
+  .rm-benefits-pe__head {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .rm-benefits-pe__title {
+    font-family: var(--rm-font-display);
+    font-weight: 700;
+    font-size: clamp(1.875rem, 1.45rem + 2vw, 2.75rem);
+    line-height: 1.18;
+    letter-spacing: -0.01em;
+    color: var(--rm-light);
+    margin: 0;
+  }
+
+  /* ---------- Grid de beneficios ---------- */
+  .rm-benefits-pe__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+
+  .rm-benefits-pe__card {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 26px 24px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--rm-radius-lg);
+    transition: background var(--rm-transition), border-color var(--rm-transition), transform var(--rm-transition);
+  }
+
+  .rm-benefits-pe__card:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.16);
+    transform: translateY(-2px);
+  }
+
+  .rm-benefits-pe__icon {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    margin-top: 2px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--rm-blue);
+  }
+
+  .rm-benefits-pe__text {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--rm-text-muted);
+  }
+
+  .rm-benefits-pe__text strong {
+    display: block;
+    margin-bottom: 4px;
+    font-family: var(--rm-font-display);
+    font-weight: 700;
+    font-size: 17px;
+    color: var(--rm-light);
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 680px) {
+    .rm-benefits-pe {
+      padding: 64px 16px 72px;
+    }
+
+    .rm-benefits-pe__head {
+      margin-bottom: 32px;
+    }
+
+    .rm-benefits-pe__grid {
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    .rm-benefits-pe__card {
+      padding: 22px 20px;
+    }
+  }
+</style>
+
+<script>
+  (function () {
+    var section = document.querySelector('.rm-benefits-pe');
+    if (!section) return;
+
+    /* Carga GSAP + ScrollTrigger por CDN una sola vez por página, aunque
+       haya varios bloques de este tipo (reutiliza la instancia si otro
+       bloque de esta misma página ya la cargó). */
+    function loadScript(src) {
+      return new Promise(function (resolve, reject) {
+        var existing = document.querySelector('script[data-gsap-src="' + src + '"]');
+        if (existing) {
+          if (existing.dataset.loaded === 'true') { resolve(); return; }
+          existing.addEventListener('load', resolve);
+          existing.addEventListener('error', reject);
+          return;
+        }
+        var s = document.createElement('script');
+        s.src = src;
+        s.dataset.gsapSrc = src;
+        s.onload = function () { s.dataset.loaded = 'true'; resolve(); };
+        s.onerror = reject;
+        document.head.appendChild(s);
+      });
+    }
+
+    function withGSAP(callback) {
+      if (window.gsap && window.ScrollTrigger) { callback(); return; }
+      Promise.all([
+        loadScript('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js'),
+        loadScript('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js')
+      ]).then(function () {
+        if (window.gsap && window.ScrollTrigger) callback();
+      }).catch(function () {
+        /* Sin GSAP el contenido ya es visible por CSS: no hace falta nada más. */
+      });
+    }
+
+    withGSAP(function () {
+      gsap.registerPlugin(ScrollTrigger);
+      var mm = gsap.matchMedia();
+
+      mm.add('(prefers-reduced-motion: no-preference)', function () {
+        gsap.from(section.querySelector('.rm-benefits-pe__head'), {
+          y: 22,
+          autoAlpha: 0,
+          duration: 0.7,
+          ease: 'power2.out',
+          clearProps: 'transform,opacity,visibility',
+          scrollTrigger: { trigger: section.querySelector('.rm-benefits-pe__head'), start: 'top 85%', toggleActions: 'play none none reverse' }
+        });
+
+        gsap.from(section.querySelectorAll('.rm-benefits-pe__card'), {
+          y: 20,
+          autoAlpha: 0,
+          duration: 0.55,
+          ease: 'power2.out',
+          stagger: 0.1,
+          clearProps: 'transform,opacity,visibility',
+          scrollTrigger: { trigger: '.rm-benefits-pe__grid', start: 'top 85%', toggleActions: 'play none none reverse' }
+        });
+      });
+    });
+  })();
+</script>
