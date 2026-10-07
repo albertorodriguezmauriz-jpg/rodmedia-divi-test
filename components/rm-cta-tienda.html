@@ -1,0 +1,557 @@
+<!-- ============================================================
+     RM CTA TIENDA — Bloque 5 "CTA final" para la página de Tienda
+     Online (Divi 5, Code Module)
+     Marca: Rodmedia · Reestructuración web
+     Cierra la página de tienda online (hero · qué incluye y precio ·
+     cómo trabajamos · preguntas frecuentes · CTA final). Vuelve al
+     fondo oscuro con el degradado de marca y la línea superior con
+     brillo del hero — mismo tratamiento, para que la página empiece
+     y termine igual y este bloque se reconozca como "el momento de
+     actuar".
+
+     Enlaces reales ya montados con tus datos (no son placeholder):
+     - CTA principal "Reservar una llamada" → tel:+34691306858
+       (llama directamente a tu móvil). Si prefieres que use un
+       calendario de reservas (Calendly, etc.) en vez de llamar
+       directo, cambia solo este href.
+     - CTA secundario "Escríbenos por WhatsApp" → wa.me con tu número.
+     - Línea de confianza: dirección real de Espacio Rodmedia
+       (Calle Olivella 13,B, 12580 Benicarló, Castellón) en vez del
+       genérico "Oficina en Benicarló" que pedías — mismo criterio ya
+       aplicado en el CTA final de la página de Diseño Web, para que
+       las dos páginas cierren con el mismo dato real.
+
+     id="contacto" en la sección: el resto de bloques de esta página
+     (hero, precio, proceso, FAQ) ya enlazan su CTA secundario a
+     "#contacto" — con este id, todos esos enlaces aterrizan aquí.
+
+     Sin tarjeta de Mantenimiento a propósito, por el mismo motivo que
+     en la página de Diseño Web: en esta página el mantenimiento ya va
+     incluido con la tienda y repetirlo distraería del CTA principal.
+
+     Las dos tarjetas de "también te puede interesar" cruzan a la otra
+     página de la familia (Diseño web) y a Marketing — lo inverso del
+     CTA de Diseño Web, que cruza a Tienda online.
+
+     Movimiento (GSAP + ScrollTrigger por CDN, cdnjs): entrada en
+     scroll del título/subtítulo, botones, línea de confianza y
+     tarjetas — mismo patrón e instancia compartida que los Bloques 2,
+     3 y 4. Respeta prefers-reduced-motion. El contenido ya es visible
+     por CSS si el CDN no carga.
+
+     ANTES DE PUBLICAR:
+     1) Si ya cargas Playfair Display / Inter desde el Theme Builder de
+        Divi, borra el @import de aquí para evitar cargarlas dos veces.
+     2) Cambia los href de "Ver diseño web" y "Ver marketing" por tus
+        páginas reales.
+     ============================================================ -->
+
+<section id="contacto" class="rm-cta-tienda" aria-labelledby="rm-cta-tienda-title">
+
+  <div class="rm-cta-tienda__bg" aria-hidden="true">
+    <div class="rm-cta-tienda__topline"></div>
+    <div class="rm-cta-tienda__glow rm-cta-tienda__glow--blue"></div>
+    <div class="rm-cta-tienda__glow rm-cta-tienda__glow--orange"></div>
+  </div>
+
+  <div class="rm-cta-tienda__container">
+
+    <div class="rm-cta-tienda__head" data-animate>
+      <h2 id="rm-cta-tienda-title" class="rm-cta-tienda__title">¿Hablamos de tu tienda?</h2>
+      <p class="rm-cta-tienda__subtitle">Una llamada de 20 minutos, sin compromiso. En 48 horas tienes tu propuesta con precio cerrado.</p>
+    </div>
+
+    <div class="rm-cta-tienda__actions" data-animate>
+      <a href="tel:+34691306858" class="rm-cta-tienda__cta rm-cta-tienda__cta--primary">
+        <span>Reservar una llamada</span>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M3.5 8h9M8.5 3.5 13 8l-4.5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+      <a href="https://wa.me/34691306858" target="_blank" rel="noopener" class="rm-cta-tienda__cta rm-cta-tienda__cta--secondary">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.7-1.2A9 9 0 1 0 12 3Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+          <path d="M8.5 9.3c.3 2.6 2.6 4.9 5.2 5.2l1-1.3 1.9.8v1.4c0 .5-.5 1-1 1-3.8 0-8-4.2-8-8 0-.5.5-1 1-1h1.4l.8 1.9-1.3 1Z" fill="currentColor"/>
+        </svg>
+        Escríbenos por WhatsApp
+      </a>
+    </div>
+
+    <p class="rm-cta-tienda__trust" data-animate>
+      <span class="rm-cta-tienda__trust-item">C. Olivella 13 (Espacio Rodmedia), 12580 Benicarló</span><span class="rm-cta-tienda__trust-sep" aria-hidden="true">·</span><span class="rm-cta-tienda__trust-item">Precio cerrado</span><span class="rm-cta-tienda__trust-sep" aria-hidden="true">·</span><span class="rm-cta-tienda__trust-item">Sin comisiones por venta</span>
+    </p>
+
+    <div class="rm-cta-tienda__divider" data-animate></div>
+
+    <div class="rm-cta-tienda__more" data-animate>
+      <span class="rm-cta-tienda__more-label">También te puede interesar</span>
+
+      <div class="rm-cta-tienda__cards">
+        <a href="#diseno-web" class="rm-cta-tienda__card">
+          <span class="rm-cta-tienda__card-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <rect x="3" y="4.5" width="18" height="13" rx="1.5" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M8 21h8M12 17.5V21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <span class="rm-cta-tienda__card-body">
+            <strong>Diseño web</strong>
+            <span>¿Aún no necesitas vender online? Una web profesional que explica bien lo que haces.</span>
+            <span class="rm-cta-tienda__card-link">Ver diseño web <span aria-hidden="true">→</span></span>
+          </span>
+        </a>
+
+        <a href="#marketing" class="rm-cta-tienda__card">
+          <span class="rm-cta-tienda__card-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M16.2 16.2 21 21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <span class="rm-cta-tienda__card-body">
+            <strong>Marketing</strong>
+            <span>Que te encuentren: gestión de tu ficha de Google y artículos para tu blog.</span>
+            <span class="rm-cta-tienda__card-link">Ver marketing <span aria-hidden="true">→</span></span>
+          </span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Inter:wght@400;500;600;700&display=swap');
+
+  .rm-cta-tienda {
+    --rm-primary: #0f0f1e;
+    --rm-blue: #3a7bd5;
+    --rm-orange: #e8531a;
+    --rm-light: #f8f8fb;
+    --rm-text-muted: #9aa3bd;
+    --rm-text-muted-2: #7d84a0;
+    --rm-radius: 8px;
+    --rm-radius-lg: 20px;
+    --rm-transition: 0.3s ease;
+    --rm-font-display: "Playfair Display", Georgia, "Times New Roman", serif;
+    --rm-font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+
+    position: relative;
+    overflow: hidden;
+    background: var(--rm-primary);
+    color: var(--rm-light);
+    font-family: var(--rm-font-body);
+    padding: 110px 20px 100px;
+    box-sizing: border-box;
+  }
+
+  .rm-cta-tienda *,
+  .rm-cta-tienda *::before,
+  .rm-cta-tienda *::after {
+    box-sizing: inherit;
+  }
+
+  /* ---------- Fondo: línea de firma + glows, igual que el hero ---------- */
+  .rm-cta-tienda__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .rm-cta-tienda__topline {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--rm-blue), var(--rm-orange), var(--rm-blue));
+    background-size: 200% 100%;
+    animation: rm-cta-tienda-shimmer 6s linear infinite;
+  }
+
+  @keyframes rm-cta-tienda-shimmer {
+    0% { background-position: 0% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  .rm-cta-tienda__glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(110px);
+    opacity: 0.26;
+  }
+
+  .rm-cta-tienda__glow--blue {
+    width: 480px;
+    height: 480px;
+    top: -170px;
+    left: 50%;
+    transform: translateX(-120%);
+    background: var(--rm-blue);
+  }
+
+  .rm-cta-tienda__glow--orange {
+    width: 460px;
+    height: 460px;
+    bottom: -190px;
+    left: 50%;
+    transform: translateX(20%);
+    background: var(--rm-orange);
+  }
+
+  /* ---------- Contenedor ---------- */
+  .rm-cta-tienda__container {
+    position: relative;
+    z-index: 1;
+    max-width: 620px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  /* El contenido se renderiza visible por defecto: si GSAP/ScrollTrigger
+     no cargan desde el CDN, nada depende de JS para mostrarse. Cuando
+     sí cargan, gsap.from() anima desde un estado inicial oculto hasta
+     este estado natural al entrar en scroll — ver el <script> final. */
+
+  .rm-cta-tienda__head {
+    margin-bottom: 36px;
+  }
+
+  .rm-cta-tienda__title {
+    font-family: var(--rm-font-display);
+    font-weight: 700;
+    font-size: clamp(2rem, 1.5rem + 2.4vw, 3rem);
+    line-height: 1.16;
+    letter-spacing: -0.01em;
+    color: var(--rm-light);
+    margin: 0 0 16px;
+  }
+
+  .rm-cta-tienda__subtitle {
+    font-size: 16.5px;
+    line-height: 1.65;
+    color: var(--rm-text-muted);
+    max-width: 48ch;
+    margin: 0 auto;
+  }
+
+  /* ---------- Botones ---------- */
+  .rm-cta-tienda__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 26px;
+  }
+
+  .rm-cta-tienda__cta {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--rm-font-body);
+    font-size: 15.5px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: var(--rm-radius);
+    padding: 16px 28px;
+    transition: transform var(--rm-transition), box-shadow var(--rm-transition), border-color var(--rm-transition), color var(--rm-transition);
+    overflow: hidden;
+  }
+
+  .rm-cta-tienda__cta--primary {
+    background: linear-gradient(135deg, var(--rm-blue), var(--rm-orange));
+    color: #ffffff;
+    box-shadow: 0 12px 28px rgba(58, 123, 213, 0.3);
+  }
+
+  .rm-cta-tienda__cta--primary::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(160px circle at var(--rm-mx, 50%) var(--rm-my, 50%), rgba(255, 255, 255, 0.32), transparent 70%);
+    opacity: 0;
+    transition: opacity var(--rm-transition);
+  }
+
+  .rm-cta-tienda__cta--primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 34px rgba(232, 83, 26, 0.38);
+  }
+
+  .rm-cta-tienda__cta--primary:hover::before {
+    opacity: 1;
+  }
+
+  .rm-cta-tienda__cta--primary span,
+  .rm-cta-tienda__cta--primary svg {
+    position: relative;
+    z-index: 1;
+  }
+
+  .rm-cta-tienda__cta--secondary {
+    color: #e5e7eb;
+    border: 1.5px solid rgba(255, 255, 255, 0.28);
+    background: transparent;
+  }
+
+  .rm-cta-tienda__cta--secondary:hover {
+    border-color: #25d366;
+    color: #ffffff;
+  }
+
+  .rm-cta-tienda__cta--secondary svg {
+    color: #25d366;
+    flex-shrink: 0;
+  }
+
+  .rm-cta-tienda__cta svg {
+    transition: transform var(--rm-transition);
+  }
+
+  .rm-cta-tienda__cta--primary:hover svg {
+    transform: translateX(3px);
+  }
+
+  .rm-cta-tienda__cta:focus-visible {
+    outline: 2px solid var(--rm-blue);
+    outline-offset: 3px;
+  }
+
+  /* ---------- Línea de confianza ---------- */
+  .rm-cta-tienda__trust {
+    font-size: 13px;
+    color: var(--rm-text-muted-2);
+    margin: 0;
+  }
+
+  .rm-cta-tienda__trust-item {
+    display: inline;
+  }
+
+  .rm-cta-tienda__trust-sep {
+    display: inline-block;
+    margin: 0 9px;
+    opacity: 0.5;
+  }
+
+  /* ---------- Separador ---------- */
+  .rm-cta-tienda__divider {
+    height: 1px;
+    max-width: 420px;
+    margin: 52px auto 40px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.14), transparent);
+  }
+
+  /* ---------- También te puede interesar ---------- */
+  .rm-cta-tienda__more-label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--rm-text-muted-2);
+    margin-bottom: 20px;
+  }
+
+  .rm-cta-tienda__cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    text-align: left;
+  }
+
+  .rm-cta-tienda__card {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 18px 18px 20px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--rm-radius-lg);
+    text-decoration: none;
+    transition: background var(--rm-transition), border-color var(--rm-transition), transform var(--rm-transition);
+  }
+
+  .rm-cta-tienda__card:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.16);
+    transform: translateY(-2px);
+  }
+
+  .rm-cta-tienda__card-icon {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    margin-top: 1px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--rm-blue);
+  }
+
+  .rm-cta-tienda__card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .rm-cta-tienda__card-body strong {
+    font-family: var(--rm-font-display);
+    font-size: 15.5px;
+    font-weight: 700;
+    color: var(--rm-light);
+  }
+
+  .rm-cta-tienda__card-body > span:not(.rm-cta-tienda__card-link) {
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--rm-text-muted);
+  }
+
+  .rm-cta-tienda__card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 4px;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--rm-blue);
+  }
+
+  .rm-cta-tienda__card-link span {
+    transition: transform var(--rm-transition);
+    display: inline-block;
+  }
+
+  .rm-cta-tienda__card:hover .rm-cta-tienda__card-link span {
+    transform: translateX(3px);
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 560px) {
+    .rm-cta-tienda {
+      padding: 72px 16px 64px;
+    }
+
+    .rm-cta-tienda__actions {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .rm-cta-tienda__cta {
+      justify-content: center;
+      text-align: center;
+    }
+
+    .rm-cta-tienda__trust {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .rm-cta-tienda__trust-item {
+      display: block;
+    }
+
+    .rm-cta-tienda__trust-sep {
+      display: none;
+    }
+
+    .rm-cta-tienda__divider {
+      margin: 44px auto 32px;
+    }
+
+    .rm-cta-tienda__cards {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  (function () {
+    var section = document.querySelector('.rm-cta-tienda');
+    if (!section) return;
+
+    /* Halo del CTA principal siguiendo al cursor — no necesita GSAP */
+    var cta = section.querySelector('.rm-cta-tienda__cta--primary');
+    if (cta && window.matchMedia('(hover: hover)').matches) {
+      cta.addEventListener('mousemove', function (e) {
+        var rect = cta.getBoundingClientRect();
+        cta.style.setProperty('--rm-mx', (e.clientX - rect.left) + 'px');
+        cta.style.setProperty('--rm-my', (e.clientY - rect.top) + 'px');
+      });
+    }
+
+    /* Carga GSAP + ScrollTrigger por CDN una sola vez por página, aunque
+       haya varios bloques de este tipo (reutiliza la instancia si otro
+       bloque de esta misma página ya la cargó). */
+    function loadScript(src) {
+      return new Promise(function (resolve, reject) {
+        var existing = document.querySelector('script[data-gsap-src="' + src + '"]');
+        if (existing) {
+          if (existing.dataset.loaded === 'true') { resolve(); return; }
+          existing.addEventListener('load', resolve);
+          existing.addEventListener('error', reject);
+          return;
+        }
+        var s = document.createElement('script');
+        s.src = src;
+        s.dataset.gsapSrc = src;
+        s.onload = function () { s.dataset.loaded = 'true'; resolve(); };
+        s.onerror = reject;
+        document.head.appendChild(s);
+      });
+    }
+
+    function withGSAP(callback) {
+      if (window.gsap && window.ScrollTrigger) { callback(); return; }
+      Promise.all([
+        loadScript('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js'),
+        loadScript('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js')
+      ]).then(function () {
+        if (window.gsap && window.ScrollTrigger) callback();
+      }).catch(function () {
+        /* Sin GSAP el contenido ya es visible por CSS: no hace falta nada más. */
+      });
+    }
+
+    withGSAP(function () {
+      gsap.registerPlugin(ScrollTrigger);
+      var mm = gsap.matchMedia();
+
+      mm.add('(prefers-reduced-motion: no-preference)', function () {
+        var order = ['.rm-cta-tienda__head', '.rm-cta-tienda__actions', '.rm-cta-tienda__trust', '.rm-cta-tienda__divider', '.rm-cta-tienda__more'];
+        var tl = gsap.timeline({
+          scrollTrigger: { trigger: section, start: 'top 75%', toggleActions: 'play none none reverse' }
+        });
+        order.forEach(function (sel, i) {
+          var el = section.querySelector(sel);
+          if (!el) return;
+          tl.from(el, {
+            y: 20,
+            autoAlpha: 0,
+            duration: 0.6,
+            ease: 'power2.out',
+            clearProps: 'transform,opacity,visibility'
+          }, i === 0 ? 0 : '-=0.35');
+        });
+
+        gsap.from(section.querySelectorAll('.rm-cta-tienda__card'), {
+          y: 14,
+          autoAlpha: 0,
+          duration: 0.5,
+          ease: 'power2.out',
+          stagger: 0.1,
+          clearProps: 'transform,opacity,visibility',
+          scrollTrigger: { trigger: '.rm-cta-tienda__cards', start: 'top 88%', toggleActions: 'play none none reverse' }
+        });
+      });
+    });
+  })();
+</script>

@@ -1,0 +1,971 @@
+<!-- ============================================================
+     RM HERO BLOG — Hero de la página de "Gestión de blog" (Divi 5,
+     Code Module)
+     Marca: Rodmedia · Reestructuración web
+     Mismo sistema que el resto de la familia (dominio, hosting,
+     correo, SEO, redes sociales): fondo #0f0f1e, línea superior con
+     brillo, partículas conectadas, dos glows difuminados, Playfair
+     Display (con eje itálico real cargado desde el principio) +
+     Inter, badge con punto parpadeante, degradado de marca a 135deg,
+     entrada en scroll, tarjeta 3D con inclinación al cursor.
+
+     Mockup: artículo publicado de clinicadentalmar.es, optimizado
+     para "limpieza dental Benicarló", con la notificación flotante
+     "Nueva visita desde Google" — misma historia que en las demás
+     páginas (se publica → llega un cliente). El botón decorativo del
+     panel dice "Ver todos los artículos" — texto distinto al CTA
+     principal real ("Ver planes de gestión de blog"), para no repetir
+     el bug ya corregido en el hero de hosting (ver CLAUDE.md).
+
+     ANTES DE PUBLICAR:
+     1) Si ya cargas Playfair Display / Inter desde el Theme Builder de
+        Divi, borra el @import de aquí para evitar cargarlas dos veces.
+     2) Cambia los href de "Ver planes de gestión de blog" y "Reservar
+        una llamada" por tus anclas o páginas reales.
+     ============================================================ -->
+
+<section class="rm-hero-blog" aria-labelledby="rm-hero-blog-title">
+
+  <div class="rm-hero-blog__bg" aria-hidden="true">
+    <div class="rm-hero-blog__topline"></div>
+    <canvas class="rm-hero-blog__particles"></canvas>
+    <div class="rm-hero-blog__glow rm-hero-blog__glow--blue"></div>
+    <div class="rm-hero-blog__glow rm-hero-blog__glow--orange"></div>
+  </div>
+
+  <div class="rm-hero-blog__container">
+
+    <!-- ---------- Columna de texto ---------- -->
+    <div class="rm-hero-blog__content" data-animate>
+      <span class="rm-hero-blog__badge">
+        <span class="rm-hero-blog__badge-dot" aria-hidden="true"></span>
+        Gestionamos tu blog · SEO
+      </span>
+
+      <h1 id="rm-hero-blog-title" class="rm-hero-blog__title">
+        Artículos que <em>responden</em> a tus clientes antes de que llamen
+      </h1>
+
+      <p class="rm-hero-blog__subtitle">
+        Escribimos, optimizamos y publicamos artículos sobre lo que tus clientes buscan en Google. Tu web se mantiene al día y suma visitas de quien ya busca lo que ofreces.
+      </p>
+
+      <div class="rm-hero-blog__note">
+        <svg class="rm-hero-blog__note-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/>
+          <path d="M3 12h18M12 3c2.5 2.6 3.8 5.7 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.7-3.8-9S9.5 5.6 12 3Z" stroke="currentColor" stroke-width="1.6"/>
+        </svg>
+        <p>
+          Una web que publica con regularidad demuestra que tu negocio está activo, a Google y a tus clientes.
+        </p>
+      </div>
+
+      <div class="rm-hero-blog__actions">
+        <a href="#planes-blog" class="rm-hero-blog__cta rm-hero-blog__cta--primary">
+          <span>Ver planes de gestión de blog</span>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3.5 8h9M8.5 3.5 13 8l-4.5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a href="#contacto" class="rm-hero-blog__cta rm-hero-blog__cta--secondary">
+          Reservar una llamada
+        </a>
+      </div>
+
+      <dl class="rm-hero-blog__stats">
+        <div class="rm-hero-blog__stat">
+          <dt>Artículos</dt>
+          <dd>Cada mes</dd>
+        </div>
+        <div class="rm-hero-blog__stat">
+          <dt>Optimizados</dt>
+          <dd>Para Google</dd>
+        </div>
+        <div class="rm-hero-blog__stat">
+          <dt>Tu tono</dt>
+          <dd>Con tu revisión</dd>
+        </div>
+        <div class="rm-hero-blog__stat">
+          <dt>Publicación</dt>
+          <dd>Incluida</dd>
+        </div>
+      </dl>
+    </div>
+
+    <!-- ---------- Mockup: artículo publicado y optimizado ---------- -->
+    <div class="rm-hero-blog__visual" data-animate>
+      <div class="rm-hero-blog__card-back" aria-hidden="true"></div>
+
+      <div class="rm-hero-blog__card" role="img"
+           aria-label="Artículo publicado en clinicadentalmar.es, optimizado para la búsqueda limpieza dental Benicarló, con una notificación de una nueva visita desde Google.">
+
+        <div class="rm-hero-blog__shot">
+          <span class="rm-hero-blog__tag">
+            <span class="rm-hero-blog__tag-dot" aria-hidden="true"></span>
+            Publicado ✓
+          </span>
+
+          <div class="rm-hero-blog__post">
+            <div class="rm-hero-blog__post-header">
+              <span class="rm-hero-blog__post-avatar" aria-hidden="true">C</span>
+              <div class="rm-hero-blog__post-body">
+                <span class="rm-hero-blog__post-domain">clinicadentalmar.es</span>
+                <span class="rm-hero-blog__post-meta">Blog · Publicado hoy</span>
+              </div>
+            </div>
+
+            <h3 class="rm-hero-blog__post-headline">Limpieza dental en Benicarló: guía rápida</h3>
+
+            <span class="rm-hero-blog__keyword">
+              Optimizado para «limpieza dental Benicarló»
+            </span>
+          </div>
+
+          <ul class="rm-hero-blog__features">
+            <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M4 12.5 9.5 18 20 6" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Revisado antes de publicar</li>
+            <li><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M4 12.5 9.5 18 20 6" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Enlazado a tu web</li>
+          </ul>
+        </div>
+
+        <div class="rm-hero-blog__panel">
+          <span class="rm-hero-blog__panel-label">Rendimiento del artículo</span>
+          <span class="rm-hero-blog__panel-title">clinicadentalmar.es/blog</span>
+
+          <span class="rm-hero-blog__panel-btn">
+            <span class="rm-hero-blog__panel-btn-texto">Ver todos los artículos</span>
+          </span>
+        </div>
+      </div>
+
+      <div class="rm-hero-blog__notif">
+        <span class="rm-hero-blog__notif-dot" aria-hidden="true"></span>
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/>
+          <path d="M8 12.5h8M12.5 9l3.5 3.5-3.5 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div>
+          <strong>Nueva visita desde Google</strong>
+          <span>clinicadentalmar.es/blog</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Inter:wght@400;500;600;700&display=swap');
+
+  .rm-hero-blog {
+    --rm-primary: #0f0f1e;
+    --rm-blue: #3a7bd5;
+    --rm-orange: #e8531a;
+    --rm-light: #f8f8fb;
+    --rm-text-muted: #9aa3bd;
+    --rm-text-muted-2: #7d84a0;
+    --rm-radius: 8px;
+    --rm-radius-lg: 20px;
+    --rm-transition: 0.3s ease;
+    --rm-font-display: "Playfair Display", Georgia, "Times New Roman", serif;
+    --rm-font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    --rm-loop: 9s;
+
+    position: relative;
+    overflow: hidden;
+    background: var(--rm-primary);
+    color: var(--rm-light);
+    font-family: var(--rm-font-body);
+    padding: 120px 20px 100px;
+    box-sizing: border-box;
+  }
+
+  .rm-hero-blog *,
+  .rm-hero-blog *::before,
+  .rm-hero-blog *::after {
+    box-sizing: inherit;
+  }
+
+  /* ---------- Fondo: línea de firma + partículas + glows ---------- */
+  .rm-hero-blog__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .rm-hero-blog__topline {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--rm-blue), var(--rm-orange), var(--rm-blue));
+    background-size: 200% 100%;
+    animation: rm-hero-blog-shimmer 6s linear infinite;
+  }
+
+  @keyframes rm-hero-blog-shimmer {
+    0% { background-position: 0% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  .rm-hero-blog__particles {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .rm-hero-blog__glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.28;
+    animation: rm-hero-blog-float 15s ease-in-out infinite;
+  }
+
+  .rm-hero-blog__glow--blue {
+    width: 480px;
+    height: 480px;
+    top: -150px;
+    left: -110px;
+    background: var(--rm-blue);
+  }
+
+  .rm-hero-blog__glow--orange {
+    width: 420px;
+    height: 420px;
+    bottom: -170px;
+    right: -110px;
+    background: var(--rm-orange);
+    animation-delay: -7s;
+  }
+
+  @keyframes rm-hero-blog-float {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(26px, 22px) scale(1.07); }
+  }
+
+  /* ---------- Contenedor ---------- */
+  .rm-hero-blog__container {
+    position: relative;
+    z-index: 1;
+    max-width: 1140px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    align-items: center;
+    gap: 64px;
+  }
+
+  .rm-hero-blog__content[data-animate],
+  .rm-hero-blog__visual[data-animate] {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .rm-hero-blog__content.is-visible,
+  .rm-hero-blog__visual.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .rm-hero-blog__visual[data-animate] {
+    transition-delay: 0.15s;
+  }
+
+  /* ---------- Badge ---------- */
+  .rm-hero-blog__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 16px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #cbd5e1;
+    margin-bottom: 28px;
+  }
+
+  .rm-hero-blog__badge-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--rm-blue), var(--rm-orange));
+    animation: rm-hero-blog-blink 2.2s ease-in-out infinite;
+  }
+
+  @keyframes rm-hero-blog-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.25; }
+  }
+
+  /* ---------- Titular ---------- */
+  .rm-hero-blog__title {
+    font-family: var(--rm-font-display);
+    font-weight: 700;
+    font-size: clamp(2.25rem, 1.4rem + 3.4vw, 3.75rem);
+    line-height: 1.14;
+    letter-spacing: -0.01em;
+    color: var(--rm-light);
+    max-width: 19ch;
+    margin: 0 0 22px;
+  }
+
+  /* inline-block con su propio line-height generoso: la caja del
+     degradado no depende de qué fuente acabe cargando (real o
+     cursiva fabricada por el navegador si el webfont no llega a
+     tiempo), así las astas altas de la cursiva nunca se recortan */
+  .rm-hero-blog__title em {
+    display: inline-block;
+    line-height: 1.5;
+    padding: 0 0.02em;
+    font-style: italic;
+    background: linear-gradient(135deg, var(--rm-blue), var(--rm-orange));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .rm-hero-blog__subtitle {
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--rm-text-muted);
+    max-width: 48ch;
+    margin: 0 0 32px;
+  }
+
+  /* ---------- Recuadro de garantía (regularidad de publicación) ---------- */
+  .rm-hero-blog__note {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px 20px;
+    margin-bottom: 28px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--rm-radius-lg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    max-width: 48ch;
+  }
+
+  .rm-hero-blog__note-icon {
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: var(--rm-blue);
+  }
+
+  .rm-hero-blog__note p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--rm-text-muted);
+  }
+
+  .rm-hero-blog__note strong {
+    color: var(--rm-light);
+    font-weight: 600;
+  }
+
+  /* ---------- CTAs ---------- */
+  .rm-hero-blog__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin-bottom: 40px;
+  }
+
+  .rm-hero-blog__cta {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--rm-font-body);
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: var(--rm-radius);
+    padding: 15px 26px;
+    transition: transform var(--rm-transition), box-shadow var(--rm-transition), border-color var(--rm-transition), color var(--rm-transition);
+    overflow: hidden;
+  }
+
+  .rm-hero-blog__cta--primary {
+    background: linear-gradient(135deg, var(--rm-blue), var(--rm-orange));
+    color: #ffffff;
+    box-shadow: 0 12px 28px rgba(58, 123, 213, 0.28);
+  }
+
+  .rm-hero-blog__cta--primary::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(160px circle at var(--rm-mx, 50%) var(--rm-my, 50%), rgba(255, 255, 255, 0.32), transparent 70%);
+    opacity: 0;
+    transition: opacity var(--rm-transition);
+  }
+
+  .rm-hero-blog__cta--primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 34px rgba(232, 83, 26, 0.35);
+  }
+
+  .rm-hero-blog__cta--primary:hover::before {
+    opacity: 1;
+  }
+
+  .rm-hero-blog__cta--primary span,
+  .rm-hero-blog__cta--primary svg {
+    position: relative;
+    z-index: 1;
+  }
+
+  .rm-hero-blog__cta--secondary {
+    color: #e5e7eb;
+    border: 1.5px solid rgba(255, 255, 255, 0.28);
+    background: transparent;
+  }
+
+  .rm-hero-blog__cta--secondary:hover {
+    border-color: var(--rm-blue);
+    color: #ffffff;
+  }
+
+  .rm-hero-blog__cta:focus-visible {
+    outline: 2px solid var(--rm-blue);
+    outline-offset: 3px;
+  }
+
+  /* ---------- Franja de stats ---------- */
+  .rm-hero-blog__stats {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--rm-radius-lg);
+    background: rgba(255, 255, 255, 0.025);
+    overflow: hidden;
+    max-width: 620px;
+  }
+
+  .rm-hero-blog__stat {
+    flex: 1 1 0;
+    min-width: 130px;
+    padding: 18px 16px;
+    text-align: center;
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .rm-hero-blog__stat:last-child {
+    border-right: none;
+  }
+
+  .rm-hero-blog__stat dt {
+    font-family: var(--rm-font-display);
+    font-size: 19px;
+    font-weight: 600;
+    line-height: 1.25;
+    background: linear-gradient(135deg, var(--rm-blue), var(--rm-orange));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0 0 4px;
+  }
+
+  .rm-hero-blog__stat dd {
+    margin: 0;
+    font-size: 11px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: var(--rm-text-muted-2);
+  }
+
+  /* ---------- Tarjeta mockup (3D: inclinación con el cursor) ---------- */
+  .rm-hero-blog__visual {
+    position: relative;
+    max-width: 420px;
+    width: 100%;
+    margin: 0 auto;
+    padding-bottom: 40px;
+    perspective: 1400px;
+  }
+
+  .rm-hero-blog__card-back {
+    position: absolute;
+    top: 16px;
+    right: -14px;
+    bottom: 26px;
+    left: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--rm-radius-lg);
+    background: rgba(255, 255, 255, 0.03);
+    transform: translateZ(-70px) rotate(4deg) scale(0.96);
+    opacity: 0.55;
+  }
+
+  .rm-hero-blog__card {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--rm-radius-lg);
+    background: #14151f;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+    animation: rm-hero-blog-idle-sway 7s ease-in-out infinite;
+    transition: transform 0.15s ease-out;
+    will-change: transform;
+  }
+
+  .rm-hero-blog__visual.is-interactive .rm-hero-blog__card {
+    animation: none;
+  }
+
+  @keyframes rm-hero-blog-idle-sway {
+    0%, 100% { transform: rotateY(-5deg) rotateX(2.5deg); }
+    50% { transform: rotateY(5deg) rotateX(-2.5deg); }
+  }
+
+  /* Área superior clara: artículo publicado, igual tratamiento que los
+     otros heros */
+  .rm-hero-blog__shot {
+    position: relative;
+    padding: 58px 24px 26px;
+    background: radial-gradient(ellipse at 50% 30%, #fbfbfb, #dedee2 80%);
+  }
+
+  .rm-hero-blog__tag {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    z-index: 3;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 13px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, var(--rm-blue), var(--rm-orange));
+    color: #ffffff;
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  .rm-hero-blog__tag-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #ffffff;
+    animation: rm-hero-blog-blink 2.2s ease-in-out infinite;
+  }
+
+  /* Artículo: cabecera (avatar + dominio) + titular + palabra clave */
+  .rm-hero-blog__post {
+    padding: 14px 16px 16px;
+    border-radius: 16px;
+    background: #ffffff;
+    border: 1px solid #e2e5ea;
+    box-shadow: 0 10px 24px rgba(15, 15, 30, 0.08);
+  }
+
+  .rm-hero-blog__post-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .rm-hero-blog__post-avatar {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--rm-blue), var(--rm-orange));
+    color: #ffffff;
+    font-family: var(--rm-font-display);
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .rm-hero-blog__post-body {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .rm-hero-blog__post-domain {
+    font-size: 13px;
+    font-weight: 600;
+    color: #1f2430;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .rm-hero-blog__post-meta {
+    font-size: 12.5px;
+    color: #6b7290;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .rm-hero-blog__post-headline {
+    margin: 0 0 10px;
+    font-family: var(--rm-font-display);
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.3;
+    color: #1a1d29;
+  }
+
+  .rm-hero-blog__keyword {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: rgba(58, 123, 213, 0.1);
+    color: var(--rm-blue);
+    font-size: 11.5px;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  .rm-hero-blog__features {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 16px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .rm-hero-blog__features li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #545b6e;
+  }
+
+  .rm-hero-blog__features svg {
+    flex: none;
+    color: var(--rm-blue);
+  }
+
+  /* Panel inferior */
+  .rm-hero-blog__panel {
+    position: relative;
+    padding: 22px 20px 24px;
+  }
+
+  .rm-hero-blog__panel-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--rm-text-muted);
+  }
+
+  .rm-hero-blog__panel-title {
+    display: block;
+    margin: 4px 0 16px;
+    font-family: var(--rm-font-display);
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--rm-light);
+  }
+
+  .rm-hero-blog__panel-btn {
+    position: relative;
+    display: block;
+    padding: 13px 20px;
+    border-radius: var(--rm-radius);
+    background: linear-gradient(135deg, var(--rm-blue), var(--rm-orange));
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    transform: scale(1);
+    animation: rm-hero-blog-press var(--rm-loop) infinite;
+  }
+
+  .rm-hero-blog__panel-btn-texto {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ---------- Tarjeta flotante: nueva visita desde Google ---------- */
+  .rm-hero-blog__notif {
+    position: absolute;
+    left: -8px;
+    bottom: -18px;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 20px;
+    background: rgba(15, 15, 30, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--rm-radius-lg);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    color: var(--rm-blue);
+    opacity: 0;
+    transform: translateY(12px);
+    animation: rm-hero-blog-notif var(--rm-loop) infinite;
+  }
+
+  .rm-hero-blog__notif-dot {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--rm-blue), var(--rm-orange));
+  }
+
+  .rm-hero-blog__notif div { display: flex; flex-direction: column; gap: 1px; }
+
+  .rm-hero-blog__notif strong {
+    font-size: 13px;
+    color: var(--rm-light);
+  }
+
+  .rm-hero-blog__notif span {
+    font-size: 12px;
+    color: var(--rm-text-muted);
+  }
+
+  /* ---------- Animación en bucle de la tarjeta ----------
+     42-48% se "pulsa" el botón de ver artículos
+     50-88% el aviso "nueva visita desde Google" queda visible
+     90%    todo vuelve al inicio */
+  @keyframes rm-hero-blog-press {
+    0%, 43%   { transform: scale(1); }
+    45%       { transform: scale(0.94); }
+    48%, 100% { transform: scale(1); }
+  }
+  @keyframes rm-hero-blog-notif {
+    0%, 48%   { opacity: 0; transform: translateY(12px); }
+    52%, 88%  { opacity: 1; transform: translateY(0); }
+    93%, 100% { opacity: 0; transform: translateY(12px); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .rm-hero-blog__topline,
+    .rm-hero-blog__glow,
+    .rm-hero-blog__badge-dot,
+    .rm-hero-blog__tag-dot,
+    .rm-hero-blog__panel-btn,
+    .rm-hero-blog__notif {
+      animation: none;
+    }
+    .rm-hero-blog__notif { opacity: 1; transform: none; }
+    .rm-hero-blog__content[data-animate],
+    .rm-hero-blog__visual[data-animate] {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+    .rm-hero-blog__visual { perspective: none; }
+    .rm-hero-blog__card,
+    .rm-hero-blog__card-back { transform: none; }
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 980px) {
+    .rm-hero-blog {
+      padding: 90px 20px 60px;
+    }
+
+    .rm-hero-blog__container {
+      grid-template-columns: 1fr;
+      gap: 56px;
+    }
+
+    .rm-hero-blog__visual {
+      order: -1;
+      max-width: 420px;
+      margin: 0 auto;
+    }
+
+    .rm-hero-blog__title {
+      max-width: 100%;
+    }
+
+    .rm-hero-blog__subtitle,
+    .rm-hero-blog__note {
+      max-width: 60ch;
+    }
+
+    .rm-hero-blog__stats {
+      max-width: 100%;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .rm-hero-blog {
+      padding: 64px 16px 40px;
+    }
+
+    .rm-hero-blog__actions {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .rm-hero-blog__cta {
+      justify-content: center;
+      text-align: center;
+    }
+
+    .rm-hero-blog__stat {
+      min-width: 46%;
+      border-right: none;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .rm-hero-blog__stat:nth-child(2n) {
+      border-right: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .rm-hero-blog__card-back { right: -6px; left: 6px; }
+    .rm-hero-blog__visual { padding-bottom: 64px; }
+    .rm-hero-blog__notif { left: 8px; right: 8px; }
+  }
+</style>
+
+<script>
+  (function () {
+    var section = document.querySelector('.rm-hero-blog');
+    if (!section) return;
+
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    /* Entradas secuenciadas al hacer scroll */
+    var elements = section.querySelectorAll('[data-animate]');
+    if (!('IntersectionObserver' in window) || !elements.length) {
+      elements.forEach(function (el) { el.classList.add('is-visible'); });
+    } else {
+      var entryObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            entryObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+      elements.forEach(function (el) { entryObserver.observe(el); });
+    }
+
+    /* Partículas de fondo */
+    var canvas = section.querySelector('.rm-hero-blog__particles');
+    if (canvas && !reduceMotion) {
+      var ctx = canvas.getContext('2d');
+      var particles = [];
+      var count = 44;
+      var w, h;
+
+      function resize() {
+        w = canvas.width = canvas.offsetWidth;
+        h = canvas.height = canvas.offsetHeight;
+      }
+
+      function init() {
+        particles = [];
+        for (var i = 0; i < count; i++) {
+          particles.push({
+            x: Math.random() * w,
+            y: Math.random() * h,
+            vx: (Math.random() - 0.5) * 0.25,
+            vy: (Math.random() - 0.5) * 0.25
+          });
+        }
+      }
+
+      function step() {
+        ctx.clearRect(0, 0, w, h);
+        for (var i = 0; i < particles.length; i++) {
+          var p = particles[i];
+          p.x += p.vx;
+          p.y += p.vy;
+          if (p.x < 0 || p.x > w) p.vx *= -1;
+          if (p.y < 0 || p.y > h) p.vy *= -1;
+        }
+        for (var i = 0; i < particles.length; i++) {
+          for (var j = i + 1; j < particles.length; j++) {
+            var a = particles[i], b = particles[j];
+            var dx = a.x - b.x, dy = a.y - b.y;
+            var dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < 140) {
+              ctx.strokeStyle = 'rgba(58,123,213,' + (0.16 * (1 - dist / 140)) + ')';
+              ctx.lineWidth = 1;
+              ctx.beginPath();
+              ctx.moveTo(a.x, a.y);
+              ctx.lineTo(b.x, b.y);
+              ctx.stroke();
+            }
+          }
+        }
+        for (var i = 0; i < particles.length; i++) {
+          ctx.fillStyle = 'rgba(125,211,252,0.55)';
+          ctx.beginPath();
+          ctx.arc(particles[i].x, particles[i].y, 1.4, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        requestAnimationFrame(step);
+      }
+
+      resize();
+      init();
+      step();
+      window.addEventListener('resize', function () {
+        resize();
+        init();
+      });
+    }
+
+    /* Tarjeta 3D: inclinación con el cursor, igual que en los otros heros */
+    var visual = section.querySelector('.rm-hero-blog__visual');
+    var card = section.querySelector('.rm-hero-blog__card');
+    if (visual && card && !reduceMotion && window.matchMedia('(hover: hover)').matches) {
+      visual.addEventListener('mousemove', function (e) {
+        var rect = visual.getBoundingClientRect();
+        var px = (e.clientX - rect.left) / rect.width - 0.5;
+        var py = (e.clientY - rect.top) / rect.height - 0.5;
+        var rotateY = px * 24;
+        var rotateX = py * -24;
+        visual.classList.add('is-interactive');
+        card.style.transform = 'rotateY(' + rotateY + 'deg) rotateX(' + rotateX + 'deg) translateZ(24px)';
+      });
+      visual.addEventListener('mouseleave', function () {
+        visual.classList.remove('is-interactive');
+        card.style.transform = '';
+      });
+    }
+
+    /* Halo del CTA principal siguiendo al cursor */
+    var primaryCta = section.querySelector('.rm-hero-blog__cta--primary');
+    if (primaryCta && window.matchMedia('(hover: hover)').matches) {
+      primaryCta.addEventListener('mousemove', function (e) {
+        var rect = primaryCta.getBoundingClientRect();
+        primaryCta.style.setProperty('--rm-mx', (e.clientX - rect.left) + 'px');
+        primaryCta.style.setProperty('--rm-my', (e.clientY - rect.top) + 'px');
+      });
+    }
+  })();
+</script>
