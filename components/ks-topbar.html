@@ -1,0 +1,204 @@
+<div class="ks-topbar-unified">
+  <!-- Datos de contacto oficiales -->
+  <div class="ks-contact-group">
+    <!-- Teléfono destacado como llamada a la acción -->
+    <a href="tel:+34964450151" class="ks-contact-link ks-phone-cta" aria-label="Llamar al 964 45 01 51">
+      <span class="ks-phone-icon" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.61 21 3 13.39 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.58a1 1 0 0 1-.25 1.01l-2.2 2.2z"/>
+        </svg>
+      </span>
+      <span class="ks-phone-text">
+        <small>¿Dudas? Llámanos</small>
+        <strong>964 45 01 51</strong>
+      </span>
+    </a>
+    <a href="mailto:info@kranzlespain.es" class="ks-contact-link">
+      <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/>
+      </svg>
+      <span>info@kranzlespain.es</span>
+    </a>
+  </div>
+
+  <!-- Buscador optimizado con endpoint nativo WooCommerce -->
+  <div class="ks-search-group">
+    <form role="search" method="get" class="ks-search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+      <input type="search" class="ks-search-field" placeholder="Buscar máquina o SKU..." value="<?php echo get_search_query(); ?>" name="s" title="Buscar productos" />
+      <input type="hidden" name="post_type" value="product" />
+      <button type="submit" class="ks-search-btn" aria-label="Buscar">
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+      </button>
+    </form>
+  </div>
+</div>
+
+<style>
+/* Estructura Principal */
+.ks-topbar-unified {
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #003865 !important; /* Azul oscuro corporativo */
+  padding: 8px 16px;
+  border-radius: 4px;
+  width: 100% !important;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif !important; /* Tipografía oficial */
+}
+
+/* Teléfono y Email */
+.ks-contact-group {
+  display: flex !important;
+  align-items: center;
+  gap: 20px;
+}
+.ks-contact-link {
+  display: flex !important;
+  align-items: center;
+  gap: 8px;
+  color: #ffffff !important;
+  text-decoration: none !important;
+  font-size: 14px;
+  font-weight: bold;
+}
+.ks-contact-link:hover {
+  opacity: 0.85;
+}
+
+/* ---------- Teléfono destacado (CTA) ---------- */
+.ks-phone-cta {
+  background-color: #ffffff;
+  color: #003865 !important;
+  padding: 4px 16px 4px 4px;
+  border-radius: 30px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.ks-phone-cta:hover,
+.ks-phone-cta:focus-visible {
+  opacity: 1;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+}
+.ks-phone-cta:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 3px;
+}
+.ks-phone-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #003865;
+  color: #ffffff;
+  flex-shrink: 0;
+}
+/* Onda suave que invita a pulsar */
+.ks-phone-icon::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid #003865;
+  animation: ks-phone-ring 2s ease-out infinite;
+}
+.ks-phone-cta:hover .ks-phone-icon svg {
+  animation: ks-phone-shake 0.5s ease-in-out;
+}
+.ks-phone-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+.ks-phone-text small {
+  font-size: 11px;
+  font-weight: normal;
+  opacity: 0.8;
+}
+.ks-phone-text strong {
+  font-size: 16px;
+  letter-spacing: 0.5px;
+}
+
+@keyframes ks-phone-ring {
+  0%   { transform: scale(1);   opacity: 0.7; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+@keyframes ks-phone-shake {
+  0%, 100% { transform: rotate(0); }
+  25%      { transform: rotate(-15deg); }
+  50%      { transform: rotate(15deg); }
+  75%      { transform: rotate(-10deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ks-phone-icon::after,
+  .ks-phone-cta:hover .ks-phone-icon svg { animation: none; }
+  .ks-phone-cta { transition: none; }
+}
+
+/* Buscador */
+.ks-search-group {
+  display: flex !important;
+  align-items: center;
+}
+.ks-search-form {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.ks-search-field {
+  background-color: rgba(255, 255, 255, 0.15) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  border-radius: 20px;
+  padding: 5px 35px 5px 12px;
+  font-size: 13px;
+  color: #ffffff !important;
+  outline: none;
+  width: 240px;
+  transition: all 0.2s ease;
+}
+.ks-search-field::placeholder {
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+.ks-search-field:focus {
+  background-color: rgba(255, 255, 255, 0.25) !important;
+  border-color: #ffffff !important;
+}
+.ks-search-btn {
+  position: absolute;
+  right: 8px;
+  background: transparent;
+  border: none;
+  color: #ffffff !important;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Adaptación para pantallas móviles */
+@media (max-width: 980px) {
+  .ks-topbar-unified {
+    flex-direction: column !important;
+    gap: 10px;
+    padding: 10px;
+  }
+  .ks-contact-group {
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 12px !important;
+  }
+  .ks-search-group,
+  .ks-search-form,
+  .ks-search-field {
+    width: 100% !important;
+  }
+}
+</style>
