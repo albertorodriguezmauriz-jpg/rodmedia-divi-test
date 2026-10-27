@@ -1,0 +1,786 @@
+<!-- ============================================================
+     RM POST ASIDE — Barra lateral + estilos de lectura de la entrada
+     (Divi Theme Builder > Cuerpo personalizado > Todas las entradas)
+     Marca: Rodmedia · Reestructuración web
+
+     Va en la columna estrecha (1/4) de la sección de contenido
+     (clase CSS de la sección: rm-post-body). La columna ancha (3/4)
+     lleva el módulo "Contenido de la entrada" con la clase CSS
+     rm-post-content y, debajo, el Code Module rm-post-end.
+
+     Este código:
+     - Da estilo de lectura al contenido (tipografía, títulos,
+       listas, citas, tablas, imágenes, enlaces).
+     - Crea el índice automático a partir de los H2/H3 del artículo
+       (en la barra lateral en escritorio y desplegable arriba del
+       artículo en tablet/móvil).
+     - Añade la barra de progreso de lectura arriba del todo.
+     - Hace funcionar todos los botones de compartir [data-rm-share].
+     ============================================================ -->
+
+<aside class="rm-post-aside" aria-label="Índice y acciones del artículo">
+
+  <nav class="rm-post-toc" aria-labelledby="rm-post-toc-title" hidden>
+    <p id="rm-post-toc-title" class="rm-post-toc__title">En este artículo</p>
+    <ol class="rm-post-toc__list"></ol>
+  </nav>
+
+  <div class="rm-post-share">
+    <p class="rm-post-share__title">Compártelo</p>
+    <div class="rm-post-share__buttons">
+      <a data-rm-share="whatsapp" href="#" aria-label="Compartir por WhatsApp">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3.5 20.5 5 16a8.5 8.5 0 1 1 3.2 3.1z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 8.5c0 3.3 3.2 6.5 6.5 6.5l1-1.6-2-1-1 .9c-1.1-.5-2-1.4-2.6-2.6l.9-1-1-2z" fill="currentColor"/></svg>
+      </a>
+      <a data-rm-share="linkedin" href="#" aria-label="Compartir en LinkedIn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" stroke-width="1.6"/><path d="M8 10.5V16M8 7.8v.1M11.5 16v-5.5M11.5 13c0-1.6 1-2.6 2.3-2.6s2.2.9 2.2 2.6V16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </a>
+      <a data-rm-share="facebook" href="#" aria-label="Compartir en Facebook">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14 8h2.5V4.5H14c-2.2 0-3.5 1.5-3.5 3.7V10H8v3.5h2.5V21H14v-7.5h2.5L17 10h-3V8.6c0-.4.3-.6.6-.6z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+      </a>
+      <button type="button" data-rm-share="copy" aria-label="Copiar enlace">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="rm-post-aside__cta">
+    <p class="rm-post-aside__cta-title">¿Lo vemos para tu negocio?</p>
+    <p class="rm-post-aside__cta-text">Una llamada de 20 minutos, sin compromiso, para ver qué te conviene.</p>
+    <a class="rm-post-aside__cta-btn" href="/reserva-una-cita/">Reservar una llamada</a>
+  </div>
+
+</aside>
+
+<style>
+  /* ---------- Tokens de la sección de contenido ---------- */
+  .rm-post-body {
+    --rm-primary: #0f0f1e;
+    --rm-blue: #3a7bd5;
+    --rm-orange: #e8531a;
+    --rm-text: #2a2f42;
+    --rm-text-muted: #5b6478;
+    --rm-border: rgba(15, 15, 30, 0.08);
+    --rm-soft: #f4f6fb;
+    --rm-radius: 8px;
+    --rm-radius-lg: 20px;
+    --rm-transition: 0.3s ease;
+    --rm-font-display: "Playfair Display", Georgia, "Times New Roman", serif;
+    --rm-font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+
+    background-color: #ffffff;
+    font-family: var(--rm-font-body);
+  }
+
+  /* Si el contenedor de página recorta el desbordamiento, la barra
+     lateral deja de quedarse fija; "clip" evita el scroll lateral
+     sin romperla. */
+  body.single-post #page-container {
+    overflow-x: clip;
+    overflow-y: visible;
+  }
+
+  /* =====================================================
+     Estilos de lectura del contenido
+     ===================================================== */
+  .rm-post-content {
+    max-width: 72ch;
+    font-family: var(--rm-font-body);
+    font-size: 17.5px;
+    line-height: 1.8;
+    color: var(--rm-text);
+  }
+
+  .rm-post-content p {
+    margin: 0 0 1.4em;
+    padding: 0;
+  }
+
+  .rm-post-content > p:first-of-type,
+  .rm-post-content .et_pb_post_content_inner > p:first-of-type {
+    font-size: 1.12em;
+    line-height: 1.75;
+    color: var(--rm-primary);
+  }
+
+  .rm-post-content h2,
+  .rm-post-content h3,
+  .rm-post-content h4 {
+    scroll-margin-top: 120px;
+    color: var(--rm-primary);
+  }
+
+  .rm-post-content h2 {
+    position: relative;
+    margin: 2.2em 0 0.7em;
+    padding: 18px 0 0;
+    font-family: var(--rm-font-display);
+    font-size: clamp(1.6rem, 1.3rem + 1vw, 2.05rem);
+    font-weight: 700;
+    line-height: 1.25;
+  }
+
+  .rm-post-content h2::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 44px;
+    height: 3px;
+    border-radius: 3px;
+    background: linear-gradient(90deg, var(--rm-blue), var(--rm-orange));
+  }
+
+  .rm-post-content h3 {
+    margin: 1.8em 0 0.5em;
+    padding: 0;
+    font-family: var(--rm-font-body);
+    font-size: 1.22rem;
+    font-weight: 700;
+    line-height: 1.4;
+  }
+
+  .rm-post-content h4 {
+    margin: 1.5em 0 0.4em;
+    padding: 0;
+    font-size: 1.05rem;
+    font-weight: 700;
+  }
+
+  .rm-post-content strong,
+  .rm-post-content b {
+    color: var(--rm-primary);
+    font-weight: 700;
+  }
+
+  .rm-post-content a {
+    color: var(--rm-blue);
+    font-weight: 500;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    transition: color var(--rm-transition);
+  }
+
+  .rm-post-content a:hover {
+    color: var(--rm-orange);
+  }
+
+  .rm-post-content a:focus-visible {
+    outline: 2px solid var(--rm-blue);
+    outline-offset: 2px;
+  }
+
+  /* Listas */
+  .rm-post-content ul,
+  .rm-post-content ol {
+    margin: 0 0 1.5em;
+    padding: 0 0 0 0;
+    list-style: none;
+  }
+
+  .rm-post-content li {
+    position: relative;
+    margin: 0 0 0.6em;
+    padding-left: 30px;
+  }
+
+  .rm-post-content ul > li::before {
+    content: "";
+    position: absolute;
+    top: 0.68em;
+    left: 6px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--rm-blue), var(--rm-orange));
+  }
+
+  .rm-post-content ol {
+    counter-reset: rm-ol;
+  }
+
+  .rm-post-content ol > li {
+    counter-increment: rm-ol;
+  }
+
+  .rm-post-content ol > li::before {
+    content: counter(rm-ol);
+    position: absolute;
+    top: 0.2em;
+    left: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 21px;
+    height: 21px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--rm-blue), var(--rm-orange));
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .rm-post-content li > ul,
+  .rm-post-content li > ol {
+    margin: 0.6em 0 0;
+  }
+
+  /* Citas */
+  .rm-post-content blockquote {
+    position: relative;
+    margin: 2em 0;
+    padding: 26px 28px 26px 32px;
+    border: 0;
+    border-radius: 0 var(--rm-radius-lg) var(--rm-radius-lg) 0;
+    background: var(--rm-soft);
+    font-family: var(--rm-font-display);
+    font-size: 1.25rem;
+    font-style: italic;
+    line-height: 1.55;
+    color: var(--rm-primary);
+  }
+
+  .rm-post-content blockquote::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 4px;
+    background: linear-gradient(180deg, var(--rm-blue), var(--rm-orange));
+  }
+
+  .rm-post-content blockquote p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Imágenes */
+  .rm-post-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 14px;
+  }
+
+  .rm-post-content figure,
+  .rm-post-content .wp-block-image,
+  .rm-post-content .wp-caption {
+    max-width: 100%;
+    margin: 2em 0;
+  }
+
+  .rm-post-content figcaption,
+  .rm-post-content .wp-caption-text {
+    margin-top: 10px;
+    font-size: 14px;
+    line-height: 1.5;
+    text-align: center;
+    color: var(--rm-text-muted);
+  }
+
+  /* Tablas */
+  .rm-post-content table {
+    width: 100%;
+    margin: 2em 0;
+    border: 1px solid var(--rm-border);
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 14px;
+    overflow: hidden;
+    font-size: 15.5px;
+  }
+
+  .rm-post-content th,
+  .rm-post-content td {
+    padding: 12px 16px;
+    border: 0;
+    border-bottom: 1px solid var(--rm-border);
+    text-align: left;
+    vertical-align: top;
+  }
+
+  .rm-post-content th {
+    background: var(--rm-primary);
+    color: #ffffff;
+    font-weight: 600;
+  }
+
+  .rm-post-content tr:last-child td {
+    border-bottom: 0;
+  }
+
+  .rm-post-content tr:nth-child(even) td {
+    background: var(--rm-soft);
+  }
+
+  .rm-post-content hr {
+    height: 1px;
+    margin: 2.5em 0;
+    border: 0;
+    background: linear-gradient(90deg, var(--rm-blue), var(--rm-orange));
+    opacity: 0.4;
+  }
+
+  .rm-post-content code {
+    padding: 2px 6px;
+    border-radius: 5px;
+    background: var(--rm-soft);
+    font-size: 0.9em;
+  }
+
+  /* =====================================================
+     Barra de progreso de lectura
+     ===================================================== */
+  .rm-post-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100000;
+    height: 3px;
+    background: transparent;
+    pointer-events: none;
+  }
+
+  .rm-post-progress span {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--rm-blue), var(--rm-orange));
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+
+  /* =====================================================
+     Barra lateral
+     ===================================================== */
+  /* Lo que se queda fijo es el módulo de Divi que contiene la barra
+     (su columna ocupa todo el alto de la fila con "Igualar alturas
+     de columna"). El script lo marca con .rm-post-aside-sticky. */
+  .rm-post-aside-sticky,
+  .rm-post-body .et_pb_column > .et_pb_module:has(.rm-post-aside) {
+    position: sticky !important;
+    top: 120px;
+    z-index: 2;
+  }
+
+  .rm-post-aside {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    font-family: var(--rm-font-body);
+  }
+
+  .rm-post-toc {
+    padding: 22px 20px;
+    border: 1px solid var(--rm-border);
+    border-radius: var(--rm-radius-lg);
+    background: #ffffff;
+    box-shadow: 0 4px 24px rgba(15, 15, 30, 0.05);
+  }
+
+  .rm-post-toc__title,
+  .rm-post-share__title {
+    margin: 0 0 12px;
+    padding: 0;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--rm-text-muted);
+  }
+
+  .rm-post-toc__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    max-height: 46vh;
+    overflow-y: auto;
+  }
+
+  .rm-post-toc__list li {
+    margin: 0;
+    padding: 0;
+  }
+
+  .rm-post-toc__list a {
+    position: relative;
+    display: block;
+    padding: 7px 0 7px 14px;
+    border-left: 2px solid var(--rm-border);
+    font-size: 14px;
+    line-height: 1.4;
+    color: var(--rm-text-muted);
+    text-decoration: none;
+    transition: color var(--rm-transition), border-color var(--rm-transition);
+  }
+
+  .rm-post-toc__list .is-sub a {
+    padding-left: 26px;
+    font-size: 13px;
+  }
+
+  .rm-post-toc__list a:hover {
+    color: var(--rm-primary);
+  }
+
+  .rm-post-toc__list a.is-active {
+    border-left-color: var(--rm-orange);
+    color: var(--rm-primary);
+    font-weight: 600;
+  }
+
+  .rm-post-toc__list a:focus-visible,
+  .rm-post-share__buttons a:focus-visible,
+  .rm-post-share__buttons button:focus-visible,
+  .rm-post-aside__cta-btn:focus-visible {
+    outline: 2px solid var(--rm-blue);
+    outline-offset: 2px;
+  }
+
+  /* Compartir (también lo usa rm-post-end) */
+  .rm-post-share__buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .rm-post-share__buttons a,
+  .rm-post-share__buttons button {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: 1px solid var(--rm-border);
+    border-radius: 50%;
+    background: #ffffff;
+    color: var(--rm-primary);
+    cursor: pointer;
+    transition: border-color var(--rm-transition), color var(--rm-transition), transform var(--rm-transition);
+  }
+
+  .rm-post-share__buttons a:hover,
+  .rm-post-share__buttons button:hover {
+    border-color: var(--rm-blue);
+    color: var(--rm-blue);
+    transform: translateY(-2px);
+  }
+
+  .rm-post-share__buttons .is-copied::after {
+    content: "¡Copiado!";
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 4px 8px;
+    border-radius: 6px;
+    background: var(--rm-primary);
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  /* Mini CTA oscura */
+  .rm-post-aside__cta {
+    position: relative;
+    overflow: hidden;
+    padding: 24px 22px;
+    border-radius: var(--rm-radius-lg);
+    background: var(--rm-primary);
+  }
+
+  .rm-post-aside__cta::before {
+    content: "";
+    position: absolute;
+    top: -70px;
+    right: -70px;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background: var(--rm-orange);
+    filter: blur(60px);
+    opacity: 0.35;
+  }
+
+  .rm-post-aside__cta-title {
+    position: relative;
+    margin: 0 0 6px;
+    padding: 0;
+    font-family: var(--rm-font-display);
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: #ffffff;
+  }
+
+  .rm-post-aside__cta-text {
+    position: relative;
+    margin: 0 0 16px;
+    padding: 0;
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: #9aa3bd;
+  }
+
+  .rm-post-aside__cta-btn {
+    position: relative;
+    display: block;
+    padding: 12px 16px;
+    border-radius: var(--rm-radius);
+    background: linear-gradient(135deg, var(--rm-blue), var(--rm-orange));
+    color: #ffffff !important;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    transition: transform var(--rm-transition), box-shadow var(--rm-transition);
+  }
+
+  .rm-post-aside__cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 26px rgba(232, 83, 26, 0.3);
+  }
+
+  /* Índice desplegable para tablet/móvil (lo crea el script) */
+  .rm-post-toc-inline {
+    display: none;
+    margin: 0 0 32px;
+    border: 1px solid var(--rm-border);
+    border-radius: 14px;
+    background: var(--rm-soft);
+    font-family: var(--rm-font-body);
+  }
+
+  .rm-post-toc-inline summary {
+    padding: 16px 18px;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--rm-primary);
+    cursor: pointer;
+  }
+
+  .rm-post-toc-inline .rm-post-toc__list {
+    max-height: none;
+    margin: 0;
+    padding: 0 18px 14px;
+  }
+
+  /* El índice desplegable vive dentro del contenido: sin viñetas,
+     números ni subrayado del artículo */
+  .rm-post-content .rm-post-toc-inline li {
+    margin: 0;
+    padding: 0;
+  }
+
+  .rm-post-content .rm-post-toc-inline li::before {
+    display: none;
+  }
+
+  .rm-post-content .rm-post-toc-inline a {
+    font-weight: 400;
+    text-decoration: none;
+    color: var(--rm-text-muted);
+  }
+
+  /* ---------- Sin animaciones ---------- */
+  @media (prefers-reduced-motion: reduce) {
+    .rm-post-share__buttons a,
+    .rm-post-share__buttons button,
+    .rm-post-aside__cta-btn {
+      transition: none;
+    }
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 980px) {
+    .rm-post-aside,
+    .rm-post-body .et_pb_column:has(> .et_pb_code .rm-post-aside) {
+      display: none !important;
+    }
+
+    .rm-post-content {
+      max-width: none;
+    }
+
+    .rm-post-toc-inline {
+      display: block;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .rm-post-content {
+      font-size: 16.5px;
+    }
+
+    .rm-post-content blockquote {
+      padding: 20px 20px 20px 24px;
+      font-size: 1.12rem;
+    }
+
+    .rm-post-content table {
+      display: block;
+      overflow-x: auto;
+    }
+  }
+</style>
+
+<script>
+  (function () {
+  function run() {
+    var content = document.querySelector('.rm-post-content');
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    /* ---------- Barra lateral fija ---------- */
+    var aside = document.querySelector('.rm-post-aside');
+    var holder = aside && aside.closest('.et_pb_module');
+    if (holder) holder.classList.add('rm-post-aside-sticky');
+
+    /* ---------- Índice automático ---------- */
+    var toc = document.querySelector('.rm-post-toc');
+    var headings = content ? content.querySelectorAll('h2, h3') : [];
+    var links = [];
+
+    function slugify(text, i) {
+      var s = text.toLowerCase()
+        .normalize('NFD').replace(/[̀-ͯ]/g, '')
+        .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+      return (s || 'seccion') + '-' + i;
+    }
+
+    function buildList() {
+      var ol = document.createElement('ol');
+      ol.className = 'rm-post-toc__list';
+      headings.forEach(function (h) {
+        var li = document.createElement('li');
+        if (h.tagName === 'H3') li.className = 'is-sub';
+        var a = document.createElement('a');
+        a.href = '#' + h.id;
+        a.textContent = h.textContent.trim();
+        li.appendChild(a);
+        ol.appendChild(li);
+      });
+      return ol;
+    }
+
+    if (content && headings.length >= 2) {
+      headings.forEach(function (h, i) {
+        if (!h.id) h.id = slugify(h.textContent, i + 1);
+      });
+
+      if (toc) {
+        var list = toc.querySelector('.rm-post-toc__list');
+        list.parentNode.replaceChild(buildList(), list);
+        toc.hidden = false;
+        links = Array.prototype.slice.call(toc.querySelectorAll('a'));
+      }
+
+      /* Versión desplegable al principio del artículo (tablet/móvil) */
+      var inline = document.createElement('details');
+      inline.className = 'rm-post-toc-inline';
+      var summary = document.createElement('summary');
+      summary.textContent = 'En este artículo';
+      inline.appendChild(summary);
+      inline.appendChild(buildList());
+      var target = content.querySelector('.et_pb_post_content_inner') || content;
+      target.insertBefore(inline, target.firstChild);
+    }
+
+    /* ---------- Barra de progreso ---------- */
+    if (content && !document.querySelector('.rm-post-progress')) {
+      var bar = document.createElement('div');
+      bar.className = 'rm-post-progress';
+      bar.setAttribute('aria-hidden', 'true');
+      var fill = document.createElement('span');
+      bar.appendChild(fill);
+      document.body.appendChild(bar);
+
+      var ticking = false;
+      function update() {
+        var rect = content.getBoundingClientRect();
+        var total = rect.height - window.innerHeight * 0.6;
+        var done = Math.min(1, Math.max(0, -rect.top / (total > 0 ? total : 1)));
+        fill.style.transform = 'scaleX(' + done + ')';
+
+        /* Resalta en el índice el apartado que se está leyendo */
+        if (links.length) {
+          var current = null;
+          headings.forEach(function (h) {
+            if (h.getBoundingClientRect().top < 140) current = h.id;
+          });
+          links.forEach(function (l) {
+            l.classList.toggle('is-active', l.getAttribute('href') === '#' + current);
+          });
+        }
+        ticking = false;
+      }
+      window.addEventListener('scroll', function () {
+        if (!ticking) {
+          ticking = true;
+          window.requestAnimationFrame(update);
+        }
+      }, { passive: true });
+      update();
+    }
+
+    /* ---------- Compartir ---------- */
+    var url = window.location.href.split('#')[0];
+    var titleEl = document.querySelector('.rm-post-title .entry-title');
+    var title = (titleEl ? titleEl.textContent : document.title).trim();
+    var shareUrls = {
+      whatsapp: 'https://wa.me/?text=' + encodeURIComponent(title + ' ' + url),
+      linkedin: 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(url),
+      facebook: 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(url)
+    };
+
+    document.querySelectorAll('[data-rm-share]').forEach(function (el) {
+      var type = el.getAttribute('data-rm-share');
+      if (shareUrls[type]) {
+        el.href = shareUrls[type];
+        el.target = '_blank';
+        el.rel = 'noopener';
+      } else if (type === 'copy') {
+        el.addEventListener('click', function () {
+          function done() {
+            el.classList.add('is-copied');
+            setTimeout(function () { el.classList.remove('is-copied'); }, 1600);
+          }
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(url).then(done);
+          } else {
+            var tmp = document.createElement('input');
+            tmp.value = url;
+            document.body.appendChild(tmp);
+            tmp.select();
+            document.execCommand('copy');
+            document.body.removeChild(tmp);
+            done();
+          }
+        });
+      }
+    });
+
+    /* Desplazamiento suave al pulsar en el índice */
+    if (!reduceMotion) {
+      document.querySelectorAll('.rm-post-toc__list a').forEach(function (a) {
+        a.addEventListener('click', function (e) {
+          var target = document.getElementById(a.getAttribute('href').slice(1));
+          if (!target) return;
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          history.replaceState(null, '', a.getAttribute('href'));
+        });
+      });
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', run);
+  } else {
+    run();
+  }
+  })();
+</script>
