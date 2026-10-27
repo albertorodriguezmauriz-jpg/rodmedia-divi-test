@@ -1,109 +1,87 @@
 <!-- ============================================================
-     RM CONTACT HERO — Página de contacto (Divi, Code Module)
+     RM CONTACT HERO — Página de contacto (Divi)
      Marca: Rodmedia · Reestructuración web
 
      Mismo sistema que los heros de inicio, tienda, web y blog.
-     A la derecha va TU formulario de contacto actual dentro de una
-     tarjeta blanca; este código le da el estilo nuevo.
+     El formulario es TU módulo "Formulario de contacto" de Divi,
+     sin tocar su configuración: este código solo le cambia el
+     aspecto.
+
+     Montaje (el JSON rm-contact-divi-import.json ya lo trae):
+       Sección  -> clase CSS: rm-contact-hero
+       Fila     -> clase CSS: rm-contact-row   (2 columnas 1/2 + 1/2)
+       Columna izquierda:  este Code Module
+       Columna derecha     -> clase CSS: rm-contact-card
+         1) Code Module rm-contact-card-top.html
+         2) Tu módulo Formulario de contacto de Divi
+         3) Code Module rm-contact-card-bottom.html
 
      ANTES DE PUBLICAR:
-     1) Sustituye el comentario PEGA AQUÍ por el shortcode de tu
-        formulario de contacto. El Code Module de Divi ejecuta
-        shortcodes.
-     2) En el plugin del formulario, cambia el texto del botón
-        "Submit" por "Enviar mensaje".
-     3) Revisa la URL de "Reservar una llamada" y que el número de
-        WhatsApp sea el correcto.
+     1) En el formulario, cambia el texto del botón "Submit" por
+        "Enviar mensaje" (Contenido > Texto del botón).
+     2) Revisa la URL de "Reservar una llamada" y el WhatsApp.
      ============================================================ -->
 
-<section class="rm-contact-hero" aria-labelledby="rm-contact-hero-title">
+<div class="rm-contact-hero__bg" aria-hidden="true">
+  <div class="rm-contact-hero__topline"></div>
+  <canvas class="rm-contact-hero__particles"></canvas>
+  <div class="rm-contact-hero__glow rm-contact-hero__glow--blue"></div>
+  <div class="rm-contact-hero__glow rm-contact-hero__glow--orange"></div>
+</div>
 
-  <div class="rm-contact-hero__bg" aria-hidden="true">
-    <div class="rm-contact-hero__topline"></div>
-    <canvas class="rm-contact-hero__particles"></canvas>
-    <div class="rm-contact-hero__glow rm-contact-hero__glow--blue"></div>
-    <div class="rm-contact-hero__glow rm-contact-hero__glow--orange"></div>
-  </div>
+<!-- ---------- Texto ---------- -->
+<div class="rm-contact-hero__intro" data-animate>
+  <span class="rm-contact-hero__badge">
+    <span class="rm-contact-hero__badge-dot" aria-hidden="true"></span>
+    Contacto &#183; Rodmedia Benicarló
+  </span>
 
-  <div class="rm-contact-hero__container">
+  <h1 class="rm-contact-hero__title">
+    Hablemos de tu <em>proyecto</em>
+  </h1>
 
-    <!-- ---------- Texto ---------- -->
-    <div class="rm-contact-hero__intro" data-animate>
-      <span class="rm-contact-hero__badge">
-        <span class="rm-contact-hero__badge-dot" aria-hidden="true"></span>
-        Contacto &#183; Rodmedia Benicarló
-      </span>
+  <p class="rm-contact-hero__subtitle">
+    Cuéntanos qué tienes y qué quieres conseguir. Somos una agencia de diseño web y marketing digital en Benicarló y te contestamos nosotros, de tú a tú, sin compromiso.
+  </p>
+</div>
 
-      <h1 id="rm-contact-hero-title" class="rm-contact-hero__title">
-        Hablemos de tu <em>proyecto</em>
-      </h1>
+<!-- ---------- Vías rápidas ---------- -->
+<div class="rm-contact-hero__channels" data-animate>
+  <p class="rm-contact-hero__channels-title">¿Prefieres hablar ya?</p>
 
-      <p class="rm-contact-hero__subtitle">
-        Cuéntanos qué tienes y qué quieres conseguir. Somos una agencia de diseño web y marketing digital en Benicarló y te contestamos nosotros, de tú a tú, sin compromiso.
-      </p>
-    </div>
+  <a class="rm-contact-hero__channel" href="https://wa.me/34691306858?text=Hola%20Rodmedia%2C%20quer%C3%ADa%20informaci%C3%B3n%20sobre" target="_blank" rel="noopener">
+    <span class="rm-contact-hero__channel-icon" aria-hidden="true">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3.5 20.5 5 16a8.5 8.5 0 1 1 3.2 3.1z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 8.5c0 3.3 3.2 6.5 6.5 6.5l1-1.6-2-1-1 .9c-1.1-.5-2-1.4-2.6-2.6l.9-1-1-2z" fill="currentColor"/></svg>
+    </span>
+    <span class="rm-contact-hero__channel-text">
+      <strong>Escríbenos por WhatsApp</strong>
+      <small>La forma más rápida</small>
+    </span>
+    <span class="rm-contact-hero__channel-arrow" aria-hidden="true">→</span>
+  </a>
 
-    <!-- ---------- Vías rápidas ---------- -->
-    <div class="rm-contact-hero__channels" data-animate>
-      <p class="rm-contact-hero__channels-title">¿Prefieres hablar ya?</p>
+  <a class="rm-contact-hero__channel" href="tel:+34691306858">
+    <span class="rm-contact-hero__channel-icon" aria-hidden="true">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+    </span>
+    <span class="rm-contact-hero__channel-text">
+      <strong>Llámanos: 691 30 68 58</strong>
+      <small>Te atendemos en persona</small>
+    </span>
+    <span class="rm-contact-hero__channel-arrow" aria-hidden="true">→</span>
+  </a>
 
-      <a class="rm-contact-hero__channel" href="https://wa.me/34691306858?text=Hola%20Rodmedia%2C%20quer%C3%ADa%20informaci%C3%B3n%20sobre" target="_blank" rel="noopener">
-        <span class="rm-contact-hero__channel-icon" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3.5 20.5 5 16a8.5 8.5 0 1 1 3.2 3.1z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 8.5c0 3.3 3.2 6.5 6.5 6.5l1-1.6-2-1-1 .9c-1.1-.5-2-1.4-2.6-2.6l.9-1-1-2z" fill="currentColor"/></svg>
-        </span>
-        <span class="rm-contact-hero__channel-text">
-          <strong>Escríbenos por WhatsApp</strong>
-          <small>La forma más rápida</small>
-        </span>
-        <span class="rm-contact-hero__channel-arrow" aria-hidden="true">→</span>
-      </a>
-
-      <a class="rm-contact-hero__channel" href="tel:+34691306858">
-        <span class="rm-contact-hero__channel-icon" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
-        </span>
-        <span class="rm-contact-hero__channel-text">
-          <strong>Llámanos: 691 30 68 58</strong>
-          <small>Te atendemos en persona</small>
-        </span>
-        <span class="rm-contact-hero__channel-arrow" aria-hidden="true">→</span>
-      </a>
-
-      <a class="rm-contact-hero__channel rm-contact-hero__channel--accent" href="/reserva-una-cita/">
-        <span class="rm-contact-hero__channel-icon" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3.5" y="5" width="17" height="15" rx="2.5" stroke="currentColor" stroke-width="1.6"/><path d="M3.5 10h17M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-        </span>
-        <span class="rm-contact-hero__channel-text">
-          <strong>Reserva una llamada gratis</strong>
-          <small>Elige día y hora, 20 minutos</small>
-        </span>
-        <span class="rm-contact-hero__channel-arrow" aria-hidden="true">→</span>
-      </a>
-    </div>
-
-    <!-- ---------- Formulario ---------- -->
-    <div class="rm-contact-hero__card" data-animate>
-      <h2 class="rm-contact-hero__card-title">Escríbenos</h2>
-      <p class="rm-contact-hero__card-sub">Rellena el formulario y te respondemos por correo o por teléfono, como prefieras.</p>
-
-      <div class="rm-contact-hero__form">
-        <!-- PEGA AQUÍ el shortcode de tu formulario de contacto -->
-      </div>
-
-      <details class="rm-contact-hero__legal">
-        <summary>Información básica sobre protección de datos</summary>
-        <ul>
-          <li><strong>Responsable:</strong> Rodmedia.</li>
-          <li><strong>Finalidad:</strong> atender tu solicitud o consulta.</li>
-          <li><strong>Legitimación:</strong> consentimiento.</li>
-          <li><strong>Derechos:</strong> acceso, rectificación o supresión, limitación del tratamiento, oposición al tratamiento y portabilidad.</li>
-          <li><strong>Información adicional:</strong> puedes consultar la información detallada en nuestro <a href="/aviso-legal/">Aviso legal</a> y en nuestra <a href="/politica-de-privacidad/">Política de privacidad</a>.</li>
-        </ul>
-      </details>
-    </div>
-
-  </div>
-</section>
+  <a class="rm-contact-hero__channel rm-contact-hero__channel--accent" href="/reserva-una-cita/">
+    <span class="rm-contact-hero__channel-icon" aria-hidden="true">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3.5" y="5" width="17" height="15" rx="2.5" stroke="currentColor" stroke-width="1.6"/><path d="M3.5 10h17M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    </span>
+    <span class="rm-contact-hero__channel-text">
+      <strong>Reserva una llamada gratis</strong>
+      <small>Elige día y hora, 20 minutos</small>
+    </span>
+    <span class="rm-contact-hero__channel-arrow" aria-hidden="true">→</span>
+  </a>
+</div>
 
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Inter:wght@400;500;600;700&display=swap');
@@ -125,20 +103,18 @@
 
     position: relative;
     overflow: hidden;
-    background: var(--rm-primary);
+    background-color: var(--rm-primary) !important;
     color: var(--rm-light);
     font-family: var(--rm-font-body);
-    padding: 120px 20px 100px;
-    box-sizing: border-box;
   }
 
   .rm-contact-hero *,
   .rm-contact-hero *::before,
   .rm-contact-hero *::after {
-    box-sizing: inherit;
+    box-sizing: border-box;
   }
 
-  /* ---------- Fondo ---------- */
+  /* ---------- Fondo (el script lo coloca en la sección) ---------- */
   .rm-contact-hero__bg {
     position: absolute;
     inset: 0;
@@ -201,25 +177,35 @@
     50% { transform: translate(26px, 22px) scale(1.07); }
   }
 
-  /* ---------- Rejilla: texto + vías a la izquierda, formulario a la derecha ---------- */
-  .rm-contact-hero__container {
+  /* ---------- Rejilla de la fila de Divi ----------
+     Escritorio: texto y vías a la izquierda, formulario a la derecha.
+     Tablet/móvil: texto, formulario y después las vías. */
+  .rm-contact-hero .rm-contact-row {
     position: relative;
     z-index: 1;
-    max-width: 1140px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     grid-template-areas:
-      "intro    form"
-      "channels form";
+      "intro    card"
+      "channels card";
     grid-template-rows: auto 1fr;
     column-gap: 64px;
     row-gap: 36px;
   }
 
+  .rm-contact-hero .rm-contact-row::before,
+  .rm-contact-hero .rm-contact-row::after {
+    display: none !important;
+  }
+
+  .rm-contact-hero .rm-contact-row > .et_pb_column:not(.rm-contact-card),
+  .rm-contact-hero .rm-contact-row > .et_pb_column:not(.rm-contact-card) > .et_pb_code,
+  .rm-contact-hero .rm-contact-row > .et_pb_column:not(.rm-contact-card) > .et_pb_code > .et_pb_code_inner {
+    display: contents !important;
+  }
+
   .rm-contact-hero__intro { grid-area: intro; }
   .rm-contact-hero__channels { grid-area: channels; }
-  .rm-contact-hero__card { grid-area: form; align-self: start; }
 
   .rm-contact-hero [data-animate] {
     opacity: 0;
@@ -233,7 +219,6 @@
   }
 
   .rm-contact-hero__channels[data-animate] { transition-delay: 0.1s; }
-  .rm-contact-hero__card[data-animate] { transition-delay: 0.15s; }
 
   /* ---------- Texto ---------- */
   .rm-contact-hero__badge {
@@ -387,17 +372,24 @@
     transform: translateX(3px);
   }
 
-  /* ---------- Tarjeta del formulario (blanca: máxima legibilidad) ---------- */
-  .rm-contact-hero__card {
+  /* =====================================================
+     Tarjeta blanca = columna derecha (clase rm-contact-card)
+     ===================================================== */
+  .rm-contact-hero .rm-contact-card {
+    grid-area: card;
+    align-self: start;
     position: relative;
-    padding: 34px 32px 26px;
+    width: auto !important;
+    margin: 0 !important;
+    float: none !important;
+    padding: 34px 32px 26px !important;
     border-radius: var(--rm-radius-lg);
     background: #ffffff;
     color: var(--rm-text);
     box-shadow: 0 30px 70px rgba(0, 0, 0, 0.45);
   }
 
-  .rm-contact-hero__card::before {
+  .rm-contact-hero .rm-contact-card::before {
     content: "";
     position: absolute;
     top: 0;
@@ -406,6 +398,10 @@
     height: 3px;
     border-radius: 0 0 3px 3px;
     background: linear-gradient(90deg, var(--rm-blue), var(--rm-orange));
+  }
+
+  .rm-contact-hero .rm-contact-card > .et_pb_module {
+    margin-bottom: 0 !important;
   }
 
   .rm-contact-hero__card-title {
@@ -426,122 +422,252 @@
     color: var(--rm-text-muted-dark);
   }
 
-  /* Estilo para el formulario del plugin, sea cual sea */
-  .rm-contact-hero__form form {
-    margin: 0;
+  /* ---------- Piel del módulo "Formulario de contacto" de Divi ---------- */
+  .rm-contact-card .et_pb_contact_form_container {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    font-family: var(--rm-font-body);
   }
 
-  .rm-contact-hero__form h1,
-  .rm-contact-hero__form h2,
-  .rm-contact-hero__form h3 {
+  /* El título del módulo sobra: la tarjeta ya lleva el suyo */
+  .rm-contact-card .et_pb_contact_main_title {
     display: none;
   }
 
-  .rm-contact-hero__form p {
-    margin: 0 0 14px;
-    padding: 0;
+  .rm-contact-card .et_pb_contact_form {
+    display: flex !important;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0 !important;
   }
 
-  .rm-contact-hero__form label {
-    display: block;
+  .rm-contact-card .et_pb_contact_form > .et_pb_contact_field {
+    float: none !important;
+    width: 100% !important;
+    margin: 0 0 14px !important;
+    padding: 0 !important;
+  }
+
+  .rm-contact-card .et_pb_contact_form > .et_pb_contact_field_half {
+    width: calc(50% - 6px) !important;
+  }
+
+  /* Divi usa el texto dentro del campo; las etiquetas siguen
+     ocultas como en tu formulario actual */
+  .rm-contact-card .et_pb_contact_form_label {
     margin-bottom: 6px;
     font-size: 13px;
     font-weight: 600;
     color: var(--rm-primary);
   }
 
-  .rm-contact-hero__form input[type="text"],
-  .rm-contact-hero__form input[type="email"],
-  .rm-contact-hero__form input[type="tel"],
-  .rm-contact-hero__form select,
-  .rm-contact-hero__form textarea {
+  .rm-contact-card .et_pb_contact p .input:not([type="checkbox"]):not([type="radio"]),
+  .rm-contact-card .et_pb_contact .input:not([type="checkbox"]):not([type="radio"]),
+  .rm-contact-card .et_pb_contact select {
     display: block;
-    width: 100%;
-    margin: 0 0 14px;
-    padding: 13px 14px;
-    border: 1px solid var(--rm-border);
-    border-radius: var(--rm-radius);
-    background: var(--rm-light);
-    color: var(--rm-primary);
+    width: 100% !important;
+    margin: 0;
+    padding: 13px 14px !important;
+    border: 1px solid var(--rm-border) !important;
+    border-radius: var(--rm-radius) !important;
+    background-color: var(--rm-light) !important;
+    color: var(--rm-primary) !important;
     font-family: var(--rm-font-body);
-    font-size: 15px;
-    line-height: 1.4;
-    transition: border-color var(--rm-transition), box-shadow var(--rm-transition), background var(--rm-transition);
+    font-size: 15px !important;
+    line-height: 1.4 !important;
+    transition: border-color var(--rm-transition), box-shadow var(--rm-transition), background-color var(--rm-transition);
   }
 
-  .rm-contact-hero__form textarea {
+  .rm-contact-card .et_pb_contact textarea.input {
     min-height: 130px;
     resize: vertical;
   }
 
-  .rm-contact-hero__form input::placeholder,
-  .rm-contact-hero__form textarea::placeholder {
-    color: #8a91a5;
+  .rm-contact-card .et_pb_contact .input::placeholder {
+    color: #8a91a5 !important;
   }
 
-  .rm-contact-hero__form input:focus,
-  .rm-contact-hero__form select:focus,
-  .rm-contact-hero__form textarea:focus {
+  .rm-contact-card .et_pb_contact .input:focus,
+  .rm-contact-card .et_pb_contact select:focus {
     outline: none;
-    border-color: var(--rm-blue);
-    background: #ffffff;
+    border-color: var(--rm-blue) !important;
+    background-color: #ffffff !important;
     box-shadow: 0 0 0 4px rgba(58, 123, 213, 0.15);
   }
 
-  .rm-contact-hero__form input[type="checkbox"] {
-    width: 16px;
-    height: 16px;
-    margin: 0 8px 0 0;
-    vertical-align: -3px;
-    accent-color: var(--rm-blue);
+  /* Campos con error (Divi añade .et_contact_error) */
+  .rm-contact-card .et_pb_contact .input.et_contact_error {
+    border-color: var(--rm-orange) !important;
+    box-shadow: 0 0 0 4px rgba(232, 83, 26, 0.12);
   }
 
-  .rm-contact-hero__form label:has(input[type="checkbox"]) {
+  /* Casilla de privacidad */
+  .rm-contact-card .et_pb_contact_field_options_title {
+    display: none;
+  }
+
+  .rm-contact-card .et_pb_contact_field_checkbox {
+    position: relative;
+    margin: 0;
+  }
+
+  /* La casilla real queda invisible; se ve la de la etiqueta (i) */
+  .rm-contact-card .et_pb_contact_field_checkbox input[type="checkbox"] {
+    position: absolute;
+    top: 2px;
+    left: 0;
+    width: 18px;
+    height: 18px;
+    margin: 0;
+    opacity: 0;
+  }
+
+  .rm-contact-card .et_pb_contact_field_checkbox label {
+    position: relative;
+    display: inline-block;
+    padding-left: 28px;
     font-size: 13px;
     font-weight: 400;
+    line-height: 1.5;
     color: var(--rm-text-muted-dark);
+    cursor: pointer;
   }
 
-  .rm-contact-hero__form a {
+  .rm-contact-card .et_pb_contact_field_checkbox label i {
+    position: absolute;
+    top: 1px;
+    left: 0;
+    width: 18px;
+    height: 18px;
+    margin: 0;
+    border: 1.5px solid rgba(15, 15, 30, 0.25);
+    border-radius: 5px;
+    background: #ffffff !important;
+    transition: border-color var(--rm-transition), background var(--rm-transition);
+  }
+
+  .rm-contact-card .et_pb_contact_field_checkbox label i::before {
+    display: none !important;
+  }
+
+  .rm-contact-card .et_pb_contact_field_checkbox input:checked + label i {
+    border-color: transparent;
+    background: linear-gradient(135deg, var(--rm-blue), var(--rm-orange)) !important;
+  }
+
+  .rm-contact-card .et_pb_contact_field_checkbox input:checked + label i::after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 5px;
+    width: 5px;
+    height: 9px;
+    border: solid #ffffff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+
+  .rm-contact-card .et_pb_contact_field_checkbox input:focus-visible + label i {
+    outline: 2px solid var(--rm-blue);
+    outline-offset: 2px;
+  }
+
+  .rm-contact-card .et_pb_contact a {
     color: var(--rm-blue);
     text-decoration: underline;
     text-underline-offset: 2px;
   }
 
-  .rm-contact-hero__form button,
-  .rm-contact-hero__form input[type="submit"] {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+  /* Captcha y botón */
+  .rm-contact-card .et_contact_bottom_container {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
     width: 100%;
-    margin-top: 6px;
-    padding: 15px 26px;
-    border: 0;
-    border-radius: var(--rm-radius);
-    background: linear-gradient(135deg, var(--rm-blue), var(--rm-orange));
-    box-shadow: 0 12px 28px rgba(58, 123, 213, 0.28);
-    color: #ffffff;
-    font-family: var(--rm-font-body);
-    font-size: 15px;
-    font-weight: 600;
+    margin-top: 6px !important;
+    float: none !important;
+  }
+
+  .rm-contact-card .et_pb_contact_right {
+    float: none !important;
+    margin: 0;
+    font-size: 14px;
+    color: var(--rm-text-muted-dark);
+  }
+
+  .rm-contact-card .et_pb_contact_right p {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+  }
+
+  .rm-contact-card .et_pb_contact_right .input.et_pb_contact_captcha {
+    width: 70px !important;
+    padding: 10px !important;
+    text-align: center;
+  }
+
+  .rm-contact-card .et_pb_contact_submit,
+  .rm-contact-card .et_pb_contact_submit:hover {
+    display: block;
+    width: 100%;
+    margin: 0 !important;
+    padding: 15px 26px !important;
+    border: 0 !important;
+    border-radius: var(--rm-radius) !important;
+    background: linear-gradient(135deg, var(--rm-blue), var(--rm-orange)) !important;
+    color: #ffffff !important;
+    font-family: var(--rm-font-body) !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    line-height: 1.3 !important;
+    letter-spacing: 0 !important;
+    text-transform: none !important;
     cursor: pointer;
-    -webkit-appearance: none;
-    appearance: none;
+  }
+
+  .rm-contact-card .et_pb_contact_submit {
+    box-shadow: 0 12px 28px rgba(58, 123, 213, 0.28);
     transition: transform var(--rm-transition), box-shadow var(--rm-transition);
   }
 
-  .rm-contact-hero__form button:hover,
-  .rm-contact-hero__form input[type="submit"]:hover {
+  .rm-contact-card .et_pb_contact_submit:hover {
     transform: translateY(-2px);
     box-shadow: 0 16px 34px rgba(232, 83, 26, 0.35);
   }
 
-  .rm-contact-hero__form button:focus-visible,
-  .rm-contact-hero__form input[type="submit"]:focus-visible,
-  .rm-contact-hero__form a:focus-visible,
-  .rm-contact-hero__legal summary:focus-visible {
+  .rm-contact-card .et_pb_contact_submit::after {
+    display: none !important;
+  }
+
+  .rm-contact-card .et_pb_contact_submit:focus-visible {
     outline: 2px solid var(--rm-blue);
     outline-offset: 3px;
+  }
+
+  /* Mensajes de Divi (enviado / errores) */
+  .rm-contact-card .et-pb-contact-message {
+    margin: 0;
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--rm-primary);
+  }
+
+  .rm-contact-card .et-pb-contact-message:not(:empty) {
+    margin-bottom: 18px;
+    padding: 14px 16px;
+    border-radius: 12px;
+    background: var(--rm-light);
+    border-left: 3px solid var(--rm-blue);
+  }
+
+  .rm-contact-card .et-pb-contact-message ul {
+    margin: 6px 0 0;
+    padding-left: 18px;
   }
 
   /* Información de protección de datos (primera capa, plegada) */
@@ -558,6 +684,11 @@
     font-weight: 600;
     color: var(--rm-primary);
     cursor: pointer;
+  }
+
+  .rm-contact-hero__legal summary:focus-visible {
+    outline: 2px solid var(--rm-blue);
+    outline-offset: 3px;
   }
 
   .rm-contact-hero__legal ul {
@@ -589,50 +720,48 @@
     }
   }
 
-  /* ---------- Responsive: en tablet/móvil el formulario va antes que las vías ---------- */
+  /* ---------- Responsive ---------- */
   @media (max-width: 980px) {
-    .rm-contact-hero {
-      padding: 90px 20px 70px;
-    }
-
-    .rm-contact-hero__container {
-      grid-template-columns: 1fr;
+    .rm-contact-hero .rm-contact-row {
+      grid-template-columns: minmax(0, 1fr);
       grid-template-areas:
         "intro"
-        "form"
+        "card"
         "channels";
       grid-template-rows: auto;
       row-gap: 40px;
     }
 
-    .rm-contact-hero__card {
-      max-width: 620px;
-    }
-
+    .rm-contact-hero .rm-contact-card,
     .rm-contact-hero__channels {
       max-width: 620px;
     }
   }
 
   @media (max-width: 767px) {
-    .rm-contact-hero {
-      padding: 64px 16px 48px;
-    }
-
     .rm-contact-hero__subtitle {
       font-size: 16px;
     }
 
-    .rm-contact-hero__card {
-      padding: 28px 20px 20px;
+    .rm-contact-hero .rm-contact-card {
+      padding: 28px 20px 20px !important;
+    }
+
+    .rm-contact-card .et_pb_contact_form > .et_pb_contact_field_half {
+      width: 100% !important;
     }
   }
 </style>
 
 <script>
   (function () {
+  function run() {
     var section = document.querySelector('.rm-contact-hero');
     if (!section) return;
+
+    /* Lleva el fondo a la sección para que la cubra entera */
+    var bg = document.querySelector('.rm-contact-hero__bg');
+    if (bg && bg.parentNode !== section) section.insertBefore(bg, section.firstChild);
 
     var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -718,5 +847,12 @@
         init();
       });
     }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', run);
+  } else {
+    run();
+  }
   })();
 </script>
