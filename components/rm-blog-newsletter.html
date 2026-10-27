@@ -1,0 +1,391 @@
+<!-- ============================================================
+     RM BLOG NEWSLETTER — Cierre de la página Blog (Divi, Code Module)
+     Marca: Rodmedia · Reestructuración web
+
+     Mismo sistema oscuro que los heros. La tarjeta de la derecha
+     envuelve TU formulario de suscripción actual y le aplica el
+     estilo (campos, casilla de privacidad y botón).
+
+     ANTES DE PUBLICAR:
+     1) Sustituye el comentario PEGA AQUÍ por el shortcode de tu
+        formulario de newsletter (el mismo que usas ahora). El
+        Code Module de Divi ejecuta shortcodes.
+     2) Si tu formulario ya muestra su propio título ("Newsletter
+        Rodmedia Benicarló"), quítalo en el plugin: la tarjeta ya
+        lleva el suyo.
+     ============================================================ -->
+
+<section class="rm-blog-news" aria-labelledby="rm-blog-news-title">
+
+  <div class="rm-blog-news__bg" aria-hidden="true">
+    <div class="rm-blog-news__glow rm-blog-news__glow--blue"></div>
+    <div class="rm-blog-news__glow rm-blog-news__glow--orange"></div>
+  </div>
+
+  <div class="rm-blog-news__container">
+
+    <div class="rm-blog-news__content">
+      <span class="rm-blog-news__badge">
+        <span class="rm-blog-news__badge-dot" aria-hidden="true"></span>
+        Newsletter &#183; Gratis
+      </span>
+
+      <h2 id="rm-blog-news-title" class="rm-blog-news__title">
+        Tu <em>hoja de ruta</em> para una web que trabaje por ti
+      </h2>
+
+      <p class="rm-blog-news__text">
+        Suscríbete y te envío una guía sencilla y clara para que tu web transmita confianza y te traiga más contactos. Sin promesas vacías: solo pasos prácticos.
+      </p>
+
+      <ul class="rm-blog-news__list">
+        <li>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12 5 5 9-10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Qué revisar primero si tu web no te trae clientes
+        </li>
+        <li>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12 5 5 9-10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Un artículo nuevo al mes, pensado para negocios locales
+        </li>
+        <li>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 12 5 5 9-10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Avisos de ayudas como el Kit Digital cuando se abren
+        </li>
+      </ul>
+    </div>
+
+    <div class="rm-blog-news__card">
+      <p class="rm-blog-news__card-title">Recibe la hoja de ruta</p>
+      <p class="rm-blog-news__card-sub">Te llega al correo en un minuto.</p>
+
+      <div class="rm-blog-news__form">
+        <!-- PEGA AQUÍ el shortcode de tu formulario de newsletter -->
+      </div>
+
+      <p class="rm-blog-news__fine">Sin spam. Te das de baja con un clic cuando quieras.</p>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Inter:wght@400;500;600;700&display=swap');
+
+  .rm-blog-news {
+    --rm-primary: #0f0f1e;
+    --rm-blue: #3a7bd5;
+    --rm-orange: #e8531a;
+    --rm-light: #f8f8fb;
+    --rm-text-muted: #9aa3bd;
+    --rm-radius: 8px;
+    --rm-radius-lg: 20px;
+    --rm-transition: 0.3s ease;
+    --rm-font-display: "Playfair Display", Georgia, "Times New Roman", serif;
+    --rm-font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+
+    position: relative;
+    overflow: hidden;
+    background: var(--rm-primary);
+    color: var(--rm-light);
+    font-family: var(--rm-font-body);
+    padding: 100px 20px;
+    box-sizing: border-box;
+  }
+
+  .rm-blog-news *,
+  .rm-blog-news *::before,
+  .rm-blog-news *::after {
+    box-sizing: inherit;
+  }
+
+  .rm-blog-news__bg {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .rm-blog-news__glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.24;
+  }
+
+  .rm-blog-news__glow--blue {
+    width: 420px;
+    height: 420px;
+    top: -160px;
+    right: 18%;
+    background: var(--rm-blue);
+  }
+
+  .rm-blog-news__glow--orange {
+    width: 380px;
+    height: 380px;
+    bottom: -180px;
+    left: -100px;
+    background: var(--rm-orange);
+  }
+
+  .rm-blog-news__container {
+    position: relative;
+    z-index: 1;
+    max-width: 1140px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: center;
+    gap: 64px;
+  }
+
+  /* ---------- Texto ---------- */
+  .rm-blog-news__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 16px;
+    margin-bottom: 24px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #cbd5e1;
+  }
+
+  .rm-blog-news__badge-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--rm-blue), var(--rm-orange));
+  }
+
+  .rm-blog-news__title {
+    margin: 0 0 18px;
+    padding: 0;
+    max-width: 17ch;
+    font-family: var(--rm-font-display);
+    font-size: clamp(1.9rem, 1.3rem + 2.2vw, 3rem);
+    font-weight: 700;
+    line-height: 1.16;
+    color: var(--rm-light);
+  }
+
+  .rm-blog-news__title em {
+    display: inline-block;
+    line-height: 1.4;
+    padding: 0 0.06em 0 0.02em;
+    font-style: italic;
+    background: linear-gradient(135deg, var(--rm-blue), var(--rm-orange));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .rm-blog-news__text {
+    max-width: 48ch;
+    margin: 0 0 26px;
+    padding: 0;
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--rm-text-muted);
+  }
+
+  .rm-blog-news__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .rm-blog-news__list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin: 0 0 12px;
+    padding: 0;
+    font-size: 15px;
+    line-height: 1.5;
+    color: #e5e7eb;
+  }
+
+  .rm-blog-news__list svg {
+    flex: none;
+    margin-top: 2px;
+    color: var(--rm-blue);
+  }
+
+  /* ---------- Tarjeta del formulario ---------- */
+  .rm-blog-news__card {
+    padding: 32px 30px 24px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--rm-radius-lg);
+    background: #14151f;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+  }
+
+  .rm-blog-news__card-title {
+    margin: 0;
+    padding: 0;
+    font-family: var(--rm-font-display);
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--rm-light);
+  }
+
+  .rm-blog-news__card-sub {
+    margin: 4px 0 22px;
+    padding: 0;
+    font-size: 14px;
+    color: var(--rm-text-muted);
+  }
+
+  .rm-blog-news__fine {
+    margin: 16px 0 0;
+    padding: 0;
+    font-size: 12.5px;
+    color: #6f7891;
+  }
+
+  /* Estilo para el formulario del plugin, sea cual sea */
+  .rm-blog-news__form form {
+    margin: 0;
+  }
+
+  .rm-blog-news__form h1,
+  .rm-blog-news__form h2,
+  .rm-blog-news__form h3,
+  .rm-blog-news__form h4 {
+    display: none;
+  }
+
+  .rm-blog-news__form p {
+    margin: 0 0 14px;
+    padding: 0;
+  }
+
+  .rm-blog-news__form label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #cbd5e1;
+  }
+
+  .rm-blog-news__form input[type="text"],
+  .rm-blog-news__form input[type="email"] {
+    display: block;
+    width: 100%;
+    margin: 0 0 14px;
+    padding: 13px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: var(--rm-radius);
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--rm-light);
+    font-family: var(--rm-font-body);
+    font-size: 15px;
+    line-height: 1.3;
+    transition: border-color var(--rm-transition), box-shadow var(--rm-transition);
+  }
+
+  .rm-blog-news__form input[type="text"]::placeholder,
+  .rm-blog-news__form input[type="email"]::placeholder {
+    color: #6f7891;
+  }
+
+  .rm-blog-news__form input[type="text"]:focus,
+  .rm-blog-news__form input[type="email"]:focus {
+    outline: none;
+    border-color: var(--rm-blue);
+    box-shadow: 0 0 0 4px rgba(58, 123, 213, 0.18);
+  }
+
+  .rm-blog-news__form input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    margin: 0 8px 0 0;
+    vertical-align: -3px;
+    accent-color: var(--rm-blue);
+  }
+
+  .rm-blog-news__form label:has(input[type="checkbox"]),
+  .rm-blog-news__form a {
+    font-size: 13px;
+    color: var(--rm-text-muted);
+  }
+
+  .rm-blog-news__form a {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .rm-blog-news__form a:hover {
+    color: #ffffff;
+  }
+
+  .rm-blog-news__form button,
+  .rm-blog-news__form input[type="submit"] {
+    display: block;
+    width: 100%;
+    margin-top: 6px;
+    padding: 15px 26px;
+    border: 0;
+    border-radius: var(--rm-radius);
+    background: linear-gradient(135deg, var(--rm-blue), var(--rm-orange));
+    box-shadow: 0 12px 28px rgba(58, 123, 213, 0.28);
+    color: #ffffff;
+    font-family: var(--rm-font-body);
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    transition: transform var(--rm-transition), box-shadow var(--rm-transition);
+  }
+
+  .rm-blog-news__form button:hover,
+  .rm-blog-news__form input[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 34px rgba(232, 83, 26, 0.35);
+  }
+
+  .rm-blog-news__form button:focus-visible,
+  .rm-blog-news__form input[type="submit"]:focus-visible,
+  .rm-blog-news__form a:focus-visible {
+    outline: 2px solid var(--rm-blue);
+    outline-offset: 3px;
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 980px) {
+    .rm-blog-news {
+      padding: 70px 20px;
+    }
+
+    .rm-blog-news__container {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .rm-blog-news__card {
+      max-width: 560px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .rm-blog-news {
+      padding: 48px 16px;
+    }
+
+    .rm-blog-news__text {
+      font-size: 16px;
+    }
+
+    .rm-blog-news__card {
+      padding: 26px 20px 20px;
+    }
+  }
+</style>

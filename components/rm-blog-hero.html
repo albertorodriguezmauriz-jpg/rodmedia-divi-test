@@ -1,0 +1,723 @@
+<!-- ============================================================
+     RM BLOG HERO — Cabecera de la página Blog (Divi, Code Module)
+     Marca: Rodmedia · Reestructuración web
+
+     Mismo sistema que los heros de inicio, tienda y web: fondo
+     #0f0f1e, línea superior con brillo, partículas conectadas,
+     glows azul/naranja, Playfair Display + Inter, badge con punto
+     y degradado de marca a 135deg.
+
+     Funciona de verdad, sin plugins:
+     - El buscador es el de WordPress (?s=) limitado a entradas.
+     - Los chips enlazan a los archivos de categoría.
+
+     ANTES DE PUBLICAR:
+     1) Revisa los slugs de categoría de los chips (Entradas >
+        Categorías en WordPress) y cámbialos si no coinciden.
+     2) Pon en "Empieza por aquí" la URL real de cada artículo.
+     3) Si ya cargas Playfair Display / Inter desde el Theme Builder,
+        borra el @import para no cargarlas dos veces.
+     ============================================================ -->
+
+<section class="rm-blog-hero" aria-labelledby="rm-blog-hero-title">
+
+  <div class="rm-blog-hero__bg" aria-hidden="true">
+    <div class="rm-blog-hero__topline"></div>
+    <canvas class="rm-blog-hero__particles"></canvas>
+    <div class="rm-blog-hero__glow rm-blog-hero__glow--blue"></div>
+    <div class="rm-blog-hero__glow rm-blog-hero__glow--orange"></div>
+  </div>
+
+  <div class="rm-blog-hero__container">
+
+    <!-- ---------- Columna de texto ---------- -->
+    <div class="rm-blog-hero__content" data-animate>
+      <span class="rm-blog-hero__badge">
+        <span class="rm-blog-hero__badge-dot" aria-hidden="true"></span>
+        Blog &#183; Marketing digital en Castellón
+      </span>
+
+      <h1 id="rm-blog-hero-title" class="rm-blog-hero__title">
+        Ideas claras para que tu negocio <em>crezca</em> en internet
+      </h1>
+
+      <p class="rm-blog-hero__subtitle">
+        Diseño web, SEO local, redes sociales y ayudas como el Kit Digital, explicados sin tecnicismos. Para autónomos y pymes del Baix Maestrat que quieren hacerlo bien.
+      </p>
+
+      <form class="rm-blog-hero__search" role="search" method="get" action="/">
+        <label class="rm-blog-hero__sr" for="rm-blog-hero-s">Buscar en el blog</label>
+        <svg class="rm-blog-hero__search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8"/>
+          <path d="m20 20-3.5-3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+        <input id="rm-blog-hero-s" type="search" name="s" placeholder="¿Qué quieres mejorar? Ej.: Google, Kit Digital…" autocomplete="off">
+        <input type="hidden" name="post_type" value="post">
+        <button type="submit">Buscar</button>
+      </form>
+
+      <nav class="rm-blog-hero__chips" aria-label="Categorías del blog">
+        <a href="/category/diseno-web/">Diseño web</a>
+        <a href="/category/marketing-digital/">Marketing digital</a>
+        <a href="/category/estrategia-digital/">Estrategia digital</a>
+        <a href="/category/transformacion-digital/">Kit Digital y ayudas</a>
+        <a href="/category/casos-de-exito/">Casos de éxito</a>
+      </nav>
+    </div>
+
+    <!-- ---------- Panel: Empieza por aquí ---------- -->
+    <aside class="rm-blog-hero__visual" data-animate aria-labelledby="rm-blog-hero-start">
+      <div class="rm-blog-hero__card-back" aria-hidden="true"></div>
+
+      <div class="rm-blog-hero__card">
+        <span class="rm-blog-hero__tag">Empieza por aquí</span>
+        <h2 id="rm-blog-hero-start" class="rm-blog-hero__card-title">Las tres guías que más ayudan</h2>
+
+        <ol class="rm-blog-hero__list">
+          <li>
+            <a href="#">
+              <span class="rm-blog-hero__num">01</span>
+              <span class="rm-blog-hero__item">
+                <strong>¿Merece la pena tener una web propia en la era de la IA?</strong>
+                <small>Diseño web &#183; 6 min</small>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span class="rm-blog-hero__num">02</span>
+              <span class="rm-blog-hero__item">
+                <strong>Kit Digital para empresas: moderniza tu negocio con ayudas</strong>
+                <small>Kit Digital &#183; 5 min</small>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span class="rm-blog-hero__num">03</span>
+              <span class="rm-blog-hero__item">
+                <strong>Cómo diseñar una web autogestionable y dejar de depender de terceros</strong>
+                <small>Estrategia digital &#183; 7 min</small>
+              </span>
+            </a>
+          </li>
+        </ol>
+      </div>
+
+      <div class="rm-blog-hero__notif" aria-hidden="true">
+        <span class="rm-blog-hero__notif-dot"></span>
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none">
+          <path d="M4 5h16v14H4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+          <path d="m4 6 8 6 8-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div>
+          <strong>Un artículo nuevo cada mes</strong>
+          <span>Sin relleno &#183; solo pasos útiles</span>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+</section>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Inter:wght@400;500;600;700&display=swap');
+
+  .rm-blog-hero {
+    --rm-primary: #0f0f1e;
+    --rm-blue: #3a7bd5;
+    --rm-orange: #e8531a;
+    --rm-light: #f8f8fb;
+    --rm-text-muted: #9aa3bd;
+    --rm-radius: 8px;
+    --rm-radius-lg: 20px;
+    --rm-transition: 0.3s ease;
+    --rm-font-display: "Playfair Display", Georgia, "Times New Roman", serif;
+    --rm-font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+
+    position: relative;
+    overflow: hidden;
+    background: var(--rm-primary);
+    color: var(--rm-light);
+    font-family: var(--rm-font-body);
+    padding: 120px 20px 100px;
+    box-sizing: border-box;
+  }
+
+  .rm-blog-hero *,
+  .rm-blog-hero *::before,
+  .rm-blog-hero *::after {
+    box-sizing: inherit;
+  }
+
+  /* ---------- Fondo ---------- */
+  .rm-blog-hero__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .rm-blog-hero__topline {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--rm-blue), var(--rm-orange), var(--rm-blue));
+    background-size: 200% 100%;
+    animation: rm-blog-hero-shimmer 6s linear infinite;
+  }
+
+  @keyframes rm-blog-hero-shimmer {
+    0% { background-position: 0% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  .rm-blog-hero__particles {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .rm-blog-hero__glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.28;
+    animation: rm-blog-hero-float 15s ease-in-out infinite;
+  }
+
+  .rm-blog-hero__glow--blue {
+    width: 480px;
+    height: 480px;
+    top: -150px;
+    left: -110px;
+    background: var(--rm-blue);
+  }
+
+  .rm-blog-hero__glow--orange {
+    width: 420px;
+    height: 420px;
+    bottom: -170px;
+    right: -110px;
+    background: var(--rm-orange);
+    animation-delay: -7s;
+  }
+
+  @keyframes rm-blog-hero-float {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(26px, 22px) scale(1.07); }
+  }
+
+  /* ---------- Contenedor ---------- */
+  .rm-blog-hero__container {
+    position: relative;
+    z-index: 1;
+    max-width: 1140px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: center;
+    gap: 64px;
+  }
+
+  .rm-blog-hero [data-animate] {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .rm-blog-hero [data-animate].is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .rm-blog-hero__visual[data-animate] {
+    transition-delay: 0.15s;
+  }
+
+  /* ---------- Badge ---------- */
+  .rm-blog-hero__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 16px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #cbd5e1;
+    margin-bottom: 28px;
+  }
+
+  .rm-blog-hero__badge-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--rm-blue), var(--rm-orange));
+    animation: rm-blog-hero-blink 2.2s ease-in-out infinite;
+  }
+
+  @keyframes rm-blog-hero-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.25; }
+  }
+
+  /* ---------- Titular ---------- */
+  .rm-blog-hero__title {
+    font-family: var(--rm-font-display);
+    font-weight: 700;
+    font-size: clamp(2.25rem, 1.4rem + 3.4vw, 3.75rem);
+    line-height: 1.14;
+    letter-spacing: -0.01em;
+    color: var(--rm-light);
+    max-width: 16ch;
+    margin: 0 0 22px;
+    padding: 0;
+  }
+
+  .rm-blog-hero__title em {
+    display: inline-block;
+    line-height: 1.5;
+    padding: 0 0.06em 0 0.02em;
+    font-style: italic;
+    background: linear-gradient(135deg, var(--rm-blue), var(--rm-orange));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .rm-blog-hero__subtitle {
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--rm-text-muted);
+    max-width: 48ch;
+    margin: 0 0 30px;
+    padding: 0;
+  }
+
+  /* ---------- Buscador ---------- */
+  .rm-blog-hero__search {
+    position: relative;
+    display: flex;
+    align-items: center;
+    max-width: 520px;
+    margin: 0 0 22px;
+    padding: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: border-color var(--rm-transition), box-shadow var(--rm-transition);
+  }
+
+  .rm-blog-hero__search:focus-within {
+    border-color: var(--rm-blue);
+    box-shadow: 0 0 0 4px rgba(58, 123, 213, 0.18);
+  }
+
+  .rm-blog-hero__search-icon {
+    flex: none;
+    margin: 0 4px 0 12px;
+    color: var(--rm-text-muted);
+  }
+
+  .rm-blog-hero__search input[type="search"] {
+    flex: 1;
+    min-width: 0;
+    padding: 12px 10px;
+    border: 0;
+    background: transparent;
+    color: var(--rm-light);
+    font-family: var(--rm-font-body);
+    font-size: 15px;
+    outline: none;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  .rm-blog-hero__search input[type="search"]::placeholder {
+    color: #6f7891;
+  }
+
+  .rm-blog-hero__search button {
+    flex: none;
+    padding: 12px 20px;
+    border: 0;
+    border-radius: var(--rm-radius);
+    background: linear-gradient(135deg, var(--rm-blue), var(--rm-orange));
+    color: #ffffff;
+    font-family: var(--rm-font-body);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform var(--rm-transition), box-shadow var(--rm-transition);
+  }
+
+  .rm-blog-hero__search button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 24px rgba(232, 83, 26, 0.3);
+  }
+
+  .rm-blog-hero__search button:focus-visible,
+  .rm-blog-hero__chips a:focus-visible,
+  .rm-blog-hero__list a:focus-visible {
+    outline: 2px solid var(--rm-blue);
+    outline-offset: 3px;
+  }
+
+  .rm-blog-hero__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  /* ---------- Chips de categorías ---------- */
+  .rm-blog-hero__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 560px;
+  }
+
+  .rm-blog-hero__chips a {
+    padding: 8px 15px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 999px;
+    color: #cbd5e1;
+    font-size: 13.5px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: border-color var(--rm-transition), color var(--rm-transition), background var(--rm-transition);
+  }
+
+  .rm-blog-hero__chips a:hover {
+    border-color: var(--rm-blue);
+    background: rgba(58, 123, 213, 0.12);
+    color: #ffffff;
+  }
+
+  /* ---------- Panel "Empieza por aquí" ---------- */
+  .rm-blog-hero__visual {
+    position: relative;
+    max-width: 420px;
+    width: 100%;
+    margin: 0 auto;
+    padding-bottom: 44px;
+  }
+
+  .rm-blog-hero__card-back {
+    position: absolute;
+    top: 16px;
+    right: -14px;
+    bottom: 30px;
+    left: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--rm-radius-lg);
+    background: rgba(255, 255, 255, 0.03);
+    transform: rotate(4deg) scale(0.96);
+    opacity: 0.55;
+  }
+
+  .rm-blog-hero__card {
+    position: relative;
+    padding: 28px 26px 18px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--rm-radius-lg);
+    background: #14151f;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+  }
+
+  .rm-blog-hero__tag {
+    display: inline-block;
+    padding: 7px 13px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, var(--rm-blue), var(--rm-orange));
+    color: #ffffff;
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .rm-blog-hero__card-title {
+    margin: 16px 0 10px;
+    padding: 0;
+    font-family: var(--rm-font-display);
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--rm-light);
+  }
+
+  .rm-blog-hero__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .rm-blog-hero__list li {
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .rm-blog-hero__list li:first-child {
+    border-top: 0;
+  }
+
+  .rm-blog-hero__list a {
+    display: flex;
+    gap: 14px;
+    padding: 14px 6px;
+    margin: 0 -6px;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: background var(--rm-transition);
+  }
+
+  .rm-blog-hero__list a:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .rm-blog-hero__num {
+    flex: none;
+    font-family: var(--rm-font-display);
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.3;
+    background: linear-gradient(135deg, var(--rm-blue), var(--rm-orange));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .rm-blog-hero__item strong {
+    display: block;
+    font-size: 14.5px;
+    font-weight: 600;
+    line-height: 1.4;
+    color: #e5e7eb;
+    transition: color var(--rm-transition);
+  }
+
+  .rm-blog-hero__list a:hover strong {
+    color: #ffffff;
+  }
+
+  .rm-blog-hero__item small {
+    display: block;
+    margin-top: 4px;
+    font-size: 12px;
+    color: var(--rm-text-muted);
+  }
+
+  /* Aviso flotante (mismo patrón que "Nuevo pedido" en tienda) */
+  .rm-blog-hero__notif {
+    position: absolute;
+    left: -48px;
+    bottom: 0;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 34px 12px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    background: rgba(20, 21, 31, 0.92);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+    color: var(--rm-blue);
+    animation: rm-blog-hero-bob 5s ease-in-out infinite;
+  }
+
+  @keyframes rm-blog-hero-bob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+
+  .rm-blog-hero__notif strong {
+    display: block;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: #ffffff;
+  }
+
+  .rm-blog-hero__notif span:not(.rm-blog-hero__notif-dot) {
+    display: block;
+    font-size: 12px;
+    color: var(--rm-text-muted);
+  }
+
+  .rm-blog-hero__notif-dot {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--rm-orange);
+  }
+
+  /* ---------- Sin animaciones ---------- */
+  @media (prefers-reduced-motion: reduce) {
+    .rm-blog-hero *,
+    .rm-blog-hero *::before,
+    .rm-blog-hero *::after {
+      animation: none !important;
+    }
+
+    .rm-blog-hero [data-animate] {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 980px) {
+    .rm-blog-hero {
+      padding: 90px 20px 70px;
+    }
+
+    .rm-blog-hero__container {
+      grid-template-columns: 1fr;
+      gap: 56px;
+    }
+
+    .rm-blog-hero__notif {
+      left: -24px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .rm-blog-hero {
+      padding: 64px 16px 48px;
+    }
+
+    .rm-blog-hero__subtitle {
+      font-size: 16px;
+    }
+
+    .rm-blog-hero__search button {
+      padding: 12px 14px;
+    }
+
+    .rm-blog-hero__chips a {
+      font-size: 13px;
+    }
+
+    .rm-blog-hero__card {
+      padding: 24px 20px 14px;
+    }
+
+    .rm-blog-hero__notif {
+      left: 8px;
+      right: 8px;
+    }
+  }
+</style>
+
+<script>
+  (function () {
+    var section = document.querySelector('.rm-blog-hero');
+    if (!section) return;
+
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    /* Entradas al hacer scroll */
+    var elements = section.querySelectorAll('[data-animate]');
+    if (!('IntersectionObserver' in window)) {
+      elements.forEach(function (el) { el.classList.add('is-visible'); });
+    } else {
+      var entryObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            entryObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+      elements.forEach(function (el) { entryObserver.observe(el); });
+    }
+
+    /* Partículas de fondo (mismo efecto que el resto de heros) */
+    var canvas = section.querySelector('.rm-blog-hero__particles');
+    if (canvas && !reduceMotion) {
+      var ctx = canvas.getContext('2d');
+      var particles = [];
+      var count = 44;
+      var w, h;
+
+      function resize() {
+        w = canvas.width = canvas.offsetWidth;
+        h = canvas.height = canvas.offsetHeight;
+      }
+
+      function init() {
+        particles = [];
+        for (var i = 0; i < count; i++) {
+          particles.push({
+            x: Math.random() * w,
+            y: Math.random() * h,
+            vx: (Math.random() - 0.5) * 0.25,
+            vy: (Math.random() - 0.5) * 0.25
+          });
+        }
+      }
+
+      function step() {
+        ctx.clearRect(0, 0, w, h);
+        for (var i = 0; i < particles.length; i++) {
+          var p = particles[i];
+          p.x += p.vx;
+          p.y += p.vy;
+          if (p.x < 0 || p.x > w) p.vx *= -1;
+          if (p.y < 0 || p.y > h) p.vy *= -1;
+        }
+        for (var i = 0; i < particles.length; i++) {
+          for (var j = i + 1; j < particles.length; j++) {
+            var a = particles[i], b = particles[j];
+            var dx = a.x - b.x, dy = a.y - b.y;
+            var dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < 140) {
+              ctx.strokeStyle = 'rgba(58,123,213,' + (0.16 * (1 - dist / 140)) + ')';
+              ctx.lineWidth = 1;
+              ctx.beginPath();
+              ctx.moveTo(a.x, a.y);
+              ctx.lineTo(b.x, b.y);
+              ctx.stroke();
+            }
+          }
+        }
+        for (var i = 0; i < particles.length; i++) {
+          ctx.fillStyle = 'rgba(125,211,252,0.55)';
+          ctx.beginPath();
+          ctx.arc(particles[i].x, particles[i].y, 1.4, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        requestAnimationFrame(step);
+      }
+
+      resize();
+      init();
+      step();
+      window.addEventListener('resize', function () {
+        resize();
+        init();
+      });
+    }
+  })();
+</script>
