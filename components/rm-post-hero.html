@@ -1,0 +1,429 @@
+<!-- ============================================================
+     RM POST HERO — Cabecera de la plantilla de entrada
+     (Divi Theme Builder > Cuerpo personalizado > Todas las entradas)
+     Marca: Rodmedia · Reestructuración web
+
+     Va en la PRIMERA sección de la plantilla (clase CSS de la
+     sección: rm-post-hero), encima del módulo "Título de la
+     entrada" (clase CSS: rm-post-title). Este código:
+     - Pinta el fondo oscuro del sistema (partículas, glows, línea).
+     - Coloca título + meta a la izquierda y la imagen destacada a
+       la derecha, como los heros de inicio, tienda y web.
+     - Añade la categoría como badge y el tiempo de lectura.
+     ============================================================ -->
+
+<a class="rm-post-hero__back" href="/blog/">
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+    <path d="M12.5 8h-9M7.5 3.5 3 8l4.5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  Volver al blog
+</a>
+
+<div class="rm-post-hero__bg" aria-hidden="true">
+  <div class="rm-post-hero__topline"></div>
+  <canvas class="rm-post-hero__particles"></canvas>
+  <div class="rm-post-hero__glow rm-post-hero__glow--blue"></div>
+  <div class="rm-post-hero__glow rm-post-hero__glow--orange"></div>
+</div>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Inter:wght@400;500;600;700&display=swap');
+
+  .rm-post-hero {
+    --rm-primary: #0f0f1e;
+    --rm-blue: #3a7bd5;
+    --rm-orange: #e8531a;
+    --rm-light: #f8f8fb;
+    --rm-text-muted: #9aa3bd;
+    --rm-radius-lg: 20px;
+    --rm-transition: 0.3s ease;
+    --rm-font-display: "Playfair Display", Georgia, "Times New Roman", serif;
+    --rm-font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+
+    position: relative;
+    overflow: hidden;
+    background-color: var(--rm-primary) !important;
+    font-family: var(--rm-font-body);
+  }
+
+  .rm-post-hero > .et_pb_row {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ---------- Fondo (lo coloca el script en la sección) ---------- */
+  .rm-post-hero__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .rm-post-hero__topline {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--rm-blue), var(--rm-orange), var(--rm-blue));
+    background-size: 200% 100%;
+    animation: rm-post-hero-shimmer 6s linear infinite;
+  }
+
+  @keyframes rm-post-hero-shimmer {
+    0% { background-position: 0% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  .rm-post-hero__particles {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .rm-post-hero__glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.28;
+    animation: rm-post-hero-float 15s ease-in-out infinite;
+  }
+
+  .rm-post-hero__glow--blue {
+    width: 480px;
+    height: 480px;
+    top: -150px;
+    left: -110px;
+    background: var(--rm-blue);
+  }
+
+  .rm-post-hero__glow--orange {
+    width: 420px;
+    height: 420px;
+    bottom: -170px;
+    right: -110px;
+    background: var(--rm-orange);
+    animation-delay: -7s;
+  }
+
+  @keyframes rm-post-hero-float {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(26px, 22px) scale(1.07); }
+  }
+
+  /* ---------- Volver al blog ---------- */
+  .rm-post-hero__back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 26px;
+    color: var(--rm-text-muted);
+    font-family: var(--rm-font-body);
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color var(--rm-transition), gap var(--rm-transition);
+  }
+
+  .rm-post-hero__back:hover {
+    gap: 12px;
+    color: #ffffff;
+  }
+
+  .rm-post-hero__back:focus-visible {
+    outline: 2px solid var(--rm-blue);
+    outline-offset: 3px;
+  }
+
+  /* ---------- Módulo "Título de la entrada" ---------- */
+  .rm-post-hero .rm-post-title {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    align-items: center;
+    gap: 56px;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+  }
+
+  .rm-post-hero .rm-post-title:not(:has(.et_pb_title_featured_container)) {
+    grid-template-columns: minmax(0, 820px);
+  }
+
+  .rm-post-hero .rm-post-title .et_pb_title_container {
+    padding: 0;
+  }
+
+  .rm-post-hero__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 22px;
+    padding: 7px 16px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #cbd5e1;
+    text-decoration: none;
+    transition: border-color var(--rm-transition), color var(--rm-transition);
+  }
+
+  .rm-post-hero__badge:hover {
+    border-color: var(--rm-blue);
+    color: #ffffff;
+  }
+
+  .rm-post-hero__badge::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--rm-blue), var(--rm-orange));
+  }
+
+  .rm-post-hero .rm-post-title .entry-title {
+    margin: 0 0 22px;
+    padding: 0;
+    max-width: 22ch;
+    font-family: var(--rm-font-display);
+    font-size: clamp(2rem, 1.3rem + 2.6vw, 3.25rem);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    color: var(--rm-light) !important;
+  }
+
+  .rm-post-hero .rm-post-title .et_pb_title_meta_container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px 4px;
+    margin: 0;
+    padding: 0;
+    font-family: var(--rm-font-body);
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--rm-text-muted) !important;
+  }
+
+  .rm-post-hero .rm-post-title .et_pb_title_meta_container a {
+    color: #e5e7eb !important;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .rm-post-hero .rm-post-title .et_pb_title_meta_container a:hover {
+    color: #ffffff !important;
+  }
+
+  .rm-post-hero__read {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-left: 4px;
+    padding: 3px 10px;
+    border-radius: 999px;
+    background: rgba(58, 123, 213, 0.14);
+    color: #b9cdf0;
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  /* Imagen destacada: tarjeta con otra detrás, como en los heros */
+  .rm-post-hero .rm-post-title .et_pb_title_featured_container {
+    position: relative;
+    margin: 0;
+    padding: 0 0 0 14px;
+  }
+
+  .rm-post-hero .rm-post-title .et_pb_title_featured_container::before {
+    content: "";
+    position: absolute;
+    top: 16px;
+    right: -14px;
+    bottom: -14px;
+    left: 28px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--rm-radius-lg);
+    background: rgba(255, 255, 255, 0.03);
+    transform: rotate(3deg);
+  }
+
+  .rm-post-hero .rm-post-title .et_pb_image_wrap {
+    position: relative;
+    display: block;
+  }
+
+  .rm-post-hero .rm-post-title .et_pb_title_featured_container img {
+    position: relative;
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--rm-radius-lg);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+  }
+
+  /* ---------- Sin animaciones ---------- */
+  @media (prefers-reduced-motion: reduce) {
+    .rm-post-hero__topline,
+    .rm-post-hero__glow {
+      animation: none !important;
+    }
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 980px) {
+    .rm-post-hero .rm-post-title {
+      grid-template-columns: 1fr;
+      gap: 44px;
+    }
+
+    .rm-post-hero .rm-post-title .et_pb_title_featured_container {
+      max-width: 560px;
+      padding-left: 0;
+    }
+
+    .rm-post-hero .rm-post-title .et_pb_title_featured_container::before {
+      left: 14px;
+      right: -8px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .rm-post-hero__back {
+      margin-bottom: 20px;
+    }
+
+    .rm-post-hero .rm-post-title .entry-title {
+      font-size: 1.9rem;
+    }
+
+    .rm-post-hero .rm-post-title .et_pb_title_featured_container::before {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  (function () {
+  /* El título y el contenido van después de este módulo: esperar al DOM */
+  function run() {
+    var section = document.querySelector('.rm-post-hero');
+    if (!section) return;
+
+    /* Lleva el fondo a la sección para que la cubra entera */
+    var bg = document.querySelector('.rm-post-hero__bg');
+    if (bg && bg.parentNode !== section) section.insertBefore(bg, section.firstChild);
+
+    var title = section.querySelector('.rm-post-title');
+    var meta = title && title.querySelector('.et_pb_title_meta_container');
+
+    /* Badge con la primera categoría */
+    if (title && meta) {
+      var cat = meta.querySelector('a[rel~="tag"], a[rel~="category"]');
+      var container = title.querySelector('.et_pb_title_container');
+      if (cat && container && !container.querySelector('.rm-post-hero__badge')) {
+        var badge = document.createElement('a');
+        badge.className = 'rm-post-hero__badge';
+        badge.href = cat.href;
+        badge.textContent = cat.textContent;
+        container.insertBefore(badge, container.firstChild);
+      }
+    }
+
+    /* Tiempo de lectura (200 palabras por minuto) */
+    var content = document.querySelector('.rm-post-content');
+    if (meta && content && !meta.querySelector('.rm-post-hero__read')) {
+      var words = (content.innerText || content.textContent || '').trim().split(/\s+/).length;
+      var minutes = Math.max(1, Math.round(words / 200));
+      var read = document.createElement('span');
+      read.className = 'rm-post-hero__read';
+      read.textContent = minutes + ' min de lectura';
+      meta.appendChild(read);
+    }
+
+    /* Partículas de fondo (mismo efecto que el resto de heros) */
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var canvas = section.querySelector('.rm-post-hero__particles');
+    if (canvas && !reduceMotion) {
+      var ctx = canvas.getContext('2d');
+      var particles = [];
+      var count = 40;
+      var w, h;
+
+      function resize() {
+        w = canvas.width = canvas.offsetWidth;
+        h = canvas.height = canvas.offsetHeight;
+      }
+
+      function init() {
+        particles = [];
+        for (var i = 0; i < count; i++) {
+          particles.push({
+            x: Math.random() * w,
+            y: Math.random() * h,
+            vx: (Math.random() - 0.5) * 0.25,
+            vy: (Math.random() - 0.5) * 0.25
+          });
+        }
+      }
+
+      function step() {
+        ctx.clearRect(0, 0, w, h);
+        for (var i = 0; i < particles.length; i++) {
+          var p = particles[i];
+          p.x += p.vx;
+          p.y += p.vy;
+          if (p.x < 0 || p.x > w) p.vx *= -1;
+          if (p.y < 0 || p.y > h) p.vy *= -1;
+        }
+        for (var i = 0; i < particles.length; i++) {
+          for (var j = i + 1; j < particles.length; j++) {
+            var a = particles[i], b = particles[j];
+            var dx = a.x - b.x, dy = a.y - b.y;
+            var dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < 140) {
+              ctx.strokeStyle = 'rgba(58,123,213,' + (0.16 * (1 - dist / 140)) + ')';
+              ctx.lineWidth = 1;
+              ctx.beginPath();
+              ctx.moveTo(a.x, a.y);
+              ctx.lineTo(b.x, b.y);
+              ctx.stroke();
+            }
+          }
+        }
+        for (var i = 0; i < particles.length; i++) {
+          ctx.fillStyle = 'rgba(125,211,252,0.55)';
+          ctx.beginPath();
+          ctx.arc(particles[i].x, particles[i].y, 1.4, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        requestAnimationFrame(step);
+      }
+
+      resize();
+      init();
+      step();
+      window.addEventListener('resize', function () {
+        resize();
+        init();
+      });
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', run);
+  } else {
+    run();
+  }
+  })();
+</script>

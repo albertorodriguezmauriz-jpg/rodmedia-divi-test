@@ -1,0 +1,585 @@
+<!-- ============================================================
+     RM POST RELATED — "Sigue leyendo" (plantilla de entrada)
+     (Divi Theme Builder > Cuerpo personalizado > Todas las entradas)
+     Marca: Rodmedia · Reestructuración web
+
+     Sección con clase CSS "rm-blog-posts rm-post-related". Dentro:
+       1) Este Code Module.
+       2) Módulo Blog: Diseño = Cuadrícula, Número de entradas = 4,
+          Categoría = "Categoría actual", Paginación = No,
+          Leer más = Sí, Clase CSS = rm-blog-grid
+     El script quita el artículo que se está leyendo y deja 3.
+
+     Los estilos de la rejilla son una copia de rm-blog-posts.html:
+     si cambias uno, cambia el otro.
+     ============================================================ -->
+
+<header class="rm-blog-posts__head">
+  <span class="rm-blog-posts__eyebrow">
+    <span class="rm-blog-posts__eyebrow-dot" aria-hidden="true"></span>
+    Sigue leyendo
+  </span>
+  <h2 class="rm-blog-posts__title">Más ideas para tu <em>negocio</em></h2>
+  <p class="rm-blog-posts__lead">Otros artículos sobre el mismo tema, para seguir dando pasos.</p>
+</header>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Inter:wght@400;500;600;700&display=swap');
+
+  /* ---------- Tokens de la sección (fondo claro para leer cómodo) ---------- */
+  .rm-blog-posts {
+    --rm-primary: #0f0f1e;
+    --rm-blue: #3a7bd5;
+    --rm-orange: #e8531a;
+    --rm-light: #f8f8fb;
+    --rm-text: #1f2333;
+    --rm-text-muted: #5b6478;
+    --rm-border: rgba(15, 15, 30, 0.08);
+    --rm-radius: 8px;
+    --rm-radius-lg: 20px;
+    --rm-shadow: 0 4px 24px rgba(15, 15, 30, 0.06);
+    --rm-shadow-hover: 0 22px 48px rgba(15, 15, 30, 0.12);
+    --rm-transition: 0.3s ease;
+    --rm-font-display: "Playfair Display", Georgia, "Times New Roman", serif;
+    --rm-font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+
+    background: var(--rm-light);
+    font-family: var(--rm-font-body);
+  }
+
+  /* ---------- Cabecera de sección ---------- */
+  .rm-blog-posts__head {
+    max-width: 640px;
+    margin: 0 auto 56px;
+    text-align: center;
+  }
+
+  .rm-blog-posts__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 16px;
+    margin-bottom: 18px;
+    border: 1px solid var(--rm-border);
+    border-radius: 999px;
+    background: #ffffff;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--rm-text-muted);
+  }
+
+  .rm-blog-posts__eyebrow-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--rm-blue), var(--rm-orange));
+  }
+
+  .rm-blog-posts__title {
+    margin: 0 0 14px;
+    padding: 0;
+    font-family: var(--rm-font-display);
+    font-size: clamp(1.9rem, 1.4rem + 1.8vw, 2.75rem);
+    font-weight: 700;
+    line-height: 1.18;
+    color: var(--rm-primary);
+  }
+
+  .rm-blog-posts__title em {
+    display: inline-block;
+    line-height: 1.4;
+    padding: 0 0.06em 0 0.02em;
+    font-style: italic;
+    background: linear-gradient(135deg, var(--rm-blue), var(--rm-orange));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .rm-blog-posts__lead {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--rm-text-muted);
+  }
+
+  /* =====================================================
+     Elementos comunes a los dos módulos Blog
+     ===================================================== */
+  .rm-blog-posts .rm-blog-featured,
+  .rm-blog-posts .rm-blog-grid {
+    font-family: var(--rm-font-body);
+  }
+
+  .rm-blog-posts .rm-blog-featured .et_pb_post,
+  .rm-blog-posts .rm-blog-grid .et_pb_post {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    border: 1px solid var(--rm-border);
+    border-radius: var(--rm-radius-lg);
+    background: #ffffff;
+    box-shadow: var(--rm-shadow);
+    overflow: hidden;
+    transition: transform var(--rm-transition), box-shadow var(--rm-transition);
+  }
+
+  /* Línea de marca que aparece arriba al pasar el ratón */
+  .rm-blog-posts .rm-blog-featured .et_pb_post::before,
+  .rm-blog-posts .rm-blog-grid .et_pb_post::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    height: 3px;
+    background: linear-gradient(90deg, var(--rm-blue), var(--rm-orange));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.45s ease;
+  }
+
+  .rm-blog-posts .rm-blog-featured .et_pb_post:hover,
+  .rm-blog-posts .rm-blog-grid .et_pb_post:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--rm-shadow-hover);
+  }
+
+  .rm-blog-posts .rm-blog-featured .et_pb_post:hover::before,
+  .rm-blog-posts .rm-blog-grid .et_pb_post:hover::before {
+    transform: scaleX(1);
+  }
+
+  .rm-blog-posts .entry-featured-image-url {
+    display: block;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  .rm-blog-posts .entry-featured-image-url img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+
+  .rm-blog-posts .et_pb_post:hover .entry-featured-image-url img {
+    transform: scale(1.05);
+  }
+
+  /* El overlay gris de Divi no encaja con el sistema */
+  .rm-blog-posts .et_overlay {
+    display: none !important;
+  }
+
+  .rm-blog-posts .entry-title {
+    margin: 0;
+    padding: 0;
+    font-family: var(--rm-font-display);
+    font-weight: 700;
+    color: var(--rm-primary);
+  }
+
+  .rm-blog-posts .entry-title a {
+    color: inherit;
+    text-decoration: none;
+    background-image: linear-gradient(135deg, var(--rm-blue), var(--rm-orange));
+    background-size: 0 2px;
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    transition: background-size 0.4s ease;
+  }
+
+  .rm-blog-posts .et_pb_post:hover .entry-title a {
+    background-size: 100% 2px;
+  }
+
+  /* Meta: fecha | categoría */
+  .rm-blog-posts .post-meta {
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #8a91a5;
+  }
+
+  .rm-blog-posts .post-meta a {
+    font-weight: 700;
+    text-decoration: none;
+    background: linear-gradient(135deg, var(--rm-blue), var(--rm-orange));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .rm-blog-posts .post-content,
+  .rm-blog-posts .post-content-inner p {
+    margin: 0;
+    padding: 0;
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--rm-text-muted);
+  }
+
+  /* "Leer más" como enlace con flecha (sustituye al botón de solo icono) */
+  .rm-blog-posts .more-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 18px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--rm-blue);
+    text-decoration: none;
+    transition: gap var(--rm-transition), color var(--rm-transition);
+  }
+
+  .rm-blog-posts .more-link::first-letter {
+    text-transform: uppercase;
+  }
+
+  .rm-blog-posts .more-link::after {
+    content: "→";
+    transition: transform var(--rm-transition);
+  }
+
+  .rm-blog-posts .et_pb_post:hover .more-link {
+    color: var(--rm-orange);
+  }
+
+  .rm-blog-posts .et_pb_post:hover .more-link::after {
+    transform: translateX(4px);
+  }
+
+  .rm-blog-posts .entry-title a:focus-visible,
+  .rm-blog-posts .more-link:focus-visible,
+  .rm-blog-posts .entry-featured-image-url:focus-visible,
+  .rm-blog-posts .pagination a:focus-visible {
+    outline: 2px solid var(--rm-blue);
+    outline-offset: 3px;
+  }
+
+  /* =====================================================
+     Destacado (módulo Blog en "ancho completo", 1 entrada)
+     ===================================================== */
+  .rm-blog-posts .rm-blog-featured {
+    margin-bottom: 40px !important;
+  }
+
+  .rm-blog-posts .rm-blog-featured .et_pb_post {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    grid-template-rows: auto auto auto 1fr;
+    column-gap: 44px;
+    align-content: center;
+    padding-right: 44px;
+  }
+
+  .rm-blog-posts .rm-blog-featured .entry-featured-image-url {
+    grid-column: 1;
+    grid-row: 1 / span 4;
+    min-height: 360px;
+  }
+
+  .rm-blog-posts .rm-blog-featured .entry-title,
+  .rm-blog-posts .rm-blog-featured .post-meta,
+  .rm-blog-posts .rm-blog-featured .post-content {
+    grid-column: 2;
+  }
+
+  /* Etiqueta "Destacado" sobre el texto */
+  .rm-blog-posts .rm-blog-featured .entry-title::before {
+    content: "Destacado";
+    display: table;
+    margin: 44px 0 18px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, var(--rm-blue), var(--rm-orange));
+    color: #ffffff;
+    font-family: var(--rm-font-body);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .rm-blog-posts .rm-blog-featured .entry-title {
+    font-size: clamp(1.5rem, 1.1rem + 1.2vw, 2.1rem);
+    line-height: 1.22;
+  }
+
+  .rm-blog-posts .rm-blog-featured .post-meta {
+    margin-top: 14px;
+  }
+
+  .rm-blog-posts .rm-blog-featured .post-content {
+    margin-top: 14px;
+    padding-bottom: 44px;
+    font-size: 16px;
+  }
+
+  /* =====================================================
+     Rejilla (módulo Blog en "cuadrícula")
+     Divi reparte las entradas en columnas tipo masonry; aquí
+     se colocan en un grid real para que todas las tarjetas de
+     una fila midan lo mismo, sin cambiar el orden.
+     ===================================================== */
+  .rm-blog-posts .rm-blog-grid .et_pb_salvattore_content {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px;
+  }
+
+  .rm-blog-posts .rm-blog-grid .et_pb_salvattore_content > .column {
+    display: contents;
+  }
+
+  .rm-blog-posts .rm-blog-grid .column:nth-child(1) > .et_pb_post { grid-column: 1; }
+  .rm-blog-posts .rm-blog-grid .column:nth-child(2) > .et_pb_post { grid-column: 2; }
+  .rm-blog-posts .rm-blog-grid .column:nth-child(3) > .et_pb_post { grid-column: 3; }
+  .rm-blog-posts .rm-blog-grid .column > .et_pb_post:nth-child(1) { grid-row: 1; }
+  .rm-blog-posts .rm-blog-grid .column > .et_pb_post:nth-child(2) { grid-row: 2; }
+  .rm-blog-posts .rm-blog-grid .column > .et_pb_post:nth-child(3) { grid-row: 3; }
+  .rm-blog-posts .rm-blog-grid .column > .et_pb_post:nth-child(4) { grid-row: 4; }
+  .rm-blog-posts .rm-blog-grid .column > .et_pb_post:nth-child(5) { grid-row: 5; }
+  .rm-blog-posts .rm-blog-grid .column > .et_pb_post:nth-child(6) { grid-row: 6; }
+  .rm-blog-posts .rm-blog-grid .column > .et_pb_post:nth-child(7) { grid-row: 7; }
+  .rm-blog-posts .rm-blog-grid .column > .et_pb_post:nth-child(8) { grid-row: 8; }
+  .rm-blog-posts .rm-blog-grid .column > .et_pb_post:nth-child(9) { grid-row: 9; }
+
+  .rm-blog-posts .rm-blog-grid .et_pb_post {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .rm-blog-posts .rm-blog-grid .et_pb_image_container {
+    margin: 0;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+  }
+
+  .rm-blog-posts .rm-blog-grid .entry-title {
+    padding: 24px 24px 0;
+    font-size: 20px;
+    line-height: 1.3;
+  }
+
+  .rm-blog-posts .rm-blog-grid .post-meta {
+    padding: 10px 24px 0;
+  }
+
+  .rm-blog-posts .rm-blog-grid .post-content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 12px 24px 26px;
+  }
+
+  .rm-blog-posts .rm-blog-grid .post-content-inner {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .rm-blog-posts .rm-blog-grid .more-link {
+    margin-top: auto;
+    padding-top: 18px;
+  }
+
+  /* ---------- Paginación ---------- */
+  .rm-blog-posts .rm-blog-grid .pagination {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 48px;
+    padding: 0;
+  }
+
+  .rm-blog-posts .rm-blog-grid .pagination::before,
+  .rm-blog-posts .rm-blog-grid .pagination::after {
+    display: none;
+  }
+
+  .rm-blog-posts .rm-blog-grid .pagination .alignleft,
+  .rm-blog-posts .rm-blog-grid .pagination .alignright {
+    float: none;
+    margin: 0;
+  }
+
+  .rm-blog-posts .rm-blog-grid .pagination .alignright {
+    margin-left: auto;
+  }
+
+  .rm-blog-posts .rm-blog-grid .pagination a {
+    display: inline-flex;
+    align-items: center;
+    padding: 13px 22px;
+    border: 1.5px solid rgba(15, 15, 30, 0.18);
+    border-radius: var(--rm-radius);
+    background: #ffffff;
+    color: var(--rm-primary);
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: border-color var(--rm-transition), color var(--rm-transition), transform var(--rm-transition);
+  }
+
+  .rm-blog-posts .rm-blog-grid .pagination a:hover {
+    border-color: var(--rm-blue);
+    color: var(--rm-blue);
+    transform: translateY(-2px);
+  }
+
+  /* ---------- Sin animaciones ---------- */
+  @media (prefers-reduced-motion: reduce) {
+    .rm-blog-posts .et_pb_post,
+    .rm-blog-posts .et_pb_post::before,
+    .rm-blog-posts .entry-featured-image-url img,
+    .rm-blog-posts .more-link::after {
+      transition: none !important;
+    }
+
+    .rm-blog-posts .et_pb_post:hover,
+    .rm-blog-posts .et_pb_post:hover .entry-featured-image-url img {
+      transform: none;
+    }
+  }
+
+  /* ---------- Responsive (mismos cortes que Divi: 980 / 767) ---------- */
+  @media (max-width: 980px) {
+    .rm-blog-posts__head {
+      margin-bottom: 40px;
+    }
+
+    .rm-blog-posts .rm-blog-featured .et_pb_post {
+      grid-template-columns: 1fr;
+      padding-right: 0;
+    }
+
+    .rm-blog-posts .rm-blog-featured .entry-featured-image-url {
+      grid-row: auto;
+      min-height: 0;
+      aspect-ratio: 16 / 9;
+    }
+
+    .rm-blog-posts .rm-blog-featured .entry-title,
+    .rm-blog-posts .rm-blog-featured .post-meta,
+    .rm-blog-posts .rm-blog-featured .post-content {
+      grid-column: 1;
+      padding-left: 28px;
+      padding-right: 28px;
+    }
+
+    .rm-blog-posts .rm-blog-featured .entry-title::before {
+      margin-top: 28px;
+    }
+
+    .rm-blog-posts .rm-blog-featured .post-content {
+      padding-bottom: 30px;
+    }
+
+    .rm-blog-posts .rm-blog-grid .et_pb_salvattore_content {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .rm-blog-posts .rm-blog-featured .entry-title,
+    .rm-blog-posts .rm-blog-featured .post-meta,
+    .rm-blog-posts .rm-blog-featured .post-content {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    .rm-blog-posts .rm-blog-grid .et_pb_salvattore_content {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 20px;
+    }
+
+    /* En una columna el orden vuelve a ser el natural */
+    .rm-blog-posts .rm-blog-grid .column > .et_pb_post {
+      grid-column: auto !important;
+      grid-row: auto !important;
+    }
+
+    .rm-blog-posts .rm-blog-grid .pagination {
+      flex-direction: column;
+    }
+
+    .rm-blog-posts .rm-blog-grid .pagination a {
+      box-sizing: border-box;
+      justify-content: center;
+      width: 100%;
+    }
+  }
+</style>
+
+<style>
+  /* ---------- Ajustes de "Sigue leyendo" ---------- */
+  /* Aquí el orden lo pone el script, no el reparto en columnas de Divi */
+  .rm-post-related .rm-blog-grid .column > .et_pb_post {
+    grid-column: auto !important;
+    grid-row: auto !important;
+  }
+
+  .rm-post-related .rm-blog-grid .et_pb_post.rm-is-hidden {
+    display: none !important;
+  }
+
+  .rm-post-related .rm-blog-grid .pagination {
+    display: none;
+  }
+</style>
+
+<script>
+  (function () {
+    function run() {
+      var grid = document.querySelector('.rm-post-related .rm-blog-grid');
+      if (!grid) return;
+
+      var here = window.location.href.split(/[?#]/)[0].replace(/\/$/, '');
+      var posts = Array.prototype.slice.call(grid.querySelectorAll('.et_pb_post'));
+
+      /* Orden original de Divi (et_pb_blog_item_X_N) */
+      function index(el) {
+        var m = el.className.match(/et_pb_blog_item_\d+_(\d+)/);
+        return m ? parseInt(m[1], 10) : 0;
+      }
+      posts.sort(function (a, b) { return index(a) - index(b); });
+
+      var shown = 0;
+      posts.forEach(function (post) {
+        var link = post.querySelector('.entry-title a');
+        var url = link ? link.href.split(/[?#]/)[0].replace(/\/$/, '') : '';
+        if (url === here || shown >= 3) {
+          post.classList.add('rm-is-hidden');
+        } else {
+          post.style.order = shown;
+          shown++;
+        }
+      });
+
+      /* Sin otros artículos en la categoría: se oculta la sección */
+      if (!shown) {
+        var section = grid.closest('.rm-post-related');
+        if (section) section.style.display = 'none';
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', run);
+    } else {
+      run();
+    }
+  })();
+</script>

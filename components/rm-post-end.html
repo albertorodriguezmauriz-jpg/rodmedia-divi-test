@@ -1,0 +1,426 @@
+<!-- ============================================================
+     RM POST END — Cierre del artículo (plantilla de entrada)
+     (Divi Theme Builder > Cuerpo personalizado > Todas las entradas)
+     Marca: Rodmedia · Reestructuración web
+
+     Va en la columna ancha, JUSTO DEBAJO del módulo "Contenido de la
+     entrada". Incluye: compartir, una llamada a la acción que cambia
+     según la categoría del artículo y la caja de autor.
+
+     ANTES DE PUBLICAR:
+     1) Revisa las URLs de RM_LINKS (en el script de abajo) para que
+        apunten a tus páginas reales.
+     2) Ajusta los textos de RM_CTA si quieres otro enfoque por
+        categoría. La clave es el slug de la categoría.
+     ============================================================ -->
+
+<div class="rm-post-end">
+
+  <div class="rm-post-end__share">
+    <p class="rm-post-end__share-text">¿Te ha sido útil? Compártelo con quien lo necesite.</p>
+    <div class="rm-post-share__buttons">
+      <a data-rm-share="whatsapp" href="#" aria-label="Compartir por WhatsApp">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3.5 20.5 5 16a8.5 8.5 0 1 1 3.2 3.1z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 8.5c0 3.3 3.2 6.5 6.5 6.5l1-1.6-2-1-1 .9c-1.1-.5-2-1.4-2.6-2.6l.9-1-1-2z" fill="currentColor"/></svg>
+      </a>
+      <a data-rm-share="linkedin" href="#" aria-label="Compartir en LinkedIn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" stroke-width="1.6"/><path d="M8 10.5V16M8 7.8v.1M11.5 16v-5.5M11.5 13c0-1.6 1-2.6 2.3-2.6s2.2.9 2.2 2.6V16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </a>
+      <a data-rm-share="facebook" href="#" aria-label="Compartir en Facebook">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14 8h2.5V4.5H14c-2.2 0-3.5 1.5-3.5 3.7V10H8v3.5h2.5V21H14v-7.5h2.5L17 10h-3V8.6c0-.4.3-.6.6-.6z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+      </a>
+      <button type="button" data-rm-share="copy" aria-label="Copiar enlace">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- CTA: el texto por defecto se cambia según la categoría -->
+  <section class="rm-post-cta" aria-labelledby="rm-post-cta-title">
+    <div class="rm-post-cta__glow" aria-hidden="true"></div>
+    <span class="rm-post-cta__badge"><span aria-hidden="true"></span><span class="rm-post-cta__eyebrow">Siguiente paso</span></span>
+    <h2 id="rm-post-cta-title" class="rm-post-cta__title">¿Lo aplicamos a <em>tu negocio</em>?</h2>
+    <p class="rm-post-cta__text">Cuéntanos qué tienes y qué quieres conseguir. En una llamada de 20 minutos te decimos qué haríamos, sin compromiso y sin tecnicismos.</p>
+    <div class="rm-post-cta__actions">
+      <a class="rm-post-cta__btn rm-post-cta__btn--primary" href="/planes-y-presupuestos/">
+        <span class="rm-post-cta__primary-label">Ver planes y precios</span>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3.5 8h9M8.5 3.5 13 8l-4.5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a class="rm-post-cta__btn rm-post-cta__btn--secondary" href="/reserva-una-cita/">Reservar una llamada</a>
+    </div>
+  </section>
+
+  <div class="rm-post-author">
+    <span class="rm-post-author__avatar" aria-hidden="true">R</span>
+    <div>
+      <p class="rm-post-author__name">Escrito por Alberto, de Rodmedia</p>
+      <p class="rm-post-author__bio">Ayudo a autónomos y pymes del Baix Maestrat a tener una web y un marketing que funcionen, explicados sin tecnicismos y con precio cerrado.</p>
+      <a class="rm-post-author__link" href="/quienes-somos/">Conoce Rodmedia →</a>
+    </div>
+  </div>
+
+</div>
+
+<style>
+  .rm-post-end {
+    --rm-primary: #0f0f1e;
+    --rm-blue: #3a7bd5;
+    --rm-orange: #e8531a;
+    --rm-text-muted: #5b6478;
+    --rm-border: rgba(15, 15, 30, 0.08);
+    --rm-radius: 8px;
+    --rm-radius-lg: 20px;
+    --rm-transition: 0.3s ease;
+    --rm-font-display: "Playfair Display", Georgia, "Times New Roman", serif;
+    --rm-font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+
+    max-width: 72ch;
+    margin-top: 48px;
+    font-family: var(--rm-font-body);
+  }
+
+  /* ---------- Compartir ---------- */
+  .rm-post-end__share {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px 24px;
+    padding: 22px 0;
+    border-top: 1px solid var(--rm-border);
+    border-bottom: 1px solid var(--rm-border);
+  }
+
+  .rm-post-end__share-text {
+    margin: 0;
+    padding: 0;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--rm-primary);
+  }
+
+  /* Si la barra lateral no está, los botones necesitan su estilo aquí */
+  .rm-post-end .rm-post-share__buttons {
+    display: flex;
+    gap: 8px;
+  }
+
+  .rm-post-end .rm-post-share__buttons a,
+  .rm-post-end .rm-post-share__buttons button {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: 1px solid var(--rm-border);
+    border-radius: 50%;
+    background: #ffffff;
+    color: var(--rm-primary);
+    cursor: pointer;
+    transition: border-color var(--rm-transition), color var(--rm-transition), transform var(--rm-transition);
+  }
+
+  .rm-post-end .rm-post-share__buttons a:hover,
+  .rm-post-end .rm-post-share__buttons button:hover {
+    border-color: var(--rm-blue);
+    color: var(--rm-blue);
+    transform: translateY(-2px);
+  }
+
+  /* ---------- CTA oscura ---------- */
+  .rm-post-cta {
+    position: relative;
+    overflow: hidden;
+    margin: 40px 0;
+    padding: 44px 40px;
+    border-radius: var(--rm-radius-lg);
+    background: var(--rm-primary);
+    color: #f8f8fb;
+  }
+
+  .rm-post-cta::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--rm-blue), var(--rm-orange));
+  }
+
+  .rm-post-cta__glow {
+    position: absolute;
+    right: -120px;
+    bottom: -140px;
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    background: var(--rm-orange);
+    filter: blur(90px);
+    opacity: 0.3;
+    pointer-events: none;
+  }
+
+  .rm-post-cta__badge {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 18px;
+    padding: 6px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.05);
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #cbd5e1;
+  }
+
+  .rm-post-cta__badge > span:first-child {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--rm-blue), var(--rm-orange));
+  }
+
+  .rm-post-cta__title {
+    position: relative;
+    margin: 0 0 12px;
+    padding: 0;
+    font-family: var(--rm-font-display);
+    font-size: clamp(1.6rem, 1.2rem + 1.4vw, 2.2rem);
+    font-weight: 700;
+    line-height: 1.2;
+    color: #ffffff;
+  }
+
+  .rm-post-cta__title::before {
+    display: none;
+  }
+
+  .rm-post-cta__title em {
+    display: inline-block;
+    line-height: 1.4;
+    padding: 0 0.06em 0 0.02em;
+    font-style: italic;
+    background: linear-gradient(135deg, var(--rm-blue), var(--rm-orange));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .rm-post-cta__text {
+    position: relative;
+    max-width: 52ch;
+    margin: 0 0 26px;
+    padding: 0;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #9aa3bd;
+  }
+
+  .rm-post-cta__actions {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  .rm-post-cta__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 24px;
+    border-radius: var(--rm-radius);
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none !important;
+    transition: transform var(--rm-transition), box-shadow var(--rm-transition), border-color var(--rm-transition);
+  }
+
+  .rm-post-cta__btn--primary {
+    background: linear-gradient(135deg, var(--rm-blue), var(--rm-orange));
+    box-shadow: 0 12px 28px rgba(58, 123, 213, 0.28);
+    color: #ffffff !important;
+  }
+
+  .rm-post-cta__btn--primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 34px rgba(232, 83, 26, 0.35);
+  }
+
+  .rm-post-cta__btn--secondary {
+    border: 1.5px solid rgba(255, 255, 255, 0.28);
+    color: #e5e7eb !important;
+  }
+
+  .rm-post-cta__btn--secondary:hover {
+    border-color: var(--rm-blue);
+    color: #ffffff !important;
+  }
+
+  .rm-post-cta__btn:focus-visible,
+  .rm-post-author__link:focus-visible,
+  .rm-post-end .rm-post-share__buttons a:focus-visible,
+  .rm-post-end .rm-post-share__buttons button:focus-visible {
+    outline: 2px solid var(--rm-blue);
+    outline-offset: 3px;
+  }
+
+  /* ---------- Autor ---------- */
+  .rm-post-author {
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+    padding: 24px;
+    border: 1px solid var(--rm-border);
+    border-radius: var(--rm-radius-lg);
+    background: #f8f8fb;
+  }
+
+  .rm-post-author__avatar {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--rm-blue), var(--rm-orange));
+    color: #ffffff;
+    font-family: var(--rm-font-display);
+    font-size: 22px;
+    font-weight: 700;
+  }
+
+  .rm-post-author__name {
+    margin: 0 0 4px;
+    padding: 0;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--rm-primary);
+  }
+
+  .rm-post-author__bio {
+    margin: 0 0 8px;
+    padding: 0;
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--rm-text-muted);
+  }
+
+  .rm-post-author__link {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--rm-blue);
+    text-decoration: none;
+  }
+
+  .rm-post-author__link:hover {
+    color: var(--rm-orange);
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 980px) {
+    .rm-post-end {
+      max-width: none;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .rm-post-cta {
+      padding: 34px 22px;
+    }
+
+    .rm-post-cta__btn {
+      justify-content: center;
+      width: 100%;
+    }
+
+    .rm-post-author {
+      padding: 20px;
+    }
+  }
+</style>
+
+<script>
+  (function () {
+    /* Páginas de destino: cámbialas si tus URLs son otras */
+    var RM_LINKS = {
+      planes: '/planes-y-presupuestos/',
+      web: '/diseno-web/',
+      tienda: '/tienda-online/',
+      marketing: '/marketing-digital/',
+      ayudas: '/subvenciones/',
+      llamada: '/reserva-una-cita/'
+    };
+
+    /* Mensaje según la categoría (clave = slug de la categoría) */
+    var RM_CTA = {
+      'diseno-web': {
+        eyebrow: 'Diseño web',
+        title: '¿Quieres una web que <em>explique bien</em> lo que haces?',
+        text: 'Diseñamos tu web en WordPress, adaptada al móvil y preparada para aparecer en Google. Con mantenimiento incluido.',
+        label: 'Ver planes de web',
+        url: RM_LINKS.web
+      },
+      'tienda-online': {
+        eyebrow: 'Tienda online',
+        title: 'Tu tienda online, lista para <em>vender</em>',
+        text: 'WooCommerce, diseño a medida y pasarelas de pago, todo listo para vender sin complicaciones técnicas.',
+        label: 'Quiero mi tienda online',
+        url: RM_LINKS.tienda
+      },
+      'marketing-digital': {
+        eyebrow: 'Marketing digital',
+        title: '¿Te ayudamos a que te <em>encuentren</em>?',
+        text: 'SEO local, redes sociales y contenidos pensados para negocios de Castellón. Con objetivos claros y precio cerrado.',
+        label: 'Ver planes de marketing',
+        url: RM_LINKS.marketing
+      },
+      'transformacion-digital': {
+        eyebrow: 'Ayudas y Kit Digital',
+        title: '¿Puedes pedir una <em>ayuda</em> para tu web?',
+        text: 'Revisamos contigo qué ayudas de digitalización están abiertas y si tu negocio encaja, sin compromiso.',
+        label: 'Ver subvenciones',
+        url: RM_LINKS.ayudas
+      }
+    };
+
+    function run() {
+      /* Un único sitio para las URLs: también la CTA de la barra lateral */
+      document.querySelectorAll('.rm-post-cta__btn--secondary, .rm-post-aside__cta-btn').forEach(function (a) {
+        a.href = RM_LINKS.llamada;
+      });
+
+      var cta = document.querySelector('.rm-post-cta');
+      if (cta) cta.querySelector('.rm-post-cta__btn--primary').href = RM_LINKS.planes;
+
+      var meta = document.querySelector('.rm-post-title .et_pb_title_meta_container');
+      if (!cta || !meta) return;
+
+      var cats = meta.querySelectorAll('a[rel~="tag"], a[rel~="category"]');
+      var pick = null;
+      for (var i = 0; i < cats.length && !pick; i++) {
+        var m = cats[i].href.match(/\/category\/(?:[^\/]+\/)*([^\/?#]+)\/?/);
+        if (m && RM_CTA[m[1]]) pick = RM_CTA[m[1]];
+      }
+      if (!pick) return;
+
+      cta.querySelector('.rm-post-cta__eyebrow').textContent = pick.eyebrow;
+      cta.querySelector('.rm-post-cta__title').innerHTML = pick.title;
+      cta.querySelector('.rm-post-cta__text').textContent = pick.text;
+      cta.querySelector('.rm-post-cta__primary-label').textContent = pick.label;
+      cta.querySelector('.rm-post-cta__btn--primary').href = pick.url;
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', run);
+    } else {
+      run();
+    }
+  })();
+</script>
