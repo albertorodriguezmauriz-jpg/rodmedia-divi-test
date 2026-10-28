@@ -1,0 +1,541 @@
+<!-- ============================================================
+     RM ARCHIVE HERO — Cabecera de la plantilla de resultados
+     (Divi Theme Builder > plantilla para "Todas las páginas de
+     archivo" + "Resultados de búsqueda")
+     Marca: Rodmedia · Reestructuración web
+
+     Montaje (el JSON rm-archive-template-divi-import.json ya lo trae):
+       Sección  -> clase CSS: rm-archive-hero
+       Columna izquierda: este Code Module + módulo "Título de la
+         entrada" (clase rm-archive-title, que en archivos muestra
+         el nombre de la categoría o la búsqueda)
+       Columna derecha:   Code Module rm-archive-search.html
+
+     El script adapta la cabecera a cada página:
+       Categoría  -> badge "Categoría", título "Diseño web"
+       Etiqueta   -> badge "Tema", título con el nombre
+       Búsqueda   -> título "Resultados para «...»"
+     ============================================================ -->
+
+<a class="rm-archive-hero__back" href="/blog/">
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+    <path d="M12.5 8h-9M7.5 3.5 3 8l4.5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  Volver al blog
+</a>
+
+<span class="rm-archive-hero__badge">
+  <span class="rm-archive-hero__badge-dot" aria-hidden="true"></span>
+  <span class="rm-archive-hero__badge-text">Blog</span>
+</span>
+
+<div class="rm-archive-hero__bg" aria-hidden="true">
+  <div class="rm-archive-hero__topline"></div>
+  <canvas class="rm-archive-hero__particles"></canvas>
+  <div class="rm-archive-hero__glow rm-archive-hero__glow--blue"></div>
+  <div class="rm-archive-hero__glow rm-archive-hero__glow--orange"></div>
+</div>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Inter:wght@400;500;600;700&display=swap');
+
+  .rm-archive-hero {
+    --rm-primary: #0f0f1e;
+    --rm-blue: #3a7bd5;
+    --rm-orange: #e8531a;
+    --rm-light: #f8f8fb;
+    --rm-text-muted: #9aa3bd;
+    --rm-radius: 8px;
+    --rm-radius-lg: 20px;
+    --rm-transition: 0.3s ease;
+    --rm-font-display: "Playfair Display", Georgia, "Times New Roman", serif;
+    --rm-font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+
+    position: relative;
+    overflow: hidden;
+    background-color: var(--rm-primary) !important;
+    color: var(--rm-light);
+    font-family: var(--rm-font-body);
+  }
+
+  .rm-archive-hero *,
+  .rm-archive-hero *::before,
+  .rm-archive-hero *::after {
+    box-sizing: border-box;
+  }
+
+  .rm-archive-hero > .et_pb_row {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+  }
+
+  /* ---------- Fondo (el script lo coloca en la sección) ---------- */
+  .rm-archive-hero__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .rm-archive-hero__topline {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--rm-blue), var(--rm-orange), var(--rm-blue));
+    background-size: 200% 100%;
+    animation: rm-archive-hero-shimmer 6s linear infinite;
+  }
+
+  @keyframes rm-archive-hero-shimmer {
+    0% { background-position: 0% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  .rm-archive-hero__particles {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .rm-archive-hero__glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.28;
+    animation: rm-archive-hero-float 15s ease-in-out infinite;
+  }
+
+  .rm-archive-hero__glow--blue {
+    width: 420px;
+    height: 420px;
+    top: -160px;
+    left: -110px;
+    background: var(--rm-blue);
+  }
+
+  .rm-archive-hero__glow--orange {
+    width: 380px;
+    height: 380px;
+    bottom: -190px;
+    right: -110px;
+    background: var(--rm-orange);
+    animation-delay: -7s;
+  }
+
+  @keyframes rm-archive-hero-float {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(26px, 22px) scale(1.07); }
+  }
+
+  /* ---------- Volver + badge ---------- */
+  .rm-archive-hero__back {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: max-content;
+    margin-bottom: 22px;
+    color: var(--rm-text-muted);
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color var(--rm-transition), gap var(--rm-transition);
+  }
+
+  .rm-archive-hero__back:hover {
+    gap: 12px;
+    color: #ffffff;
+  }
+
+  .rm-archive-hero__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 18px;
+    padding: 7px 16px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #cbd5e1;
+  }
+
+  .rm-archive-hero__badge-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--rm-blue), var(--rm-orange));
+  }
+
+  /* ---------- Título (módulo "Título de la entrada") ---------- */
+  .rm-archive-hero .rm-archive-title {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+  }
+
+  .rm-archive-hero .rm-archive-title .et_pb_title_container {
+    padding: 0;
+  }
+
+  .rm-archive-hero .rm-archive-title .entry-title {
+    margin: 0;
+    padding: 0;
+    font-family: var(--rm-font-display);
+    font-size: clamp(2rem, 1.3rem + 2.8vw, 3.4rem);
+    font-weight: 700;
+    line-height: 1.14;
+    letter-spacing: -0.01em;
+    color: var(--rm-light) !important;
+  }
+
+  .rm-archive-hero .rm-archive-title .entry-title em {
+    display: inline-block;
+    line-height: 1.4;
+    padding: 0 0.06em 0 0.02em;
+    font-style: italic;
+    background: linear-gradient(135deg, var(--rm-blue), var(--rm-orange));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .rm-archive-hero .rm-archive-title .et_pb_title_meta_container,
+  .rm-archive-hero .rm-archive-title .et_pb_title_featured_container {
+    display: none;
+  }
+
+  .rm-archive-hero__subtitle {
+    max-width: 46ch;
+    margin: 16px 0 0;
+    padding: 0;
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--rm-text-muted);
+  }
+
+  /* ---------- Tarjeta de búsqueda (columna derecha) ---------- */
+  .rm-archive-search {
+    padding: 26px 24px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--rm-radius-lg);
+    background: rgba(20, 21, 31, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+  }
+
+  .rm-archive-search__label {
+    display: block;
+    margin: 0 0 12px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #cbd5e1;
+  }
+
+  .rm-archive-search__form {
+    display: flex;
+    align-items: center;
+    margin: 0 0 22px;
+    padding: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    transition: border-color var(--rm-transition), box-shadow var(--rm-transition);
+  }
+
+  .rm-archive-search__form:focus-within {
+    border-color: var(--rm-blue);
+    box-shadow: 0 0 0 4px rgba(58, 123, 213, 0.18);
+  }
+
+  .rm-archive-search__form svg {
+    flex: none;
+    margin: 0 4px 0 10px;
+    color: var(--rm-text-muted);
+  }
+
+  .rm-archive-search__form input[type="search"] {
+    flex: 1;
+    min-width: 0;
+    padding: 11px 8px;
+    border: 0;
+    background: transparent;
+    color: var(--rm-light);
+    font-family: var(--rm-font-body);
+    font-size: 15px;
+    outline: none;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  .rm-archive-search__form input[type="search"]::placeholder {
+    color: #6f7891;
+  }
+
+  .rm-archive-search__form button {
+    flex: none;
+    padding: 11px 18px;
+    border: 0;
+    border-radius: var(--rm-radius);
+    background: linear-gradient(135deg, var(--rm-blue), var(--rm-orange));
+    color: #ffffff;
+    font-family: var(--rm-font-body);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .rm-archive-search__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .rm-archive-search__chips a {
+    padding: 7px 13px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 999px;
+    color: #cbd5e1;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: border-color var(--rm-transition), color var(--rm-transition), background var(--rm-transition);
+  }
+
+  .rm-archive-search__chips a:hover {
+    border-color: var(--rm-blue);
+    background: rgba(58, 123, 213, 0.12);
+    color: #ffffff;
+  }
+
+  .rm-archive-search__chips a.is-active {
+    border-color: transparent;
+    background: linear-gradient(135deg, var(--rm-blue), var(--rm-orange));
+    color: #ffffff;
+  }
+
+  .rm-archive-hero__back:focus-visible,
+  .rm-archive-search__form button:focus-visible,
+  .rm-archive-search__chips a:focus-visible {
+    outline: 2px solid var(--rm-blue);
+    outline-offset: 3px;
+  }
+
+  .rm-archive-search__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  /* ---------- Sin animaciones ---------- */
+  @media (prefers-reduced-motion: reduce) {
+    .rm-archive-hero__topline,
+    .rm-archive-hero__glow {
+      animation: none !important;
+    }
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 980px) {
+    .rm-archive-hero > .et_pb_row {
+      display: block;
+    }
+
+    .rm-archive-search {
+      max-width: 560px;
+      margin-top: 36px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .rm-archive-hero__subtitle {
+      font-size: 16px;
+    }
+
+    .rm-archive-search {
+      margin-top: 28px;
+      padding: 20px 16px;
+    }
+
+    /* En el móvil los temas van en una fila deslizable */
+    .rm-archive-search__chips {
+      flex-wrap: nowrap;
+      margin: 0 -16px;
+      padding: 0 16px 4px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .rm-archive-search__chips::-webkit-scrollbar {
+      display: none;
+    }
+
+    .rm-archive-search__chips a {
+      flex: none;
+    }
+  }
+</style>
+
+<script>
+  (function () {
+  function run() {
+    var section = document.querySelector('.rm-archive-hero');
+    if (!section) return;
+
+    /* Lleva el fondo a la sección para que la cubra entera */
+    var bg = document.querySelector('.rm-archive-hero__bg');
+    if (bg && bg.parentNode !== section) section.insertBefore(bg, section.firstChild);
+
+    var body = document.body.classList;
+    var titleEl = section.querySelector('.rm-archive-title .entry-title');
+    var badge = section.querySelector('.rm-archive-hero__badge-text');
+    var params = new URLSearchParams(window.location.search);
+    var query = (params.get('s') || '').trim();
+
+    /* Quita el prefijo que añade WordPress ("Categoría: ...") */
+    var raw = titleEl ? titleEl.textContent.trim() : '';
+    var name = raw.replace(/^(categor[ií]a|category|etiqueta|tag|archivos?|archives?|autor|author)\s*:\s*/i, '');
+
+    var badgeText = 'Blog';
+    var subtitle = 'Todos los artículos del blog, del más reciente al más antiguo.';
+
+    if (body.contains('search') || query) {
+      badgeText = 'Búsqueda';
+      subtitle = 'Artículos del blog que hablan de lo que buscas.';
+      if (titleEl) {
+        titleEl.textContent = 'Resultados para ';
+        var em = document.createElement('em');
+        em.textContent = '«' + query + '»';
+        titleEl.appendChild(em);
+      }
+    } else if (body.contains('category')) {
+      badgeText = 'Categoría';
+      subtitle = 'Todos los artículos sobre ' + name.toLowerCase() + ', explicados sin tecnicismos.';
+      if (titleEl) titleEl.textContent = name;
+    } else if (body.contains('tag')) {
+      badgeText = 'Tema';
+      subtitle = 'Artículos relacionados con ' + name.toLowerCase() + '.';
+      if (titleEl) titleEl.textContent = name;
+    } else if (body.contains('author')) {
+      badgeText = 'Autor';
+      subtitle = 'Artículos escritos por ' + name + '.';
+      if (titleEl) titleEl.textContent = name;
+    } else if (body.contains('date')) {
+      badgeText = 'Archivo';
+      if (titleEl) titleEl.textContent = name;
+    }
+
+    if (badge) badge.textContent = badgeText;
+
+    var titleModule = section.querySelector('.rm-archive-title');
+    if (titleModule && !section.querySelector('.rm-archive-hero__subtitle')) {
+      var p = document.createElement('p');
+      p.className = 'rm-archive-hero__subtitle';
+      p.textContent = subtitle;
+      titleModule.insertAdjacentElement('afterend', p);
+    }
+
+    /* Rellena el buscador con lo buscado y marca la categoría actual */
+    var input = document.querySelector('.rm-archive-search__form input[name="s"]');
+    if (input && query) input.value = query;
+
+    var here = window.location.pathname.replace(/\/page\/\d+\/?$/, '/').replace(/\/?$/, '/');
+    document.querySelectorAll('.rm-archive-search__chips a').forEach(function (a) {
+      var path = new URL(a.href, window.location.href).pathname.replace(/\/?$/, '/');
+      if (path === here) {
+        a.classList.add('is-active');
+        a.setAttribute('aria-current', 'page');
+      }
+    });
+
+    /* Partículas de fondo (mismo efecto que el resto de heros) */
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var canvas = section.querySelector('.rm-archive-hero__particles');
+    if (canvas && !reduceMotion) {
+      var ctx = canvas.getContext('2d');
+      var particles = [];
+      var count = 34;
+      var w, h;
+
+      function resize() {
+        w = canvas.width = canvas.offsetWidth;
+        h = canvas.height = canvas.offsetHeight;
+      }
+
+      function init() {
+        particles = [];
+        for (var i = 0; i < count; i++) {
+          particles.push({
+            x: Math.random() * w,
+            y: Math.random() * h,
+            vx: (Math.random() - 0.5) * 0.25,
+            vy: (Math.random() - 0.5) * 0.25
+          });
+        }
+      }
+
+      function step() {
+        ctx.clearRect(0, 0, w, h);
+        for (var i = 0; i < particles.length; i++) {
+          var pt = particles[i];
+          pt.x += pt.vx;
+          pt.y += pt.vy;
+          if (pt.x < 0 || pt.x > w) pt.vx *= -1;
+          if (pt.y < 0 || pt.y > h) pt.vy *= -1;
+        }
+        for (var i = 0; i < particles.length; i++) {
+          for (var j = i + 1; j < particles.length; j++) {
+            var a = particles[i], b = particles[j];
+            var dx = a.x - b.x, dy = a.y - b.y;
+            var dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < 140) {
+              ctx.strokeStyle = 'rgba(58,123,213,' + (0.16 * (1 - dist / 140)) + ')';
+              ctx.lineWidth = 1;
+              ctx.beginPath();
+              ctx.moveTo(a.x, a.y);
+              ctx.lineTo(b.x, b.y);
+              ctx.stroke();
+            }
+          }
+        }
+        for (var i = 0; i < particles.length; i++) {
+          ctx.fillStyle = 'rgba(125,211,252,0.55)';
+          ctx.beginPath();
+          ctx.arc(particles[i].x, particles[i].y, 1.4, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        requestAnimationFrame(step);
+      }
+
+      resize();
+      init();
+      step();
+      window.addEventListener('resize', function () {
+        resize();
+        init();
+      });
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', run);
+  } else {
+    run();
+  }
+  })();
+</script>
