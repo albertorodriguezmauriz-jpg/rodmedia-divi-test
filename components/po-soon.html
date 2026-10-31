@@ -1,0 +1,379 @@
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,600&family=Montserrat:wght@400;500;600;700&display=swap');
+
+  .po-soon {
+    --po-forest: #1e4a42;
+    --po-teal: #16807b;
+    --po-coral: #e8605a;
+    --po-mint: #e9eee8;
+    --po-ink: #1c2a27;
+    --po-muted: #627370;
+    --po-line: #d5e0da;
+    --po-transition: 0.35s cubic-bezier(.2, .7, .2, 1);
+    --po-font-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+    --po-font-body: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+    position: relative;
+    overflow: hidden;
+    isolation: isolate; /* contexto de apilamiento propio: nada de Divi se cuela por encima */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    min-height: 100svh;
+    padding: 80px 20px 96px;
+    background:
+      radial-gradient(circle at 82% 22%, rgba(232, 96, 90, 0.16), transparent 40%),
+      radial-gradient(circle at 12% 88%, rgba(22, 128, 123, 0.16), transparent 45%),
+      var(--po-mint);
+    font-family: var(--po-font-body);
+    text-align: center;
+    box-sizing: border-box;
+  }
+
+  .po-soon *,
+  .po-soon *::before,
+  .po-soon *::after {
+    box-sizing: border-box;
+  }
+
+  /* Línea superior con brillo */
+  .po-soon__topline {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--po-teal), var(--po-coral), var(--po-teal));
+    background-size: 200% 100%;
+    animation: po-soon-shimmer 7s linear infinite;
+    pointer-events: none;
+  }
+
+  @keyframes po-soon-shimmer {
+    to { background-position: 200% 0; }
+  }
+
+  /* ---------- Figuras flotantes ---------- */
+  .po-soon__shapes {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .po-soon-shape {
+    position: absolute;
+    display: block;
+    animation: po-soon-float 9s ease-in-out infinite;
+  }
+
+  .po-soon-shape svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .po-soon-shape--1 { top: 14%; left: 9%; width: 46px; height: 46px; color: var(--po-forest); }
+  .po-soon-shape--2 { top: 70%; left: 12%; width: 34px; height: 34px; color: var(--po-coral); animation-delay: -2s; }
+  .po-soon-shape--3 { top: 40%; left: 20%; width: 28px; height: 28px; color: var(--po-teal); animation-delay: -4s; opacity: 0.7; }
+  .po-soon-shape--4 { top: 86%; left: 34%; width: 26px; height: 26px; color: var(--po-forest); animation-delay: -6s; opacity: 0.5; }
+  .po-soon-shape--5 { top: 12%; right: 11%; width: 40px; height: 40px; color: var(--po-coral); animation-delay: -1s; }
+  .po-soon-shape--6 { top: 48%; right: 7%; width: 54px; height: 54px; color: var(--po-forest); animation-delay: -3s; }
+  .po-soon-shape--7 { top: 80%; right: 18%; width: 30px; height: 30px; color: var(--po-teal); animation-delay: -5s; opacity: 0.75; }
+  .po-soon-shape--8 { top: 26%; right: 24%; width: 24px; height: 24px; color: var(--po-forest); animation-delay: -7s; opacity: 0.45; }
+  .po-soon-shape--9 { top: 8%; left: 44%; width: 22px; height: 22px; color: var(--po-coral); animation-delay: -2.5s; opacity: 0.55; }
+
+  @keyframes po-soon-float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-16px) rotate(9deg); }
+  }
+
+  /* ---------- Contenido ---------- */
+  .po-soon__inner {
+    position: relative;
+    z-index: 3;
+    max-width: 760px;
+    width: 100%;
+  }
+
+  .po-soon__inner > * {
+    opacity: 0;
+    transform: translateY(18px);
+    animation: po-soon-rise 0.9s cubic-bezier(.2, .7, .2, 1) forwards;
+  }
+
+  .po-soon__inner > *:nth-child(2) { animation-delay: 0.12s; }
+  .po-soon__inner > *:nth-child(3) { animation-delay: 0.24s; }
+  .po-soon__inner > *:nth-child(4) { animation-delay: 0.36s; }
+  .po-soon__inner > *:nth-child(5) { animation-delay: 0.48s; }
+
+  /* Al terminar se elimina el transform: un transform residual en el
+     contenedor del enlace rompe el toque en Safari iOS */
+  @keyframes po-soon-rise {
+    to { opacity: 1; transform: none; }
+  }
+
+  .po-soon__logo {
+    display: block;
+    width: 220px;
+    max-width: 70%;
+    height: auto;
+    margin: 0 auto 34px;
+  }
+
+  .po-soon__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 8px 18px;
+    border-radius: 999px;
+    background: var(--po-forest);
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .po-soon__badge-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--po-coral);
+    animation: po-soon-blink 2.2s ease-in-out infinite;
+  }
+
+  @keyframes po-soon-blink {
+    50% { opacity: 0.25; }
+  }
+
+  .po-soon h1 {
+    margin: 26px auto 18px;
+    padding: 0;
+    max-width: 16ch;
+    font-family: var(--po-font-display);
+    font-size: clamp(2.6rem, 1.6rem + 4.4vw, 4.9rem);
+    font-weight: 600;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: var(--po-ink);
+  }
+
+  .po-soon h1 em {
+    font-style: italic;
+    color: var(--po-coral);
+  }
+
+  .po-soon p {
+    max-width: 54ch;
+    margin: 0 auto;
+    padding: 0;
+    font-family: var(--po-font-body);
+    font-size: 17px;
+    line-height: 1.75;
+    color: var(--po-muted);
+  }
+
+  /* ---------- Bloque del blog ---------- */
+  .po-soon__blog {
+    position: relative;
+    z-index: 5;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    margin-top: 40px;
+    padding: 26px 30px 28px;
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid var(--po-line);
+    box-shadow: 0 10px 30px rgba(22, 55, 49, 0.08);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  .po-soon .po-soon__blog-text {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--po-text, #4a5955);
+  }
+
+  .po-soon__blog-text strong {
+    color: var(--po-ink);
+    font-weight: 700;
+  }
+
+  .po-soon__btn {
+    position: relative;
+    z-index: 6;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 48px;
+    padding: 15px 28px;
+    border-radius: 999px;
+    background: var(--po-forest);
+    color: #ffffff !important;
+    font-family: var(--po-font-body);
+    font-size: 13.5px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none !important;
+    cursor: pointer;
+    pointer-events: auto !important;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: rgba(22, 128, 123, 0.25);
+    box-shadow: 0 12px 26px rgba(30, 74, 66, 0.28);
+    transition: transform var(--po-transition), box-shadow var(--po-transition), background var(--po-transition), gap var(--po-transition);
+  }
+
+  /* El SVG y el texto no capturan el toque: siempre lo recibe el <a> */
+  .po-soon__btn > * {
+    pointer-events: none;
+  }
+
+  .po-soon__btn svg {
+    flex: none;
+  }
+
+  /* Hover solo en dispositivos con ratón: en móvil el :hover "pegajoso"
+     obligaba a tocar dos veces o anulaba el primer toque */
+  @media (hover: hover) and (pointer: fine) {
+    .po-soon__btn:hover {
+      gap: 16px;
+      background: var(--po-teal);
+      color: #ffffff !important;
+      transform: translateY(-3px);
+      box-shadow: 0 18px 34px rgba(22, 128, 123, 0.32);
+    }
+  }
+
+  .po-soon__btn:focus-visible {
+    gap: 16px;
+    background: var(--po-teal);
+    color: #ffffff !important;
+    outline: 2px solid var(--po-coral);
+    outline-offset: 4px;
+  }
+
+  .po-soon__btn:active {
+    background: var(--po-teal);
+  }
+
+  /* ---------- Pie ---------- */
+  .po-soon__foot {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 26px;
+    z-index: 2;
+    font-size: 12.5px;
+    letter-spacing: 0.06em;
+    color: var(--po-muted);
+    pointer-events: none; /* que nunca tape el botón */
+  }
+
+  .po-soon p.po-soon__foot {
+    max-width: none;
+    margin: 0;
+    font-size: 12.5px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .po-soon__topline,
+    .po-soon-shape,
+    .po-soon__badge-dot {
+      animation: none;
+    }
+    .po-soon__inner > * {
+      opacity: 1;
+      transform: none;
+      animation: none;
+    }
+    .po-soon__btn { transition: none; }
+    .po-soon__btn:hover { transform: none; }
+  }
+
+  @media (max-width: 980px) {
+    .po-soon-shape--3, .po-soon-shape--8, .po-soon-shape--9 { display: none; }
+  }
+
+  @media (max-width: 767px) {
+    .po-soon { padding: 56px 16px 84px; }
+    .po-soon__logo { width: 170px; margin-bottom: 26px; }
+    .po-soon p { font-size: 16px; }
+    .po-soon__blog {
+      display: flex;
+      padding: 22px 20px 24px;
+      /* backdrop-filter en Safari iOS crea una capa que puede "tragarse"
+         los toques de los enlaces de dentro; en móvil fondo opaco */
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      background: rgba(255, 255, 255, 0.9);
+    }
+    .po-soon__btn { width: 100%; }
+    .po-soon-shape--2, .po-soon-shape--4, .po-soon-shape--6, .po-soon-shape--7 { display: none; }
+    .po-soon-shape--1 { top: 6%; left: 6%; width: 28px; height: 28px; }
+    .po-soon-shape--5 { top: 6%; right: 6%; width: 28px; height: 28px; }
+  }
+</style>
+
+<section class="po-soon" aria-labelledby="po-soon-title">
+  <div class="po-soon__topline" aria-hidden="true"></div>
+
+  <div class="po-soon__shapes" aria-hidden="true">
+    <span class="po-soon-shape po-soon-shape--1"><svg viewBox="0 0 48 48"><path d="M24 9 39 37H9L24 9Z" fill="currentColor"/></svg></span>
+    <span class="po-soon-shape po-soon-shape--2"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="16" fill="currentColor"/></svg></span>
+    <span class="po-soon-shape po-soon-shape--3"><svg viewBox="0 0 48 48"><path d="M24 24c-4-5-7-8-11-8a8 8 0 0 0 0 16c4 0 7-3 11-8Zm0 0c4 5 7 8 11 8a8 8 0 0 0 0-16c-4 0-7 3-11 8Z" fill="none" stroke="currentColor" stroke-width="4.5"/></svg></span>
+    <span class="po-soon-shape po-soon-shape--4"><svg viewBox="0 0 48 48"><rect x="9" y="9" width="30" height="30" rx="2" fill="currentColor"/></svg></span>
+    <span class="po-soon-shape po-soon-shape--5"><svg viewBox="0 0 48 48"><path d="m24 5 5.6 12 13 1.4-9.7 8.9 2.7 12.9L24 33.6l-11.6 6.6 2.7-12.9-9.7-8.9 13-1.4L24 5Z" fill="currentColor"/></svg></span>
+    <span class="po-soon-shape po-soon-shape--6"><svg viewBox="0 0 48 48"><path d="M24 6 40 24 24 42 8 24 24 6Z" fill="currentColor"/></svg></span>
+    <span class="po-soon-shape po-soon-shape--7"><svg viewBox="0 0 48 48"><path d="M24 7 41 19.4 34.5 39.6h-21L7 19.4 24 7Z" fill="currentColor"/></svg></span>
+    <span class="po-soon-shape po-soon-shape--8"><svg viewBox="0 0 48 48"><ellipse cx="24" cy="24" rx="19" ry="11" fill="currentColor"/></svg></span>
+    <span class="po-soon-shape po-soon-shape--9"><svg viewBox="0 0 48 48"><rect x="5" y="14" width="38" height="20" rx="2" fill="currentColor"/></svg></span>
+  </div>
+
+  <div class="po-soon__inner">
+    <img class="po-soon__logo" src="https://proyectorienta.com/wp-content/uploads/2026/03/LOGOTIPO-PROYECTO-ORIENTA-WEB.png" alt="ProyectOrienta" width="220" height="60">
+
+    <span class="po-soon__badge"><span class="po-soon__badge-dot" aria-hidden="true"></span>Próximamente · 2027</span>
+
+    <h1 id="po-soon-title">Un espacio para conocerte y <em>decidir con calma</em></h1>
+
+    <p>Estamos construyendo ProyectOrienta sin prisas y con cuidado: orientación y autoconocimiento para encontrar tu camino desde lo que ya eres.</p>
+
+    <div class="po-soon__blog">
+      <p class="po-soon__blog-text"><strong>Mientras tanto, ya puedes leernos.</strong> Compartimos lo que investigamos sobre talento, vocación y toma de decisiones.</p>
+      <a class="po-soon__btn" href="https://proyectorienta.com/blog/" data-po-blog>
+        <span>Leer el blog</span>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3.5 8h9M8.5 3.5 13 8l-4.5 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <p class="po-soon__foot">© <span data-po-year>2026</span> ProyectOrienta</p>
+</section>
+
+<script>
+  (function () {
+    /* Año del pie siempre al día (2026 queda como respaldo sin JS) */
+    var el = document.querySelector('[data-po-year]');
+    if (el) el.textContent = new Date().getFullYear();
+
+    /* Red de seguridad: si algún script del tema (menú móvil, scroll suave,
+       lazy load…) cancela el toque con preventDefault, navegamos igualmente */
+    var btn = document.querySelector('[data-po-blog]');
+    if (!btn) return;
+    /* Se escucha en window (fase de burbuja, lo último en ejecutarse) para
+       detectar si otro script ya ha cancelado el clic */
+    window.addEventListener('click', function (e) {
+      if (e.defaultPrevented && e.target.closest && e.target.closest('[data-po-blog]')) {
+        window.location.href = btn.href;
+      }
+    });
+  })();
+</script>
