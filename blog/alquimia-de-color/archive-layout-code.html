@@ -1,0 +1,839 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;500&display=swap');
+/* ── Sección de Divi a ancho completo, sin paddings heredados ── */
+.et_pb_section:has(.ac-bl-page) { padding: 0 !important; background-color: #F5F2ED !important; }
+.et_pb_section:has(.ac-bl-page) .et_pb_row { width: 100% !important; max-width: none !important; padding: 0 !important; }
+.et_pb_section:has(.ac-bl-page) .et_pb_column { margin: 0 !important; }
+.ac-bl-page p:empty, .ac-bl-page > br { display: none !important; }
+/* ── Variables de marca (escopadas) ── */
+.ac-bl-page {
+  --ac-bl-lino:   #F5F2ED;
+  --ac-bl-dark:   #2C2C2B;
+  --ac-bl-arena:  #E5DED1;
+  --ac-bl-verde:  #4B5332;
+  --ac-bl-marron: #8C7B6A;
+  --ac-bl-white:  #FFFFFF;
+  --ac-bl-radius: 6px;
+  --ac-bl-trans:  0.38s ease;
+  background: var(--ac-bl-lino);
+  color: var(--ac-bl-dark);
+  min-height: 60vh;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+}
+.ac-bl-page *, .ac-bl-page *::before, .ac-bl-page *::after { box-sizing: border-box; }
+/* ── Cabecera ── */
+.ac-bl-header {
+  text-align: center;
+  padding: 96px 24px 72px;
+  border-bottom: 1px solid var(--ac-bl-arena);
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+/* Manchas botánicas difusas */
+.ac-bl-header::before,
+.ac-bl-header::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  z-index: -1;
+  pointer-events: none;
+}
+.ac-bl-header::before {
+  width: 420px; height: 420px;
+  top: -180px; left: -120px;
+  background: rgba(75, 83, 50, 0.14);
+  animation: ac-bl-drift 18s ease-in-out infinite alternate;
+}
+.ac-bl-header::after {
+  width: 360px; height: 360px;
+  bottom: -200px; right: -100px;
+  background: rgba(140, 123, 106, 0.18);
+  animation: ac-bl-drift 22s ease-in-out infinite alternate-reverse;
+}
+@keyframes ac-bl-drift {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(40px, 30px) scale(1.12); }
+}
+.ac-bl-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 500;
+  font-size: 0.7rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--ac-bl-marron);
+  margin-bottom: 18px;
+}
+.ac-bl-eyebrow::before,
+.ac-bl-eyebrow::after {
+  content: '';
+  width: 24px;
+  height: 1px;
+  background: var(--ac-bl-marron);
+  opacity: 0.6;
+}
+.ac-bl-header h1 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+  color: var(--ac-bl-dark);
+  line-height: 1.12;
+  margin: 0 0 20px;
+  padding: 0;
+}
+.ac-bl-header h1 em {
+  font-style: normal;
+  color: var(--ac-bl-verde);
+}
+.ac-bl-header-sub {
+  font-weight: 300;
+  font-size: 1rem;
+  color: var(--ac-bl-marron);
+  max-width: 460px;
+  margin: 0 auto;
+  padding: 0;
+  line-height: 1.75;
+}
+.ac-bl-header-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 36px;
+  color: var(--ac-bl-marron);
+  font-size: 0.9rem;
+}
+.ac-bl-header-line::before,
+.ac-bl-header-line::after {
+  content: '';
+  width: 48px;
+  height: 1px;
+  background: var(--ac-bl-arena);
+}
+/* ── Contenedor ── */
+.ac-bl-container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 56px 32px 96px;
+}
+/* ── Filtros por categoría ── */
+.ac-bl-filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin: 0 0 48px;
+  padding: 0;
+  list-style: none;
+}
+.ac-bl-filters[hidden] { display: none; }
+.ac-bl-chip {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ac-bl-verde);
+  background: transparent;
+  border: 1px solid var(--ac-bl-arena);
+  border-radius: 999px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background var(--ac-bl-trans), color var(--ac-bl-trans), border-color var(--ac-bl-trans);
+}
+.ac-bl-chip:hover { border-color: var(--ac-bl-verde); }
+.ac-bl-chip[aria-pressed="true"] {
+  background: var(--ac-bl-verde);
+  border-color: var(--ac-bl-verde);
+  color: var(--ac-bl-lino);
+}
+.ac-bl-chip:focus-visible,
+.ac-bl-page-btn:focus-visible,
+.ac-bl-card a:focus-visible {
+  outline: 2px solid var(--ac-bl-verde);
+  outline-offset: 3px;
+}
+/* ── Grid ── */
+.ac-bl-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+/* ── Card ── */
+.ac-bl-card {
+  position: relative;
+  background: var(--ac-bl-white);
+  border: 1px solid var(--ac-bl-arena);
+  border-radius: var(--ac-bl-radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow var(--ac-bl-trans), transform var(--ac-bl-trans), border-color var(--ac-bl-trans);
+}
+.ac-bl-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--ac-bl-verde);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--ac-bl-trans);
+  z-index: 2;
+}
+.ac-bl-card:hover {
+  box-shadow: 0 16px 40px rgba(44, 44, 43, 0.10);
+  transform: translateY(-6px);
+  border-color: transparent;
+}
+.ac-bl-card:hover::before { transform: scaleX(1); }
+/* Revelado al hacer scroll (solo si el JS está activo) */
+.ac-bl-js .ac-bl-reveal {
+  opacity: 0;
+  translate: 0 24px;
+  transition: opacity 0.6s ease, translate 0.6s ease;
+}
+.ac-bl-js .ac-bl-reveal.ac-bl-visible {
+  opacity: 1;
+  translate: 0 0;
+}
+/* ── Imagen ── */
+.ac-bl-card-img {
+  display: block;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  background: var(--ac-bl-arena);
+  flex-shrink: 0;
+}
+.ac-bl-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.7s ease;
+}
+.ac-bl-card:hover .ac-bl-card-img img { transform: scale(1.05); }
+.ac-bl-card-img-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ac-bl-verde);
+}
+.ac-bl-card-img-placeholder svg { width: 48px; height: 48px; opacity: 0.35; }
+/* ── Cuerpo ── */
+.ac-bl-card-body {
+  padding: 26px 26px 28px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.ac-bl-card-cat {
+  position: relative;
+  z-index: 3;
+  align-self: flex-start;
+  font-weight: 500;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ac-bl-verde);
+  text-decoration: none;
+  margin-bottom: 12px;
+  transition: color var(--ac-bl-trans);
+}
+.ac-bl-card-cat:hover { color: var(--ac-bl-dark); }
+.ac-bl-card-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 1.25rem;
+  line-height: 1.3;
+  color: var(--ac-bl-dark);
+  margin: 0 0 14px;
+  padding: 0;
+}
+.ac-bl-card-title a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--ac-bl-trans);
+}
+/* Toda la tarjeta clicable */
+.ac-bl-card-title a::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+.ac-bl-card:hover .ac-bl-card-title a { color: var(--ac-bl-verde); }
+.ac-bl-card-sep {
+  width: 28px;
+  height: 1px;
+  background: var(--ac-bl-arena);
+  margin-bottom: 14px;
+  flex-shrink: 0;
+}
+.ac-bl-card-excerpt {
+  font-weight: 300;
+  font-size: 0.88rem;
+  line-height: 1.78;
+  color: var(--ac-bl-marron);
+  margin: 0 0 24px;
+  padding: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.ac-bl-card-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ac-bl-verde);
+  margin-top: auto;
+  padding-top: 20px;
+  border-top: 1px solid var(--ac-bl-arena);
+  transition: gap var(--ac-bl-trans), color var(--ac-bl-trans);
+}
+.ac-bl-card-cta .ac-bl-arrow { transition: transform var(--ac-bl-trans); }
+.ac-bl-card:hover .ac-bl-card-cta { color: var(--ac-bl-dark); gap: 12px; }
+.ac-bl-card:hover .ac-bl-card-cta .ac-bl-arrow { transform: translateX(4px); }
+/* ── Artículo destacado (primero de la página 1) ── */
+.ac-bl-card--featured {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+}
+.ac-bl-card--featured .ac-bl-card-img { aspect-ratio: auto; min-height: 380px; height: 100%; }
+.ac-bl-card--featured .ac-bl-card-body { padding: 48px 44px; justify-content: center; }
+.ac-bl-card--featured .ac-bl-card-title { font-size: clamp(1.6rem, 2.6vw, 2.1rem); line-height: 1.22; }
+.ac-bl-card--featured .ac-bl-card-excerpt { font-size: 0.95rem; -webkit-line-clamp: 5; }
+.ac-bl-card--featured .ac-bl-card-cta { margin-top: 28px; }
+.ac-bl-badge {
+  display: inline-block;
+  align-self: flex-start;
+  font-weight: 500;
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ac-bl-lino);
+  background: var(--ac-bl-marron);
+  border-radius: 999px;
+  padding: 5px 12px;
+  margin-bottom: 16px;
+}
+/* ── Skeleton de carga ── */
+.ac-bl-skeleton {
+  background: var(--ac-bl-white);
+  border: 1px solid var(--ac-bl-arena);
+  border-radius: var(--ac-bl-radius);
+  overflow: hidden;
+}
+.ac-bl-skel-img { aspect-ratio: 16 / 10; }
+.ac-bl-skel-line { height: 12px; margin: 0 26px 12px; border-radius: 4px; }
+.ac-bl-skel-line:first-of-type { margin-top: 26px; width: 30%; }
+.ac-bl-skel-line.ac-bl-w80 { width: calc(80% - 52px); height: 18px; }
+.ac-bl-skel-line.ac-bl-w60 { width: calc(60% - 52px); margin-bottom: 28px; }
+.ac-bl-skel-img,
+.ac-bl-skel-line {
+  background: linear-gradient(90deg, var(--ac-bl-arena) 0%, #EFEAE1 50%, var(--ac-bl-arena) 100%);
+  background-size: 200% 100%;
+  animation: ac-bl-shimmer 1.4s ease-in-out infinite;
+}
+@keyframes ac-bl-shimmer {
+  from { background-position: 100% 0; }
+  to   { background-position: -100% 0; }
+}
+/* ── Estados vacío / error ── */
+.ac-bl-empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 72px 24px;
+  color: var(--ac-bl-marron);
+}
+.ac-bl-empty p { font-weight: 300; font-size: 0.95rem; line-height: 1.75; margin: 0 0 20px; }
+/* ── Paginación ── */
+.ac-bl-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 64px;
+  padding-top: 48px;
+  border-top: 1px solid var(--ac-bl-arena);
+  flex-wrap: wrap;
+}
+.ac-bl-pagination[hidden] { display: none; }
+.ac-bl-page-btn {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ac-bl-verde);
+  background: transparent;
+  border: 1px solid var(--ac-bl-arena);
+  border-radius: 999px;
+  min-width: 42px;
+  padding: 11px 18px;
+  cursor: pointer;
+  transition: background var(--ac-bl-trans), color var(--ac-bl-trans), border-color var(--ac-bl-trans);
+}
+.ac-bl-page-btn:hover,
+.ac-bl-page-btn[aria-current="page"] {
+  background: var(--ac-bl-verde);
+  color: var(--ac-bl-lino);
+  border-color: var(--ac-bl-verde);
+}
+.ac-bl-page-btn:disabled { opacity: 0.35; cursor: default; pointer-events: none; }
+.ac-bl-page-dots { color: var(--ac-bl-marron); padding: 0 4px; }
+.ac-bl-sr {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+/* ── Responsive ── */
+@media (max-width: 980px) {
+  .ac-bl-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .ac-bl-card--featured { grid-template-columns: 1fr; }
+  .ac-bl-card--featured .ac-bl-card-img { min-height: 0; aspect-ratio: 16 / 9; }
+  .ac-bl-card--featured .ac-bl-card-body { padding: 32px 28px; }
+}
+@media (max-width: 640px) {
+  .ac-bl-grid { grid-template-columns: 1fr; }
+  .ac-bl-container { padding: 40px 18px 72px; }
+  .ac-bl-header { padding: 64px 20px 48px; }
+  .ac-bl-filters { flex-wrap: nowrap; justify-content: flex-start; overflow-x: auto; margin: 0 -18px 36px; padding: 0 18px 6px; scrollbar-width: none; }
+  .ac-bl-filters::-webkit-scrollbar { display: none; }
+  .ac-bl-chip { flex-shrink: 0; }
+  .ac-bl-card-body { padding: 22px 20px 24px; }
+  .ac-bl-card-title { font-size: 1.15rem; }
+  .ac-bl-page-btn.ac-bl-txt { padding: 11px 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ac-bl-page *, .ac-bl-page *::before, .ac-bl-page *::after { animation: none !important; transition: none !important; }
+  .ac-bl-js .ac-bl-reveal { opacity: 1; translate: 0 0; }
+}
+/* ── Extras de la plantilla de archivo ── */
+.ac-bl-crumbs {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 22px;
+  padding: 0;
+  list-style: none !important;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  color: var(--ac-bl-marron);
+}
+.ac-bl-crumbs li { margin: 0; padding: 0; }
+.ac-bl-crumbs li::marker { content: none; }
+.ac-bl-crumbs li + li::before { content: '›'; margin-right: 8px; opacity: 0.6; }
+.ac-bl-crumbs a { color: var(--ac-bl-verde); text-decoration: none; }
+.ac-bl-crumbs a:hover { text-decoration: underline; }
+.ac-bl-count {
+  display: block;
+  margin-top: 14px;
+  font-weight: 500;
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ac-bl-verde);
+}
+.ac-bl-search {
+  display: flex;
+  max-width: 460px;
+  margin: 32px auto 0;
+  background: var(--ac-bl-white);
+  border: 1px solid var(--ac-bl-arena);
+  border-radius: 999px;
+  padding: 5px;
+  transition: border-color var(--ac-bl-trans), box-shadow var(--ac-bl-trans);
+}
+.ac-bl-search:focus-within { border-color: var(--ac-bl-verde); box-shadow: 0 6px 20px rgba(75, 83, 50, 0.10); }
+.ac-bl-search input[type="search"] {
+  flex: 1;
+  min-width: 0;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 10px 18px !important;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: var(--ac-bl-dark);
+  outline: none;
+}
+.ac-bl-search button {
+  border: 0;
+  border-radius: 999px;
+  background: var(--ac-bl-verde);
+  color: var(--ac-bl-lino);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 0.68rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0 22px;
+  cursor: pointer;
+  transition: background var(--ac-bl-trans);
+}
+.ac-bl-search button:hover { background: var(--ac-bl-dark); }
+a.ac-bl-chip { text-decoration: none; display: inline-block; }
+a.ac-bl-chip[aria-current="page"] {
+  background: var(--ac-bl-verde);
+  border-color: var(--ac-bl-verde);
+  color: var(--ac-bl-lino);
+}
+.ac-bl-empty .ac-bl-page-btn { text-decoration: none; display: inline-block; }
+mark.ac-bl-hl { background: rgba(75, 83, 50, 0.14); color: inherit; padding: 0 2px; border-radius: 2px; }
+</style>
+
+<div class="ac-bl-page ac-bl-archive" id="ac-ar-page">
+  <header class="ac-bl-header">
+    <ol class="ac-bl-crumbs" id="ac-ar-crumbs">
+      <li><a href="/">Inicio</a></li>
+      <li><a href="/blog/" id="ac-ar-blog-link">Blog</a></li>
+    </ol>
+    <span class="ac-bl-eyebrow" id="ac-ar-eyebrow">Archivo del blog</span>
+    <h1 id="ac-ar-title">Artículos</h1>
+    <p class="ac-bl-header-sub" id="ac-ar-sub">Artículos honestos sobre plantas, mezclas y el arte de cuidar tu cabello a tu ritmo.</p>
+    <span class="ac-bl-count" id="ac-ar-count"></span>
+    <form class="ac-bl-search" role="search" method="get" action="/">
+      <label class="ac-bl-sr" for="ac-ar-s">Buscar en el blog</label>
+      <input type="search" id="ac-ar-s" name="s" placeholder="Buscar: henna, canas, índigo…">
+      <input type="hidden" name="post_type" value="post">
+      <button type="submit">Buscar</button>
+    </form>
+  </header>
+  <div class="ac-bl-container">
+    <nav aria-label="Categorías del blog">
+      <div id="ac-ar-filters" class="ac-bl-filters" hidden></div>
+    </nav>
+    <p id="ac-ar-status" class="ac-bl-sr" aria-live="polite"></p>
+    <div id="ac-ar-grid" class="ac-bl-grid" aria-busy="true"></div>
+    <nav id="ac-ar-pagination" class="ac-bl-pagination" aria-label="Paginación" hidden></nav>
+  </div>
+</div>
+
+<script>
+(function () {
+  /* ── Configuración ── */
+  var BLOG_URL    = '/blog/';   /* Dirección de la página del blog */
+  var PER_PAGE    = 9;
+  var EXCERPT_LEN = 160;
+  var API = window.location.origin + '/wp-json/wp/v2/';
+  /* ── DOM ── */
+  var root = document.getElementById('ac-ar-page');
+  if (!root) { return; }
+  var grid       = document.getElementById('ac-ar-grid');
+  var pagination = document.getElementById('ac-ar-pagination');
+  var filters    = document.getElementById('ac-ar-filters');
+  var statusEl   = document.getElementById('ac-ar-status');
+  var titleEl    = document.getElementById('ac-ar-title');
+  var eyebrowEl  = document.getElementById('ac-ar-eyebrow');
+  var subEl      = document.getElementById('ac-ar-sub');
+  var countEl    = document.getElementById('ac-ar-count');
+  var searchIn   = document.getElementById('ac-ar-s');
+  document.getElementById('ac-ar-blog-link').setAttribute('href', BLOG_URL);
+  var canReveal = 'IntersectionObserver' in window;
+  if (canReveal) { root.classList.add('ac-bl-js'); }
+  /* ── Helpers ── */
+  function esc(str) {
+    return String(str || '').replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function decode(html) {
+    var t = document.createElement('textarea');
+    t.innerHTML = html || '';
+    return t.value;
+  }
+  function plain(html) {
+    var t = document.createElement('div');
+    t.innerHTML = html || '';
+    return (t.textContent || '').replace(/\[(&hellip;|…)\]/g, '').replace(/\s+/g, ' ').trim();
+  }
+  function cut(text, max) {
+    if (text.length > max) { return text.substring(0, max).replace(/\s+\S*$/, '') + '…'; }
+    return text;
+  }
+  function getJSON(url) {
+    return fetch(url).then(function (r) { if (!r.ok) { throw new Error(r.status); } return r.json(); });
+  }
+  function bodyId(prefix) {
+    var m = document.body.className.match(new RegExp('(?:^|\\s)' + prefix + '-(\\d+)(?:\\s|$)'));
+    return m ? parseInt(m[1], 10) : 0;
+  }
+  /* ── Contexto del archivo actual ── */
+  var params = new URLSearchParams(window.location.search);
+  var ctx = { type: 'all', query: '', label: '' };
+  var bc = document.body.classList;
+  if (bc.contains('search')) {
+    ctx.type = 'search';
+    ctx.term = (params.get('s') || '').trim();
+    ctx.query = '&search=' + encodeURIComponent(ctx.term);
+  } else if (bc.contains('category')) {
+    ctx.type = 'category';
+    ctx.id = bodyId('category');
+    ctx.query = '&categories=' + ctx.id;
+  } else if (bc.contains('tag')) {
+    ctx.type = 'tag';
+    ctx.id = bodyId('tag');
+    ctx.query = '&tags=' + ctx.id;
+  } else if (bc.contains('author')) {
+    ctx.type = 'author';
+    ctx.id = bodyId('author');
+    ctx.query = '&author=' + ctx.id;
+  } else if (bc.contains('date')) {
+    ctx.type = 'date';
+    var dm = window.location.pathname.match(/\/(\d{4})(?:\/(\d{2}))?/);
+    if (dm) {
+      var y = parseInt(dm[1], 10);
+      var mo = dm[2] ? parseInt(dm[2], 10) : 0;
+      var from = new Date(Date.UTC(y, mo ? mo - 1 : 0, 1));
+      var to = mo ? new Date(Date.UTC(y, mo, 1)) : new Date(Date.UTC(y + 1, 0, 1));
+      ctx.query = '&after=' + encodeURIComponent(new Date(from - 1).toISOString()) + '&before=' + encodeURIComponent(to.toISOString());
+      ctx.dateLabel = mo ? from.toLocaleDateString('es-ES', { month: 'long', year: 'numeric', timeZone: 'UTC' }) : String(y);
+    }
+  }
+  /* ── Cabecera dinámica ── */
+  function setHeader(eyebrow, title, sub) {
+    eyebrowEl.textContent = eyebrow;
+    titleEl.textContent = title;
+    if (sub) { subEl.textContent = sub; } else { subEl.hidden = true; }
+    var crumbs = document.getElementById('ac-ar-crumbs');
+    var li = document.createElement('li');
+    li.setAttribute('aria-current', 'page');
+    li.textContent = title;
+    crumbs.appendChild(li);
+  }
+  function headerReady() {
+    if (ctx.type === 'search') {
+      searchIn.value = ctx.term;
+      setHeader('Resultados de búsqueda', ctx.term ? '«' + ctx.term + '»' : 'Buscar en el blog', '');
+      return Promise.resolve();
+    }
+    if (ctx.type === 'date') {
+      var lbl = ctx.dateLabel || 'Archivo';
+      setHeader('Archivo', lbl.charAt(0).toUpperCase() + lbl.slice(1), '');
+      return Promise.resolve();
+    }
+    var ep = { category: 'categories/', tag: 'tags/', author: 'users/' }[ctx.type];
+    if (!ep) { return Promise.resolve(); }
+    if (!ctx.id) { return Promise.resolve(); }
+    return getJSON(API + ep + ctx.id).then(function (t) {
+      var eyebrow = { category: 'Categoría', tag: 'Etiqueta', author: 'Artículos de' }[ctx.type];
+      setHeader(eyebrow, decode(t.name), plain(t.description));
+    }).catch(function () {
+      var h = document.title.split(/\s[|–-]\s/)[0];
+      setHeader('Archivo del blog', h, '');
+    });
+  }
+  /* ── Tarjetas ── */
+  function highlight(text) {
+    var safe = esc(text);
+    if (ctx.type !== 'search') { return safe; }
+    if (ctx.term.length < 3) { return safe; }
+    var re = new RegExp('(' + esc(ctx.term).replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
+    return safe.replace(re, '<mark class="ac-bl-hl">$1</mark>');
+  }
+  function media(post) {
+    var e = post._embedded || {};
+    var m = e['wp:featuredmedia'];
+    if (!m) { return null; }
+    if (!m[0]) { return null; }
+    return m[0].source_url ? m[0] : null;
+  }
+  function firstCat(post) {
+    var e = post._embedded || {};
+    var t = e['wp:term'];
+    if (!t) { return null; }
+    if (!t[0]) { return null; }
+    return t[0][0] || null;
+  }
+  function imgHTML(post, title) {
+    var m = media(post);
+    if (!m) {
+      return '<div class="ac-bl-card-img-placeholder" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 38c18 0 28-12 28-28C20 10 10 22 10 38Z" stroke-linejoin="round"/><path d="M10 38 26 22" stroke-linecap="round"/></svg></div>';
+    }
+    var sizes = (m.media_details || {}).sizes || {};
+    var pick = sizes.medium_large || sizes.large;
+    var srcset = [];
+    ['medium', 'medium_large', 'large'].forEach(function (k) {
+      if (sizes[k]) { srcset.push(sizes[k].source_url + ' ' + sizes[k].width + 'w'); }
+    });
+    return '<img src="' + esc(pick ? pick.source_url : m.source_url) + '"' +
+      (srcset.length ? ' srcset="' + esc(srcset.join(', ')) + '" sizes="(max-width: 640px) 100vw, (max-width: 980px) 50vw, 360px"' : '') +
+      ' alt="' + esc(m.alt_text || title) + '" loading="lazy" decoding="async">';
+  }
+  function buildCard(post) {
+    var title = decode(post.title.rendered);
+    var excerpt = cut(plain(post.excerpt.rendered), EXCERPT_LEN);
+    var cat = firstCat(post);
+    var card = document.createElement('article');
+    card.className = 'ac-bl-card ac-bl-reveal';
+    card.innerHTML =
+      '<div class="ac-bl-card-img">' + imgHTML(post, title) + '</div>' +
+      '<div class="ac-bl-card-body">' +
+        (cat ? '<a class="ac-bl-card-cat" href="' + esc(cat.link) + '">' + esc(decode(cat.name)) + '</a>' : '') +
+        '<h2 class="ac-bl-card-title"><a href="' + esc(post.link) + '">' + highlight(title) + '</a></h2>' +
+        '<div class="ac-bl-card-sep"></div>' +
+        (excerpt ? '<p class="ac-bl-card-excerpt">' + highlight(excerpt) + '</p>' : '') +
+        '<span class="ac-bl-card-cta" aria-hidden="true">Leer artículo <span class="ac-bl-arrow">→</span></span>' +
+      '</div>';
+    return card;
+  }
+  var observer = null;
+  if (canReveal) {
+    observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          var el = entry.target;
+          el.classList.add('ac-bl-visible');
+          observer.unobserve(el);
+          setTimeout(function () { el.style.transitionDelay = ''; }, 900);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  }
+  /* ── Categorías como enlaces (enlazado interno) ── */
+  getJSON(API + 'categories?per_page=50&hide_empty=true&orderby=count&order=desc&_fields=id,name,link,count')
+    .then(function (list) {
+      if (list.length < 2) { return; }
+      var html = '<a class="ac-bl-chip" href="' + esc(BLOG_URL) + '">Todos</a>';
+      list.forEach(function (c) {
+        var current = ctx.type === 'category' ? c.id === ctx.id : false;
+        html += '<a class="ac-bl-chip" href="' + esc(c.link) + '"' + (current ? ' aria-current="page"' : '') + '>' + esc(decode(c.name)) + '</a>';
+      });
+      filters.innerHTML = html;
+      filters.hidden = false;
+    })
+    .catch(function () {});
+  /* ── Listado y paginación ── */
+  var wpPage = window.location.pathname.match(/\/page\/(\d+)\/?$/);
+  var state = { page: Math.max(1, parseInt(params.get('pagina'), 10) || (wpPage ? parseInt(wpPage[1], 10) : 1)), total: 1, first: true, req: 0 };
+  function skeleton() {
+    var html = '';
+    for (var i = 0; i < 6; i++) {
+      html += '<div class="ac-bl-skeleton" aria-hidden="true"><div class="ac-bl-skel-img"></div><div class="ac-bl-skel-line"></div><div class="ac-bl-skel-line ac-bl-w80"></div><div class="ac-bl-skel-line ac-bl-w60"></div></div>';
+    }
+    grid.innerHTML = html;
+    grid.setAttribute('aria-busy', 'true');
+  }
+  function empty(msg) {
+    grid.innerHTML = '<div class="ac-bl-empty"><p>' + msg + '</p><a class="ac-bl-page-btn" href="' + esc(BLOG_URL) + '">Ver todos los artículos</a></div>';
+  }
+  function pageBtn(label, page, opts) {
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'ac-bl-page-btn' + (opts.txt ? ' ac-bl-txt' : '');
+    b.innerHTML = label;
+    if (opts.aria) { b.setAttribute('aria-label', opts.aria); }
+    if (opts.current) { b.setAttribute('aria-current', 'page'); }
+    if (opts.disabled) { b.disabled = true; }
+    b.addEventListener('click', function () { go(page); });
+    return b;
+  }
+  function renderPagination() {
+    pagination.innerHTML = '';
+    if (state.total <= 1) { pagination.hidden = true; return; }
+    pagination.hidden = false;
+    var cur = state.page;
+    pagination.appendChild(pageBtn('←<span class="ac-bl-sr"> Anterior</span>', cur - 1, { txt: true, aria: 'Página anterior', disabled: cur === 1 }));
+    var last = 0;
+    for (var p = 1; p <= state.total; p++) {
+      if (p === 1 || p === state.total || Math.abs(p - cur) <= 1) {
+        if (p - last > 1) {
+          var d = document.createElement('span');
+          d.className = 'ac-bl-page-dots';
+          d.textContent = '…';
+          pagination.appendChild(d);
+        }
+        pagination.appendChild(pageBtn(String(p), p, { current: p === cur, aria: 'Página ' + p }));
+        last = p;
+      }
+    }
+    pagination.appendChild(pageBtn('<span class="ac-bl-sr">Siguiente </span>→', cur + 1, { txt: true, aria: 'Página siguiente', disabled: cur === state.total }));
+  }
+  function go(page) {
+    state.page = page;
+    var q = new URLSearchParams(window.location.search);
+    if (page > 1) { q.set('pagina', page); } else { q.delete('pagina'); }
+    var qs = q.toString();
+    history.pushState({}, '', window.location.pathname + (qs ? '?' + qs : ''));
+    load();
+  }
+  window.addEventListener('popstate', function () {
+    state.page = Math.max(1, parseInt(new URLSearchParams(window.location.search).get('pagina'), 10) || 1);
+    load();
+  });
+  function load() {
+    var id = ++state.req;
+    if (state.first) {
+      state.first = false;
+    } else {
+      var top = root.querySelector('.ac-bl-container').getBoundingClientRect().top + window.pageYOffset - 100;
+      window.scrollTo({ top: top, behavior: 'smooth' });
+    }
+    if (ctx.type === 'search') {
+      if (!ctx.term) {
+        grid.setAttribute('aria-busy', 'false');
+        empty('Escribe una palabra para buscar entre los artículos.');
+        return;
+      }
+    }
+    skeleton();
+    pagination.hidden = true;
+    var total = 0;
+    fetch(API + 'posts?per_page=' + PER_PAGE + '&page=' + state.page + '&_embed=wp:featuredmedia,wp:term' + ctx.query)
+      .then(function (r) {
+        if (r.status === 400) { return []; }
+        if (!r.ok) { throw new Error(r.status); }
+        total = parseInt(r.headers.get('X-WP-Total') || '0', 10);
+        state.total = parseInt(r.headers.get('X-WP-TotalPages') || '1', 10);
+        return r.json();
+      })
+      .then(function (posts) {
+        if (id !== state.req) { return; }
+        grid.innerHTML = '';
+        grid.setAttribute('aria-busy', 'false');
+        countEl.textContent = total === 1 ? '1 artículo' : (total ? total + ' artículos' : '');
+        if (!posts.length) {
+          if (ctx.type === 'search') {
+            empty('No hemos encontrado artículos para «' + esc(ctx.term) + '».<br>Prueba con otra palabra, como henna, canas o índigo.');
+          } else {
+            empty('Todavía no hay artículos en esta sección.<br>Vuelve pronto — la alquimia está en proceso.');
+          }
+          statusEl.textContent = 'Sin resultados.';
+          return;
+        }
+        posts.forEach(function (post, i) {
+          var card = buildCard(post);
+          card.style.transitionDelay = ((i % 3) * 90) + 'ms';
+          grid.appendChild(card);
+          if (observer) { observer.observe(card); }
+        });
+        renderPagination();
+        statusEl.textContent = total + ' artículos. Página ' + state.page + ' de ' + state.total + '.';
+      })
+      .catch(function () {
+        if (id !== state.req) { return; }
+        grid.setAttribute('aria-busy', 'false');
+        empty('No se han podido cargar los artículos.<br>Inténtalo de nuevo en unos momentos.');
+      });
+  }
+  headerReady();
+  load();
+})();
+</script>
