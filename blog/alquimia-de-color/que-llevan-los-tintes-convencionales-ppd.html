@@ -3,14 +3,10 @@
   <!-- Barra de progreso de lectura -->
   <div class="ac4-progress" aria-hidden="true"><span class="ac4-progress-bar"></span></div>
 
-  <!-- ============ HERO ============
-       Para añadir imagen de fondo, incluye en el <header> el atributo:
-       style="background-image:url('https://alquimiadecolor.com/wp-content/uploads/...');"
-       Sin imagen, el hero se muestra con el degradado de marca. -->
-  <header class="ac4-hero">
+  <!-- ============ HERO ============ -->
+  <header class="ac4-hero" style="background-image:url('https://alquimiadecolor.com/wp-content/uploads/blog-horizontal.png');">
     <div class="ac4-hero-overlay"></div>
     <div class="ac4-hero-content">
-      <p class="ac4-eyebrow">Coloración consciente · Ingredientes</p>
       <h1 class="ac4-hero-title">¿Qué llevan los tintes convencionales? PPD, oxidantes y cómo elegir con criterio</h1>
     </div>
   </header>
@@ -182,18 +178,6 @@
     padding: 64px 24px;
     text-align: center;
     color: var(--ac4-crudo);
-  }
-
-  #ac-art-04 .ac4-eyebrow {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 500;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    font-size: 13px;
-    color: var(--ac4-arena);
-    margin: 0 0 18px;
-    opacity: 0;
-    animation: ac4-fade-up 0.8s ease-out 0.2s forwards;
   }
 
   #ac-art-04 .ac4-hero-title {
@@ -443,7 +427,6 @@
   /* Reduced motion */
   @media (prefers-reduced-motion: reduce) {
     #ac-art-04 * { animation: none !important; transition: none !important; }
-    #ac-art-04 .ac4-eyebrow,
     #ac-art-04 .ac4-hero-title { opacity: 1; }
   }
 </style>
