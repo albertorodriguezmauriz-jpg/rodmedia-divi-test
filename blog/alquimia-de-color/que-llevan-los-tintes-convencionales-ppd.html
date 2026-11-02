@@ -1,0 +1,595 @@
+<!-- ==========================================================================
+     ALQUIMIA DE COLOR — Artículo de blog para Divi (Módulo de Código)
+     Título: ¿Qué llevan los tintes convencionales? PPD, oxidantes y cómo elegir con criterio
+     Prefijo CSS: ac-
+     Paleta: Crudo Lino #F5F2ED · Antracita #2C2C2B · Arena #E5DED1
+             Verde Henna #4B5332 · Marrón Raíz #8C7B6A
+     Tipografía: Playfair Display italic (títulos) · Montserrat 300/400 (cuerpo)
+     Animaciones: GSAP 3.12.5 + ScrollTrigger (barra de lectura, revelado H2,
+                  cajas destacadas con hover)
+     ========================================================================== -->
+
+<!-- Tipografías de marca -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;1,400;1,500&display=swap" rel="stylesheet">
+
+<!-- GSAP + ScrollTrigger -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+<style>
+  /* ---------- Tokens de marca ---------- */
+  .ac-article {
+    --ac-lino: #F5F2ED;
+    --ac-antracita: #2C2C2B;
+    --ac-arena: #E5DED1;
+    --ac-henna: #4B5332;
+    --ac-raiz: #8C7B6A;
+    --ac-blanco: #FFFDF9;
+    --ac-serif: 'Playfair Display', Georgia, serif;
+    --ac-sans: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+    --ac-radius: 14px;
+    --ac-sombra: 0 6px 28px rgba(75, 83, 50, 0.08);
+
+    background: var(--ac-lino);
+    color: var(--ac-antracita);
+    font-family: var(--ac-sans);
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 1.8;
+    padding: 48px 20px 72px;
+    box-sizing: border-box;
+  }
+  .ac-article *,
+  .ac-article *::before,
+  .ac-article *::after { box-sizing: border-box; }
+
+  .ac-article__inner {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  /* ---------- Barra de progreso de lectura ---------- */
+  .ac-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: rgba(229, 222, 209, 0.6);
+    z-index: 99999;
+    pointer-events: none;
+  }
+  .ac-progress__bar {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--ac-raiz), var(--ac-henna));
+    transform: scaleX(0);
+    transform-origin: left center;
+  }
+  /* Respeta la barra de administración de WordPress */
+  .admin-bar .ac-progress { top: 32px; }
+  @media (max-width: 782px) { .admin-bar .ac-progress { top: 46px; } }
+
+  /* ---------- Cabecera ---------- */
+  .ac-eyebrow {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ac-raiz);
+    margin-bottom: 14px;
+  }
+  .ac-article h1 {
+    font-family: var(--ac-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(30px, 5vw, 46px);
+    line-height: 1.2;
+    color: var(--ac-henna);
+    margin: 0 0 22px;
+    padding: 0;
+  }
+  .ac-lead {
+    font-size: 19px;
+    line-height: 1.75;
+    color: var(--ac-antracita);
+    margin: 0 0 18px;
+  }
+  .ac-divider {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 36px 0 8px;
+    color: var(--ac-raiz);
+  }
+  .ac-divider::before,
+  .ac-divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--ac-arena);
+  }
+
+  /* ---------- Índice ---------- */
+  .ac-toc {
+    background: var(--ac-blanco);
+    border: 1px solid var(--ac-arena);
+    border-radius: var(--ac-radius);
+    padding: 24px 28px;
+    margin: 32px 0 8px;
+  }
+  .ac-toc__title {
+    font-family: var(--ac-serif);
+    font-style: italic;
+    font-size: 20px;
+    color: var(--ac-henna);
+    margin: 0 0 10px;
+  }
+  .ac-toc ol {
+    margin: 0;
+    padding-left: 20px;
+  }
+  .ac-toc li { margin: 4px 0; padding: 0; }
+  .ac-toc a {
+    color: var(--ac-antracita);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: color .3s ease, border-color .3s ease;
+  }
+  .ac-toc a:hover,
+  .ac-toc a:focus-visible {
+    color: var(--ac-henna);
+    border-bottom-color: var(--ac-henna);
+  }
+
+  /* ---------- Títulos y texto ---------- */
+  .ac-article h2 {
+    font-family: var(--ac-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(25px, 3.6vw, 34px);
+    line-height: 1.25;
+    color: var(--ac-henna);
+    margin: 64px 0 18px;
+    padding: 0;
+    scroll-margin-top: 90px;
+  }
+  .ac-article h2 span {
+    display: block;
+    font-family: var(--ac-sans);
+    font-style: normal;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ac-raiz);
+    margin-bottom: 8px;
+  }
+  .ac-article h3 {
+    font-family: var(--ac-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 22px;
+    color: var(--ac-antracita);
+    margin: 32px 0 10px;
+    padding: 0;
+  }
+  .ac-article p {
+    margin: 0 0 18px;
+    padding: 0;
+  }
+  .ac-article strong {
+    font-weight: 600;
+    color: var(--ac-antracita);
+  }
+  .ac-article em { color: var(--ac-raiz); }
+
+  /* ---------- Lista de componentes ---------- */
+  .ac-list {
+    list-style: none;
+    margin: 24px 0;
+    padding: 0;
+    display: grid;
+    gap: 14px;
+  }
+  .ac-list li {
+    position: relative;
+    background: var(--ac-blanco);
+    border-radius: var(--ac-radius);
+    padding: 18px 22px 18px 54px;
+    border: 1px solid var(--ac-arena);
+    transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+  }
+  .ac-list li::before {
+    content: "";
+    position: absolute;
+    left: 22px;
+    top: 26px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50% 0 50% 0; /* forma de hoja */
+    background: var(--ac-henna);
+    opacity: .85;
+  }
+  .ac-list li:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--ac-sombra);
+    border-color: rgba(75, 83, 50, .25);
+  }
+
+  /* ---------- Cajas destacadas (Nota / Consejo / Importante) ---------- */
+  .ac-callout {
+    position: relative;
+    border-radius: var(--ac-radius);
+    padding: 26px 28px 22px;
+    margin: 32px 0;
+    box-shadow: var(--ac-sombra);
+    transition: transform .4s ease, box-shadow .4s ease;
+    will-change: transform;
+  }
+  .ac-callout:hover {
+    transform: translateY(-4px) scale(1.012);
+    box-shadow: 0 14px 40px rgba(75, 83, 50, 0.14);
+  }
+  .ac-callout__label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .ac-callout__label svg { width: 18px; height: 18px; flex-shrink: 0; }
+  .ac-callout p:last-child { margin-bottom: 0; }
+
+  .ac-callout--nota {
+    background: var(--ac-arena);
+    border-left: 4px solid var(--ac-raiz);
+  }
+  .ac-callout--nota .ac-callout__label { color: var(--ac-raiz); }
+
+  .ac-callout--consejo {
+    background: var(--ac-blanco);
+    border: 1px solid rgba(75, 83, 50, .2);
+    border-left: 4px solid var(--ac-henna);
+  }
+  .ac-callout--consejo .ac-callout__label { color: var(--ac-henna); }
+
+  .ac-callout--importante {
+    background: var(--ac-henna);
+    color: var(--ac-lino);
+  }
+  .ac-callout--importante .ac-callout__label { color: var(--ac-arena); }
+  .ac-callout--importante strong { color: #fff; }
+
+  /* Etiquetas INCI */
+  .ac-inci {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 12px 0 14px;
+    padding: 0;
+    list-style: none;
+  }
+  .ac-inci li {
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    background: var(--ac-lino);
+    border: 1px dashed var(--ac-raiz);
+    color: var(--ac-antracita);
+    border-radius: 999px;
+    padding: 4px 14px;
+    margin: 0;
+  }
+
+  /* ---------- Tabla comparativa ---------- */
+  .ac-compare {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin: 28px 0;
+  }
+  .ac-compare__card {
+    border-radius: var(--ac-radius);
+    padding: 24px;
+    border: 1px solid var(--ac-arena);
+    background: var(--ac-blanco);
+    transition: transform .35s ease, box-shadow .35s ease;
+  }
+  .ac-compare__card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--ac-sombra);
+  }
+  .ac-compare__card--vegetal {
+    background: var(--ac-arena);
+    border-color: transparent;
+  }
+  .ac-compare__card h3 {
+    margin-top: 0;
+    font-size: 21px;
+    color: var(--ac-henna);
+  }
+  .ac-compare__card ul {
+    margin: 0;
+    padding-left: 18px;
+    font-size: 15.5px;
+  }
+  .ac-compare__card li { margin: 6px 0; }
+
+  /* ---------- Cita ---------- */
+  .ac-quote {
+    font-family: var(--ac-serif);
+    font-style: italic;
+    font-size: clamp(22px, 3vw, 28px);
+    line-height: 1.45;
+    color: var(--ac-henna);
+    text-align: center;
+    margin: 48px auto;
+    padding: 0 10px;
+    max-width: 620px;
+    border: 0;
+  }
+  .ac-quote::before,
+  .ac-quote::after {
+    content: "";
+    display: block;
+    width: 48px;
+    height: 1px;
+    background: var(--ac-raiz);
+    margin: 18px auto;
+  }
+
+  /* ---------- CTA final ---------- */
+  .ac-cta {
+    margin-top: 56px;
+    background: var(--ac-blanco);
+    border: 1px solid var(--ac-arena);
+    border-radius: 20px;
+    padding: 40px 28px;
+    text-align: center;
+  }
+  .ac-cta h2 { margin-top: 0; }
+  .ac-btn {
+    display: inline-block;
+    margin-top: 10px;
+    background: var(--ac-henna);
+    color: var(--ac-lino);
+    font-family: var(--ac-sans);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 15px 32px;
+    border-radius: 999px;
+    transition: background .3s ease, transform .3s ease;
+  }
+  .ac-btn:hover,
+  .ac-btn:focus-visible {
+    background: #3c4228;
+    color: var(--ac-lino);
+    transform: translateY(-2px);
+  }
+
+  .ac-disclaimer {
+    font-size: 13.5px;
+    color: var(--ac-raiz);
+    margin-top: 40px;
+    text-align: center;
+  }
+
+  /* ---------- Responsive (mobile-first) ---------- */
+  @media (min-width: 720px) {
+    .ac-article { padding: 72px 32px 96px; font-size: 18px; }
+    .ac-compare { grid-template-columns: 1fr 1fr; }
+    .ac-cta { padding: 52px 48px; }
+  }
+
+  /* ---------- Accesibilidad: movimiento reducido ---------- */
+  @media (prefers-reduced-motion: reduce) {
+    .ac-article *,
+    .ac-callout,
+    .ac-list li { transition: none; }
+    .ac-callout:hover,
+    .ac-list li:hover,
+    .ac-compare__card:hover { transform: none; }
+  }
+</style>
+
+<!-- Barra de progreso de lectura -->
+<div class="ac-progress" aria-hidden="true"><div class="ac-progress__bar"></div></div>
+
+<article class="ac-article" id="ac-articulo-ppd">
+  <div class="ac-article__inner">
+
+    <!-- Cabecera -->
+    <header>
+      <span class="ac-eyebrow">Conocer para elegir</span>
+      <h1>¿Qué llevan los tintes convencionales? PPD, oxidantes y cómo elegir con criterio</h1>
+      <p class="ac-lead">Cuando hablamos de teñir el cabello, solemos hablar de tonos, canas o raíces. Pero hay una pregunta que merece estar antes: <strong>¿qué estoy aplicando sobre mi cabello y mi cuero cabelludo?</strong></p>
+      <p>No se trata de tener miedo a la química ni de presentar lo vegetal como una solución milagrosa. Se trata de <strong>conocer, elegir y cuidar</strong>.</p>
+    </header>
+
+    <!-- Índice -->
+    <nav class="ac-toc" aria-label="Contenido del artículo">
+      <p class="ac-toc__title">En este artículo</p>
+      <ol>
+        <li><a href="#ac-ppd">PPD: el ingrediente que conviene conocer</a></li>
+        <li><a href="#ac-componentes">Otros componentes de un tinte oxidativo</a></li>
+        <li><a href="#ac-inci">Antes de teñirte: revisa lo que usas</a></li>
+        <li><a href="#ac-vegetal">¿Qué propone la coloración vegetal?</a></li>
+        <li><a href="#ac-elegir">Elegir tu color desde la información</a></li>
+      </ol>
+    </nav>
+
+    <!-- Sección 1 -->
+    <h2 id="ac-ppd"><span>01 · El ingrediente clave</span>PPD: el ingrediente que conviene conocer</h2>
+    <p>La <strong>PPD o parafenilendiamina</strong> es un colorante de oxidación muy utilizado en los <strong>tintes permanentes</strong>. Por sí sola no muestra todo su color: al mezclarse con un oxidante, normalmente <strong>agua oxigenada</strong>, se produce una reacción que desarrolla el pigmento dentro de la fibra capilar.</p>
+    <p>Gracias a ello permite conseguir <strong>colores intensos y duraderos</strong>. Pero también puede provocar <strong>alergia de contacto</strong>: picor, enrojecimiento, hinchazón o irritación.</p>
+
+    <aside class="ac-callout ac-callout--nota" role="note">
+      <span class="ac-callout__label">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01" stroke-linecap="round"/></svg>
+        Nota
+      </span>
+      <p>La sensibilidad a la PPD puede aparecer aunque hayas usado tintes durante años sin problemas. Si alguna vez notas reacción en el cuero cabelludo, la frente, las orejas o el cuello tras teñirte, coméntalo con un profesional sanitario antes de volver a aplicar color.</p>
+    </aside>
+
+    <!-- Sección 2 -->
+    <h2 id="ac-componentes"><span>02 · La fórmula completa</span>Otros componentes habituales en un tinte oxidativo</h2>
+    <p>Además de la PPD o sustancias afines, una <strong>coloración permanente</strong> puede incorporar:</p>
+
+    <ul class="ac-list">
+      <li><strong>Agua oxigenada o peróxido de hidrógeno:</strong> activa el proceso de oxidación y ayuda a aclarar parte de la melanina natural del cabello.</li>
+      <li><strong>Agentes alcalinizantes, como el amoníaco o la monoetanolamina:</strong> elevan el pH y favorecen que la cutícula se abra para que el color se desarrolle en el interior.</li>
+      <li><strong>Otros colorantes y acopladores:</strong> se combinan para crear el matiz final.</li>
+      <li><strong>Perfumes, conservantes y acondicionadores:</strong> mejoran la experiencia de uso o la textura del producto, pero también forman parte de una fórmula que conviene revisar.</li>
+    </ul>
+
+    <!-- Sección 3 -->
+    <h2 id="ac-inci"><span>03 · Leer la etiqueta</span>Antes de teñirte: revisa lo que usas</h2>
+    <p>No te quedes solo con lo que dice la parte delantera de la caja. Busca el <strong>listado de ingredientes, el INCI</strong>: es ahí donde está la información real del producto.</p>
+
+    <aside class="ac-callout ac-callout--consejo" role="note">
+      <span class="ac-callout__label">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 19c8 0 14-6 14-14C11 5 5 11 5 19Z" stroke-linejoin="round"/><path d="M5 19 13 11" stroke-linecap="round"/></svg>
+        Consejo
+      </span>
+      <p>Si has tenido sensibilidad o quieres evitar colorantes oxidativos, localiza en el INCI nombres como:</p>
+      <ul class="ac-inci">
+        <li>PPD / p-Phenylenediamine</li>
+        <li>Toluene-2,5-diamine</li>
+        <li>Resorcinol</li>
+      </ul>
+      <p>Y si tienes dudas, <strong>consulta antes de aplicar</strong>.</p>
+    </aside>
+
+    <aside class="ac-callout ac-callout--importante" role="note">
+      <span class="ac-callout__label">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 3 2.5 20h19L12 3Z" stroke-linejoin="round"/><path d="M12 10v4M12 17h.01" stroke-linecap="round"/></svg>
+        Importante
+      </span>
+      <p><strong>«Sin amoníaco» no significa necesariamente «sin PPD» ni «sin riesgo de alergia».</strong> Son cosas diferentes: un tinte puede prescindir del amoníaco y seguir utilizando colorantes de oxidación.</p>
+    </aside>
+
+    <!-- Sección 4 -->
+    <h2 id="ac-vegetal"><span>04 · La alternativa botánica</span>¿Y qué propone la coloración vegetal?</h2>
+    <p>La <strong>coloración vegetal</strong> trabaja con plantas tintóreas en polvo, como la <strong>henna</strong> (<em>Lawsonia inermis</em>), el <strong>índigo</strong> o la <strong>cassia</strong>. Sus pigmentos se adhieren al cabello y se mezclan visualmente con tu base: aportan reflejo, profundidad y matiz, pero <strong>no aclaran una melena oscura ni eliminan su melanina</strong>.</p>
+
+    <div class="ac-compare">
+      <div class="ac-compare__card">
+        <h3>Tinte oxidativo</h3>
+        <ul>
+          <li>Desarrolla el color dentro de la fibra mediante oxidación.</li>
+          <li>Puede aclarar parte de la melanina natural.</li>
+          <li>Suele incluir PPD o colorantes afines.</li>
+          <li>Colores intensos y muy duraderos.</li>
+        </ul>
+      </div>
+      <div class="ac-compare__card ac-compare__card--vegetal">
+        <h3>Coloración vegetal</h3>
+        <ul>
+          <li>Pigmentos de plantas que se adhieren al cabello.</li>
+          <li>No aclara: suma reflejo, matiz y profundidad.</li>
+          <li>Sin colorantes oxidativos si la fórmula es honesta.</li>
+          <li>El resultado depende de tu base y tu historial.</li>
+        </ul>
+      </div>
+    </div>
+
+    <p>Por eso, <strong>el resultado no se escoge solo mirando una foto</strong>. Depende de tu color de base, de las canas, de la porosidad, de los tintes anteriores y de la fórmula elegida.</p>
+
+    <aside class="ac-callout ac-callout--consejo" role="note">
+      <span class="ac-callout__label">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 19c8 0 14-6 14-14C11 5 5 11 5 19Z" stroke-linejoin="round"/><path d="M5 19 13 11" stroke-linecap="round"/></svg>
+        Consejo
+      </span>
+      <p>Si buscas una alternativa <strong>sin colorantes oxidativos como la PPD</strong>, revisa siempre el INCI. Una mezcla vegetal honesta debe decir con claridad <strong>qué plantas contiene</strong>.</p>
+    </aside>
+
+    <!-- Sección 5 -->
+    <h2 id="ac-elegir"><span>05 · Nuestra forma de trabajar</span>Elegir tu color desde la información</h2>
+    <p>En <strong>Alquimia de Color</strong> no creemos en fórmulas universales. Observamos tu cabello, tu historial y lo que quieres conseguir para ayudarte a decidir con <strong>expectativas realistas</strong>.</p>
+
+    <blockquote class="ac-quote">Porque conocer los ingredientes también forma parte de elegir tu color.</blockquote>
+
+    <!-- CTA -->
+    <section class="ac-cta" aria-label="Asesoramiento personalizado">
+      <h2>¿Hablamos de tu cabello?</h2>
+      <p>Cuéntanos tu color de base, tus canas y los tintes que has usado. Te ayudamos a encontrar la mezcla vegetal que encaja contigo.</p>
+      <a class="ac-btn" href="/contacto/">Quiero asesoramiento</a>
+    </section>
+
+    <p class="ac-disclaimer">Este artículo tiene carácter divulgativo y no sustituye la valoración de un profesional sanitario en caso de alergia o reacción cutánea.</p>
+
+  </div>
+</article>
+
+<script>
+  jQuery(document).ready(function ($) {
+    // Si GSAP no ha cargado, el contenido sigue siendo totalmente visible.
+    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') { return; }
+    gsap.registerPlugin(ScrollTrigger);
+
+    var $article = $('#ac-articulo-ppd');
+    if (!$article.length) { return; }
+
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // 1) Barra de progreso de lectura: se llena según el avance por el artículo
+    gsap.to('.ac-progress__bar', {
+      scaleX: 1,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: $article[0],
+        start: 'top top',
+        end: 'bottom bottom',
+        scrub: 0.4
+      }
+    });
+
+    if (reduceMotion) { return; }
+
+    // 2) Revelado de los H2 al entrar en pantalla (fade-in + subida)
+    gsap.utils.toArray('#ac-articulo-ppd h2').forEach(function (title) {
+      gsap.from(title, {
+        opacity: 0,
+        y: 40,
+        duration: 1,
+        ease: 'power3.out',
+        scrollTrigger: { trigger: title, start: 'top 85%', once: true }
+      });
+    });
+
+    // 3) Entrada suave de cajas destacadas, comparativa y cita
+    gsap.utils.toArray('#ac-articulo-ppd .ac-callout, #ac-articulo-ppd .ac-compare__card, #ac-articulo-ppd .ac-quote').forEach(function (el) {
+      gsap.from(el, {
+        opacity: 0,
+        y: 30,
+        duration: 0.9,
+        ease: 'power2.out',
+        clearProps: 'transform', // devuelve el control del hover al CSS
+        scrollTrigger: { trigger: el, start: 'top 88%', once: true }
+      });
+    });
+
+    // 4) Lista de componentes en cascada
+    gsap.from('#ac-articulo-ppd .ac-list li', {
+      opacity: 0,
+      x: -20,
+      duration: 0.7,
+      ease: 'power2.out',
+      stagger: 0.12,
+      clearProps: 'transform',
+      scrollTrigger: { trigger: '#ac-articulo-ppd .ac-list', start: 'top 85%', once: true }
+    });
+
+    // Recalcula posiciones cuando terminan de cargar fuentes e imágenes
+    $(window).on('load', function () { ScrollTrigger.refresh(); });
+  });
+</script>
