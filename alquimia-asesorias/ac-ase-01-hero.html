@@ -1,0 +1,103 @@
+<!-- =====================================================================
+     ALQUIMIA DE COLOR · Asesorías · BLOQUE 01 · HERO
+     Requiere el bloque 00 (base) más arriba en la página.
+
+     IMAGEN DE FONDO (opcional, vacía por defecto):
+     en la etiqueta <section>, cambia
+         --ac-ase-hero-img: none;
+     por
+         --ac-ase-hero-img: url('https://alquimiadecolor.com/wp-content/uploads/...jpg');
+     y añade la clase  ac-ase-hero--con-imagen  a la <section>
+     (oculta las formas decorativas y refuerza la veladura para que
+     el texto siga siendo legible).
+     ===================================================================== -->
+<style>
+.ac-asesorias.ac-ase-sec-hero {
+  /* Veladura Crudo sobre la imagen (invisible si no hay imagen) */
+  background-image:
+    linear-gradient(90deg, rgba(245, 242, 237, 0.97) 0%, rgba(245, 242, 237, 0.9) 55%, rgba(245, 242, 237, 0.55) 100%),
+    var(--ac-ase-hero-img, none);
+  background-size: cover;
+  background-position: center;
+  padding-top: clamp(3rem, 2rem + 6vw, 7.5rem);
+  padding-bottom: clamp(3.5rem, 2rem + 6vw, 7rem);
+}
+.ac-asesorias.ac-ase-sec-hero.ac-ase-hero--con-imagen {
+  background-image:
+    linear-gradient(90deg, rgba(245, 242, 237, 0.96) 0%, rgba(245, 242, 237, 0.88) 60%, rgba(245, 242, 237, 0.7) 100%),
+    var(--ac-ase-hero-img, none);
+}
+.ac-asesorias .ac-ase-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--ac-spacing-lg);
+  align-items: center;
+}
+.ac-asesorias .ac-ase-hero-texto { max-width: 680px; }
+.ac-asesorias .ac-ase-hero-texto .ac-ase-h1 { margin-bottom: var(--ac-spacing-md); }
+.ac-asesorias .ac-ase-hero-texto .ac-ase-subtitulo {
+  margin-bottom: var(--ac-spacing-lg);
+  max-width: 34ch;
+}
+.ac-asesorias .ac-ase-hero-cuerpo {
+  padding-left: 1.25rem;
+  border-left: 2px solid var(--ac-linea);
+}
+.ac-asesorias .ac-ase-hero-pregunta {
+  font-weight: 500;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+/* Formas orgánicas decorativas (mezcla de tonos vegetales) */
+.ac-asesorias .ac-ase-hero-decor {
+  order: -1;
+  width: 132px;
+  justify-self: end;
+  margin-bottom: calc(var(--ac-spacing-md) * -1);
+}
+.ac-asesorias .ac-ase-hero-decor svg { display: block; width: 100%; height: auto; }
+.ac-asesorias .ac-ase-hero--con-imagen .ac-ase-hero-decor { display: none; }
+
+@media (min-width: 768px) {
+  .ac-asesorias .ac-ase-hero-decor { width: 170px; }
+}
+@media (min-width: 981px) {
+  .ac-asesorias .ac-ase-hero-grid { grid-template-columns: minmax(0, 7fr) minmax(0, 4fr); gap: var(--ac-spacing-xl); }
+  .ac-asesorias .ac-ase-hero-decor { order: 0; width: 100%; max-width: 380px; justify-self: center; margin: 0; }
+}
+</style>
+
+<section class="ac-asesorias ac-ase-sec-hero" style="--ac-ase-hero-img: none;" aria-labelledby="ac-ase-hero-titulo">
+  <div class="ac-ase-contenedor ac-ase-hero-grid">
+
+    <div class="ac-ase-hero-texto">
+      <h1 id="ac-ase-hero-titulo" class="ac-ase-titulo ac-ase-h1">Asesoría personalizada de coloración vegetal</h1>
+      <p class="ac-ase-subtitulo">Estoy aquí para acompañarte en tu cambio hacia la coloración vegetal</p>
+
+      <div class="ac-ase-hero-cuerpo">
+        <p class="ac-ase-hero-pregunta">¿Te gustaría empezar a colorear tu cabello con plantas, cubrir tus canas o mejorar el resultado que ya consigues en casa?</p>
+        <p>Cada cabello tiene una base, una historia y unas necesidades distintas. Por eso, antes de recomendarte una mezcla, necesito conocer tu caso: tu color actual, tus canas, los tratamientos o tintes que has utilizado y el resultado que deseas conseguir.</p>
+        <p>No tienes que hacerlo sola. Te acompaño a entender tu cabello y a encontrar un proceso de coloración vegetal que tenga sentido para ti.</p>
+      </div>
+    </div>
+
+    <!-- Decoración: tres formas orgánicas que se mezclan, como los pigmentos de las plantas -->
+    <div class="ac-ase-hero-decor" aria-hidden="true">
+      <svg viewBox="0 0 400 420" xmlns="http://www.w3.org/2000/svg" focusable="false">
+        <path d="M206 34c58-6 118 22 146 74 29 53 22 124-14 172-37 49-104 76-165 66C112 336 58 289 44 230 30 171 56 101 102 66c30-23 66-29 104-32z" fill="#E5DED1"/>
+        <path d="M246 150c41 4 82 34 92 75 10 42-11 91-48 115-37 25-90 26-128 3-38-22-61-68-52-109 8-41 47-77 89-84 16-2 31-2 47 0z" fill="#8C7B6A" opacity="0.55"/>
+        <path d="M150 108c36-9 78 4 100 34 22 31 22 77-1 107-24 31-70 45-108 34-38-10-67-46-67-85 0-40 30-79 76-90z" fill="#4B5332" opacity="0.78"/>
+        <circle cx="206" cy="210" r="182" fill="none" stroke="#8C7B6A" stroke-width="1.2" opacity="0.45"/>
+        <!-- ramita -->
+        <g fill="none" stroke="#2C2C2B" stroke-width="1.6" stroke-linecap="round" opacity="0.55">
+          <path d="M300 392C292 330 296 270 322 214"/>
+          <path d="M298 352c-18-6-30-20-33-38 18 2 31 15 33 38z"/>
+          <path d="M300 310c16-8 25-23 25-41-16 6-25 21-25 41z"/>
+          <path d="M305 270c-17-5-28-18-31-35 17 2 29 15 31 35z"/>
+          <path d="M313 236c13-7 21-20 21-35-13 6-21 18-21 35z"/>
+        </g>
+      </svg>
+    </div>
+
+  </div>
+</section>

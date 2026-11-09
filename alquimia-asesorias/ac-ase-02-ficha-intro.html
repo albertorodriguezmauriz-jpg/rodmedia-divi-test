@@ -1,0 +1,70 @@
+<!-- =====================================================================
+     ALQUIMIA DE COLOR · Asesorías · BLOQUE 02 · EMPIEZA POR TU FICHA
+     Requiere el bloque 00 (base). El botón usa AC_ASE_CONFIG.urlFicha.
+     ===================================================================== -->
+<style>
+.ac-asesorias.ac-ase-sec-ficha-intro { padding-top: var(--ac-spacing-lg); }
+.ac-asesorias .ac-ase-ficha-intro-tarjeta {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--ac-spacing-md);
+  padding: clamp(1.75rem, 1rem + 4vw, 4rem);
+  border: 1px solid var(--ac-linea);
+  border-radius: var(--ac-radius);
+  background: var(--ac-papel);
+  box-shadow: var(--ac-sombra);
+}
+.ac-asesorias .ac-ase-ficha-intro-sello {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  margin-bottom: var(--ac-spacing-md);
+  border-radius: 50%;
+  background: rgba(75, 83, 50, 0.1);
+  color: var(--ac-henna);
+}
+.ac-asesorias .ac-ase-ficha-intro-sello svg { width: 22px; height: 22px; }
+.ac-asesorias .ac-ase-ficha-intro-cabecera .ac-ase-h2 { margin-bottom: 0; }
+
+@media (min-width: 981px) {
+  .ac-asesorias .ac-ase-ficha-intro-tarjeta {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: var(--ac-spacing-xl);
+    align-items: start;
+  }
+}
+@media (max-width: 767px) {
+  .ac-asesorias .ac-ase-sec-ficha-intro .ac-ase-boton { width: 100%; }
+}
+</style>
+
+<section class="ac-asesorias ac-ase-sec-ficha-intro" aria-labelledby="ac-ase-ficha-intro-titulo">
+  <div class="ac-ase-contenedor">
+    <div class="ac-ase-ficha-intro-tarjeta ac-ase-reveal">
+
+      <div class="ac-ase-ficha-intro-cabecera">
+        <!-- Sello decorativo: una hoja -->
+        <span class="ac-ase-ficha-intro-sello" aria-hidden="true">
+          <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" focusable="false"><path d="M2 14C2 7 6 2 14 2c0 8-5 12-12 12zm0 0 7-7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <h2 id="ac-ase-ficha-intro-titulo" class="ac-ase-titulo ac-ase-h2">Empieza por tu ficha de diagnóstico gratuita</h2>
+      </div>
+
+      <div class="ac-ase-ficha-intro-cuerpo">
+        <p>Completa la ficha con calma y adjunta las fotos que te solicito con luz natural. Revisaré tu caso personalmente y recibirás por email una primera valoración sin coste.</p>
+        <p>En ella te diré si la coloración vegetal puede ayudarte a conseguir el resultado que buscas. Si tu caso es viable, podrás solicitar una asesoría personalizada conmigo.</p>
+        <p>Si las plantas no son la mejor opción para tu cabello o para el objetivo que deseas, también te lo explicaré con honestidad antes de que hagas ningún pago.</p>
+
+        <p class="ac-ase-acciones">
+          <a class="ac-ase-boton" href="#ac-ase-ficha" data-ac-ase-url="urlFicha">
+            Rellenar la ficha de diagnóstico gratuita
+            <span class="ac-ase-boton-flecha" aria-hidden="true">→</span>
+          </a>
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>

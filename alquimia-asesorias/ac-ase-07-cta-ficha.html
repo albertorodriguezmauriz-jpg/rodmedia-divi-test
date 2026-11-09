@@ -1,0 +1,64 @@
+<!-- =====================================================================
+     ALQUIMIA DE COLOR · Asesorías · BLOQUE 07 · ¿EMPEZAMOS?
+     Requiere el bloque 00 (base).
+     · Lleva el ancla id="ac-ase-ficha": todos los botones de la página
+       aterrizan aquí. No dupliques este bloque en la misma página
+       (el id quedaría repetido).
+     · Su botón usa AC_ASE_CONFIG.urlFormulario y baja hasta el ancla
+       #ac-ase-formulario, al final de este bloque, justo encima del
+       formulario (módulo nativo de Divi colocado a continuación).
+     ===================================================================== -->
+<style>
+.ac-asesorias.ac-ase-sec-cta {
+  --ac-ase-fondo: var(--ac-henna);
+  color: var(--ac-crudo);
+  text-align: center;
+}
+.ac-asesorias.ac-ase-sec-cta .ac-ase-h2 { color: var(--ac-crudo); }
+.ac-asesorias.ac-ase-sec-cta .ac-ase-h2::after { background: var(--ac-arena); margin-left: auto; margin-right: auto; }
+.ac-asesorias .ac-ase-cta-texto {
+  max-width: 560px;
+  margin: 0 auto;
+  font-size: 1.15rem;
+  line-height: 1.65;
+}
+.ac-asesorias.ac-ase-sec-cta .ac-ase-boton:focus-visible { outline-color: var(--ac-crudo); }
+/* El ancla del formulario se coloca en el borde inferior del bloque */
+.ac-asesorias.ac-ase-sec-cta .ac-ase-ancla { position: absolute; left: 0; bottom: 0; width: 1px; }
+/* Formas decorativas suaves en las esquinas */
+.ac-asesorias .ac-ase-cta-decor {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.16;
+}
+.ac-asesorias .ac-ase-cta-decor--izq { left: -70px; bottom: -80px; width: 260px; }
+.ac-asesorias .ac-ase-cta-decor--der { right: -60px; top: -70px; width: 220px; }
+.ac-asesorias .ac-ase-cta-decor svg { display: block; width: 100%; height: auto; }
+@media (max-width: 767px) {
+  .ac-asesorias .ac-ase-cta-decor { width: 160px; }
+  .ac-asesorias.ac-ase-sec-cta .ac-ase-boton { width: 100%; }
+}
+</style>
+
+<section id="ac-ase-ficha" class="ac-asesorias ac-ase-sec-cta" aria-labelledby="ac-ase-cta-titulo">
+  <div class="ac-ase-cta-decor ac-ase-cta-decor--izq" aria-hidden="true">
+    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" focusable="false"><path d="M104 12c42 4 78 38 84 80 6 43-19 89-58 102-40 14-91-5-114-41C-7 117-2 64 28 37 47 20 75 10 104 12z" fill="#F5F2ED"/></svg>
+  </div>
+  <div class="ac-ase-cta-decor ac-ase-cta-decor--der" aria-hidden="true">
+    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" focusable="false"><path d="M92 8c40-5 84 18 98 56 15 39-1 89-36 110-35 22-88 16-118-13C5 133-1 82 20 50 33 28 63 12 92 8z" fill="#E5DED1"/></svg>
+  </div>
+
+  <div class="ac-ase-contenedor ac-ase-estrecho ac-ase-reveal">
+    <h2 id="ac-ase-cta-titulo" class="ac-ase-titulo ac-ase-h2">¿Empezamos?</h2>
+    <p class="ac-ase-cta-texto">El primer paso es conocer tu cabello y el punto en el que estás hoy.</p>
+    <p class="ac-ase-acciones">
+      <a class="ac-ase-boton ac-ase-boton--claro" href="#ac-ase-formulario" data-ac-ase-url="urlFormulario">
+        Rellenar la ficha de diagnóstico gratuita
+        <span class="ac-ase-boton-flecha" aria-hidden="true">↓</span>
+      </a>
+    </p>
+  </div>
+
+  <!-- Ancla del formulario: el módulo Contact Form va justo debajo de este bloque -->
+  <span id="ac-ase-formulario" class="ac-ase-ancla" aria-hidden="true"></span>
+</section>

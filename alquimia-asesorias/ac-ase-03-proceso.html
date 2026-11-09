@@ -1,0 +1,167 @@
+<!-- =====================================================================
+     ALQUIMIA DE COLOR · Asesorías · BLOQUE 03 · ASÍ ES EL PROCESO
+     Requiere el bloque 00 (base). Fondo Arena.
+     Línea de tiempo vertical (ol). Pasos 1-3 = gratuitos (panel claro +
+     etiqueta «Sin coste»); pasos 4-6 = asesoría de pago.
+     ===================================================================== -->
+<style>
+.ac-asesorias .ac-ase-proceso-cabecera { margin-bottom: var(--ac-spacing-lg); }
+
+.ac-asesorias .ac-ase-pasos {
+  --ac-ase-marca: 44px;    /* diámetro del número */
+  --ac-ase-pad-x: 1.1rem;  /* aire lateral dentro del panel */
+  --ac-ase-pad-y: 1.1rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  max-width: 760px;
+  counter-reset: ac-ase-paso;
+}
+/* Panel claro que agrupa los 3 pasos sin coste */
+.ac-asesorias .ac-ase-pasos::before {
+  content: "";
+  grid-column: 1;
+  grid-row: 1 / 4;
+  border: 1px solid var(--ac-linea);
+  border-radius: var(--ac-radius);
+  background: var(--ac-papel);
+}
+.ac-asesorias .ac-ase-pasos > li {
+  position: relative;
+  grid-column: 1;
+  min-height: calc(var(--ac-ase-marca) + var(--ac-ase-pad-y) * 2);
+  padding: var(--ac-ase-pad-y) var(--ac-ase-pad-x) var(--ac-ase-pad-y) calc(var(--ac-ase-pad-x) + var(--ac-ase-marca) + 1.1rem);
+  counter-increment: ac-ase-paso;
+}
+.ac-asesorias .ac-ase-pasos > li:nth-child(1) { grid-row: 1; padding-top: calc(var(--ac-ase-pad-y) * 1.6); }
+.ac-asesorias .ac-ase-pasos > li:nth-child(2) { grid-row: 2; }
+.ac-asesorias .ac-ase-pasos > li:nth-child(3) { grid-row: 3; padding-bottom: calc(var(--ac-ase-pad-y) * 1.6); }
+.ac-asesorias .ac-ase-pasos > li:nth-child(4) { grid-row: 4; padding-top: calc(var(--ac-ase-pad-y) * 1.6); }
+.ac-asesorias .ac-ase-pasos > li:nth-child(5) { grid-row: 5; }
+.ac-asesorias .ac-ase-pasos > li:nth-child(6) { grid-row: 6; }
+
+/* Número del paso */
+.ac-asesorias .ac-ase-pasos > li::before {
+  content: counter(ac-ase-paso);
+  position: absolute;
+  left: var(--ac-ase-pad-x);
+  top: var(--ac-ase-pad-y);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--ac-ase-marca);
+  height: var(--ac-ase-marca);
+  border: 1.5px solid var(--ac-raiz);
+  border-radius: 50%;
+  background: var(--ac-crudo);
+  color: var(--ac-antracita);
+  font-family: var(--ac-font-titulo);
+  font-weight: 700;
+  font-size: 1.15rem;
+  line-height: 1;
+}
+.ac-asesorias .ac-ase-pasos > li:nth-child(1)::before,
+.ac-asesorias .ac-ase-pasos > li:nth-child(4)::before { top: calc(var(--ac-ase-pad-y) * 1.6); }
+/* Pasos sin coste: número relleno en Henna */
+.ac-asesorias .ac-ase-pasos > li.ac-ase-paso--gratis::before {
+  border-color: var(--ac-henna);
+  background: var(--ac-henna);
+  color: var(--ac-crudo);
+}
+/* Línea vertical que une los pasos */
+.ac-asesorias .ac-ase-pasos > li::after {
+  content: "";
+  position: absolute;
+  left: calc(var(--ac-ase-pad-x) + var(--ac-ase-marca) / 2 - 1px);
+  top: calc(var(--ac-ase-pad-y) + var(--ac-ase-marca));
+  bottom: calc(var(--ac-ase-pad-y) * -1);
+  width: 2px;
+  background: var(--ac-raiz);
+  opacity: 0.45;
+}
+.ac-asesorias .ac-ase-pasos > li:nth-child(1)::after,
+.ac-asesorias .ac-ase-pasos > li:nth-child(4)::after { top: calc(var(--ac-ase-pad-y) * 1.6 + var(--ac-ase-marca)); }
+.ac-asesorias .ac-ase-pasos > li.ac-ase-paso--gratis::after { background: var(--ac-henna); opacity: 0.5; }
+.ac-asesorias .ac-ase-pasos > li:nth-child(3)::after { bottom: calc(var(--ac-ase-pad-y) * -1.6); }
+.ac-asesorias .ac-ase-pasos > li:last-child::after { display: none; }
+
+.ac-asesorias .ac-ase-paso-texto {
+  display: block;
+  padding-top: calc((var(--ac-ase-marca) - 1.6em) / 2);
+  line-height: 1.6;
+}
+/* Etiqueta «Sin coste» */
+.ac-asesorias .ac-ase-etiqueta {
+  display: inline-block;
+  margin-bottom: 0.45rem;
+  padding: 0.2rem 0.75rem;
+  border-radius: 999px;
+  background: rgba(75, 83, 50, 0.12);
+  color: var(--ac-henna);
+  font-weight: 500;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.ac-asesorias .ac-ase-pasos > li:nth-child(1) .ac-ase-paso-texto { padding-top: 0; }
+
+@media (min-width: 768px) {
+  .ac-asesorias .ac-ase-pasos { --ac-ase-pad-x: 1.75rem; --ac-ase-pad-y: 1.2rem; --ac-ase-marca: 48px; }
+  .ac-asesorias .ac-ase-paso-texto { font-size: 1.1rem; }
+  /* En tablet y escritorio la etiqueta se apoya en el borde superior del
+     panel, como una leyenda que agrupa los pasos 1 a 3 */
+  .ac-asesorias .ac-ase-pasos > li:nth-child(1) .ac-ase-paso-texto { padding-top: calc((var(--ac-ase-marca) - 1.6em) / 2); }
+  .ac-asesorias .ac-ase-etiqueta {
+    position: absolute;
+    right: var(--ac-ase-pad-x);
+    top: 0;
+    margin: 0;
+    transform: translateY(-50%);
+    border: 1px solid var(--ac-linea);
+    background: var(--ac-papel);
+  }
+}
+@media (min-width: 981px) {
+  .ac-asesorias .ac-ase-proceso-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
+    gap: var(--ac-spacing-xl);
+    align-items: start;
+  }
+  .ac-asesorias .ac-ase-proceso-cabecera { position: sticky; top: 140px; margin-bottom: 0; }
+}
+</style>
+
+<section class="ac-asesorias ac-ase-fondo-arena ac-ase-sec-proceso" aria-labelledby="ac-ase-proceso-titulo">
+  <div class="ac-ase-contenedor ac-ase-proceso-grid">
+
+    <div class="ac-ase-proceso-cabecera ac-ase-reveal">
+      <h2 id="ac-ase-proceso-titulo" class="ac-ase-titulo ac-ase-h2">Así es el proceso</h2>
+    </div>
+
+    <!-- role="list": mantiene la semántica de lista en Safari con list-style: none -->
+    <ol class="ac-ase-pasos ac-ase-reveal" role="list" style="--ac-ase-delay: 0.1s;">
+      <li class="ac-ase-paso--gratis">
+        <span class="ac-ase-etiqueta">Sin coste</span>
+        <span class="ac-ase-paso-texto">Rellenas la ficha de diagnóstico y me envías tus fotos.</span>
+      </li>
+      <li class="ac-ase-paso--gratis">
+        <span class="ac-ase-paso-texto">Estudio tu cabello, historial de coloración, canas y objetivo.</span>
+      </li>
+      <li class="ac-ase-paso--gratis">
+        <span class="ac-ase-paso-texto">Recibes mi valoración inicial por email.</span>
+      </li>
+      <li>
+        <span class="ac-ase-paso-texto">Si puedo ayudarte, eliges la asesoría que necesitas y realizas el pago.</span>
+      </li>
+      <li>
+        <span class="ac-ase-paso-texto">Reservamos día y hora para nuestra sesión online.</span>
+      </li>
+      <li>
+        <span class="ac-ase-paso-texto">Después de la asesoría, recibes tu guía de color personalizada por escrito.</span>
+      </li>
+    </ol>
+
+  </div>
+</section>

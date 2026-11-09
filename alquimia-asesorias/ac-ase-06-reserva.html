@@ -1,0 +1,41 @@
+<!-- =====================================================================
+     ALQUIMIA DE COLOR · Asesorías · BLOQUE 06 · RESERVA Y PAGO
+     Requiere el bloque 00 (base).
+     ===================================================================== -->
+<style>
+.ac-asesorias .ac-ase-reserva-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--ac-spacing-md);
+}
+.ac-asesorias .ac-ase-reserva-cuerpo {
+  padding-left: 1.25rem;
+  border-left: 2px solid var(--ac-henna);
+}
+.ac-asesorias .ac-ase-reserva-cuerpo p { margin-bottom: var(--ac-spacing-md); }
+.ac-asesorias .ac-ase-reserva-cuerpo p:last-child { margin-bottom: 0; }
+
+@media (min-width: 981px) {
+  .ac-asesorias .ac-ase-reserva-grid {
+    grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
+    gap: var(--ac-spacing-xl);
+    align-items: start;
+  }
+  .ac-asesorias .ac-ase-reserva-cuerpo { padding-left: 2rem; font-size: 1.1rem; }
+}
+</style>
+
+<section class="ac-asesorias ac-ase-sec-reserva" aria-labelledby="ac-ase-reserva-titulo">
+  <div class="ac-ase-contenedor ac-ase-reserva-grid">
+
+    <div class="ac-ase-reveal">
+      <h2 id="ac-ase-reserva-titulo" class="ac-ase-titulo ac-ase-h2">Reserva y pago</h2>
+    </div>
+
+    <div class="ac-ase-reserva-cuerpo ac-ase-reveal" style="--ac-ase-delay: 0.08s;">
+      <p>Tras recibir mi valoración y confirmar que puedo ayudarte, podrás solicitar tu asesoría. El pago se realiza antes de la sesión para dejar la cita reservada.</p>
+      <p>Podrás pagar de forma online. Si prefieres hacerlo por Bizum, indícamelo al solicitar tu asesoría y te facilitaré los datos.</p>
+    </div>
+
+  </div>
+</section>
