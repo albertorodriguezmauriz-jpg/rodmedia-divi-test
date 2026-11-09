@@ -10,8 +10,9 @@
        si más adelante se reutiliza en otras páginas
        (en ese caso, copia solo lo que hay dentro de <style>).
      · Los estilos solo afectan a .ac-asesorias, .ac-ase-form y .ac-ase-modulo.
-     · Nota JS: se evitan a propósito «&&» y el signo «menor que»
-       porque algunos editores de WordPress los codifican y rompen el script.
+     · Nota JS: se evitan a propósito «&&», el signo «menor que» y las
+       líneas en blanco, porque WordPress puede codificarlos o meter <p>
+       y romper el script.
      ===================================================================== -->
 
 <!-- Google Fonts: solo los pesos que se usan, sin cursivas -->
@@ -113,6 +114,97 @@
 }
 /* Columna de lectura estrecha */
 .ac-asesorias .ac-ase-estrecho { max-width: 720px; }
+/* WordPress puede insertar <p> vacíos o <br> en las líneas en blanco */
+.ac-asesorias p:empty,
+.ac-asesorias > br,
+.ac-asesorias .ac-ase-contenedor > br { display: none; }
+/* Textura de papel muy sutil sobre el fondo (aporta calidez orgánica) */
+.ac-asesorias::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.35;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.55 0 0 0 0 0.48 0 0 0 0 0.42 0 0 0 0.09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.ac-asesorias .ac-ase-contenedor { z-index: 1; }
+
+/* Icono en círculo (trazo Henna) */
+.ac-asesorias .ac-ase-icono {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(75, 83, 50, 0.1);
+  color: var(--ac-henna);
+}
+.ac-asesorias .ac-ase-icono svg {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Antetítulo con línea */
+.ac-asesorias .ac-ase-antetitulo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: var(--ac-spacing-md);
+  color: var(--ac-raiz-texto);
+  font-weight: 500;
+  font-size: 0.8125rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.ac-asesorias .ac-ase-antetitulo::before {
+  content: "";
+  width: 32px;
+  height: 1.5px;
+  background: var(--ac-raiz);
+}
+
+/* Marco en forma de arco para ilustraciones o fotos reales.
+   Para poner una foto: sustituye el <svg> del marco por
+   <img src="URL" alt="Descripción" loading="lazy"> */
+.ac-asesorias .ac-ase-arco {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  border-radius: 999px 999px var(--ac-radius) var(--ac-radius);
+  background: linear-gradient(180deg, #EFE9DF 0%, var(--ac-arena) 100%);
+  box-shadow: var(--ac-sombra);
+}
+.ac-asesorias .ac-ase-arco > svg,
+.ac-asesorias .ac-ase-arco > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Hojas que flotan suavemente (decoración) */
+@keyframes ac-ase-flotar {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(4px, -10px) rotate(6deg); }
+}
+.ac-asesorias .ac-ase-flota {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: ac-ase-flotar 7s ease-in-out infinite;
+}
+.ac-asesorias .ac-ase-flota--2 { animation-duration: 9s; animation-delay: -3s; }
+.ac-asesorias .ac-ase-flota--3 { animation-duration: 11s; animation-delay: -6s; }
+@keyframes ac-ase-girar { to { transform: rotate(360deg); } }
 
 /* ===================================================================
    3. TIPOGRAFÍA
@@ -327,6 +419,8 @@
   .ac-asesorias .ac-ase-boton,
   .ac-asesorias .ac-ase-boton-flecha { transition: none; }
   .ac-asesorias .ac-ase-boton:hover { transform: none; }
+  .ac-asesorias .ac-ase-flota,
+  .ac-asesorias .ac-ase-gira { animation: none; }
 }
 
 /* ===================================================================
@@ -783,7 +877,6 @@
 <script>
 (function () {
   'use strict';
-
   /* =================================================================
      CONFIGURACIÓN · destino de los botones
      Para cambiar adónde lleva un botón, edita SOLO su línea.
@@ -797,20 +890,16 @@
     urlFormulario: '#ac-ase-formulario',  // botón de «¿Empezamos?»: baja hasta el formulario
     margenExtra: 24                       // px de aire bajo la cabecera fija al saltar a un ancla
   };
-
   // Evita arrancar dos veces si el bloque base se pega por error dos veces
   if (window.acAseIniciado) { return; }
   window.acAseIniciado = true;
-
   var reducirMovimiento = false;
   if (window.matchMedia) {
     reducirMovimiento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   }
-
   function secciones() {
     return document.querySelectorAll('.ac-asesorias');
   }
-
   /* ---------- 1. URLs de los botones desde la configuración ---------- */
   function aplicarUrls() {
     document.querySelectorAll('a[data-ac-ase-url]').forEach(function (a) {
@@ -819,7 +908,6 @@
       if (url) { a.setAttribute('href', url); }
     });
   }
-
   /* ---------- 2. Ancho completo sin scroll horizontal ----------
      100vw incluye la barra de scroll en escritorio: la medimos y la
      restamos mediante la variable --ac-ase-sb de cada sección. */
@@ -831,7 +919,6 @@
       s.style.setProperty('--ac-ase-sb', sb + 'px');
     });
   }
-
   /* ---------- 3. Altura de la cabecera fija de Divi ---------- */
   function alturaCabecera() {
     var max = 0;
@@ -852,14 +939,12 @@
     });
     return Math.round(max) + AC_ASE_CONFIG.margenExtra;
   }
-
   function ajustarAnclas() {
     var margen = alturaCabecera() + 'px';
     document.querySelectorAll('#ac-ase-ficha, .ac-asesorias .ac-ase-ancla').forEach(function (el) {
       el.style.scrollMarginTop = margen;
     });
   }
-
   /* ---------- 4. Desplazamiento suave a las anclas ----------
      Se escucha en fase de captura para adelantarse al scroll suave
      de Divi y evitar dos animaciones a la vez. */
@@ -873,34 +958,27 @@
     if (href.charAt(0) !== '#') { return; } // enlace a otra página: comportamiento normal
     var destino = document.getElementById(decodeURIComponent(href.slice(1)));
     if (!destino) { return; }
-
     e.preventDefault();
     e.stopPropagation();
-
     var top = destino.getBoundingClientRect().top + window.pageYOffset - alturaCabecera();
     window.scrollTo({ top: top, behavior: reducirMovimiento ? 'auto' : 'smooth' });
-
     if (window.history.pushState) { window.history.pushState(null, '', href); }
     // Lleva el foco al destino para lectores de pantalla y teclado
     if (!destino.hasAttribute('tabindex')) { destino.setAttribute('tabindex', '-1'); }
     try { destino.focus({ preventScroll: true }); } catch (err) { /* navegadores antiguos */ }
   }
-
   /* ---------- 5. Aparición al hacer scroll ---------- */
   function activarApariciones() {
     if (reducirMovimiento) { return; }
     if (!('IntersectionObserver' in window)) { return; }
     var elementos = document.querySelectorAll('.ac-asesorias .ac-ase-reveal');
     if (!elementos.length) { return; }
-
     // Lo que ya está en pantalla al cargar se muestra sin animación
     var altoVentana = window.innerHeight;
     elementos.forEach(function (el) {
       if (altoVentana > el.getBoundingClientRect().top) { el.classList.add('ac-ase-visible'); }
     });
-
     secciones().forEach(function (s) { s.classList.add('ac-ase-js'); });
-
     var observador = new IntersectionObserver(function (entradas) {
       entradas.forEach(function (entrada) {
         if (entrada.isIntersecting) {
@@ -909,12 +987,10 @@
         }
       });
     }, { rootMargin: '0px 0px -8% 0px', threshold: 0.1 });
-
     elementos.forEach(function (el) {
       if (!el.classList.contains('ac-ase-visible')) { observador.observe(el); }
     });
   }
-
   /* ---------- Arranque ---------- */
   function iniciar() {
     aplicarUrls();
@@ -922,7 +998,6 @@
     ajustarAnclas();
     activarApariciones();
     document.addEventListener('click', alPulsar, true);
-
     var temporizador;
     window.addEventListener('resize', function () {
       clearTimeout(temporizador);
@@ -932,7 +1007,6 @@
       }, 150);
     });
   }
-
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', iniciar);
   } else {

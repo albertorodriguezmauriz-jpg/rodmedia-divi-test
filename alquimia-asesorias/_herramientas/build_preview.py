@@ -15,11 +15,13 @@ RAIZ = Path(__file__).resolve().parent.parent
 BLOQUES_ANTES = [
     "ac-ase-00-base.html",
     "ac-ase-01-hero.html",
+    "ac-ase-01b-confianza.html",
     "ac-ase-02-ficha-intro.html",
     "ac-ase-03-proceso.html",
     "ac-ase-04-asesorias.html",
     "ac-ase-05-guia.html",
     "ac-ase-06-reserva.html",
+    "ac-ase-06b-preguntas.html",
     "ac-ase-07-cta-ficha.html",
 ]
 BLOQUES_DESPUES = ["ac-ase-09-cierre.html"]

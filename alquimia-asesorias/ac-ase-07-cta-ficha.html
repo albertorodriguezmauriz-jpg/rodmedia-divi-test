@@ -23,6 +23,49 @@
   line-height: 1.65;
 }
 .ac-asesorias.ac-ase-sec-cta .ac-ase-boton:focus-visible { outline-color: var(--ac-crudo); }
+/* Guía visual de las 3 fotos */
+.ac-asesorias .ac-ase-fotos {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+  max-width: 620px;
+  margin: var(--ac-spacing-lg) auto 0;
+}
+.ac-asesorias .ac-ase-fotos li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 1.1rem 0.5rem 1rem;
+  border: 1px solid rgba(245, 242, 237, 0.28);
+  border-radius: var(--ac-radius-sm);
+  background: rgba(245, 242, 237, 0.07);
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 1.35;
+}
+.ac-asesorias .ac-ase-fotos svg { width: 64px; height: 64px; }
+.ac-asesorias .ac-ase-fotos-consejo {
+  max-width: 560px;
+  margin: var(--ac-spacing-md) auto 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--ac-arena);
+}
+.ac-asesorias .ac-ase-privacidad {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: var(--ac-spacing-sm);
+  font-size: 0.875rem;
+  color: var(--ac-arena);
+}
+.ac-asesorias .ac-ase-privacidad svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+@media (max-width: 479px) {
+  .ac-asesorias .ac-ase-fotos { gap: 0.5rem; }
+  .ac-asesorias .ac-ase-fotos li { font-size: 0.8125rem; padding: 0.9rem 0.35rem; }
+  .ac-asesorias .ac-ase-fotos svg { width: 52px; height: 52px; }
+}
 /* El ancla del formulario se coloca en el borde inferior del bloque */
 .ac-asesorias.ac-ase-sec-cta .ac-ase-ancla { position: absolute; left: 0; bottom: 0; width: 1px; }
 /* Formas decorativas suaves en las esquinas */
@@ -51,6 +94,26 @@
   <div class="ac-ase-contenedor ac-ase-estrecho ac-ase-reveal">
     <h2 id="ac-ase-cta-titulo" class="ac-ase-titulo ac-ase-h2">¿Empezamos?</h2>
     <p class="ac-ase-cta-texto">El primer paso es conocer tu cabello y el punto en el que estás hoy.</p>
+    <!-- Guía visual de las fotos (bloque nuevo, pendiente del visto bueno de Lidia) -->
+    <ul class="ac-ase-fotos" role="list" aria-label="Las 3 fotos que te pediré">
+      <li>
+        <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><circle cx="32" cy="32" r="30" fill="rgba(245,242,237,0.12)"/><path d="M14 46C14 18 50 18 50 46Z" fill="#E5DED1"/><path d="M32 23v23" stroke="#4B5332" stroke-width="2.5" stroke-linecap="round"/><circle cx="46" cy="18" r="7" fill="none" stroke="#F5F2ED" stroke-width="2"/><path d="m51 23 4 4" stroke="#F5F2ED" stroke-width="2" stroke-linecap="round"/></svg>
+        La raíz, de cerca
+      </li>
+      <li>
+        <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><circle cx="32" cy="32" r="30" fill="rgba(245,242,237,0.12)"/><path d="M22 50c-5-17 0-35 10-35s15 18 10 35z" fill="#E5DED1"/><path d="M12 56c6-8 34-8 40 0" fill="none" stroke="#E5DED1" stroke-width="3" stroke-linecap="round"/></svg>
+        La melena, de espaldas
+      </li>
+      <li>
+        <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><circle cx="32" cy="32" r="30" fill="rgba(245,242,237,0.12)"/><path d="M30 14c12-1 17 9 15 18l4 5-4 2c0 6-4 8-8 8v9H21c2-8-5-15-3-24 1-12 5-17 12-18z" fill="#E5DED1"/></svg>
+        Tu perfil
+      </li>
+    </ul>
+    <p class="ac-ase-fotos-consejo">Junto a una ventana, de día y sin flash, con el pelo seco y sin filtros.</p>
+    <p class="ac-ase-privacidad">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg>
+      Tus fotos solo se usan para estudiar tu caso.
+    </p>
     <p class="ac-ase-acciones">
       <a class="ac-ase-boton ac-ase-boton--claro" href="#ac-ase-formulario" data-ac-ase-url="urlFormulario">
         Rellenar la ficha de diagnóstico gratuita

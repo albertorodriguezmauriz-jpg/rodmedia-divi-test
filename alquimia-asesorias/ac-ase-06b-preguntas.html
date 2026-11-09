@@ -1,0 +1,123 @@
+<!-- =====================================================================
+     ALQUIMIA DE COLOR · Asesorías · BLOQUE 06b · PREGUNTAS FRECUENTES
+     Requiere el bloque 00 (base). Fondo Arena. Va entre «Reserva y pago»
+     y «¿Empezamos?».
+     Bloque nuevo (opcional). Las respuestas reutilizan frases de los
+     textos de Lidia y del email automático; pendiente de su visto bueno.
+     Acordeón nativo (<details>): funciona sin JavaScript.
+     Incluye su JSON-LD FAQPage: si cambias un texto, cámbialo también abajo.
+     ===================================================================== -->
+<style>
+.ac-asesorias .ac-ase-faq-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--ac-spacing-lg);
+}
+.ac-asesorias .ac-ase-faq-lista { display: grid; gap: 0.75rem; }
+.ac-asesorias .ac-ase-faq-item {
+  border: 1px solid var(--ac-linea);
+  border-radius: var(--ac-radius-sm);
+  background: var(--ac-papel);
+  transition: border-color 0.3s var(--ac-ease), box-shadow 0.3s var(--ac-ease);
+}
+.ac-asesorias .ac-ase-faq-item[open] {
+  border-color: rgba(75, 83, 50, 0.45);
+  box-shadow: var(--ac-sombra);
+}
+.ac-asesorias .ac-ase-faq-item summary {
+  position: relative;
+  display: block;
+  padding: 1.1rem 3.5rem 1.1rem 1.35rem;
+  list-style: none;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 1.02rem;
+  line-height: 1.45;
+  color: var(--ac-antracita);
+}
+.ac-asesorias .ac-ase-faq-item summary::-webkit-details-marker { display: none; }
+.ac-asesorias .ac-ase-faq-item summary::marker { content: ""; }
+/* Icono + / − */
+.ac-asesorias .ac-ase-faq-item summary::before,
+.ac-asesorias .ac-ase-faq-item summary::after {
+  content: "";
+  position: absolute;
+  right: 1.35rem;
+  top: 50%;
+  width: 14px;
+  height: 1.8px;
+  border-radius: 2px;
+  background: var(--ac-henna);
+  transition: transform 0.3s var(--ac-ease);
+}
+.ac-asesorias .ac-ase-faq-item summary::after { transform: rotate(90deg); }
+.ac-asesorias .ac-ase-faq-item[open] summary::after { transform: rotate(0deg); }
+.ac-asesorias .ac-ase-faq-item summary:focus-visible {
+  outline: 3px solid var(--ac-henna);
+  outline-offset: 3px;
+  border-radius: var(--ac-radius-sm);
+}
+.ac-asesorias .ac-ase-faq-respuesta {
+  padding: 0 1.35rem 1.25rem;
+  color: var(--ac-antracita);
+}
+@media (min-width: 981px) {
+  .ac-asesorias .ac-ase-faq-grid { grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); gap: var(--ac-spacing-xl); align-items: start; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ac-asesorias .ac-ase-faq-item summary::before,
+  .ac-asesorias .ac-ase-faq-item summary::after { transition: none; }
+}
+</style>
+
+<section class="ac-asesorias ac-ase-fondo-arena ac-ase-sec-preguntas" aria-labelledby="ac-ase-preguntas-titulo">
+  <div class="ac-ase-contenedor ac-ase-faq-grid">
+
+    <div class="ac-ase-reveal">
+      <h2 id="ac-ase-preguntas-titulo" class="ac-ase-titulo ac-ase-h2">Preguntas frecuentes</h2>
+    </div>
+
+    <div class="ac-ase-faq-lista ac-ase-reveal" style="--ac-ase-delay: 0.08s;">
+      <details class="ac-ase-faq-item">
+        <summary>¿Tiene coste la ficha de diagnóstico?</summary>
+        <div class="ac-ase-faq-respuesta"><p>No. La ficha de diagnóstico y la primera valoración son gratuitas y no te comprometen a reservar una asesoría.</p></div>
+      </details>
+      <details class="ac-ase-faq-item">
+        <summary>¿Cuándo recibiré mi valoración?</summary>
+        <div class="ac-ase-faq-respuesta"><p>Estudiaré tu cabello con calma y te responderé por email en un plazo de 48 a 72 horas. Si ves que no te llega, revisa la carpeta de correo no deseado.</p></div>
+      </details>
+      <details class="ac-ase-faq-item">
+        <summary>¿Y si la coloración vegetal no es para mí?</summary>
+        <div class="ac-ase-faq-respuesta"><p>Si las plantas no son la mejor opción para tu cabello o para el objetivo que deseas, te lo explicaré con honestidad antes de que hagas ningún pago.</p></div>
+      </details>
+      <details class="ac-ase-faq-item">
+        <summary>¿Qué asesoría elijo?</summary>
+        <div class="ac-ase-faq-respuesta"><p>La de 30 minutos es para ti si ya utilizas coloración vegetal y quieres mejorar el resultado de tus mezclas. La de 50 minutos, si quieres dar el paso a las plantas y comenzar con seguridad. Si aún no lo sabes, indícalo en la ficha y lo vemos juntas.</p></div>
+      </details>
+      <details class="ac-ase-faq-item">
+        <summary>¿Cuándo y cómo se paga?</summary>
+        <div class="ac-ase-faq-respuesta"><p>Solo después de mi valoración, si confirmo que puedo ayudarte. El pago se realiza antes de la sesión para dejar la cita reservada. Podrás pagar de forma online o, si lo prefieres, por Bizum.</p></div>
+      </details>
+      <details class="ac-ase-faq-item">
+        <summary>¿Qué recibo después de la asesoría?</summary>
+        <div class="ac-ase-faq-respuesta"><p>Tu guía de color personalizada por email: tu diagnóstico, tu fórmula con plantas, proporciones y cantidades, cómo preparar y aplicar la mezcla, los tiempos y dónde comprar lo que necesitas.</p></div>
+      </details>
+    </div>
+
+  </div>
+</section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "¿Tiene coste la ficha de diagnóstico?", "acceptedAnswer": { "@type": "Answer", "text": "No. La ficha de diagnóstico y la primera valoración son gratuitas y no te comprometen a reservar una asesoría." } },
+    { "@type": "Question", "name": "¿Cuándo recibiré mi valoración?", "acceptedAnswer": { "@type": "Answer", "text": "Estudiaré tu cabello con calma y te responderé por email en un plazo de 48 a 72 horas. Si ves que no te llega, revisa la carpeta de correo no deseado." } },
+    { "@type": "Question", "name": "¿Y si la coloración vegetal no es para mí?", "acceptedAnswer": { "@type": "Answer", "text": "Si las plantas no son la mejor opción para tu cabello o para el objetivo que deseas, te lo explicaré con honestidad antes de que hagas ningún pago." } },
+    { "@type": "Question", "name": "¿Qué asesoría elijo?", "acceptedAnswer": { "@type": "Answer", "text": "La de 30 minutos es para ti si ya utilizas coloración vegetal y quieres mejorar el resultado de tus mezclas. La de 50 minutos, si quieres dar el paso a las plantas y comenzar con seguridad. Si aún no lo sabes, indícalo en la ficha y lo vemos juntas." } },
+    { "@type": "Question", "name": "¿Cuándo y cómo se paga?", "acceptedAnswer": { "@type": "Answer", "text": "Solo después de mi valoración, si confirmo que puedo ayudarte. El pago se realiza antes de la sesión para dejar la cita reservada. Podrás pagar de forma online o, si lo prefieres, por Bizum." } },
+    { "@type": "Question", "name": "¿Qué recibo después de la asesoría?", "acceptedAnswer": { "@type": "Answer", "text": "Tu guía de color personalizada por email: tu diagnóstico, tu fórmula con plantas, proporciones y cantidades, cómo preparar y aplicar la mezcla, los tiempos y dónde comprar lo que necesitas." } }
+  ]
+}
+</script>

@@ -15,6 +15,34 @@
 .ac-asesorias .ac-ase-reserva-cuerpo p { margin-bottom: var(--ac-spacing-md); }
 .ac-asesorias .ac-ase-reserva-cuerpo p:last-child { margin-bottom: 0; }
 
+/* Distintivos: formas de pago y modalidad */
+.ac-asesorias .ac-ase-distintivos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: var(--ac-spacing-lg);
+}
+.ac-asesorias .ac-ase-distintivos li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.55rem 1.05rem 0.55rem 0.8rem;
+  border: 1px solid var(--ac-linea);
+  border-radius: 999px;
+  background: var(--ac-papel);
+  font-weight: 500;
+  font-size: 0.9rem;
+  line-height: 1.3;
+}
+.ac-asesorias .ac-ase-distintivos svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: var(--ac-henna);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
 @media (min-width: 981px) {
   .ac-asesorias .ac-ase-reserva-grid {
     grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
@@ -35,6 +63,11 @@
     <div class="ac-ase-reserva-cuerpo ac-ase-reveal" style="--ac-ase-delay: 0.08s;">
       <p>Tras recibir mi valoración y confirmar que puedo ayudarte, podrás solicitar tu asesoría. El pago se realiza antes de la sesión para dejar la cita reservada.</p>
       <p>Podrás pagar de forma online. Si prefieres hacerlo por Bizum, indícamelo al solicitar tu asesoría y te facilitaré los datos.</p>
+      <ul class="ac-ase-distintivos" role="list">
+        <li><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M2.5 10h19M6.5 15h4"/></svg>Pago online</li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M10.5 18h3"/></svg>Bizum</li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg>Cita reservada al pagar</li>
+      </ul>
     </div>
 
   </div>

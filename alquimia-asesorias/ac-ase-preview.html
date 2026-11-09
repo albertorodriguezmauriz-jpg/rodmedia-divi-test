@@ -58,8 +58,9 @@ a { color:#2ea3f2; text-decoration:none; }
        si más adelante se reutiliza en otras páginas
        (en ese caso, copia solo lo que hay dentro de <style>).
      · Los estilos solo afectan a .ac-asesorias, .ac-ase-form y .ac-ase-modulo.
-     · Nota JS: se evitan a propósito «&&» y el signo «menor que»
-       porque algunos editores de WordPress los codifican y rompen el script.
+     · Nota JS: se evitan a propósito «&&», el signo «menor que» y las
+       líneas en blanco, porque WordPress puede codificarlos o meter <p>
+       y romper el script.
      ===================================================================== -->
 
 <!-- Google Fonts: solo los pesos que se usan, sin cursivas -->
@@ -161,6 +162,97 @@ a { color:#2ea3f2; text-decoration:none; }
 }
 /* Columna de lectura estrecha */
 .ac-asesorias .ac-ase-estrecho { max-width: 720px; }
+/* WordPress puede insertar <p> vacíos o <br> en las líneas en blanco */
+.ac-asesorias p:empty,
+.ac-asesorias > br,
+.ac-asesorias .ac-ase-contenedor > br { display: none; }
+/* Textura de papel muy sutil sobre el fondo (aporta calidez orgánica) */
+.ac-asesorias::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.35;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.55 0 0 0 0 0.48 0 0 0 0 0.42 0 0 0 0.09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.ac-asesorias .ac-ase-contenedor { z-index: 1; }
+
+/* Icono en círculo (trazo Henna) */
+.ac-asesorias .ac-ase-icono {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(75, 83, 50, 0.1);
+  color: var(--ac-henna);
+}
+.ac-asesorias .ac-ase-icono svg {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Antetítulo con línea */
+.ac-asesorias .ac-ase-antetitulo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: var(--ac-spacing-md);
+  color: var(--ac-raiz-texto);
+  font-weight: 500;
+  font-size: 0.8125rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.ac-asesorias .ac-ase-antetitulo::before {
+  content: "";
+  width: 32px;
+  height: 1.5px;
+  background: var(--ac-raiz);
+}
+
+/* Marco en forma de arco para ilustraciones o fotos reales.
+   Para poner una foto: sustituye el <svg> del marco por
+   <img src="URL" alt="Descripción" loading="lazy"> */
+.ac-asesorias .ac-ase-arco {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  border-radius: 999px 999px var(--ac-radius) var(--ac-radius);
+  background: linear-gradient(180deg, #EFE9DF 0%, var(--ac-arena) 100%);
+  box-shadow: var(--ac-sombra);
+}
+.ac-asesorias .ac-ase-arco > svg,
+.ac-asesorias .ac-ase-arco > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Hojas que flotan suavemente (decoración) */
+@keyframes ac-ase-flotar {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(4px, -10px) rotate(6deg); }
+}
+.ac-asesorias .ac-ase-flota {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: ac-ase-flotar 7s ease-in-out infinite;
+}
+.ac-asesorias .ac-ase-flota--2 { animation-duration: 9s; animation-delay: -3s; }
+.ac-asesorias .ac-ase-flota--3 { animation-duration: 11s; animation-delay: -6s; }
+@keyframes ac-ase-girar { to { transform: rotate(360deg); } }
 
 /* ===================================================================
    3. TIPOGRAFÍA
@@ -375,6 +467,8 @@ a { color:#2ea3f2; text-decoration:none; }
   .ac-asesorias .ac-ase-boton,
   .ac-asesorias .ac-ase-boton-flecha { transition: none; }
   .ac-asesorias .ac-ase-boton:hover { transform: none; }
+  .ac-asesorias .ac-ase-flota,
+  .ac-asesorias .ac-ase-gira { animation: none; }
 }
 
 /* ===================================================================
@@ -831,7 +925,6 @@ a { color:#2ea3f2; text-decoration:none; }
 <script>
 (function () {
   'use strict';
-
   /* =================================================================
      CONFIGURACIÓN · destino de los botones
      Para cambiar adónde lleva un botón, edita SOLO su línea.
@@ -845,20 +938,16 @@ a { color:#2ea3f2; text-decoration:none; }
     urlFormulario: '#ac-ase-formulario',  // botón de «¿Empezamos?»: baja hasta el formulario
     margenExtra: 24                       // px de aire bajo la cabecera fija al saltar a un ancla
   };
-
   // Evita arrancar dos veces si el bloque base se pega por error dos veces
   if (window.acAseIniciado) { return; }
   window.acAseIniciado = true;
-
   var reducirMovimiento = false;
   if (window.matchMedia) {
     reducirMovimiento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   }
-
   function secciones() {
     return document.querySelectorAll('.ac-asesorias');
   }
-
   /* ---------- 1. URLs de los botones desde la configuración ---------- */
   function aplicarUrls() {
     document.querySelectorAll('a[data-ac-ase-url]').forEach(function (a) {
@@ -867,7 +956,6 @@ a { color:#2ea3f2; text-decoration:none; }
       if (url) { a.setAttribute('href', url); }
     });
   }
-
   /* ---------- 2. Ancho completo sin scroll horizontal ----------
      100vw incluye la barra de scroll en escritorio: la medimos y la
      restamos mediante la variable --ac-ase-sb de cada sección. */
@@ -879,7 +967,6 @@ a { color:#2ea3f2; text-decoration:none; }
       s.style.setProperty('--ac-ase-sb', sb + 'px');
     });
   }
-
   /* ---------- 3. Altura de la cabecera fija de Divi ---------- */
   function alturaCabecera() {
     var max = 0;
@@ -900,14 +987,12 @@ a { color:#2ea3f2; text-decoration:none; }
     });
     return Math.round(max) + AC_ASE_CONFIG.margenExtra;
   }
-
   function ajustarAnclas() {
     var margen = alturaCabecera() + 'px';
     document.querySelectorAll('#ac-ase-ficha, .ac-asesorias .ac-ase-ancla').forEach(function (el) {
       el.style.scrollMarginTop = margen;
     });
   }
-
   /* ---------- 4. Desplazamiento suave a las anclas ----------
      Se escucha en fase de captura para adelantarse al scroll suave
      de Divi y evitar dos animaciones a la vez. */
@@ -921,34 +1006,27 @@ a { color:#2ea3f2; text-decoration:none; }
     if (href.charAt(0) !== '#') { return; } // enlace a otra página: comportamiento normal
     var destino = document.getElementById(decodeURIComponent(href.slice(1)));
     if (!destino) { return; }
-
     e.preventDefault();
     e.stopPropagation();
-
     var top = destino.getBoundingClientRect().top + window.pageYOffset - alturaCabecera();
     window.scrollTo({ top: top, behavior: reducirMovimiento ? 'auto' : 'smooth' });
-
     if (window.history.pushState) { window.history.pushState(null, '', href); }
     // Lleva el foco al destino para lectores de pantalla y teclado
     if (!destino.hasAttribute('tabindex')) { destino.setAttribute('tabindex', '-1'); }
     try { destino.focus({ preventScroll: true }); } catch (err) { /* navegadores antiguos */ }
   }
-
   /* ---------- 5. Aparición al hacer scroll ---------- */
   function activarApariciones() {
     if (reducirMovimiento) { return; }
     if (!('IntersectionObserver' in window)) { return; }
     var elementos = document.querySelectorAll('.ac-asesorias .ac-ase-reveal');
     if (!elementos.length) { return; }
-
     // Lo que ya está en pantalla al cargar se muestra sin animación
     var altoVentana = window.innerHeight;
     elementos.forEach(function (el) {
       if (altoVentana > el.getBoundingClientRect().top) { el.classList.add('ac-ase-visible'); }
     });
-
     secciones().forEach(function (s) { s.classList.add('ac-ase-js'); });
-
     var observador = new IntersectionObserver(function (entradas) {
       entradas.forEach(function (entrada) {
         if (entrada.isIntersecting) {
@@ -957,12 +1035,10 @@ a { color:#2ea3f2; text-decoration:none; }
         }
       });
     }, { rootMargin: '0px 0px -8% 0px', threshold: 0.1 });
-
     elementos.forEach(function (el) {
       if (!el.classList.contains('ac-ase-visible')) { observador.observe(el); }
     });
   }
-
   /* ---------- Arranque ---------- */
   function iniciar() {
     aplicarUrls();
@@ -970,7 +1046,6 @@ a { color:#2ea3f2; text-decoration:none; }
     ajustarAnclas();
     activarApariciones();
     document.addEventListener('click', alPulsar, true);
-
     var temporizador;
     window.addEventListener('resize', function () {
       clearTimeout(temporizador);
@@ -980,7 +1055,6 @@ a { color:#2ea3f2; text-decoration:none; }
       }, 150);
     });
   }
-
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', iniciar);
   } else {
@@ -997,75 +1071,137 @@ a { color:#2ea3f2; text-decoration:none; }
      ALQUIMIA DE COLOR · Asesorías · BLOQUE 01 · HERO
      Requiere el bloque 00 (base) más arriba en la página.
 
-     IMAGEN DE FONDO (opcional, vacía por defecto):
-     en la etiqueta <section>, cambia
-         --ac-ase-hero-img: none;
-     por
-         --ac-ase-hero-img: url('https://alquimiadecolor.com/wp-content/uploads/...jpg');
-     y añade la clase  ac-ase-hero--con-imagen  a la <section>
-     (oculta las formas decorativas y refuerza la veladura para que
-     el texto siga siendo legible).
+     FOTO REAL (recomendado: una foto de Lidia preparando una mezcla):
+     dentro de <figure class="ac-ase-arco ...">, sustituye el <svg> entero por
+         <img src="https://alquimiadecolor.com/wp-content/uploads/....jpg"
+              alt="Lidia Marín preparando una mezcla de plantas para colorear el cabello"
+              width="800" height="1000">
+     (formato vertical 4:5; el arco recorta la foto automáticamente).
+
+     IMAGEN DE FONDO de toda la sección (opcional, vacía por defecto):
+     en la etiqueta <section>, cambia  --ac-ase-hero-img: none;
+     por  --ac-ase-hero-img: url('https://…/imagen.jpg');
      ===================================================================== -->
 <style>
 .ac-asesorias.ac-ase-sec-hero {
-  /* Veladura Crudo sobre la imagen (invisible si no hay imagen) */
   background-image:
-    linear-gradient(90deg, rgba(245, 242, 237, 0.97) 0%, rgba(245, 242, 237, 0.9) 55%, rgba(245, 242, 237, 0.55) 100%),
+    linear-gradient(90deg, rgba(245, 242, 237, 0.97) 0%, rgba(245, 242, 237, 0.9) 55%, rgba(245, 242, 237, 0.6) 100%),
     var(--ac-ase-hero-img, none);
   background-size: cover;
   background-position: center;
-  padding-top: clamp(3rem, 2rem + 6vw, 7.5rem);
-  padding-bottom: clamp(3.5rem, 2rem + 6vw, 7rem);
+  padding-top: clamp(2.5rem, 1.5rem + 5vw, 6.5rem);
+  padding-bottom: clamp(3rem, 2rem + 5vw, 6.5rem);
 }
-.ac-asesorias.ac-ase-sec-hero.ac-ase-hero--con-imagen {
-  background-image:
-    linear-gradient(90deg, rgba(245, 242, 237, 0.96) 0%, rgba(245, 242, 237, 0.88) 60%, rgba(245, 242, 237, 0.7) 100%),
-    var(--ac-ase-hero-img, none);
+/* Luz suave en movimiento (aurora orgánica en tonos de la marca) */
+.ac-asesorias .ac-ase-aurora {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
 }
+.ac-asesorias .ac-ase-aurora span {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: 0.55;
+  animation: ac-ase-aurora 22s ease-in-out infinite alternate;
+}
+.ac-asesorias .ac-ase-aurora span:nth-child(1) { width: 46vw; height: 46vw; max-width: 620px; max-height: 620px; right: -8%; top: -12%; background: var(--ac-arena); }
+.ac-asesorias .ac-ase-aurora span:nth-child(2) { width: 30vw; height: 30vw; max-width: 420px; max-height: 420px; right: 18%; bottom: -18%; background: rgba(140, 123, 106, 0.35); animation-duration: 28s; }
+.ac-asesorias .ac-ase-aurora span:nth-child(3) { width: 26vw; height: 26vw; max-width: 360px; max-height: 360px; left: -10%; top: 30%; background: rgba(75, 83, 50, 0.12); animation-duration: 32s; }
+@keyframes ac-ase-aurora {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(-6%, 8%) scale(1.12); }
+}
+
 .ac-asesorias .ac-ase-hero-grid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--ac-spacing-lg);
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--ac-spacing-xl);
   align-items: center;
 }
 .ac-asesorias .ac-ase-hero-texto { max-width: 680px; }
 .ac-asesorias .ac-ase-hero-texto .ac-ase-h1 { margin-bottom: var(--ac-spacing-md); }
-.ac-asesorias .ac-ase-hero-texto .ac-ase-subtitulo {
-  margin-bottom: var(--ac-spacing-lg);
-  max-width: 34ch;
-}
+.ac-asesorias .ac-ase-hero-texto .ac-ase-subtitulo { margin-bottom: var(--ac-spacing-lg); max-width: 34ch; }
 .ac-asesorias .ac-ase-hero-cuerpo {
   padding-left: 1.25rem;
   border-left: 2px solid var(--ac-linea);
 }
-.ac-asesorias .ac-ase-hero-pregunta {
-  font-weight: 500;
-  font-size: 1.1rem;
-  line-height: 1.6;
+.ac-asesorias .ac-ase-hero-pregunta { font-weight: 500; font-size: 1.1rem; line-height: 1.6; }
+.ac-asesorias .ac-ase-hero-acciones {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.25rem;
+  margin-top: var(--ac-spacing-lg);
 }
-/* Formas orgánicas decorativas (mezcla de tonos vegetales) */
-.ac-asesorias .ac-ase-hero-decor {
-  order: -1;
-  width: 132px;
-  justify-self: end;
-  margin-bottom: calc(var(--ac-spacing-md) * -1);
+.ac-asesorias .ac-ase-hero-nota {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--ac-raiz-texto);
+  font-size: 0.9375rem;
 }
-.ac-asesorias .ac-ase-hero-decor svg { display: block; width: 100%; height: auto; }
-.ac-asesorias .ac-ase-hero--con-imagen .ac-ase-hero-decor { display: none; }
+.ac-asesorias .ac-ase-hero-nota svg { width: 18px; height: 18px; fill: none; stroke: var(--ac-henna); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+/* Ilustración en arco + sello giratorio */
+.ac-asesorias .ac-ase-hero-visual {
+  position: relative;
+  width: 100%;
+  max-width: 340px;
+  margin: 0 auto;
+}
+.ac-asesorias .ac-ase-hero-visual::after {
+  /* contorno fino desplazado alrededor del arco */
+  content: "";
+  position: absolute;
+  inset: -12px;
+  border: 1px solid var(--ac-linea);
+  border-radius: 999px 999px calc(var(--ac-radius) + 10px) calc(var(--ac-radius) + 10px);
+  pointer-events: none;
+}
+.ac-asesorias .ac-ase-sello {
+  position: absolute;
+  left: -28px;
+  bottom: 28px;
+  z-index: 2;
+  width: 112px;
+  height: 112px;
+  border-radius: 50%;
+  background: var(--ac-crudo);
+  box-shadow: var(--ac-sombra);
+}
+.ac-asesorias .ac-ase-sello svg { display: block; width: 100%; height: 100%; }
+.ac-asesorias .ac-ase-gira {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: ac-ase-girar 28s linear infinite;
+}
 
 @media (min-width: 768px) {
-  .ac-asesorias .ac-ase-hero-decor { width: 170px; }
+  .ac-asesorias .ac-ase-hero-visual { max-width: 380px; }
+  .ac-asesorias .ac-ase-sello { width: 128px; height: 128px; left: -48px; }
 }
 @media (min-width: 981px) {
-  .ac-asesorias .ac-ase-hero-grid { grid-template-columns: minmax(0, 7fr) minmax(0, 4fr); gap: var(--ac-spacing-xl); }
-  .ac-asesorias .ac-ase-hero-decor { order: 0; width: 100%; max-width: 380px; justify-self: center; margin: 0; }
+  .ac-asesorias .ac-ase-hero-grid { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
+  .ac-asesorias .ac-ase-hero-visual { max-width: 420px; margin-right: 0; }
+}
+@media (max-width: 767px) {
+  .ac-asesorias .ac-ase-hero-acciones .ac-ase-boton { width: 100%; }
+  .ac-asesorias .ac-ase-sello { left: -12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ac-asesorias .ac-ase-aurora span { animation: none; }
 }
 </style>
 
 <section class="ac-asesorias ac-ase-sec-hero" style="--ac-ase-hero-img: none;" aria-labelledby="ac-ase-hero-titulo">
+  <div class="ac-ase-aurora" aria-hidden="true"><span></span><span></span><span></span></div>
   <div class="ac-ase-contenedor ac-ase-hero-grid">
 
     <div class="ac-ase-hero-texto">
+      <p class="ac-ase-antetitulo">Asesoría online con Lidia Marín</p>
       <h1 id="ac-ase-hero-titulo" class="ac-ase-titulo ac-ase-h1">Asesoría personalizada de coloración vegetal</h1>
       <p class="ac-ase-subtitulo">Estoy aquí para acompañarte en tu cambio hacia la coloración vegetal</p>
 
@@ -1074,26 +1210,173 @@ a { color:#2ea3f2; text-decoration:none; }
         <p>Cada cabello tiene una base, una historia y unas necesidades distintas. Por eso, antes de recomendarte una mezcla, necesito conocer tu caso: tu color actual, tus canas, los tratamientos o tintes que has utilizado y el resultado que deseas conseguir.</p>
         <p>No tienes que hacerlo sola. Te acompaño a entender tu cabello y a encontrar un proceso de coloración vegetal que tenga sentido para ti.</p>
       </div>
+
+      <div class="ac-ase-hero-acciones">
+        <a class="ac-ase-boton" href="#ac-ase-ficha" data-ac-ase-url="urlFicha">
+          Rellenar la ficha de diagnóstico gratuita
+          <span class="ac-ase-boton-flecha" aria-hidden="true">→</span>
+        </a>
+        <span class="ac-ase-hero-nota">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>
+          Primera valoración sin coste
+        </span>
+      </div>
     </div>
 
-    <!-- Decoración: tres formas orgánicas que se mezclan, como los pigmentos de las plantas -->
-    <div class="ac-ase-hero-decor" aria-hidden="true">
-      <svg viewBox="0 0 400 420" xmlns="http://www.w3.org/2000/svg" focusable="false">
-        <path d="M206 34c58-6 118 22 146 74 29 53 22 124-14 172-37 49-104 76-165 66C112 336 58 289 44 230 30 171 56 101 102 66c30-23 66-29 104-32z" fill="#E5DED1"/>
-        <path d="M246 150c41 4 82 34 92 75 10 42-11 91-48 115-37 25-90 26-128 3-38-22-61-68-52-109 8-41 47-77 89-84 16-2 31-2 47 0z" fill="#8C7B6A" opacity="0.55"/>
-        <path d="M150 108c36-9 78 4 100 34 22 31 22 77-1 107-24 31-70 45-108 34-38-10-67-46-67-85 0-40 30-79 76-90z" fill="#4B5332" opacity="0.78"/>
-        <circle cx="206" cy="210" r="182" fill="none" stroke="#8C7B6A" stroke-width="1.2" opacity="0.45"/>
-        <!-- ramita -->
-        <g fill="none" stroke="#2C2C2B" stroke-width="1.6" stroke-linecap="round" opacity="0.55">
-          <path d="M300 392C292 330 296 270 322 214"/>
-          <path d="M298 352c-18-6-30-20-33-38 18 2 31 15 33 38z"/>
-          <path d="M300 310c16-8 25-23 25-41-16 6-25 21-25 41z"/>
-          <path d="M305 270c-17-5-28-18-31-35 17 2 29 15 31 35z"/>
-          <path d="M313 236c13-7 21-20 21-35-13 6-21 18-21 35z"/>
-        </g>
-      </svg>
+    <div class="ac-ase-hero-visual">
+      <figure class="ac-ase-arco">
+        <!-- Ilustración por defecto. Sustitúyela por una foto real (ver comentario superior) -->
+        <svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ilustración de un cuenco con mezcla de henna rodeado de ramas de plantas" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <path id="ac-ase-hoja" d="M0 0C10-12 30-12 40 0 30 12 10 12 0 0Z"/>
+          </defs>
+          <!-- luz de ventana -->
+          <circle cx="285" cy="120" r="88" fill="#F5F2ED" opacity="0.75"/>
+          <circle cx="285" cy="120" r="130" fill="#F5F2ED" opacity="0.3"/>
+          <!-- mesa -->
+          <rect x="0" y="420" width="400" height="80" fill="#D8CDBB"/>
+          <!-- rama izquierda -->
+          <path d="M135 335C120 262 100 190 98 112" fill="none" stroke="#2C2C2B" stroke-width="2" stroke-linecap="round" opacity="0.55"/>
+          <g fill="#4B5332">
+            <use href="#ac-ase-hoja" transform="translate(127 290) rotate(-160) scale(0.95)"/>
+            <use href="#ac-ase-hoja" transform="translate(127 290) rotate(-25) scale(0.95)"/>
+            <use href="#ac-ase-hoja" transform="translate(118 250) rotate(-155) scale(0.85)"/>
+            <use href="#ac-ase-hoja" transform="translate(118 250) rotate(-28) scale(0.85)"/>
+            <use href="#ac-ase-hoja" transform="translate(110 210) rotate(-150) scale(0.75)"/>
+            <use href="#ac-ase-hoja" transform="translate(110 210) rotate(-30) scale(0.75)"/>
+            <use href="#ac-ase-hoja" transform="translate(104 170) rotate(-145) scale(0.65)"/>
+            <use href="#ac-ase-hoja" transform="translate(104 170) rotate(-35) scale(0.65)"/>
+            <use href="#ac-ase-hoja" transform="translate(98 114) rotate(-92) scale(0.6)"/>
+          </g>
+          <!-- rama derecha -->
+          <path d="M262 335C280 270 300 210 320 145" fill="none" stroke="#2C2C2B" stroke-width="2" stroke-linecap="round" opacity="0.55"/>
+          <g fill="#6B7448">
+            <use href="#ac-ase-hoja" transform="translate(273 292) rotate(-150) scale(0.9)"/>
+            <use href="#ac-ase-hoja" transform="translate(273 292) rotate(-12) scale(0.9)"/>
+            <use href="#ac-ase-hoja" transform="translate(284 252) rotate(-148) scale(0.8)"/>
+            <use href="#ac-ase-hoja" transform="translate(284 252) rotate(-14) scale(0.8)"/>
+            <use href="#ac-ase-hoja" transform="translate(296 212) rotate(-145) scale(0.7)"/>
+            <use href="#ac-ase-hoja" transform="translate(296 212) rotate(-18) scale(0.7)"/>
+            <use href="#ac-ase-hoja" transform="translate(320 147) rotate(-72) scale(0.6)"/>
+          </g>
+          <!-- hojas flotando -->
+          <use class="ac-ase-flota" href="#ac-ase-hoja" transform="translate(55 95) rotate(-30) scale(0.55)" fill="#8C7B6A" opacity="0.7"/>
+          <use class="ac-ase-flota ac-ase-flota--2" href="#ac-ase-hoja" transform="translate(338 250) rotate(20) scale(0.5)" fill="#4B5332" opacity="0.6"/>
+          <use class="ac-ase-flota ac-ase-flota--3" href="#ac-ase-hoja" transform="translate(190 70) rotate(-60) scale(0.45)" fill="#6B7448" opacity="0.55"/>
+          <!-- sombra del cuenco -->
+          <ellipse cx="200" cy="424" rx="132" ry="12" fill="#2C2C2B" opacity="0.12"/>
+          <!-- cuenco -->
+          <path d="M80 332C88 425 312 425 320 332Z" fill="#8C7B6A"/>
+          <path d="M104 352C118 388 148 403 176 407" fill="none" stroke="#F5F2ED" stroke-width="3" stroke-linecap="round" opacity="0.35"/>
+          <ellipse cx="200" cy="332" rx="120" ry="24" fill="#76665A"/>
+          <ellipse cx="200" cy="334" rx="106" ry="17" fill="#4B5332"/>
+          <path d="M140 335C170 324 228 344 262 331" fill="none" stroke="#6B7448" stroke-width="3" stroke-linecap="round"/>
+          <path d="M170 341C190 336 214 342 232 338" fill="none" stroke="#6B7448" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+          <!-- pincel de tinte -->
+          <g transform="rotate(-22 300 395)">
+            <rect x="250" y="388" width="150" height="10" rx="5" fill="#2C2C2B"/>
+            <rect x="236" y="386" width="18" height="14" rx="2" fill="#C9BBA6"/>
+            <path d="M236 386L208 382Q200 393 208 404L236 400Z" fill="#E5DED1" stroke="#8C7B6A" stroke-width="1"/>
+          </g>
+          <!-- montoncitos de polvo de plantas -->
+          <path d="M22 448Q62 404 104 448Z" fill="#6B7448"/>
+          <path d="M70 452Q96 426 124 452Z" fill="#B9A992"/>
+        </svg>
+      </figure>
+
+      <!-- Sello giratorio decorativo -->
+      <div class="ac-ase-sello" aria-hidden="true">
+        <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" focusable="false">
+          <defs><path id="ac-ase-circulo" d="M60 60m-44 0a44 44 0 1 1 88 0a44 44 0 1 1-88 0"/></defs>
+          <g class="ac-ase-gira">
+            <text font-family="Montserrat, Arial, sans-serif" font-size="8.6" font-weight="500" fill="#4B5332">
+              <textPath href="#ac-ase-circulo" textLength="272" lengthAdjust="spacing">ALQUIMIA DE COLOR · COLORACIÓN VEGETAL ·</textPath>
+            </text>
+          </g>
+          <path d="M48 72C48 56 57 46 74 46c0 17-10 26-26 26zm0 0 13-13" fill="none" stroke="#8C7B6A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
     </div>
 
+  </div>
+</section>
+
+</div></div></div></div></div>
+
+<!-- ======= ac-ase-01b-confianza.html ======= -->
+<div class="et_pb_section"><div class="et_pb_row"><div class="et_pb_column"><div class="et_pb_module et_pb_code"><div class="et_pb_code_inner">
+<!-- =====================================================================
+     ALQUIMIA DE COLOR · Asesorías · BLOQUE 01b · FRANJA DE CONFIANZA
+     Requiere el bloque 00 (base). Va justo debajo del hero.
+     Bloque nuevo (opcional): resume en 4 puntos lo que ya dicen los
+     textos de Lidia. Pendiente de su visto bueno.
+     ===================================================================== -->
+<style>
+.ac-asesorias.ac-ase-sec-confianza { padding-top: 0; padding-bottom: var(--ac-spacing-lg); }
+.ac-asesorias .ac-ase-confianza {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0;
+  border: 1px solid var(--ac-linea);
+  border-radius: var(--ac-radius);
+  background: rgba(251, 249, 245, 0.8);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: var(--ac-sombra);
+}
+.ac-asesorias .ac-ase-confianza li {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.15rem 1.35rem;
+  border-bottom: 1px solid var(--ac-linea);
+}
+.ac-asesorias .ac-ase-confianza li:last-child { border-bottom: 0; }
+.ac-asesorias .ac-ase-confianza-titulo {
+  display: block;
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1.35;
+  color: var(--ac-antracita);
+}
+.ac-asesorias .ac-ase-confianza-texto {
+  display: block;
+  font-size: 0.875rem;
+  line-height: 1.45;
+  color: var(--ac-raiz-texto);
+}
+@media (min-width: 768px) {
+  .ac-asesorias .ac-ase-confianza { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ac-asesorias .ac-ase-confianza li:nth-child(odd) { border-right: 1px solid var(--ac-linea); }
+  .ac-asesorias .ac-ase-confianza li:nth-child(3) { border-bottom: 0; }
+}
+@media (min-width: 1100px) {
+  .ac-asesorias .ac-ase-confianza { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .ac-asesorias .ac-ase-confianza li { flex-direction: column; align-items: flex-start; border-bottom: 0; border-right: 1px solid var(--ac-linea); padding: 1.6rem 1.5rem; }
+  .ac-asesorias .ac-ase-confianza li:last-child { border-right: 0; }
+}
+</style>
+
+<section class="ac-asesorias ac-ase-sec-confianza" aria-label="Cómo trabajo">
+  <div class="ac-ase-contenedor">
+    <ul class="ac-ase-confianza ac-ase-reveal" role="list">
+      <li>
+        <span class="ac-ase-icono" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><circle cx="12" cy="12" r="9"/><path d="m8 12.5 2.6 2.5L16 9.5"/></svg></span>
+        <span><span class="ac-ase-confianza-titulo">Primera valoración gratuita</span><span class="ac-ase-confianza-texto">Antes de cualquier pago</span></span>
+      </li>
+      <li>
+        <span class="ac-ase-icono" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></span>
+        <span><span class="ac-ase-confianza-titulo">Reviso tu caso personalmente</span><span class="ac-ase-confianza-texto">Con tus fotos y tu historial</span></span>
+      </li>
+      <li>
+        <span class="ac-ase-icono" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><rect x="2.5" y="6" width="13" height="12" rx="2"/><path d="m15.5 10.5 6-3.5v10l-6-3.5"/></svg></span>
+        <span><span class="ac-ase-confianza-titulo">Asesoría online</span><span class="ac-ase-confianza-texto">Una sesión conmigo, de tú a tú</span></span>
+      </li>
+      <li>
+        <span class="ac-ase-icono" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M14 3H6.5A1.5 1.5 0 0 0 5 4.5v15A1.5 1.5 0 0 0 6.5 21h11a1.5 1.5 0 0 0 1.5-1.5V8z"/><path d="M14 3v5h5M8.5 13h7M8.5 16.5h4.5"/></svg></span>
+        <span><span class="ac-ase-confianza-titulo">Guía de color por escrito</span><span class="ac-ase-confianza-texto">Para consultarla siempre que lo necesites</span></span>
+      </li>
+    </ul>
   </div>
 </section>
 
@@ -1117,18 +1400,16 @@ a { color:#2ea3f2; text-decoration:none; }
   background: var(--ac-papel);
   box-shadow: var(--ac-sombra);
 }
-.ac-asesorias .ac-ase-ficha-intro-sello {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 52px;
-  height: 52px;
-  margin-bottom: var(--ac-spacing-md);
-  border-radius: 50%;
-  background: rgba(75, 83, 50, 0.1);
-  color: var(--ac-henna);
+.ac-asesorias .ac-ase-ficha-ilustracion {
+  display: block;
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  margin-top: var(--ac-spacing-lg);
 }
-.ac-asesorias .ac-ase-ficha-intro-sello svg { width: 22px; height: 22px; }
+@media (max-width: 767px) {
+  .ac-asesorias .ac-ase-ficha-ilustracion { max-width: 240px; margin-top: var(--ac-spacing-md); }
+}
 .ac-asesorias .ac-ase-ficha-intro-cabecera .ac-ase-h2 { margin-bottom: 0; }
 
 @media (min-width: 981px) {
@@ -1148,11 +1429,37 @@ a { color:#2ea3f2; text-decoration:none; }
     <div class="ac-ase-ficha-intro-tarjeta ac-ase-reveal">
 
       <div class="ac-ase-ficha-intro-cabecera">
-        <!-- Sello decorativo: una hoja -->
-        <span class="ac-ase-ficha-intro-sello" aria-hidden="true">
-          <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" focusable="false"><path d="M2 14C2 7 6 2 14 2c0 8-5 12-12 12zm0 0 7-7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </span>
         <h2 id="ac-ase-ficha-intro-titulo" class="ac-ase-titulo ac-ase-h2">Empieza por tu ficha de diagnóstico gratuita</h2>
+        <!-- Ilustración: la ficha con las 3 fotos (raíz, melena de espaldas, perfil) -->
+        <svg class="ac-ase-ficha-ilustracion" viewBox="0 0 320 250" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+          <g transform="rotate(-3 160 125)">
+            <rect x="22" y="14" width="280" height="222" rx="18" fill="#E5DED1"/>
+          </g>
+          <rect x="18" y="18" width="284" height="222" rx="18" fill="#FFFFFF" stroke="#D8CDBB"/>
+          <circle cx="46" cy="46" r="11" fill="#4B5332" opacity="0.12"/>
+          <path d="M41 51c0-7 4-11 11-11 0 7-4 11-11 11zm0 0 5-5" fill="none" stroke="#4B5332" stroke-width="1.6" stroke-linecap="round"/>
+          <rect x="66" y="38" width="120" height="8" rx="4" fill="#2C2C2B" opacity="0.75"/>
+          <rect x="66" y="52" width="80" height="6" rx="3" fill="#8C7B6A" opacity="0.45"/>
+          <g>
+            <rect x="38" y="80" width="72" height="72" rx="12" fill="#F5F2ED" stroke="#E5DED1"/>
+            <path d="M50 140C50 104 98 104 98 140Z" fill="#8C7B6A"/>
+            <path d="M74 112v28" stroke="#F5F2ED" stroke-width="2" stroke-linecap="round"/>
+            <rect x="124" y="80" width="72" height="72" rx="12" fill="#F5F2ED" stroke="#E5DED1"/>
+            <path d="M144 146c-5-20 1-44 16-44s21 24 16 44z" fill="#8C7B6A"/>
+            <path d="M134 152c6-9 46-9 52 0" fill="none" stroke="#8C7B6A" stroke-width="2.5" stroke-linecap="round"/>
+            <rect x="210" y="80" width="72" height="72" rx="12" fill="#F5F2ED" stroke="#E5DED1"/>
+            <path d="M242 98c14-1 20 10 18 21l4 6-4 2c0 7-5 9-10 9v16h-20c2-9-6-17-4-28 1-15 6-25 16-26z" fill="#8C7B6A"/>
+          </g>
+          <g fill="#4B5332">
+            <circle cx="106" cy="84" r="10"/><circle cx="192" cy="84" r="10"/><circle cx="278" cy="84" r="10"/>
+          </g>
+          <g fill="none" stroke="#F5F2ED" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m101.5 84 3 3 5.5-5.5"/><path d="m187.5 84 3 3 5.5-5.5"/><path d="m273.5 84 3 3 5.5-5.5"/>
+          </g>
+          <rect x="38" y="172" width="244" height="8" rx="4" fill="#E5DED1"/>
+          <rect x="38" y="188" width="180" height="8" rx="4" fill="#E5DED1"/>
+          <rect x="178" y="208" width="104" height="18" rx="9" fill="#4B5332"/>
+        </svg>
       </div>
 
       <div class="ac-ase-ficha-intro-cuerpo">
@@ -1284,6 +1591,35 @@ a { color:#2ea3f2; text-decoration:none; }
 }
 .ac-asesorias .ac-ase-pasos > li:nth-child(1) .ac-ase-paso-texto { padding-top: 0; }
 
+/* Animación: la línea se dibuja y los números aparecen paso a paso.
+   Solo si el JS está activo (.ac-ase-js); sin JS todo se ve completo. */
+.ac-asesorias.ac-ase-js .ac-ase-pasos > li::after {
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.6s var(--ac-ease);
+}
+.ac-asesorias.ac-ase-js .ac-ase-pasos > li::before {
+  transform: scale(0.6);
+  opacity: 0;
+  transition: transform 0.5s var(--ac-ease), opacity 0.5s var(--ac-ease);
+}
+.ac-asesorias.ac-ase-js .ac-ase-pasos.ac-ase-visible > li::before { transform: none; opacity: 1; }
+.ac-asesorias.ac-ase-js .ac-ase-pasos.ac-ase-visible > li::after { transform: scaleY(1); }
+.ac-asesorias .ac-ase-pasos > li:nth-child(2)::before { transition-delay: 0.25s; }
+.ac-asesorias .ac-ase-pasos > li:nth-child(3)::before { transition-delay: 0.5s; }
+.ac-asesorias .ac-ase-pasos > li:nth-child(4)::before { transition-delay: 0.75s; }
+.ac-asesorias .ac-ase-pasos > li:nth-child(5)::before { transition-delay: 1s; }
+.ac-asesorias .ac-ase-pasos > li:nth-child(6)::before { transition-delay: 1.25s; }
+.ac-asesorias .ac-ase-pasos > li:nth-child(1)::after { transition-delay: 0.15s; }
+.ac-asesorias .ac-ase-pasos > li:nth-child(2)::after { transition-delay: 0.4s; }
+.ac-asesorias .ac-ase-pasos > li:nth-child(3)::after { transition-delay: 0.65s; }
+.ac-asesorias .ac-ase-pasos > li:nth-child(4)::after { transition-delay: 0.9s; }
+.ac-asesorias .ac-ase-pasos > li:nth-child(5)::after { transition-delay: 1.15s; }
+@media (prefers-reduced-motion: reduce) {
+  .ac-asesorias.ac-ase-js .ac-ase-pasos > li::before,
+  .ac-asesorias.ac-ase-js .ac-ase-pasos > li::after { transform: none; opacity: 1; transition: none; }
+}
+
 @media (min-width: 768px) {
   .ac-asesorias .ac-ase-pasos { --ac-ase-pad-x: 1.75rem; --ac-ase-pad-y: 1.2rem; --ac-ase-marca: 48px; }
   .ac-asesorias .ac-ase-paso-texto { font-size: 1.1rem; }
@@ -1353,7 +1689,7 @@ a { color:#2ea3f2; text-decoration:none; }
      Requiere el bloque 00 (base).
      Botones: AC_ASE_CONFIG.urlBotonMejorar y AC_ASE_CONFIG.urlBotonEmpezar
      (hoy ambos llevan a la ficha de diagnóstico).
-     Las dos tarjetas usan subgrid para que título, meta, texto, lista y
+     Las dos tarjetas usan subgrid para que ilustración, título, meta, texto, lista y
      botón queden alineados a la misma altura.
      ===================================================================== -->
 <style>
@@ -1388,6 +1724,33 @@ a { color:#2ea3f2; text-decoration:none; }
 .ac-asesorias .ac-ase-card--empezar::before { background: var(--ac-henna); }
 
 .ac-asesorias .ac-ase-card .ac-ase-h3 { margin: 0 0 0.5rem; }
+/* Ilustración de cada tarjeta */
+.ac-asesorias .ac-ase-card-ilustracion {
+  display: block;
+  width: 76px;
+  height: 76px;
+  margin-bottom: var(--ac-spacing-md);
+  border-radius: 50%;
+  background: var(--ac-crudo);
+}
+/* Microinteracción: la tarjeta se eleva al pasar el ratón */
+.ac-asesorias .ac-ase-card {
+  transition: transform 0.4s var(--ac-ease), box-shadow 0.4s var(--ac-ease), border-color 0.4s var(--ac-ease);
+}
+@media (hover: hover) {
+  .ac-asesorias .ac-ase-card:hover,
+  .ac-asesorias.ac-ase-js .ac-ase-card.ac-ase-reveal.ac-ase-visible:hover {
+    transform: translateY(-6px);
+    border-color: rgba(140, 123, 106, 0.55);
+    box-shadow: 0 28px 50px -30px rgba(44, 44, 43, 0.5);
+  }
+}
+/* Con la aparición activa, el hover no debe pelear con el reveal */
+.ac-asesorias.ac-ase-js .ac-ase-card.ac-ase-reveal { transition: opacity 0.8s var(--ac-ease), transform 0.8s var(--ac-ease), box-shadow 0.4s var(--ac-ease), border-color 0.4s var(--ac-ease); }
+@media (prefers-reduced-motion: reduce) {
+  .ac-asesorias .ac-ase-card:hover,
+  .ac-asesorias.ac-ase-js .ac-ase-card.ac-ase-reveal.ac-ase-visible:hover { transform: none; }
+}
 .ac-asesorias .ac-ase-card-meta {
   display: flex;
   flex-wrap: wrap;
@@ -1414,7 +1777,7 @@ a { color:#2ea3f2; text-decoration:none; }
   .ac-asesorias .ac-ase-card {
     display: grid;
     grid-template-rows: subgrid;
-    grid-row: span 6;
+    grid-row: span 7;
     row-gap: 0;
   }
   .ac-asesorias .ac-ase-card + .ac-ase-card { margin-top: var(--ac-spacing-md); }
@@ -1443,6 +1806,14 @@ a { color:#2ea3f2; text-decoration:none; }
 
       <!-- Tarjeta 1 · 30 € -->
       <article class="ac-ase-card ac-ase-card--mejorar ac-ase-reveal" aria-labelledby="ac-ase-card-mejorar-titulo">
+        <!-- Ilustración: cuenco con mezcla y espátula -->
+        <svg class="ac-ase-card-ilustracion" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+          <path d="M18 42c2 18 42 18 44 0z" fill="#8C7B6A"/>
+          <ellipse cx="40" cy="42" rx="22" ry="5" fill="#76665A"/>
+          <ellipse cx="40" cy="42.5" rx="19" ry="3.6" fill="#4B5332"/>
+          <path d="M50 41 64 20" stroke="#2C2C2B" stroke-width="3" stroke-linecap="round"/>
+          <path d="M28 38c-6-4-8-10-7-15 6 2 9 8 7 15z" fill="#6B7448"/>
+        </svg>
         <h3 id="ac-ase-card-mejorar-titulo" class="ac-ase-titulo ac-ase-h3">Quiero mejorar mi proceso</h3>
         <p class="ac-ase-card-meta">30 minutos · 30 €</p>
         <p class="ac-ase-card-texto">Esta sesión es para ti si ya utilizas coloración vegetal y tienes dudas concretas o quieres mejorar el resultado de tus mezclas.</p>
@@ -1460,6 +1831,14 @@ a { color:#2ea3f2; text-decoration:none; }
 
       <!-- Tarjeta 2 · 50 € -->
       <article class="ac-ase-card ac-ase-card--empezar ac-ase-reveal" style="--ac-ase-delay: 0.12s;" aria-labelledby="ac-ase-card-empezar-titulo">
+        <!-- Ilustración: brote que nace -->
+        <svg class="ac-ase-card-ilustracion" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+          <path d="M22 56h36l-4 10H26z" fill="#8C7B6A"/>
+          <rect x="20" y="52" width="40" height="6" rx="2" fill="#76665A"/>
+          <path d="M40 52V32" stroke="#2C2C2B" stroke-width="2" stroke-linecap="round"/>
+          <path d="M40 38c-10 0-15-6-15-14 10 0 15 6 15 14z" fill="#4B5332"/>
+          <path d="M40 33c0-9 6-15 16-15 0 9-6 15-16 15z" fill="#6B7448"/>
+        </svg>
         <h3 id="ac-ase-card-empezar-titulo" class="ac-ase-titulo ac-ase-h3">Quiero empezar con coloración vegetal</h3>
         <p class="ac-ase-card-meta">50 minutos · 50 €</p>
         <p class="ac-ase-card-texto">Esta sesión es para ti si quieres dar el paso a las plantas y necesitas una orientación clara y personalizada para comenzar con seguridad.</p>
@@ -1524,6 +1903,25 @@ a { color:#2ea3f2; text-decoration:none; }
   text-wrap: balance;
 }
 
+/* Ilustración de la guía de color */
+.ac-asesorias .ac-ase-guia-cuerpo {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--ac-spacing-lg);
+  align-items: center;
+}
+.ac-asesorias .ac-ase-guia-ilustracion {
+  display: block;
+  width: 100%;
+  max-width: 250px;
+  height: auto;
+  margin: 0 auto;
+  filter: drop-shadow(0 20px 26px rgba(44, 44, 43, 0.16));
+}
+@media (min-width: 981px) {
+  .ac-asesorias .ac-ase-guia-cuerpo { grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: var(--ac-spacing-xl); }
+  .ac-asesorias .ac-ase-guia-ilustracion { max-width: 320px; }
+}
 @media (min-width: 768px) {
   .ac-asesorias .ac-ase-guia-lista {
     display: grid;
@@ -1541,6 +1939,25 @@ a { color:#2ea3f2; text-decoration:none; }
       <p>Tras la sesión, recibirás por email tu guía de color personalizada, para que puedas seguir el proceso con claridad y volver a consultarlo siempre que lo necesites.</p>
     </div>
 
+    <div class="ac-ase-guia-cuerpo">
+    <!-- Ilustración: la guía de color personalizada -->
+    <svg class="ac-ase-guia-ilustracion ac-ase-reveal" viewBox="0 0 300 380" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+      <g transform="rotate(5 150 190)"><rect x="40" y="30" width="230" height="320" rx="16" fill="#D8CDBB"/></g>
+      <rect x="30" y="24" width="230" height="320" rx="16" fill="#FBF9F5" stroke="#D8CDBB"/>
+      <path d="M58 68c0-12 7-19 19-19 0 12-7 19-19 19zm0 0 8-8" fill="none" stroke="#4B5332" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="58" y="104" font-family="'Playfair Display', Georgia, serif" font-weight="700" font-size="21" fill="#2C2C2B">Tu guía de color</text>
+      <rect x="58" y="116" width="60" height="2" rx="1" fill="#8C7B6A"/>
+      <circle cx="74" cy="152" r="15" fill="#4B5332"/>
+      <circle cx="112" cy="152" r="15" fill="#8C7B6A"/>
+      <circle cx="150" cy="152" r="15" fill="#B9A992"/>
+      <rect x="58" y="186" width="174" height="7" rx="3.5" fill="#E5DED1"/>
+      <rect x="58" y="202" width="140" height="7" rx="3.5" fill="#E5DED1"/>
+      <rect x="58" y="230" width="174" height="44" rx="10" fill="#F5F2ED" stroke="#E5DED1"/>
+      <rect x="70" y="242" width="70" height="6" rx="3" fill="#8C7B6A" opacity="0.55"/>
+      <rect x="70" y="256" width="120" height="6" rx="3" fill="#8C7B6A" opacity="0.35"/>
+      <rect x="58" y="290" width="120" height="7" rx="3.5" fill="#E5DED1"/>
+      <path d="M182 318c8-10 14-10 16-2s8 8 14-2 10-6 12 0" fill="none" stroke="#4B5332" stroke-width="2" stroke-linecap="round"/>
+    </svg>
     <div class="ac-ase-guia-tarjeta ac-ase-reveal" style="--ac-ase-delay: 0.08s;">
       <p class="ac-ase-lista-titulo">Tu guía incluirá:</p>
       <ul class="ac-ase-lista ac-ase-guia-lista" role="list">
@@ -1551,6 +1968,7 @@ a { color:#2ea3f2; text-decoration:none; }
         <li>Los tiempos de aplicación y recomendaciones para tu caso.</li>
         <li>Orientación sobre dónde comprar las plantas y productos que necesitas.</li>
       </ul>
+    </div>
     </div>
 
     <div class="ac-ase-destacada ac-ase-reveal">
@@ -1589,6 +2007,34 @@ a { color:#2ea3f2; text-decoration:none; }
 .ac-asesorias .ac-ase-reserva-cuerpo p { margin-bottom: var(--ac-spacing-md); }
 .ac-asesorias .ac-ase-reserva-cuerpo p:last-child { margin-bottom: 0; }
 
+/* Distintivos: formas de pago y modalidad */
+.ac-asesorias .ac-ase-distintivos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: var(--ac-spacing-lg);
+}
+.ac-asesorias .ac-ase-distintivos li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.55rem 1.05rem 0.55rem 0.8rem;
+  border: 1px solid var(--ac-linea);
+  border-radius: 999px;
+  background: var(--ac-papel);
+  font-weight: 500;
+  font-size: 0.9rem;
+  line-height: 1.3;
+}
+.ac-asesorias .ac-ase-distintivos svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: var(--ac-henna);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
 @media (min-width: 981px) {
   .ac-asesorias .ac-ase-reserva-grid {
     grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
@@ -1609,10 +2055,143 @@ a { color:#2ea3f2; text-decoration:none; }
     <div class="ac-ase-reserva-cuerpo ac-ase-reveal" style="--ac-ase-delay: 0.08s;">
       <p>Tras recibir mi valoración y confirmar que puedo ayudarte, podrás solicitar tu asesoría. El pago se realiza antes de la sesión para dejar la cita reservada.</p>
       <p>Podrás pagar de forma online. Si prefieres hacerlo por Bizum, indícamelo al solicitar tu asesoría y te facilitaré los datos.</p>
+      <ul class="ac-ase-distintivos" role="list">
+        <li><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M2.5 10h19M6.5 15h4"/></svg>Pago online</li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M10.5 18h3"/></svg>Bizum</li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg>Cita reservada al pagar</li>
+      </ul>
     </div>
 
   </div>
 </section>
+
+</div></div></div></div></div>
+
+<!-- ======= ac-ase-06b-preguntas.html ======= -->
+<div class="et_pb_section"><div class="et_pb_row"><div class="et_pb_column"><div class="et_pb_module et_pb_code"><div class="et_pb_code_inner">
+<!-- =====================================================================
+     ALQUIMIA DE COLOR · Asesorías · BLOQUE 06b · PREGUNTAS FRECUENTES
+     Requiere el bloque 00 (base). Fondo Arena. Va entre «Reserva y pago»
+     y «¿Empezamos?».
+     Bloque nuevo (opcional). Las respuestas reutilizan frases de los
+     textos de Lidia y del email automático; pendiente de su visto bueno.
+     Acordeón nativo (<details>): funciona sin JavaScript.
+     Incluye su JSON-LD FAQPage: si cambias un texto, cámbialo también abajo.
+     ===================================================================== -->
+<style>
+.ac-asesorias .ac-ase-faq-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--ac-spacing-lg);
+}
+.ac-asesorias .ac-ase-faq-lista { display: grid; gap: 0.75rem; }
+.ac-asesorias .ac-ase-faq-item {
+  border: 1px solid var(--ac-linea);
+  border-radius: var(--ac-radius-sm);
+  background: var(--ac-papel);
+  transition: border-color 0.3s var(--ac-ease), box-shadow 0.3s var(--ac-ease);
+}
+.ac-asesorias .ac-ase-faq-item[open] {
+  border-color: rgba(75, 83, 50, 0.45);
+  box-shadow: var(--ac-sombra);
+}
+.ac-asesorias .ac-ase-faq-item summary {
+  position: relative;
+  display: block;
+  padding: 1.1rem 3.5rem 1.1rem 1.35rem;
+  list-style: none;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 1.02rem;
+  line-height: 1.45;
+  color: var(--ac-antracita);
+}
+.ac-asesorias .ac-ase-faq-item summary::-webkit-details-marker { display: none; }
+.ac-asesorias .ac-ase-faq-item summary::marker { content: ""; }
+/* Icono + / − */
+.ac-asesorias .ac-ase-faq-item summary::before,
+.ac-asesorias .ac-ase-faq-item summary::after {
+  content: "";
+  position: absolute;
+  right: 1.35rem;
+  top: 50%;
+  width: 14px;
+  height: 1.8px;
+  border-radius: 2px;
+  background: var(--ac-henna);
+  transition: transform 0.3s var(--ac-ease);
+}
+.ac-asesorias .ac-ase-faq-item summary::after { transform: rotate(90deg); }
+.ac-asesorias .ac-ase-faq-item[open] summary::after { transform: rotate(0deg); }
+.ac-asesorias .ac-ase-faq-item summary:focus-visible {
+  outline: 3px solid var(--ac-henna);
+  outline-offset: 3px;
+  border-radius: var(--ac-radius-sm);
+}
+.ac-asesorias .ac-ase-faq-respuesta {
+  padding: 0 1.35rem 1.25rem;
+  color: var(--ac-antracita);
+}
+@media (min-width: 981px) {
+  .ac-asesorias .ac-ase-faq-grid { grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); gap: var(--ac-spacing-xl); align-items: start; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ac-asesorias .ac-ase-faq-item summary::before,
+  .ac-asesorias .ac-ase-faq-item summary::after { transition: none; }
+}
+</style>
+
+<section class="ac-asesorias ac-ase-fondo-arena ac-ase-sec-preguntas" aria-labelledby="ac-ase-preguntas-titulo">
+  <div class="ac-ase-contenedor ac-ase-faq-grid">
+
+    <div class="ac-ase-reveal">
+      <h2 id="ac-ase-preguntas-titulo" class="ac-ase-titulo ac-ase-h2">Preguntas frecuentes</h2>
+    </div>
+
+    <div class="ac-ase-faq-lista ac-ase-reveal" style="--ac-ase-delay: 0.08s;">
+      <details class="ac-ase-faq-item">
+        <summary>¿Tiene coste la ficha de diagnóstico?</summary>
+        <div class="ac-ase-faq-respuesta"><p>No. La ficha de diagnóstico y la primera valoración son gratuitas y no te comprometen a reservar una asesoría.</p></div>
+      </details>
+      <details class="ac-ase-faq-item">
+        <summary>¿Cuándo recibiré mi valoración?</summary>
+        <div class="ac-ase-faq-respuesta"><p>Estudiaré tu cabello con calma y te responderé por email en un plazo de 48 a 72 horas. Si ves que no te llega, revisa la carpeta de correo no deseado.</p></div>
+      </details>
+      <details class="ac-ase-faq-item">
+        <summary>¿Y si la coloración vegetal no es para mí?</summary>
+        <div class="ac-ase-faq-respuesta"><p>Si las plantas no son la mejor opción para tu cabello o para el objetivo que deseas, te lo explicaré con honestidad antes de que hagas ningún pago.</p></div>
+      </details>
+      <details class="ac-ase-faq-item">
+        <summary>¿Qué asesoría elijo?</summary>
+        <div class="ac-ase-faq-respuesta"><p>La de 30 minutos es para ti si ya utilizas coloración vegetal y quieres mejorar el resultado de tus mezclas. La de 50 minutos, si quieres dar el paso a las plantas y comenzar con seguridad. Si aún no lo sabes, indícalo en la ficha y lo vemos juntas.</p></div>
+      </details>
+      <details class="ac-ase-faq-item">
+        <summary>¿Cuándo y cómo se paga?</summary>
+        <div class="ac-ase-faq-respuesta"><p>Solo después de mi valoración, si confirmo que puedo ayudarte. El pago se realiza antes de la sesión para dejar la cita reservada. Podrás pagar de forma online o, si lo prefieres, por Bizum.</p></div>
+      </details>
+      <details class="ac-ase-faq-item">
+        <summary>¿Qué recibo después de la asesoría?</summary>
+        <div class="ac-ase-faq-respuesta"><p>Tu guía de color personalizada por email: tu diagnóstico, tu fórmula con plantas, proporciones y cantidades, cómo preparar y aplicar la mezcla, los tiempos y dónde comprar lo que necesitas.</p></div>
+      </details>
+    </div>
+
+  </div>
+</section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "¿Tiene coste la ficha de diagnóstico?", "acceptedAnswer": { "@type": "Answer", "text": "No. La ficha de diagnóstico y la primera valoración son gratuitas y no te comprometen a reservar una asesoría." } },
+    { "@type": "Question", "name": "¿Cuándo recibiré mi valoración?", "acceptedAnswer": { "@type": "Answer", "text": "Estudiaré tu cabello con calma y te responderé por email en un plazo de 48 a 72 horas. Si ves que no te llega, revisa la carpeta de correo no deseado." } },
+    { "@type": "Question", "name": "¿Y si la coloración vegetal no es para mí?", "acceptedAnswer": { "@type": "Answer", "text": "Si las plantas no son la mejor opción para tu cabello o para el objetivo que deseas, te lo explicaré con honestidad antes de que hagas ningún pago." } },
+    { "@type": "Question", "name": "¿Qué asesoría elijo?", "acceptedAnswer": { "@type": "Answer", "text": "La de 30 minutos es para ti si ya utilizas coloración vegetal y quieres mejorar el resultado de tus mezclas. La de 50 minutos, si quieres dar el paso a las plantas y comenzar con seguridad. Si aún no lo sabes, indícalo en la ficha y lo vemos juntas." } },
+    { "@type": "Question", "name": "¿Cuándo y cómo se paga?", "acceptedAnswer": { "@type": "Answer", "text": "Solo después de mi valoración, si confirmo que puedo ayudarte. El pago se realiza antes de la sesión para dejar la cita reservada. Podrás pagar de forma online o, si lo prefieres, por Bizum." } },
+    { "@type": "Question", "name": "¿Qué recibo después de la asesoría?", "acceptedAnswer": { "@type": "Answer", "text": "Tu guía de color personalizada por email: tu diagnóstico, tu fórmula con plantas, proporciones y cantidades, cómo preparar y aplicar la mezcla, los tiempos y dónde comprar lo que necesitas." } }
+  ]
+}
+</script>
 
 </div></div></div></div></div>
 
@@ -1643,6 +2222,49 @@ a { color:#2ea3f2; text-decoration:none; }
   line-height: 1.65;
 }
 .ac-asesorias.ac-ase-sec-cta .ac-ase-boton:focus-visible { outline-color: var(--ac-crudo); }
+/* Guía visual de las 3 fotos */
+.ac-asesorias .ac-ase-fotos {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+  max-width: 620px;
+  margin: var(--ac-spacing-lg) auto 0;
+}
+.ac-asesorias .ac-ase-fotos li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 1.1rem 0.5rem 1rem;
+  border: 1px solid rgba(245, 242, 237, 0.28);
+  border-radius: var(--ac-radius-sm);
+  background: rgba(245, 242, 237, 0.07);
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 1.35;
+}
+.ac-asesorias .ac-ase-fotos svg { width: 64px; height: 64px; }
+.ac-asesorias .ac-ase-fotos-consejo {
+  max-width: 560px;
+  margin: var(--ac-spacing-md) auto 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--ac-arena);
+}
+.ac-asesorias .ac-ase-privacidad {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: var(--ac-spacing-sm);
+  font-size: 0.875rem;
+  color: var(--ac-arena);
+}
+.ac-asesorias .ac-ase-privacidad svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+@media (max-width: 479px) {
+  .ac-asesorias .ac-ase-fotos { gap: 0.5rem; }
+  .ac-asesorias .ac-ase-fotos li { font-size: 0.8125rem; padding: 0.9rem 0.35rem; }
+  .ac-asesorias .ac-ase-fotos svg { width: 52px; height: 52px; }
+}
 /* El ancla del formulario se coloca en el borde inferior del bloque */
 .ac-asesorias.ac-ase-sec-cta .ac-ase-ancla { position: absolute; left: 0; bottom: 0; width: 1px; }
 /* Formas decorativas suaves en las esquinas */
@@ -1671,6 +2293,26 @@ a { color:#2ea3f2; text-decoration:none; }
   <div class="ac-ase-contenedor ac-ase-estrecho ac-ase-reveal">
     <h2 id="ac-ase-cta-titulo" class="ac-ase-titulo ac-ase-h2">¿Empezamos?</h2>
     <p class="ac-ase-cta-texto">El primer paso es conocer tu cabello y el punto en el que estás hoy.</p>
+    <!-- Guía visual de las fotos (bloque nuevo, pendiente del visto bueno de Lidia) -->
+    <ul class="ac-ase-fotos" role="list" aria-label="Las 3 fotos que te pediré">
+      <li>
+        <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><circle cx="32" cy="32" r="30" fill="rgba(245,242,237,0.12)"/><path d="M14 46C14 18 50 18 50 46Z" fill="#E5DED1"/><path d="M32 23v23" stroke="#4B5332" stroke-width="2.5" stroke-linecap="round"/><circle cx="46" cy="18" r="7" fill="none" stroke="#F5F2ED" stroke-width="2"/><path d="m51 23 4 4" stroke="#F5F2ED" stroke-width="2" stroke-linecap="round"/></svg>
+        La raíz, de cerca
+      </li>
+      <li>
+        <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><circle cx="32" cy="32" r="30" fill="rgba(245,242,237,0.12)"/><path d="M22 50c-5-17 0-35 10-35s15 18 10 35z" fill="#E5DED1"/><path d="M12 56c6-8 34-8 40 0" fill="none" stroke="#E5DED1" stroke-width="3" stroke-linecap="round"/></svg>
+        La melena, de espaldas
+      </li>
+      <li>
+        <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><circle cx="32" cy="32" r="30" fill="rgba(245,242,237,0.12)"/><path d="M30 14c12-1 17 9 15 18l4 5-4 2c0 6-4 8-8 8v9H21c2-8-5-15-3-24 1-12 5-17 12-18z" fill="#E5DED1"/></svg>
+        Tu perfil
+      </li>
+    </ul>
+    <p class="ac-ase-fotos-consejo">Junto a una ventana, de día y sin flash, con el pelo seco y sin filtros.</p>
+    <p class="ac-ase-privacidad">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg>
+      Tus fotos solo se usan para estudiar tu caso.
+    </p>
     <p class="ac-ase-acciones">
       <a class="ac-ase-boton ac-ase-boton--claro" href="#ac-ase-formulario" data-ac-ase-url="urlFormulario">
         Rellenar la ficha de diagnóstico gratuita
@@ -1808,11 +2450,39 @@ a { color:#2ea3f2; text-decoration:none; }
   margin: 0 auto;
   text-align: center;
 }
+/* Firma de Lidia */
+.ac-asesorias .ac-ase-firma {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: var(--ac-spacing-lg);
+  text-align: center;
+}
+.ac-asesorias .ac-ase-firma svg { width: 44px; height: auto; }
+.ac-asesorias .ac-ase-firma-nombre {
+  font-family: var(--ac-font-titulo);
+  font-weight: 700;
+  font-style: normal;
+  font-size: 1.35rem;
+  color: var(--ac-antracita);
+}
+.ac-asesorias .ac-ase-firma-marca {
+  font-size: 0.8125rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ac-raiz-texto);
+}
 </style>
 
 <section class="ac-asesorias ac-ase-sec-cierre">
   <div class="ac-ase-contenedor">
     <p class="ac-ase-texto-pequeno ac-ase-cierre-texto">La ficha de diagnóstico y la primera valoración son gratuitas y no te comprometen a reservar una asesoría.</p>
+    <div class="ac-ase-firma">
+      <svg viewBox="0 0 44 20" aria-hidden="true" focusable="false"><g fill="none" stroke="#8C7B6A" stroke-width="1.4" stroke-linecap="round"><path d="M2 10h40"/><path d="M22 10c-3-5-8-7-11-6 1 4 6 7 11 6z"/><path d="M22 10c3-5 8-7 11-6-1 4-6 7-11 6z"/></g></svg>
+      <span class="ac-ase-firma-nombre">Lidia Marín</span>
+      <span class="ac-ase-firma-marca">Alquimia de Color</span>
+    </div>
   </div>
 </section>
 

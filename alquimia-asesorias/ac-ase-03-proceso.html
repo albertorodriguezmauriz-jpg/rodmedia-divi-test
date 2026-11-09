@@ -106,6 +106,35 @@
 }
 .ac-asesorias .ac-ase-pasos > li:nth-child(1) .ac-ase-paso-texto { padding-top: 0; }
 
+/* Animación: la línea se dibuja y los números aparecen paso a paso.
+   Solo si el JS está activo (.ac-ase-js); sin JS todo se ve completo. */
+.ac-asesorias.ac-ase-js .ac-ase-pasos > li::after {
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.6s var(--ac-ease);
+}
+.ac-asesorias.ac-ase-js .ac-ase-pasos > li::before {
+  transform: scale(0.6);
+  opacity: 0;
+  transition: transform 0.5s var(--ac-ease), opacity 0.5s var(--ac-ease);
+}
+.ac-asesorias.ac-ase-js .ac-ase-pasos.ac-ase-visible > li::before { transform: none; opacity: 1; }
+.ac-asesorias.ac-ase-js .ac-ase-pasos.ac-ase-visible > li::after { transform: scaleY(1); }
+.ac-asesorias .ac-ase-pasos > li:nth-child(2)::before { transition-delay: 0.25s; }
+.ac-asesorias .ac-ase-pasos > li:nth-child(3)::before { transition-delay: 0.5s; }
+.ac-asesorias .ac-ase-pasos > li:nth-child(4)::before { transition-delay: 0.75s; }
+.ac-asesorias .ac-ase-pasos > li:nth-child(5)::before { transition-delay: 1s; }
+.ac-asesorias .ac-ase-pasos > li:nth-child(6)::before { transition-delay: 1.25s; }
+.ac-asesorias .ac-ase-pasos > li:nth-child(1)::after { transition-delay: 0.15s; }
+.ac-asesorias .ac-ase-pasos > li:nth-child(2)::after { transition-delay: 0.4s; }
+.ac-asesorias .ac-ase-pasos > li:nth-child(3)::after { transition-delay: 0.65s; }
+.ac-asesorias .ac-ase-pasos > li:nth-child(4)::after { transition-delay: 0.9s; }
+.ac-asesorias .ac-ase-pasos > li:nth-child(5)::after { transition-delay: 1.15s; }
+@media (prefers-reduced-motion: reduce) {
+  .ac-asesorias.ac-ase-js .ac-ase-pasos > li::before,
+  .ac-asesorias.ac-ase-js .ac-ase-pasos > li::after { transform: none; opacity: 1; transition: none; }
+}
+
 @media (min-width: 768px) {
   .ac-asesorias .ac-ase-pasos { --ac-ase-pad-x: 1.75rem; --ac-ase-pad-y: 1.2rem; --ac-ase-marca: 48px; }
   .ac-asesorias .ac-ase-paso-texto { font-size: 1.1rem; }

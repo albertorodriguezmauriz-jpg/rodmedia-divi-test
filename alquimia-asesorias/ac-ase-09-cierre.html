@@ -12,10 +12,38 @@
   margin: 0 auto;
   text-align: center;
 }
+/* Firma de Lidia */
+.ac-asesorias .ac-ase-firma {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: var(--ac-spacing-lg);
+  text-align: center;
+}
+.ac-asesorias .ac-ase-firma svg { width: 44px; height: auto; }
+.ac-asesorias .ac-ase-firma-nombre {
+  font-family: var(--ac-font-titulo);
+  font-weight: 700;
+  font-style: normal;
+  font-size: 1.35rem;
+  color: var(--ac-antracita);
+}
+.ac-asesorias .ac-ase-firma-marca {
+  font-size: 0.8125rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ac-raiz-texto);
+}
 </style>
 
 <section class="ac-asesorias ac-ase-sec-cierre">
   <div class="ac-ase-contenedor">
     <p class="ac-ase-texto-pequeno ac-ase-cierre-texto">La ficha de diagnóstico y la primera valoración son gratuitas y no te comprometen a reservar una asesoría.</p>
+    <div class="ac-ase-firma">
+      <svg viewBox="0 0 44 20" aria-hidden="true" focusable="false"><g fill="none" stroke="#8C7B6A" stroke-width="1.4" stroke-linecap="round"><path d="M2 10h40"/><path d="M22 10c-3-5-8-7-11-6 1 4 6 7 11 6z"/><path d="M22 10c3-5 8-7 11-6-1 4-6 7-11 6z"/></g></svg>
+      <span class="ac-ase-firma-nombre">Lidia Marín</span>
+      <span class="ac-ase-firma-marca">Alquimia de Color</span>
+    </div>
   </div>
 </section>

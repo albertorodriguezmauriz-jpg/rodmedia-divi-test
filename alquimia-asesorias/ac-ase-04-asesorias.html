@@ -3,7 +3,7 @@
      Requiere el bloque 00 (base).
      Botones: AC_ASE_CONFIG.urlBotonMejorar y AC_ASE_CONFIG.urlBotonEmpezar
      (hoy ambos llevan a la ficha de diagnóstico).
-     Las dos tarjetas usan subgrid para que título, meta, texto, lista y
+     Las dos tarjetas usan subgrid para que ilustración, título, meta, texto, lista y
      botón queden alineados a la misma altura.
      ===================================================================== -->
 <style>
@@ -38,6 +38,33 @@
 .ac-asesorias .ac-ase-card--empezar::before { background: var(--ac-henna); }
 
 .ac-asesorias .ac-ase-card .ac-ase-h3 { margin: 0 0 0.5rem; }
+/* Ilustración de cada tarjeta */
+.ac-asesorias .ac-ase-card-ilustracion {
+  display: block;
+  width: 76px;
+  height: 76px;
+  margin-bottom: var(--ac-spacing-md);
+  border-radius: 50%;
+  background: var(--ac-crudo);
+}
+/* Microinteracción: la tarjeta se eleva al pasar el ratón */
+.ac-asesorias .ac-ase-card {
+  transition: transform 0.4s var(--ac-ease), box-shadow 0.4s var(--ac-ease), border-color 0.4s var(--ac-ease);
+}
+@media (hover: hover) {
+  .ac-asesorias .ac-ase-card:hover,
+  .ac-asesorias.ac-ase-js .ac-ase-card.ac-ase-reveal.ac-ase-visible:hover {
+    transform: translateY(-6px);
+    border-color: rgba(140, 123, 106, 0.55);
+    box-shadow: 0 28px 50px -30px rgba(44, 44, 43, 0.5);
+  }
+}
+/* Con la aparición activa, el hover no debe pelear con el reveal */
+.ac-asesorias.ac-ase-js .ac-ase-card.ac-ase-reveal { transition: opacity 0.8s var(--ac-ease), transform 0.8s var(--ac-ease), box-shadow 0.4s var(--ac-ease), border-color 0.4s var(--ac-ease); }
+@media (prefers-reduced-motion: reduce) {
+  .ac-asesorias .ac-ase-card:hover,
+  .ac-asesorias.ac-ase-js .ac-ase-card.ac-ase-reveal.ac-ase-visible:hover { transform: none; }
+}
 .ac-asesorias .ac-ase-card-meta {
   display: flex;
   flex-wrap: wrap;
@@ -64,7 +91,7 @@
   .ac-asesorias .ac-ase-card {
     display: grid;
     grid-template-rows: subgrid;
-    grid-row: span 6;
+    grid-row: span 7;
     row-gap: 0;
   }
   .ac-asesorias .ac-ase-card + .ac-ase-card { margin-top: var(--ac-spacing-md); }
@@ -93,6 +120,14 @@
 
       <!-- Tarjeta 1 · 30 € -->
       <article class="ac-ase-card ac-ase-card--mejorar ac-ase-reveal" aria-labelledby="ac-ase-card-mejorar-titulo">
+        <!-- Ilustración: cuenco con mezcla y espátula -->
+        <svg class="ac-ase-card-ilustracion" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+          <path d="M18 42c2 18 42 18 44 0z" fill="#8C7B6A"/>
+          <ellipse cx="40" cy="42" rx="22" ry="5" fill="#76665A"/>
+          <ellipse cx="40" cy="42.5" rx="19" ry="3.6" fill="#4B5332"/>
+          <path d="M50 41 64 20" stroke="#2C2C2B" stroke-width="3" stroke-linecap="round"/>
+          <path d="M28 38c-6-4-8-10-7-15 6 2 9 8 7 15z" fill="#6B7448"/>
+        </svg>
         <h3 id="ac-ase-card-mejorar-titulo" class="ac-ase-titulo ac-ase-h3">Quiero mejorar mi proceso</h3>
         <p class="ac-ase-card-meta">30 minutos · 30 €</p>
         <p class="ac-ase-card-texto">Esta sesión es para ti si ya utilizas coloración vegetal y tienes dudas concretas o quieres mejorar el resultado de tus mezclas.</p>
@@ -110,6 +145,14 @@
 
       <!-- Tarjeta 2 · 50 € -->
       <article class="ac-ase-card ac-ase-card--empezar ac-ase-reveal" style="--ac-ase-delay: 0.12s;" aria-labelledby="ac-ase-card-empezar-titulo">
+        <!-- Ilustración: brote que nace -->
+        <svg class="ac-ase-card-ilustracion" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+          <path d="M22 56h36l-4 10H26z" fill="#8C7B6A"/>
+          <rect x="20" y="52" width="40" height="6" rx="2" fill="#76665A"/>
+          <path d="M40 52V32" stroke="#2C2C2B" stroke-width="2" stroke-linecap="round"/>
+          <path d="M40 38c-10 0-15-6-15-14 10 0 15 6 15 14z" fill="#4B5332"/>
+          <path d="M40 33c0-9 6-15 16-15 0 9-6 15-16 15z" fill="#6B7448"/>
+        </svg>
         <h3 id="ac-ase-card-empezar-titulo" class="ac-ase-titulo ac-ase-h3">Quiero empezar con coloración vegetal</h3>
         <p class="ac-ase-card-meta">50 minutos · 50 €</p>
         <p class="ac-ase-card-texto">Esta sesión es para ti si quieres dar el paso a las plantas y necesitas una orientación clara y personalizada para comenzar con seguridad.</p>

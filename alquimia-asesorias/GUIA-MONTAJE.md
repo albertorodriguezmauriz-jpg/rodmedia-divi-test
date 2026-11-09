@@ -13,11 +13,13 @@ Un Módulo de Código por bloque, cada uno en su propia sección de Divi, en est
 |---|---|---|---|
 | 0 | Código | `ac-ase-00-base.html` | Sin fondo (no muestra nada) |
 | 1 | Código | `ac-ase-01-hero.html` | Sin fondo (lo pone el bloque) |
+| 1b | Código · *nuevo, opcional* | `ac-ase-01b-confianza.html` (franja de 4 garantías) | Sin fondo |
 | 2 | Código | `ac-ase-02-ficha-intro.html` | Sin fondo |
 | 3 | Código | `ac-ase-03-proceso.html` | Sin fondo |
 | 4 | Código | `ac-ase-04-asesorias.html` | Sin fondo |
 | 5 | Código | `ac-ase-05-guia.html` | Sin fondo |
 | 6 | Código | `ac-ase-06-reserva.html` | Sin fondo |
+| 6b | Código · *nuevo, opcional* | `ac-ase-06b-preguntas.html` (preguntas frecuentes + JSON-LD FAQPage) | Sin fondo |
 | 7 | Código | `ac-ase-07-cta-ficha.html` (ancla `#ac-ase-ficha`) | Sin fondo |
 | 8 | **Divi** | Módulo **Contact Form** + Contact Form Helper, con la clase **`ac-ase-form`** | **Crudo `#F5F2ED`** |
 | 9 | Código | `ac-ase-09-cierre.html` | Sin fondo |
@@ -64,7 +66,14 @@ const AC_ASE_CONFIG = {
 
 Si en el futuro la asesoría de 30 € se puede reservar directamente, basta con cambiar `urlBotonMejorar` por la URL de la reserva.
 
-## 4. Imagen del hero (opcional)
+## 4. Fotos reales (muy recomendable)
+
+Las ilustraciones son provisionales y originales, sin imágenes de stock. Lo que más confianza transmite es ver a Lidia. Para cambiar cualquier ilustración por una foto:
+- **Hero (`ac-ase-01-hero.html`):** dentro de `<figure class="ac-ase-arco">`, sustituye el `<svg>` entero por `<img src="URL" alt="Lidia Marín preparando una mezcla de plantas" width="800" height="1000">`. Mejor una foto vertical (4:5). El arco la recorta solo.
+- Sirve igual para cualquier otro sitio donde se use un `<figure class="ac-ase-arco">`.
+- Fotos sugeridas a Lidia: ella preparando una mezcla, sus manos con el cuenco y las plantas en polvo, y un antes y después real (solo si tiene permiso de la clienta).
+
+## 4b. Imagen de fondo del hero (opcional)
 
 En `ac-ase-01-hero.html`, dentro de la etiqueta `<section>`:
 - Cambia `--ac-ase-hero-img: none;` por `--ac-ase-hero-img: url('https://…/imagen.jpg');`.
@@ -102,7 +111,19 @@ En `ac-ase-01-hero.html`, dentro de la etiqueta `<section>`:
 - Un solo H1 (hero). Las secciones van en H2 y las tarjetas en H3.
 - El JSON-LD `Service` con los dos servicios (30 € y 50 €, EUR, `provider` = Alquimia de Color) va en el bloque 00.
 
-## 7. Notas
+## 7. Textos nuevos pendientes del visto bueno de Lidia
+
+Salen de sus propios textos o del email automático, pero no están escritos tal cual por ella:
+- **Hero:** antetítulo «Asesoría online con Lidia Marín», botón «Rellenar la ficha de diagnóstico gratuita» y nota «Primera valoración sin coste».
+- **Bloque 01b (franja):** los 4 títulos y sus subtítulos.
+- **Bloque 06 (reserva):** distintivos «Pago online», «Bizum» y «Cita reservada al pagar».
+- **Bloque 06b (preguntas frecuentes):** las 6 preguntas y respuestas. Si cambia alguna, hay que cambiarla también en el JSON-LD del mismo bloque.
+- **Bloque 07:** las 3 fotos («La raíz, de cerca», «La melena, de espaldas», «Tu perfil») y el consejo «Junto a una ventana, de día y sin flash, con el pelo seco y sin filtros».
+- **Bloque 07:** «Tus fotos solo se usan para estudiar tu caso». **Debe confirmarlo Lidia**, porque es un compromiso de privacidad.
+- **Bloque 09:** firma «Lidia Marín · Alquimia de Color».
+- **Proceso:** etiqueta «Sin coste».
+
+## 8. Notas
 
 - **Fuentes:** el bloque 00 carga Playfair Display 700 y Montserrat 300/500 desde Google Fonts. Si la web ya las aloja en local (opción de Divi o plugin), se puede quitar el `<link>` del bloque 00.
 - **Marrón Raíz `#8C7B6A`:** se usa solo en elementos decorativos. Para texto pequeño se usa un tono oscurecido (`--ac-raiz-texto: #6B5D50`) que cumple AA.
