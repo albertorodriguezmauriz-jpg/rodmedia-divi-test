@@ -10,7 +10,7 @@
 .sdo-hi li::marker,.sdo-hi li::before{content:none!important}
 .sdo-hi svg{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .sdo-hi-bg{position:absolute;inset:0;z-index:-2;background:#0e4d47;overflow:hidden}
-.sdo-hi-bg video{position:absolute;inset:0;width:100%!important;height:100%!important;max-width:none!important;object-fit:cover;object-position:center;display:block}
+.sdo-hi .sdo-hi-bg video.sdo-hi-video{position:absolute!important;top:0!important;left:0!important;width:100%!important;height:100%!important;max-width:none!important;max-height:none!important;min-width:0!important;min-height:0!important;margin:0!important;padding:0!important;object-fit:cover!important;object-position:center center!important;display:block!important;background:transparent!important}
 .sdo-hi::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(6,58,53,.85) 0%,rgba(6,58,53,.55) 45%,rgba(6,58,53,.1) 78%),linear-gradient(0deg,rgba(0,0,0,.35) 0%,transparent 35%)}
 .sdo-hi-inner{width:90%;max-width:1200px;margin:0 auto;padding:110px 0 90px}
 .sdo-hi-caja{max-width:640px}
@@ -74,7 +74,26 @@ jQuery(document).ready(function($){
   });
   setTimeout(function(){ $hero.addClass("sdo-listo"); }, 60);
   var v = $hero.find(".sdo-hi-video").get(0);
+  function sdoCubrir(){
+    if (!v) { return; }
+    var cont = v.parentNode;
+    var cw = cont.offsetWidth;
+    var ch = cont.offsetHeight;
+    var vw = v.videoWidth;
+    var vh = v.videoHeight;
+    if (!vw) { return; }
+    var esc = Math.max(cw / vw, ch / vh);
+    var w = Math.ceil(vw * esc) + 2;
+    var h = Math.ceil(vh * esc) + 2;
+    v.style.setProperty("width", w + "px", "important");
+    v.style.setProperty("height", h + "px", "important");
+    v.style.setProperty("left", Math.round((cw - w) / 2) + "px", "important");
+    v.style.setProperty("top", Math.round((ch - h) / 2) + "px", "important");
+  }
   if (v) {
+    v.addEventListener("loadedmetadata", sdoCubrir);
+    $(window).on("resize orientationchange load", sdoCubrir);
+    sdoCubrir();
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       v.removeAttribute("autoplay");
       v.pause();
