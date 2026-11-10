@@ -1,0 +1,72 @@
+<link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
+<style>
+.et_pb_section:has(.sdo-ha){padding:0!important;margin:0!important}
+.et_pb_section:has(.sdo-ha) .et_pb_row{width:100%!important;max-width:none!important;padding:0!important;margin:0!important}
+.et_pb_section:has(.sdo-ha) .et_pb_column,.et_pb_section:has(.sdo-ha) .et_pb_module,.et_pb_section:has(.sdo-ha) .et_pb_code_inner{margin:0!important;padding:0!important;width:100%!important}
+.sdo-ha{--sdo-acento:#0b8378;--sdo-acento-osc:#086b62;--sdo-naranja:#f39325;position:relative;min-height:clamp(520px,82vh,780px);display:flex;align-items:center;overflow:hidden;color:#fff;isolation:isolate}
+.sdo-ha p:empty,.sdo-ha br{display:none!important}
+.sdo-ha *{box-sizing:border-box}
+.sdo-ha ul{list-style:none!important;padding:0!important;margin:0!important}
+.sdo-ha li::marker,.sdo-ha li::before{content:none!important}
+.sdo-ha svg{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.sdo-ha-bg{position:absolute;inset:0;z-index:-2;background:#2f5d4a url("https://campingsoldor.com/wp-content/uploads/2023/09/IMG_20180711_121429-1-scaled-1.jpg") center 45%/cover no-repeat;animation:sdoKenA 22s ease-in-out infinite alternate}
+.sdo-ha::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(6,58,53,.88) 0%,rgba(6,58,53,.62) 42%,rgba(6,58,53,.08) 75%),linear-gradient(0deg,rgba(0,0,0,.35) 0%,transparent 35%)}
+@keyframes sdoKenA{from{transform:scale(1)}to{transform:scale(1.09) translateX(-1.5%)}}
+.sdo-ha-inner{width:90%;max-width:1200px;margin:0 auto;padding:110px 0 90px}
+.sdo-ha-caja{max-width:600px}
+.sdo-ha-eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#d8f1ec;margin-bottom:18px}
+.sdo-ha-eyebrow::before{content:"";width:34px;height:2px;background:var(--sdo-naranja);border-radius:2px}
+.sdo-ha .sdo-ha-titulo{display:inline-block;position:relative;font-family:'Courgette',cursive!important;font-weight:400!important;font-size:clamp(46px,7vw,84px)!important;line-height:1.1!important;color:#fff!important;padding:6px 28px 12px!important;margin:0 0 22px -6px!important;z-index:1}
+.sdo-ha .sdo-ha-titulo::before{content:"";position:absolute;inset:0;background:var(--sdo-acento);z-index:-1;transform:rotate(-2deg);clip-path:polygon(1% 8%,6% 2%,14% 6%,22% 1%,31% 5%,40% 0%,49% 4%,58% 1%,67% 5%,76% 0%,85% 4%,93% 1%,99% 6%,97% 22%,100% 40%,98% 58%,100% 76%,97% 94%,90% 98%,81% 95%,72% 100%,63% 96%,54% 100%,45% 95%,36% 99%,27% 95%,18% 100%,9% 96%,2% 99%,0% 82%,2% 64%,0% 46%,2% 28%)}
+.sdo-ha .sdo-ha-texto{font-size:clamp(17px,1.6vw,20px);line-height:1.6;color:#eef7f5!important;margin:0 0 26px!important;padding:0!important;max-width:520px;text-shadow:0 1px 10px rgba(0,0,0,.25)}
+.sdo-ha ul.sdo-ha-chips{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:0!important}
+.sdo-ha-chips li{display:inline-flex;align-items:center;gap:8px;padding:9px 16px!important;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.28);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);font-size:14.5px;font-weight:600;color:#fff}
+.sdo-ha-chips svg{width:17px;height:17px;color:#bfe9e1}
+.sdo-ha-precio{position:absolute;right:max(5%,calc((100% - 1200px)/2));bottom:70px;width:190px;height:190px;border-radius:50%;background:#fff;color:var(--sdo-acento);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;box-shadow:0 24px 50px -20px rgba(0,0,0,.55);animation:sdoFlotaA 5s ease-in-out infinite}
+.sdo-ha-precio::after{content:"";position:absolute;inset:8px;border-radius:50%;border:2px dashed rgba(11,131,120,.35)}
+.sdo-ha-precio small{font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#666}
+.sdo-ha-precio strong{font-family:'Courgette',cursive;font-weight:400;font-size:44px;line-height:1.05}
+.sdo-ha-precio span{font-size:14px;color:#666}
+@keyframes sdoFlotaA{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-10px) rotate(-1deg)}}
+.sdo-ha-scroll{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);width:26px;height:42px;border:2px solid rgba(255,255,255,.7);border-radius:20px}
+.sdo-ha-scroll::after{content:"";position:absolute;left:50%;top:8px;width:4px;height:8px;margin-left:-2px;border-radius:2px;background:#fff;animation:sdoScrollA 1.8s ease-in-out infinite}
+@keyframes sdoScrollA{0%{opacity:0;transform:translateY(0)}40%{opacity:1}100%{opacity:0;transform:translateY(14px)}}
+.sdo-js5 .sdo-ha .sdo-in{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease}
+.sdo-js5 .sdo-ha.sdo-listo .sdo-in{opacity:1;transform:none}
+@media (max-width:980px){.sdo-ha::before{background:linear-gradient(180deg,rgba(6,58,53,.55) 0%,rgba(6,58,53,.85) 100%)}.sdo-ha-precio{width:150px;height:150px;bottom:auto;top:100px;right:5%}.sdo-ha-precio strong{font-size:34px}.sdo-ha-precio small,.sdo-ha-precio span{font-size:12px}.sdo-ha-caja{max-width:640px}}
+@media (max-width:640px){.sdo-ha{min-height:auto}.sdo-ha-eyebrow{font-size:11.5px;letter-spacing:.1em}.sdo-ha-inner{padding:150px 0 80px}.sdo-ha-precio{width:118px;height:118px;top:24px;right:16px}.sdo-ha-precio strong{font-size:26px}.sdo-ha-precio small,.sdo-ha-precio span{font-size:10.5px}.sdo-ha-precio::after{inset:6px}.sdo-ha-chips li{font-size:13.5px;padding:8px 13px!important}.sdo-ha-scroll{display:none}}
+@media (prefers-reduced-motion:reduce){.sdo-ha-bg,.sdo-ha-precio,.sdo-ha-scroll::after{animation:none}}
+</style>
+<section class="sdo-ha">
+  <div class="sdo-ha-bg" role="img" aria-label="Monitora dirigiendo una sesión de aquagym en la piscina del Camping Sol d´Or"></div>
+  <div class="sdo-ha-inner">
+    <div class="sdo-ha-caja">
+      <div class="sdo-ha-eyebrow sdo-in">Temporada alta · Camping Sol d´Or</div>
+      <h1 class="sdo-ha-titulo sdo-in">Animación</h1>
+      <p class="sdo-ha-texto sdo-in">Organizamos actividades de todo tipo ofreciendo un servicio de ocio variado y completo durante la semana.</p>
+      <ul class="sdo-ha-chips sdo-in">
+        <li><svg viewBox="0 0 24 24"><circle cx="8" cy="6" r="3"/><circle cx="17" cy="9" r="2.3"/><path d="M3 21v-3a5 5 0 0 1 10 0v3"/><path d="M14 21v-2a3 3 0 0 1 6 0v2"/></svg>Diversión en familia</li>
+        <li><svg viewBox="0 0 24 24"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.5 19 2c1 2 2 4.2 2 8 0 5.5-4.8 10-10 10Z"/><path d="M2 21c0-3 1.9-5.4 5.1-6C9.5 14.5 12 13 13 12"/></svg>Talleres medioambientales</li>
+        <li><svg viewBox="0 0 24 24"><path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7Z"/></svg>Salud y bienestar</li>
+        <li><svg viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/><path d="M17 3v3M15.5 4.5h3"/></svg>Mini discos y fiestas</li>
+      </ul>
+    </div>
+  </div>
+  <div class="sdo-ha-precio sdo-in"><small>Del</small><strong>01/07</strong><span>al 31/08</span></div>
+  <div class="sdo-ha-scroll" aria-hidden="true"></div>
+</section>
+<script>
+(function(){
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!reduce) {
+    document.documentElement.classList.add("sdo-js5");
+  }
+})();
+jQuery(document).ready(function($){
+  var $hero = $(".sdo-ha");
+  $hero.find(".sdo-in").each(function(i){
+    this.style.transitionDelay = (0.15 + i * 0.12) + "s";
+  });
+  setTimeout(function(){ $hero.addClass("sdo-listo"); }, 60);
+});
+</script>
