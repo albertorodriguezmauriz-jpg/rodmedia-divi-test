@@ -1,0 +1,93 @@
+<link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
+<style>
+.et_pb_section:has(.sdo-hero){padding:0!important;margin:0!important}
+.et_pb_section:has(.sdo-hero) .et_pb_row{width:100%!important;max-width:none!important;padding:0!important;margin:0!important}
+.et_pb_section:has(.sdo-hero) .et_pb_column,.et_pb_section:has(.sdo-hero) .et_pb_module,.et_pb_section:has(.sdo-hero) .et_pb_code_inner{margin:0!important;padding:0!important;width:100%!important}
+.sdo-hero{--sdo-acento:#0b8378;--sdo-acento-osc:#086b62;--sdo-naranja:#f39325;position:relative;min-height:clamp(520px,82vh,780px);display:flex;align-items:center;overflow:hidden;color:#fff;isolation:isolate}
+.sdo-hero p:empty,.sdo-hero br{display:none!important}
+.sdo-hero *{box-sizing:border-box}
+.sdo-hero ul{list-style:none!important;padding:0!important;margin:0!important}
+.sdo-hero li::marker,.sdo-hero li::before{content:none!important}
+.sdo-hero svg{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.sdo-hero-bg{position:absolute;inset:0;z-index:-2;background:#2f5d4a url("https://campingsoldor.com/wp-content/uploads/2023/09/caravanning-3509593_1280.jpg") center 60%/cover no-repeat;animation:sdoKen 22s ease-in-out infinite alternate}
+.sdo-hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(6,58,53,.88) 0%,rgba(6,58,53,.62) 42%,rgba(6,58,53,.08) 75%),linear-gradient(0deg,rgba(0,0,0,.35) 0%,transparent 35%)}
+@keyframes sdoKen{from{transform:scale(1)}to{transform:scale(1.09) translateX(-1.5%)}}
+.sdo-hero-inner{width:90%;max-width:1200px;margin:0 auto;padding:110px 0 90px}
+.sdo-hero-caja{max-width:600px}
+.sdo-hero-eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#d8f1ec;margin-bottom:18px}
+.sdo-hero-eyebrow::before{content:"";width:34px;height:2px;background:var(--sdo-naranja);border-radius:2px}
+.sdo-hero .sdo-hero-titulo{display:inline-block;position:relative;font-family:'Courgette',cursive!important;font-weight:400!important;font-size:clamp(46px,7vw,84px)!important;line-height:1.1!important;color:#fff!important;padding:6px 28px 12px!important;margin:0 0 22px -6px!important;z-index:1}
+.sdo-hero .sdo-hero-titulo::before{content:"";position:absolute;inset:0;background:var(--sdo-acento);z-index:-1;transform:rotate(-2deg);clip-path:polygon(1% 8%,6% 2%,14% 6%,22% 1%,31% 5%,40% 0%,49% 4%,58% 1%,67% 5%,76% 0%,85% 4%,93% 1%,99% 6%,97% 22%,100% 40%,98% 58%,100% 76%,97% 94%,90% 98%,81% 95%,72% 100%,63% 96%,54% 100%,45% 95%,36% 99%,27% 95%,18% 100%,9% 96%,2% 99%,0% 82%,2% 64%,0% 46%,2% 28%)}
+.sdo-hero .sdo-hero-texto{font-size:clamp(17px,1.6vw,20px);line-height:1.6;color:#eef7f5!important;margin:0 0 26px!important;padding:0!important;max-width:520px;text-shadow:0 1px 10px rgba(0,0,0,.25)}
+.sdo-hero ul.sdo-hero-chips{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:34px!important}
+.sdo-hero-chips li{display:inline-flex;align-items:center;gap:8px;padding:9px 16px!important;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.28);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);font-size:14.5px;font-weight:600;color:#fff}
+.sdo-hero-chips svg{width:17px;height:17px;color:#bfe9e1}
+.sdo-hero-ctas{display:flex;flex-wrap:wrap;align-items:center;gap:14px}
+.sdo-hero a.sdo-btn{display:inline-flex;align-items:center;gap:10px;padding:15px 28px;border-radius:999px;font-size:16px;font-weight:700;text-decoration:none!important;transition:transform .3s ease,box-shadow .3s ease,background .3s ease}
+.sdo-hero a.sdo-btn svg{width:18px;height:18px;transition:transform .3s ease}
+.sdo-hero a.sdo-btn:hover{transform:translateY(-3px)}
+.sdo-hero a.sdo-btn:hover svg{transform:translateX(4px)}
+.sdo-hero a.sdo-btn--principal{background:var(--sdo-naranja);color:#fff!important;box-shadow:0 14px 30px -12px rgba(243,147,37,.7)}
+.sdo-hero a.sdo-btn--principal:hover{box-shadow:0 18px 34px -12px rgba(243,147,37,.85)}
+.sdo-hero a.sdo-btn--sec{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.45);color:#fff!important;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.sdo-hero a.sdo-btn--sec:hover{background:rgba(255,255,255,.22)}
+.sdo-hero-precio{position:absolute;right:max(5%,calc((100% - 1200px)/2));bottom:70px;width:190px;height:190px;border-radius:50%;background:#fff;color:var(--sdo-acento);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;box-shadow:0 24px 50px -20px rgba(0,0,0,.55);animation:sdoFlota 5s ease-in-out infinite}
+.sdo-hero-precio::after{content:"";position:absolute;inset:8px;border-radius:50%;border:2px dashed rgba(11,131,120,.35)}
+.sdo-hero-precio small{font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#666}
+.sdo-hero-precio strong{font-family:'Courgette',cursive;font-weight:400;font-size:52px;line-height:1.05}
+.sdo-hero-precio span{font-size:14px;color:#666}
+@keyframes sdoFlota{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-10px) rotate(-1deg)}}
+.sdo-hero-scroll{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);width:26px;height:42px;border:2px solid rgba(255,255,255,.7);border-radius:20px}
+.sdo-hero-scroll::after{content:"";position:absolute;left:50%;top:8px;width:4px;height:8px;margin-left:-2px;border-radius:2px;background:#fff;animation:sdoScroll 1.8s ease-in-out infinite}
+@keyframes sdoScroll{0%{opacity:0;transform:translateY(0)}40%{opacity:1}100%{opacity:0;transform:translateY(14px)}}
+.sdo-js4 .sdo-hero .sdo-in{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease}
+.sdo-js4 .sdo-hero.sdo-listo .sdo-in{opacity:1;transform:none}
+@media (max-width:980px){.sdo-hero::before{background:linear-gradient(180deg,rgba(6,58,53,.55) 0%,rgba(6,58,53,.85) 100%)}.sdo-hero-precio{width:150px;height:150px;bottom:auto;top:100px;right:5%}.sdo-hero-precio strong{font-size:40px}.sdo-hero-precio small,.sdo-hero-precio span{font-size:12px}.sdo-hero-caja{max-width:640px}}
+@media (max-width:640px){.sdo-hero{min-height:auto}.sdo-hero-eyebrow{font-size:11.5px;letter-spacing:.1em}.sdo-hero-inner{padding:150px 0 80px}.sdo-hero-precio{width:118px;height:118px;top:24px;right:16px}.sdo-hero-precio strong{font-size:32px}.sdo-hero-precio small,.sdo-hero-precio span{font-size:10.5px}.sdo-hero-precio::after{inset:6px}.sdo-hero-ctas{flex-direction:column;align-items:stretch}.sdo-hero a.sdo-btn{justify-content:center}.sdo-hero-chips li{font-size:13.5px;padding:8px 13px!important}.sdo-hero-scroll{display:none}}
+@media (prefers-reduced-motion:reduce){.sdo-hero-bg,.sdo-hero-precio,.sdo-hero-scroll::after{animation:none}}
+</style>
+<section class="sdo-hero">
+  <div class="sdo-hero-bg" role="img" aria-label="Autocaravana con toldo, mesa y sillas en una parcela de césped del Camping Sol d´Or"></div>
+  <div class="sdo-hero-inner">
+    <div class="sdo-hero-caja">
+      <div class="sdo-hero-eyebrow sdo-in">Área de autocaravanas · Peñíscola</div>
+      <h1 class="sdo-hero-titulo sdo-in">Stop and Go</h1>
+      <p class="sdo-hero-texto sdo-in">Disponemos de un área habilitada para el autocaravaning, donde podrá disfrutar de una estancia tranquila.</p>
+      <ul class="sdo-hero-chips sdo-in">
+        <li><svg viewBox="0 0 24 24"><path d="M12 2.7s-6 6.5-6 11a6 6 0 0 0 12 0c0-4.5-6-11-6-11Z"/></svg>Vaciado de aguas</li>
+        <li><svg viewBox="0 0 24 24"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8Z"/></svg>Toma eléctrica 10A</li>
+        <li><svg viewBox="0 0 24 24"><path d="M2 8.8a15 15 0 0 1 20 0"/><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 16.4a5 5 0 0 1 7 0"/><path d="M12 20h.01"/></svg>WIFI</li>
+        <li><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg>Vigilancia</li>
+      </ul>
+      <div class="sdo-hero-ctas sdo-in">
+        <a class="sdo-btn sdo-btn--principal" href="URL-RESERVAS">Reservar<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="sdo-btn sdo-btn--sec sdo-ir-precios" href="#sdo-precios">Ver precios<svg viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
+      </div>
+    </div>
+  </div>
+  <div class="sdo-hero-precio sdo-in"><small>Desde</small><strong>14€</strong><span>/ noche</span></div>
+  <div class="sdo-hero-scroll" aria-hidden="true"></div>
+</section>
+<script>
+(function(){
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!reduce) {
+    document.documentElement.classList.add("sdo-js4");
+  }
+})();
+jQuery(document).ready(function($){
+  var $hero = $(".sdo-hero");
+  $hero.find(".sdo-in").each(function(i){
+    this.style.transitionDelay = (0.15 + i * 0.12) + "s";
+  });
+  setTimeout(function(){ $hero.addClass("sdo-listo"); }, 60);
+  $hero.on("click", ".sdo-ir-precios", function(e){
+    var $destino = $("#sdo-precios");
+    if (!$destino.length) { $destino = $(".sdo-panel").first(); }
+    if (!$destino.length) { return; }
+    e.preventDefault();
+    var offset = $("#main-header").outerHeight() || 0;
+    $("html, body").animate({ scrollTop: $destino.offset().top - offset - 20 }, 700);
+  });
+});
+</script>
