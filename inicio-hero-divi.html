@@ -40,7 +40,7 @@
 </style>
 <section class="sdo-hi">
   <div class="sdo-hi-bg" aria-hidden="true">
-    <video class="sdo-hi-video" autoplay muted loop playsinline preload="metadata">
+    <video class="sdo-hi-video" data-contenido="0.68" autoplay muted loop playsinline preload="metadata">
       <source src="https://campingsoldor.com/wp-content/uploads/2026/01/peniscola-de-cine-portada.webm" type="video/webm">
     </video>
   </div>
@@ -82,7 +82,11 @@ jQuery(document).ready(function($){
     var vw = v.videoWidth;
     var vh = v.videoHeight;
     if (!vw) { return; }
-    var esc = Math.max(cw / vw, ch / vh);
+    var util = 1;
+    if (window.innerWidth <= 980) {
+      util = parseFloat(v.getAttribute("data-contenido")) || 1;
+    }
+    var esc = Math.max(cw / vw, ch / (vh * util));
     var w = Math.ceil(vw * esc) + 2;
     var h = Math.ceil(vh * esc) + 2;
     v.style.setProperty("width", w + "px", "important");
@@ -94,6 +98,11 @@ jQuery(document).ready(function($){
     v.addEventListener("loadedmetadata", sdoCubrir);
     $(window).on("resize orientationchange load", sdoCubrir);
     sdoCubrir();
+    setTimeout(sdoCubrir, 600);
+    setTimeout(sdoCubrir, 1800);
+    if ("ResizeObserver" in window) {
+      new ResizeObserver(sdoCubrir).observe(v.parentNode);
+    }
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       v.removeAttribute("autoplay");
       v.pause();
