@@ -1,0 +1,93 @@
+<link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
+<style>
+.sdo-sg{--sdo-acento:#0b8378;--sdo-acento-osc:#086b62;--sdo-acento-suave:#e8f4f2;--sdo-texto:#666;max-width:1000px;margin:0 auto;padding:10px 0;color:var(--sdo-texto);text-align:center}
+.sdo-sg p:empty,.sdo-sg br{display:none!important}
+.sdo-sg *{box-sizing:border-box}
+.sdo-sg ul{list-style:none!important;padding:0!important;margin:0!important}
+.sdo-sg li::marker,.sdo-sg li::before{content:none!important}
+.sdo-sg svg{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.sdo-sg .sdo-titulo{display:inline-block;position:relative;font-family:'Courgette',cursive!important;font-weight:400!important;font-size:clamp(30px,4.6vw,42px)!important;line-height:1.25!important;color:#fff!important;padding:4px 22px 6px!important;margin:0 0 26px!important;z-index:1}
+.sdo-sg .sdo-titulo::before{content:"";position:absolute;inset:0;background:var(--sdo-acento);z-index:-1;transform:rotate(-1.5deg);clip-path:polygon(1% 8%,6% 2%,14% 6%,22% 1%,31% 5%,40% 0%,49% 4%,58% 1%,67% 5%,76% 0%,85% 4%,93% 1%,99% 6%,97% 22%,100% 40%,98% 58%,100% 76%,97% 94%,90% 98%,81% 95%,72% 100%,63% 96%,54% 100%,45% 95%,36% 99%,27% 95%,18% 100%,9% 96%,2% 99%,0% 82%,2% 64%,0% 46%,2% 28%)}
+.sdo-sg .sdo-intro{max-width:720px;margin:0 auto 34px!important;padding:0!important;font-size:17px;line-height:1.7}
+.sdo-sg ul.sdo-servicios{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;text-align:left;margin-bottom:46px!important}
+.sdo-servicio{display:flex;align-items:center;gap:16px;background:#fff;border:1px solid rgba(11,131,120,.15);border-radius:20px;padding:18px 20px!important;font-size:15.5px;line-height:1.45;color:#555;box-shadow:0 10px 26px -20px rgba(11,131,120,.5);transition:transform .35s ease,border-color .35s ease,box-shadow .35s ease}
+.sdo-servicio:hover{transform:translateY(-5px);border-color:rgba(11,131,120,.45);box-shadow:0 20px 34px -20px rgba(11,131,120,.55)}
+.sdo-servicio .sdo-ico{width:50px;height:50px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;background:var(--sdo-acento-suave);color:var(--sdo-acento);transition:background .35s ease,color .35s ease,transform .35s ease}
+.sdo-servicio .sdo-ico svg{width:25px;height:25px}
+.sdo-servicio:hover .sdo-ico{background:var(--sdo-acento);color:#fff;transform:rotate(-8deg)}
+.sdo-panel{position:relative;overflow:hidden;background:linear-gradient(135deg,var(--sdo-acento) 0%,var(--sdo-acento-osc) 100%);border-radius:28px;padding:44px 40px 40px}
+.sdo-panel::before,.sdo-panel::after{content:"";position:absolute;border-radius:50%;background:rgba(255,255,255,.07);pointer-events:none}
+.sdo-panel::before{width:260px;height:260px;top:-110px;right:-70px}
+.sdo-panel::after{width:180px;height:180px;bottom:-90px;left:-50px}
+.sdo-sg .sdo-panel h3{position:relative;font-family:'Courgette',cursive!important;font-weight:400!important;font-size:clamp(22px,3vw,30px)!important;line-height:1.3!important;color:#fff!important;margin:0 0 26px!important;padding:0!important}
+.sdo-sg ul.sdo-tabla{position:relative;max-width:640px;margin:0 auto!important;background:#fff;border-radius:22px;padding:10px 32px!important;text-align:left;box-shadow:0 18px 40px -22px rgba(0,0,0,.45)}
+.sdo-fila{display:flex;align-items:baseline;gap:14px;padding:22px 0!important;border-bottom:1px dashed rgba(11,131,120,.25);transition:transform .3s ease}
+.sdo-fila:last-child{border-bottom:none}
+.sdo-fila:hover{transform:translateX(6px)}
+.sdo-estancia{display:flex;align-items:center;gap:12px;font-size:17px;font-weight:600;color:#555}
+.sdo-estancia svg{width:22px;height:22px;color:var(--sdo-acento);flex:none;transform:translateY(2px)}
+.sdo-puntos{flex:1;border-bottom:2px dotted rgba(11,131,120,.35);transform:translateY(-5px);min-width:20px}
+.sdo-precio{font-family:'Courgette',cursive;font-size:30px;line-height:1;color:var(--sdo-acento);white-space:nowrap}
+.sdo-precio small{font-family:inherit;font-size:15px;color:var(--sdo-texto);margin-left:2px}
+.sdo-aviso{position:relative;display:inline-flex;align-items:center;gap:10px;margin-top:24px;padding:10px 22px;border-radius:999px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.35);color:#fff;font-weight:600;font-size:15px}
+.sdo-aviso svg{width:20px;height:20px;flex:none}
+.sdo-js3 .sdo-rev{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+.sdo-js3 .sdo-rev.sdo-visible{opacity:1;transform:none}
+.sdo-js3 .sdo-servicio.sdo-rev.sdo-visible:hover{transform:translateY(-5px)}
+@media (max-width:980px){.sdo-sg ul.sdo-servicios{grid-template-columns:1fr 1fr}}
+@media (max-width:640px){.sdo-sg .sdo-intro{font-size:16px;text-align:left}.sdo-sg ul.sdo-servicios{grid-template-columns:1fr;gap:12px}.sdo-servicio{padding:14px 16px!important}.sdo-servicio .sdo-ico{width:44px;height:44px}.sdo-panel{padding:34px 18px 28px;border-radius:22px}.sdo-sg ul.sdo-tabla{padding:6px 20px!important}.sdo-fila{flex-wrap:wrap;gap:6px 10px}.sdo-puntos{display:none}.sdo-precio{width:100%;padding-left:34px;font-size:26px}.sdo-estancia{font-size:16px}.sdo-aviso{font-size:14px;padding:10px 16px;border-radius:18px;text-align:left}}
+</style>
+<div class="sdo-sg">
+  <h2 class="sdo-titulo sdo-rev">Stop and Go</h2>
+  <p class="sdo-intro sdo-rev">Disponemos de un área habilitada para el autocaravaning, donde podrá disfrutar de una estancia tranquila y de todos los siguientes servicios:</p>
+  <ul class="sdo-servicios">
+    <li class="sdo-servicio sdo-rev"><span class="sdo-ico"><svg viewBox="0 0 24 24"><path d="M12 2.7s-6 6.5-6 11a6 6 0 0 0 12 0c0-4.5-6-11-6-11Z"/><path d="M9 14a3 3 0 0 0 3 3"/></svg></span>Vaciado de aguas grises y negras</li>
+    <li class="sdo-servicio sdo-rev"><span class="sdo-ico"><svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h.01M11 6h5"/><circle cx="12" cy="14" r="4"/><path d="M10 15c1-1 3 0 4-1"/></svg></span>Lavandería, equipada con lavadoras, secadoras y sala de planchado</li>
+    <li class="sdo-servicio sdo-rev"><span class="sdo-ico"><svg viewBox="0 0 24 24"><circle cx="7" cy="15" r="5"/><circle cx="17.5" cy="15" r="4.5"/><circle cx="12" cy="4.5" r="1.8"/><path d="M3 13c2.5 1.2 5.5 1.2 8 0M13.5 13.2c2.3 1 4.7 1 7 0"/></svg></span>Campo de petanca</li>
+    <li class="sdo-servicio sdo-rev"><span class="sdo-ico"><svg viewBox="0 0 24 24"><path d="M2 8.8a15 15 0 0 1 20 0"/><path d="M5 12.6a10 10 0 0 1 14 0"/><path d="M8.5 16.4a5 5 0 0 1 7 0"/><path d="M12 20h.01"/></svg></span>Servicio WIFI</li>
+    <li class="sdo-servicio sdo-rev"><span class="sdo-ico"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg></span>Vigilancia</li>
+    <li class="sdo-servicio sdo-rev"><span class="sdo-ico"><svg viewBox="0 0 24 24"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8Z"/></svg></span>Toma eléctrica de 10A</li>
+  </ul>
+  <div class="sdo-panel sdo-rev">
+    <h3>Lista de precios Stop&amp;Go Sol d´Or 2026</h3>
+    <ul class="sdo-tabla">
+      <li class="sdo-fila">
+        <span class="sdo-estancia"><svg viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>De 1 a 30 noches</span>
+        <span class="sdo-puntos"></span>
+        <span class="sdo-precio">16€ <small>/ noche</small></span>
+      </li>
+      <li class="sdo-fila">
+        <span class="sdo-estancia"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="3"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>A partir del mes</span>
+        <span class="sdo-puntos"></span>
+        <span class="sdo-precio">14€ <small>/ noche</small></span>
+      </li>
+    </ul>
+    <div class="sdo-aviso"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>Servicio ofrecido únicamente en temporada baja</div>
+  </div>
+</div>
+<script>
+(function(){
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!reduce) {
+    if ("IntersectionObserver" in window) {
+      document.documentElement.classList.add("sdo-js3");
+    }
+  }
+})();
+jQuery(document).ready(function($){
+  if (!document.documentElement.classList.contains("sdo-js3")) { return; }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) {
+        e.target.classList.add("sdo-visible");
+        io.unobserve(e.target);
+      }
+    });
+  }, {threshold:0.15});
+  $(".sdo-sg .sdo-rev").each(function(){
+    var d = $(this).hasClass("sdo-servicio") ? ($(this).index() % 3) * 0.12 : 0;
+    this.style.transitionDelay = d + "s";
+    io.observe(this);
+  });
+});
+</script>
