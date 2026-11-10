@@ -1,5 +1,7 @@
 <style>
-.sdo-info{--sdo-acento:#0b8378;--sdo-naranja:#f39325;--sdo-naranja-osc:#e07f12;--sdo-texto:#555;max-width:1080px;margin:0 auto;position:relative;z-index:5}
+.et_pb_section:has(.sdo-info){padding-top:0!important;overflow:visible!important;position:relative;z-index:6}
+.et_pb_section:has(.sdo-info) .et_pb_row:has(.sdo-info){padding-top:0!important;overflow:visible!important}
+.sdo-info{--sdo-acento:#0b8378;--sdo-naranja:#f39325;--sdo-naranja-osc:#e07f12;--sdo-texto:#555;max-width:1080px;margin:-60px auto 0;position:relative;z-index:5}
 .sdo-info p:empty,.sdo-info br{display:none!important}
 .sdo-info *{box-sizing:border-box}
 .sdo-info svg{flex:none}
@@ -21,7 +23,7 @@
 .sdo-info a.sdo-btn-reservar:hover{background:var(--sdo-naranja-osc);transform:translateY(-3px);box-shadow:0 16px 30px -12px rgba(243,147,37,.9)}
 .sdo-info a.sdo-btn-reservar:hover svg{transform:translateX(4px)}
 @media (max-width:980px){.sdo-info-caja{grid-template-columns:1fr 1fr}.sdo-info a.sdo-info-item+a.sdo-info-item::before{display:none}.sdo-info a.sdo-info-item{border-bottom:1px solid rgba(0,0,0,.07)}.sdo-info a.sdo-info-item--dir{grid-column:1/-1}.sdo-info a.sdo-info-item--wa{border-right:1px solid rgba(0,0,0,.07)}.sdo-info-reservar{grid-column:1/-1;padding:16px 20px 20px}}
-@media (max-width:560px){.sdo-info-caja{grid-template-columns:1fr;border-radius:18px}.sdo-info a.sdo-info-item{padding:16px 18px;gap:12px}.sdo-info a.sdo-info-item--wa{border-right:none}.sdo-info-ico{width:42px;height:42px}.sdo-info-txt strong{font-size:15.5px}.sdo-info-reservar{padding:14px 18px 18px}.sdo-info a.sdo-btn-reservar{padding:15px 20px}}
+@media (max-width:560px){.sdo-info{margin-top:-40px}.sdo-info-caja{grid-template-columns:1fr;border-radius:18px}.sdo-info a.sdo-info-item{padding:16px 18px;gap:12px}.sdo-info a.sdo-info-item--wa{border-right:none}.sdo-info-ico{width:42px;height:42px}.sdo-info-txt strong{font-size:15.5px}.sdo-info-reservar{padding:14px 18px 18px}.sdo-info a.sdo-btn-reservar{padding:15px 20px}}
 </style>
 <div class="sdo-info">
   <div class="sdo-info-caja">
@@ -38,7 +40,7 @@
       <span class="sdo-info-txt"><small>Teléfono</small><strong>964 48 06 53</strong></span>
     </a>
     <div class="sdo-info-reservar">
-      <a class="sdo-btn-reservar" href="URL-RESERVAS">Reservar<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="sdo-btn-reservar" href="https://campingsoldor.com/reservar/">Reservar<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
   </div>
 </div>
